@@ -1,32 +1,28 @@
 //
-// Created by Tom Danvers on 16/03/2022.
+// Created by Alexander Becker on 2022-03-20
 // 2022 TeamSunride.
 //
 
-#ifndef DATANODE_H
-#define DATANODE_H
+#ifndef _THRESHOLD_FILTER_H_
+#define _THRESHOLD_FILTER_H_
 
-#include <cstdint>
-#include "Vector.h"
+#include "measurement.h"
+#include "../common.h"
 
-typedef void (*DownstreamFunctionPointer)();
-
-#define MAX_DOWNSTREAM_FUNCTIONS 5
-
-class DataNode {
+class Threshold_Filter {
 public:
-    /**
-     *
-     * @param functionPointer
-     */
-    void addChild(DownstreamFunctionPointer functionPointer);
-    void callChildren(); // should probably be protected
-
-    DataNode();
+    void pass_result_to(void (*)(Measurement));
+    void receive_measurement(Measurement);
+    Threshold_Filter(const float threshold, const MeasurementType accepted_type);
 private:
-    DownstreamFunctionPointer pointerStorage[MAX_DOWNSTREAM_FUNCTIONS] = {};
-    Vector<DownstreamFunctionPointer> downstreamFunctionPointers;
+    bool filter();
+    void propagate_result();
+    float _threshold;
+    Measurement input;
+    Measurement output;
+    MeasurementType _filtered_type;
+    unsigned int registered_downstream_nodes;
+    void (*child_nodes[MAX_DOWNSTREAM_NODES])(Measurement);
 };
 
-
-#endif //DATANODE_H
+#endif

@@ -1,0 +1,5 @@
+#ifndef _RANDOM_NUMBER_SENSOR_H_
+#define _RANDOM_NUMBER_SENSOR_H_
+
+
+#endif

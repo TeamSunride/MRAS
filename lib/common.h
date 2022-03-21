@@ -1,0 +1,6 @@
+#ifndef _COMMON_DEFINES_
+#define _COMMON_DEFINES_
+
+#define MAX_DOWNSTREAM_NODES 10
+
+#endif

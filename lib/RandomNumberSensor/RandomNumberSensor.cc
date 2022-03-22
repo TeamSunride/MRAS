@@ -1,12 +1,12 @@
 #include "RandomNumberSensor.h"
 
-RandomNumberSensor::RandomNumberSensor(MeasurementType type) {
-    creation_type = type;
-}
+RandomNumberSensor::RandomNumberSensor(MeasurementType type) : 
+    creation_type(type), rng(dev()), dist(std::normal_distribution<float>(0, 2)) {};
 
-RandomNumberSensor::RandomNumberSensor() {
-    creation_type = MeasurementType::Pressure;
-}
+
+RandomNumberSensor::RandomNumberSensor() : 
+creation_type(MeasurementType::Pressure), rng(dev()), dist(std::normal_distribution<float>(0, 2)) {};
+
 
 void RandomNumberSensor::propagate_result() {
     for (unsigned int i = 0; i < registered_downstream_nodes; i++) {
@@ -24,9 +24,9 @@ void RandomNumberSensor::get_measurement() {
     propagate_result();
 }
 
-bool RandomNumberSensor::pass_result_to(void (*dwnstr_node))(Measurement)) {
+bool RandomNumberSensor::pass_result_to(void (*dwnstr_node)(Measurement)) {
     if (registered_downstream_nodes < MAX_DOWNSTREAM_NODES) {
-        dwnstr_nodes[registered_downstream_nodes] = dwnstr_node;
+        dstr_nodes[registered_downstream_nodes] = dwnstr_node;
         registered_downstream_nodes ++;
         return true;
     }

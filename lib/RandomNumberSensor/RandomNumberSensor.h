@@ -3,7 +3,7 @@
 
 #include <random>
 #include "measurement.h"
-#include "common.h"
+#include "../common.h"
 
 class RandomNumberSensor {
     public:
@@ -17,7 +17,10 @@ class RandomNumberSensor {
         MeasurementType creation_type;
         unsigned int registered_downstream_nodes;
         void (*dstr_nodes[MAX_DOWNSTREAM_NODES])(Measurement);
-        std::default_random_engine rng;
-        std::normal_distribution<float> dist(0,2);
-}
+        float mean;
+        float stdd;
+        std::normal_distribution<float> dice;
+		std::random_device dev;
+        std::mt19937 rng;
+};
 #endif

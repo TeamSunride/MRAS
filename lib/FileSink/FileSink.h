@@ -4,6 +4,7 @@
 #include "measurement.h"
 #include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include "../common.h"
 
@@ -13,6 +14,6 @@ class FileSink {
         FileSink(std::string filename);
         void receive_measurement(Measurement);
     private:
-        ofstream output_file;
+        fstream output_file;
 };
 #endif

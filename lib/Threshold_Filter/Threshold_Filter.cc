@@ -6,22 +6,8 @@
 #include <math.h>
 
 Threshold_Filter::Threshold_Filter(const float threshold, const MeasurementType accepted_type) {
-    _threshold = threshold;
-    _filtered_type = accepted_type;
-    registered_downstream_nodes = 0;
-}
-
-void Threshold_Filter::pass_result_to(void (*dstr_handle)(Measurement)) {
-    if (registered_downstream_nodes == MAX_DOWNSTREAM_NODES)
-        return;
-    child_nodes[registered_downstream_nodes] = dstr_handle;
-    registered_downstream_nodes ++;
-}
-
-void Threshold_Filter::propagate_result() {
-    for (unsigned int i = 0; i < registered_downstream_nodes; i++) {
-        child_nodes[i](output);
-    }
+	_threshold = threshold;
+	_filtered_type = accepted_type;
 }
 
 bool Threshold_Filter::filter() {
@@ -49,6 +35,5 @@ void Threshold_Filter::receive_measurement(Measurement in) {
     if (in.Type() != _filtered_type)
         return;
     input = in;
-    if (filter()) 
-        propagate_result();
+    if (filter()) propagate_result();
 }

@@ -3,23 +3,20 @@
 
 #include <random>
 #include "measurement.h"
-#include "../common.h"
+#include "node.h"
+#include "common.h"
 
-class RandomNumberSensor {
+class RandomNumberSensor : public Node {
     public:
-        bool pass_result_to(void (*)(Measurement));
-        void get_measurement();
         RandomNumberSensor(MeasurementType);
         RandomNumberSensor();
+        void get_measurement();
+        void receive_measurement(Measurement) override;
     private:
-        void propagate_result();
-        Measurement output;
         MeasurementType creation_type;
-        unsigned int registered_downstream_nodes;
-        void (*dstr_nodes[MAX_DOWNSTREAM_NODES])(Measurement);
         float mean;
         float stdd;
-        std::normal_distribution<float> dice;
+        std::normal_distribution<float> dist;
 		std::random_device dev;
         std::mt19937 rng;
 };

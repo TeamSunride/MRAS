@@ -7,22 +7,17 @@
 #define _THRESHOLD_FILTER_H_
 
 #include "measurement.h"
-#include "../common.h"
+#include "node.h"
+#include "common.h"
 
-class Threshold_Filter {
+class Threshold_Filter: public Node {
 public:
-    void pass_result_to(void (*)(Measurement));
-    void receive_measurement(Measurement);
     Threshold_Filter(const float threshold, const MeasurementType accepted_type);
+    void receive_measurement(Measurement) override;
 private:
     bool filter();
-    void propagate_result();
     float _threshold;
-    Measurement input;
-    Measurement output;
     MeasurementType _filtered_type;
-    unsigned int registered_downstream_nodes;
-    void (*child_nodes[MAX_DOWNSTREAM_NODES])(Measurement);
 };
 
 #endif

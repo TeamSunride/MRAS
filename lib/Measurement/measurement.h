@@ -16,8 +16,9 @@ class Measurement {
         float * value(unsigned int* count);
         Measurement(MeasurementType, float);
         Measurement(MeasurementType, float, float, float);
+        Measurement(MeasurementType, float, float, float, float);
     private:
-        float _value[3];
+        float _value[4];
         MeasurementType type;
 };
 #endif

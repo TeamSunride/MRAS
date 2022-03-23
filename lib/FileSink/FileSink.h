@@ -3,17 +3,21 @@
 
 #include "measurement.h"
 #include <iostream>
+#include <chrono>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <string>
-#include "../common.h"
+#include "common.h"
+#include "node.h"
 
-class FileSink {
+class FileSink : public Node {
     public:
         FileSink();
+		~FileSink();
         FileSink(std::string filename);
-        void receive_measurement(Measurement);
+        void receive_measurement(Measurement) override;
     private:
-        fstream output_file;
+		std::ofstream output_file;
 };
 #endif

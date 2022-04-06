@@ -1,0 +1,6 @@
+[submodule "lib/SimpleKalmanFilter"]
+	path = lib/SimpleKalmanFilter
+	url = https://github.com/TeamSunride/SimpleKalmanFilter
+[submodule "lib/MS5607"]
+	path = lib/MS5607
+	url = https://github.com/TeamSunride/MS5607

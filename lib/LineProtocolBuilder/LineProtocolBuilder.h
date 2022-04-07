@@ -62,6 +62,7 @@ private:
     LineProtocolBuilder _addField(const String& fieldKey, const String& fieldValue);
 
     int64_t _timestamp = 0;
+    bool _timestamp_set = false;
 
     int8_t _number_of_fields = 0;
 

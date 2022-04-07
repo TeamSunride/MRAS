@@ -14,11 +14,16 @@ LineProtocolBuilder::LineProtocolBuilder(const String& measurementName) {
 
 LineProtocolBuilder LineProtocolBuilder::setTimestamp(const int64_t& timestamp) {
     _timestamp = timestamp;
+    _timestamp_set = true;
     return *this;
 }
 
 String LineProtocolBuilder::build() {
-    return _measurement_name + _tag_set + " " + _field_set + " " + int64String(_timestamp);
+    if (_timestamp_set) {
+        return _measurement_name + _tag_set + " " + _field_set + " " + int64String(_timestamp);
+    } else {
+        return _measurement_name + _tag_set + " " + _field_set;
+    }
 }
 
 LineProtocolBuilder LineProtocolBuilder::_addTag(const String &tagKey, const String &tagValue) {

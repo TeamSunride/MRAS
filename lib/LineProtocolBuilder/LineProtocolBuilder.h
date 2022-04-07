@@ -7,7 +7,6 @@
 #define MRASV2_LINEPROTOCOLBUILDER_H
 
 #include "Arduino.h"
-#include "Time.h"
 
 // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/
 

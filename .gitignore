@@ -5,4 +5,3 @@ cmake-build-*/
 pyteaplot.py
 /test/tmp_pio_test_transport.cpp
 .vscode/
-build/

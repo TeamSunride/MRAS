@@ -11,12 +11,12 @@
 
 class Accelerometer : public Sensor {
 public:
-    Vector3D<float> getAcceleration() {
+    Vector3D getAcceleration() {
         return _acceleration;
     }
 
 private:
-    Vector3D<float> _acceleration{};
+    Vector3D  _acceleration{};
 };
 
 #endif //MRASV2_ACCELEROMETER_H

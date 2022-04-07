@@ -9,7 +9,7 @@
 #include "Sensor.h"
 
 /*
- * Barometer interface. To be implemented by an actual sensor class.
+ * Barometer class. To be implemented by an actual sensor class.
  */
 class Barometer : public Sensor {
 public:

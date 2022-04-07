@@ -7,26 +7,23 @@
 #define MRASV2_VECTOR3D_H
 
 
-template <typename T>
 class Vector3D {
 public:
-    T _dimensions[3];
-    T getX();
-    T getY();
-    T getZ();
+    float _dimensions[3];
+    float getX();
+    float getY();
+    float getZ();
 
-    void setX(T value);
-    void setY(T value);
-    void setZ(T value);
+    void setX(float value);
+    void setY(float value);
+    void setZ(float value);
 
-    Vector3D<double> divideScalar(double factor);
+    Vector3D divideScalar(float factor);
 };
 
 
-
-template<typename T>
-Vector3D<double> Vector3D<T>::divideScalar(double factor) {
-    Vector3D<double> returnVector{};
+Vector3D Vector3D::divideScalar(float factor) {
+    Vector3D returnVector{};
     for (int i=0; i<3; i++) {
         returnVector._dimensions[i] = _dimensions[i] / factor;
     }
@@ -34,32 +31,27 @@ Vector3D<double> Vector3D<T>::divideScalar(double factor) {
 }
 
 template<typename T>
-T Vector3D<T>::getX() {
+float Vector3D::getX() {
     return _dimensions[0];
 }
 
-template<typename T>
-T Vector3D<T>::getY() {
+float Vector3D::getY() {
     return _dimensions[1];
 }
 
-template<typename T>
-T Vector3D<T>::getZ() {
+float Vector3D::getZ() {
     return _dimensions[2];
 }
 
-template<typename T>
-void Vector3D<T>::setX(T value) {
+void Vector3D::setX(float value) {
     _dimensions[0] = value;
 }
 
-template<typename T>
-void Vector3D<T>::setY(T value) {
+void Vector3D::setY(float value) {
     _dimensions[1] = value;
 }
 
-template<typename T>
-void Vector3D<T>::setZ(T value) {
+void Vector3D::setZ(float value) {
     _dimensions[2] = value;
 }
 

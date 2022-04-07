@@ -17,7 +17,11 @@ SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
     Serial.begin(9600);
-    barometer->begin();
+
+    // init all sensors
+    for (Sensor *sensor: sensors) {
+        sensor->begin();
+    }
 }
 
 void loop() {

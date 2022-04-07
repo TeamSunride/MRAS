@@ -17,9 +17,39 @@
 class LineProtocolBuilder {
 public:
     explicit LineProtocolBuilder(const String& measurementName);
+
+    // String value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#string
     LineProtocolBuilder addTag(const String& tagKey, const String& tagValue);
     LineProtocolBuilder addField(const String& fieldKey, const String& fieldValue);
-    LineProtocolBuilder setTimestamp(const unsigned long &timestamp);
+
+    // additional overloads for const char* to prevent "wrong" overloaded method with bool
+    // https://stackoverflow.com/questions/21161026/c-chooses-wrong-overloaded-method-with-default-parameters
+    LineProtocolBuilder addTag(const String& tagKey, const char* tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const char* fieldValue);
+
+    // Float value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#float
+    LineProtocolBuilder addTag(const String& tagKey, const float& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const float& fieldValue);
+
+    // Signed 64-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#integer
+    LineProtocolBuilder addTag(const String& tagKey, const int64_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const int64_t& fieldValue);
+
+    // Unsigned 64-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#uinteger
+    LineProtocolBuilder addTag(const String& tagKey, const uint64_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const uint64_t& fieldValue);
+
+    // Boolean value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#boolean
+    LineProtocolBuilder addTag(const String& tagKey, const bool& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const bool& fieldValue);
+
+
+    LineProtocolBuilder setTimestamp(const int64_t &timestamp);
 
     String build();
 private:
@@ -28,7 +58,10 @@ private:
     String _tag_set;
     String _field_set;
 
-    unsigned long _timestamp = 0;
+    LineProtocolBuilder _addTag(const String& tagKey, const String& tagValue);
+    LineProtocolBuilder _addField(const String& fieldKey, const String& fieldValue);
+
+    int64_t _timestamp = 0;
 
     int8_t _number_of_fields = 0;
 

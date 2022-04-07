@@ -7,6 +7,7 @@
 #include "Barometer.h"
 #include "Barometer_MS5607.h"
 #include "SimpleKalmanFilter.h"
+#include "LineProtocolBuilder.h"
 
 // define sensors
 Barometer *barometer = new Barometer_MS5607();
@@ -35,8 +36,10 @@ void loop() {
     // do processing with resulting data
     float measured_pressure = barometer->getPressure();
     float filtered_pressure = pressureFilter.updateEstimate(measured_pressure);
-    Serial.println("pressureTest "
-                   "measuredPressure=" + String(measured_pressure) + ","
-                   "filteredPressure=" + String(filtered_pressure) + ","
-                   "daqTime=" + String(data_acq_time));
+    Serial.println(
+            LineProtocolBuilder("pressureTest")
+            .addField("measuredPressure", measured_pressure)
+            .addField("filteredPressure", filtered_pressure)
+            .addField("daqTime", (int64_t) data_acq_time)
+            .build());
 }

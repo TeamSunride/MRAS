@@ -8,6 +8,9 @@
 #include "Barometer_MS5607.h"
 #include "SimpleKalmanFilter.h"
 #include "LineProtocolBuilder.h"
+#include "constants.h"
+
+SystemState system_state = IDLE;
 
 // define sensors
 Barometer *barometer = new Barometer_MS5607();
@@ -42,4 +45,24 @@ void loop() {
             .addField("filteredPressure", filtered_pressure)
             .addField("daqTime", (int64_t) data_acq_time)
             .build());
+
+    switch (system_state) {
+        case IDLE:
+            // check for command / switch to enter LAUNCH_DETECT state
+            break;
+        case LAUNCH_DETECT:
+            // run Launch Detector
+            break;
+        case BURNOUT_DETECT:
+            // we might skip this state for DART 2022
+        case APOGEE_DETECT:
+            // run apogee detector and then deploy drogue chute
+            break;
+        case ALTITUDE_DETECT:
+            // run altitude detector and then deploy main chute
+            break;
+        case LANDING_DETECT:
+            // detect that the rocket has landed and switch back to idle mode
+            break;
+    }
 }

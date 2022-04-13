@@ -7,6 +7,9 @@
 
 int8_t Barometer_MS5607::begin() {
     if (_sensor.begin()) {
+        // lowest oversample rate to reduce data acquisition time
+        // this should be replaced with a different approach in future
+        _sensor.setOSR(256);
         return 0;
     } else {
         return 1;

@@ -9,6 +9,7 @@
 #include "SimpleKalmanFilter.h"
 #include "LineProtocolBuilder.h"
 #include "constants.h"
+#include "timestamp.h"
 
 SystemState system_state = IDLE;
 
@@ -44,6 +45,7 @@ void loop() {
             .addField("measuredPressure", measured_pressure)
             .addField("filteredPressure", filtered_pressure)
             .addField("daqTime", (int64_t) data_acq_time)
+            .setTimestamp(getTimestampMillis())
             .build());
 
     switch (system_state) {

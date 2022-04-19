@@ -48,7 +48,7 @@ public:
     LineProtocolBuilder addField(const String& fieldKey, const bool& fieldValue);
 
 
-    LineProtocolBuilder setTimestamp(const int64_t &timestamp);
+    LineProtocolBuilder setTimestamp(const uint64_t &timestamp);
 
     String build();
 private:
@@ -60,7 +60,7 @@ private:
     LineProtocolBuilder _addTag(const String& tagKey, const String& tagValue);
     LineProtocolBuilder _addField(const String& fieldKey, const String& fieldValue);
 
-    int64_t _timestamp = 0;
+    uint64_t _timestamp = 0;
     bool _timestamp_set = false;
 
     int8_t _number_of_fields = 0;

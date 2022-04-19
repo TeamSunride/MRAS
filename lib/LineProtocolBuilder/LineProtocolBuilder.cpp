@@ -12,7 +12,7 @@ LineProtocolBuilder::LineProtocolBuilder(const String& measurementName) {
     _measurement_name = measurementName;
 }
 
-LineProtocolBuilder LineProtocolBuilder::setTimestamp(const int64_t& timestamp) {
+LineProtocolBuilder LineProtocolBuilder::setTimestamp(const uint64_t& timestamp) {
     _timestamp = timestamp;
     _timestamp_set = true;
     return *this;

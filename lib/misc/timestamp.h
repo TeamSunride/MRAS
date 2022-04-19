@@ -6,7 +6,10 @@
 #include <time.h>
 #include <TimeLib.h>
 
-uint64_t getTime()
+/**
+ * @return UNIX time in milliseconds
+ */
+uint64_t getTimestampMillis()
 {
 	uint64_t periods;
 	uint32_t hi1 = SNVS_HPRTCMR, lo1 = SNVS_HPRTCLR;

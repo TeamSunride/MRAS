@@ -1,35 +1,28 @@
-#include <teensy_rtc.h>
+#include <timestamp.h>
 #include <unity.h>
+#include "Int64String.h"
 
-uint32_t previousMillis = 0;
-uint32_t interval = 1;
+void test_timestamp() {
+    uint64_t t1 = getTimestampMillis();
+    delay(1000);
+    uint64_t t2 = getTimestampMillis();
 
-uint32_t testLength = 30000;
-uint32_t testStart = 0;
+    Serial.println("t1: " + int64String(t1));
+    Serial.println("t2: " + int64String(t2));
+
+    // we expect dT to equal 1000ms
+    TEST_ASSERT_EQUAL(t2-t1, 1000);
+}
 
 void setup()
 {
-	delay(2000);
-	Serial.begin(115200);
-	while (!Serial)
-		;
 	UNITY_BEGIN();
-	testStart = millis();
+
+    RUN_TEST(test_timestamp);
+
+    UNITY_END();
 }
 
-void loop()
-{
-	uint32_t currentMillis = millis();
-	if (currentMillis - previousMillis >= interval)
-	{
-		previousMillis = currentMillis;
+void loop() {
 
-		uint64_t currentTime = getTime();
-		Serial.println(currentTime);
-	}
-	uint32_t currentMillis2 = millis();
-	if (currentMillis2 - testStart >= testLength)
-	{
-		UNITY_END();
-	}
 }

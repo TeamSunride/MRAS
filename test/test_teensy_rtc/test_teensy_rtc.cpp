@@ -51,6 +51,11 @@ void test_rtc_sync() {
 void setup() {
     UNITY_BEGIN();
 
+    uint32_t start = micros();
+    getTimestampMillis();
+    uint32_t end = micros();
+    Serial.println("Timestamp generated in (microseconds): " + String(end - start));
+
     // run this test first as it needs to run as close to compile time as possible
     RUN_TEST(test_rtc_sync);
 

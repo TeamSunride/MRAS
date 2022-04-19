@@ -6,6 +6,7 @@
 #include <time.h>
 #include <TimeLib.h>
 
+
 /**
  * @return UNIX time in milliseconds
  */
@@ -32,4 +33,10 @@ uint64_t getTimestampMillis()
 
 	uint64_t unixTime = (uint64_t(now()) * 1000) + ms;
 	return unixTime;
+}
+
+
+time_t getTeensy3Time()
+{
+    return Teensy3Clock.get();
 }

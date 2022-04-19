@@ -23,6 +23,9 @@ SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 void setup() {
     Serial.begin(9600);
 
+    // set the Time library to use Teensy's RTC to keep time
+    setSyncProvider(getTeensy3Time);
+
     // init all sensors
     for (Sensor *sensor: sensors) {
         sensor->begin();

@@ -51,6 +51,8 @@ void test_rtc_sync() {
 void setup() {
     UNITY_BEGIN();
 
+    setSyncProvider(getTeensy3Time);
+
     uint32_t start = micros();
     getTimestampMillis();
     uint32_t end = micros();

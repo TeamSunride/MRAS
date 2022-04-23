@@ -47,6 +47,26 @@ void test_rtc_sync() {
     TEST_ASSERT_EQUAL(_year, year(currentTime));
 }
 
+void test_unix_timestamp() {
+    // as a platformIO build option we can pass in a UNIX timestamp (see platformio.ini)
+    // https://docs.platformio.org/en/stable/projectconf/section_env_build.html#built-in-variables
+
+    // so we compare this to the time in the RTC to see if there is any sizeable offset
+    Serial.println("UNIX time: " + String(UNIX_TIME));
+    Serial.println("Now: " + String(now()));
+    int32_t time_difference = UNIX_TIME - now();
+
+    Serial.println("time_difference: " + String(time_difference));
+
+    // timezones may be offset by 1 hour, so we do modulus division with 3600
+    uint32_t offset = time_difference % 3600;
+
+    // assert that `now` and `UNIX_TIME` should not be more than 50 seconds apart (100 covers both sides)
+    TEST_ASSERT_INT32_WITHIN_MESSAGE(100, 0, offset, "The RTC did not sync properly. Make sure you are using"
+                                                     "teensy-gui and not teensy-cli as the upload_protocol in platformio.ini.");
+
+}
+
 
 void setup() {
     UNITY_BEGIN();
@@ -60,6 +80,7 @@ void setup() {
 
     // run this test first as it needs to run as close to compile time as possible
     RUN_TEST(test_rtc_sync);
+    RUN_TEST(test_unix_timestamp);
 
     RUN_TEST(test_timestamp);
     RUN_TEST(test_range);

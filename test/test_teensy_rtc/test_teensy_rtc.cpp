@@ -3,7 +3,7 @@
 #include "Int64String.h"
 #include "TimeLib.h"
 
-void test_timestamp() {
+void test_units_milliseconds() {
     uint64_t t1 = getTimestampMillis();
     delay(1000);
     uint64_t t2 = getTimestampMillis();
@@ -82,7 +82,7 @@ void setup() {
     RUN_TEST(test_rtc_sync);
     RUN_TEST(test_unix_timestamp);
 
-    RUN_TEST(test_timestamp);
+    RUN_TEST(test_units_milliseconds);
     RUN_TEST(test_range);
 
     UNITY_END();

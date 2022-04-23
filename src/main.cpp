@@ -8,10 +8,9 @@
 #include "Barometer_MS5607.h"
 #include "SimpleKalmanFilter.h"
 #include "LineProtocolBuilder.h"
-#include "constants.h"
+#include "global_variables.h"
 #include "timestamp.h"
-
-SystemState system_state = IDLE;
+#include "downlink.h"
 
 // define sensors
 Barometer *barometer = new Barometer_MS5607();
@@ -22,6 +21,10 @@ SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
     Serial.begin(9600);
+    while (!Serial) {}
+    int state = downlink::setupRadio();
+    Serial.println("Radio startup code:");
+    Serial.println(state);
 
     // set the Time library to use Teensy's RTC to keep time
     setSyncProvider(getTeensy3Time);
@@ -43,6 +46,7 @@ void loop() {
     // do processing with resulting data
     float measured_pressure = barometer->getPressure();
     float filtered_pressure = pressureFilter.updateEstimate(measured_pressure);
+    /*
     Serial.println(
             LineProtocolBuilder("pressureTest")
             .addField("measuredPressure", measured_pressure)
@@ -50,6 +54,7 @@ void loop() {
             .addField("daqTime", (int64_t) data_acq_time)
             .setTimestamp(getTimestampMillis())
             .build());
+            */
 
     switch (system_state) {
         case IDLE:
@@ -70,4 +75,6 @@ void loop() {
             // detect that the rocket has landed and switch back to idle mode
             break;
     }
+    byte byteArr[3];
+    downlink::transmit(byteArr, 3);
 }

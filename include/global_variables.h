@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_CONSTANTS_H
-#define MRASV2_CONSTANTS_H
+#ifndef MRASV2_GLOBAL_VARIABLES_H
+#define MRASV2_GLOBAL_VARIABLES_H
 
 enum SystemState {
     IDLE,
@@ -15,4 +15,6 @@ enum SystemState {
     LANDING_DETECT
 };
 
-#endif //MRASV2_CONSTANTS_H
+SystemState system_state = IDLE;
+
+#endif //MRASV2_GLOBAL_VARIABLES_H

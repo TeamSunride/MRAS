@@ -5,20 +5,21 @@
 
 #include "downlink.h"
 
-using namespace downlink;
-
-// Create radio driver object
-SX1262 radio = new Module(CHIP_SELECT_PIN, DIO1_PIN, RESET_PIN,
-                          BUSY_PIN);
+namespace downlink {
+    // Create radio driver object
+    SX1262 radio = new Module(CHIP_SELECT_PIN, DIO1_PIN, RESET_PIN,
+                              BUSY_PIN);
 
 // Store radio state globally
-int radioState = 0;
+    int radioState = 0;
 
 // flag to indicate that a packet was sent
-volatile bool radioAvailable = true;
+    volatile bool radioAvailable = true;
 
 // disable interrupt when it's not needed
-volatile bool enableInterrupt = true;
+    volatile bool enableInterrupt = true;
+}
+
 
 int downlink::setupRadio() {
     Serial.println("Starting radio");
@@ -38,7 +39,7 @@ int downlink::setupRadio() {
 void downlink::setFlag() {
     {
         // check if the interrupt is enabled
-        if(!enableInterrupt) {
+        if (!enableInterrupt) {
             return;
         }
 

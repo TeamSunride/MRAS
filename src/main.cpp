@@ -75,6 +75,9 @@ void loop() {
             // detect that the rocket has landed and switch back to idle mode
             break;
     }
-    byte byteArr[3];
-    downlink::transmit(byteArr, 3);
+
+    if (downlink::radioAvailable) {
+        byte byteArr[3];
+        downlink::transmit(byteArr, 3);
+    }
 }

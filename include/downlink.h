@@ -54,6 +54,16 @@ namespace downlink {
     void setFlag();
 
     int transmit(uint8_t* data, size_t len);
+
+    // https://community.platformio.org/t/platformio-doesnt-compile-when-header-contains-global-variables/6687
+    // Store radio state globally
+    extern int radioState;
+
+    // flag to indicate that a packet was sent
+    extern volatile bool radioAvailable;
+
+    // disable interrupt when it's not needed
+    extern volatile bool enableInterrupt;
 }
 
 

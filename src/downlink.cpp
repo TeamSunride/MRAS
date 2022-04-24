@@ -22,7 +22,8 @@ volatile bool enableInterrupt = true;
 
 int downlink::setupRadio() {
     Serial.println("Starting radio");
-    radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power);
+    radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power,
+                             8, 0, true);
     Serial.println("Setting RF switch pins");
     radio.setRfSwitchPins(RX_ENABLE_PIN, TX_ENABLE_PIN);
 

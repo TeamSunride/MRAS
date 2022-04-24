@@ -26,27 +26,6 @@ void test_range() {
                                              "The time reported by the RTC was before Tue Apr 19 2022 18:35:36 GMT+0000");
 }
 
-void test_rtc_sync() {
-    Serial.println("Compile time timestamp: " + String(__TIMESTAMP__));
-
-    char weekday[3];
-    char month[3];
-    int _day, _hour, _minute, _second, _year;
-
-    // extract values from compile time timestamp
-    sscanf(__TIMESTAMP__, "%s %s %d %d:%d:%d %d", weekday, month, &_day, &_hour, &_minute, &_second, &_year);
-
-    // get timestamp from RTC
-    time_t currentTime = now();
-
-    Serial.println("If the following test fails, try again as the day/hour/year might have changed since compilation");
-
-    // compare compile time and RTC time
-    TEST_ASSERT_EQUAL(_day, day(currentTime));
-    TEST_ASSERT_EQUAL(_hour, hour(currentTime));
-    TEST_ASSERT_EQUAL(_year, year(currentTime));
-}
-
 void test_unix_timestamp() {
     // as a platformIO build option we can pass in a UNIX timestamp (see platformio.ini)
     // https://docs.platformio.org/en/stable/projectconf/section_env_build.html#built-in-variables
@@ -79,7 +58,6 @@ void setup() {
     Serial.println("Timestamp generated in (microseconds): " + String(end - start));
 
     // run this test first as it needs to run as close to compile time as possible
-    RUN_TEST(test_rtc_sync);
     RUN_TEST(test_unix_timestamp);
 
     RUN_TEST(test_units_milliseconds);

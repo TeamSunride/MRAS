@@ -56,6 +56,10 @@ namespace downlink {
     int transmit(uint8_t* data, size_t len);
 
     // https://community.platformio.org/t/platformio-doesnt-compile-when-header-contains-global-variables/6687
+
+    // Create radio driver object
+    extern SX1262 radio;
+
     // Store radio state globally
     extern int radioState;
 

@@ -21,10 +21,7 @@ SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
     Serial.begin(9600);
-    while (!Serial) {}
-    int state = downlink::setupRadio();
-    Serial.println("Radio startup code:");
-    Serial.println(state);
+    downlink::setupRadio();
 
     // set the Time library to use Teensy's RTC to keep time
     setSyncProvider(getTeensy3Time);

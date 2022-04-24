@@ -1,6 +1,7 @@
 //
 // Created by Tom Danvers on 15/03/2022.
 // 2022 TeamSunride.
+// This file runs if the environment name does not correspond to any other main- file (aka, this is the default)
 //
 
 #include "Arduino.h"

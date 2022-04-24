@@ -53,6 +53,12 @@ namespace downlink {
     // is transmitted by the module
     void setFlag();
 
+    /**
+     * Transmit data via the radio in a non-blocking manner. Returns 1 if the radio is currently busy
+     * @param data Binary data to be transmitted
+     * @param len The length of binary data to be transmitted
+     * @return RadioLib status code, or 1 if the radio is busy
+     */
     int transmit(uint8_t* data, size_t len);
 
     // https://community.platformio.org/t/platformio-doesnt-compile-when-header-contains-global-variables/6687

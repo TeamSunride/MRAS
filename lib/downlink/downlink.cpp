@@ -22,15 +22,12 @@ namespace downlink {
 
 
 int downlink::setupRadio() {
-    Serial.println("Starting radio");
     radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power,
                              8, 0, true);
-    Serial.println("Setting RF switch pins");
     radio.setRfSwitchPins(RX_ENABLE_PIN, TX_ENABLE_PIN);
 
     // set the function that will be called
     // when packet transmission is finished
-    Serial.println("Setting DIO1 action");
     radio.setDio1Action(setFlag);
 
     return radioState;
@@ -57,12 +54,6 @@ int downlink::transmit(uint8_t *data, size_t len) {
         return 1;
     }
     radioAvailable = false;
-
-    if (radioState == RADIOLIB_ERR_NONE) {
-        Serial.println("Transmission finished! Sending next transmission");
-    } else {
-        Serial.println(radioState);
-    }
 
     radioState = radio.startTransmit(data, len);
     enableInterrupt = true;

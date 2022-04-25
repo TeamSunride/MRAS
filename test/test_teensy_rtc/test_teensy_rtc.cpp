@@ -35,6 +35,11 @@ void test_unix_timestamp() {
     Serial.println("Now: " + String(now()));
     int32_t time_difference = UNIX_TIME - now();
 
+    // make sure the time difference between now and UTC is less than 14 hours (plus 100 seconds to account for
+    // acceptable compile time range)
+    TEST_ASSERT_LESS_OR_EQUAL_INT32_MESSAGE(3600 * 14 + 100, abs(time_difference),
+                                            "The observed time is beyond the possible UTC timezone offset of 14 hours");
+
     Serial.println("time_difference: " + String(time_difference));
 
     // timezones may be offset by 1 hour, so we do modulus division with 3600

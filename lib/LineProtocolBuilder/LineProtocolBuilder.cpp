@@ -78,11 +78,11 @@ LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const 
 }
 
 LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const bool &tagValue) {
-    return _addTag(tagKey, tagValue ? 't' : 'f');
+    return _addTag(tagKey, tagValue ? "t" : "f");
 }
 
 LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const bool &fieldValue) {
-    return _addField(fieldKey, fieldValue ? 't' : 'f');
+    return _addField(fieldKey, fieldValue ? "t" : "f");
 }
 
 

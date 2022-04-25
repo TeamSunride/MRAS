@@ -18,6 +18,8 @@ namespace downlink {
 
 // disable interrupt when it's not needed
     volatile bool enableInterrupt = true;
+
+    DownlinkActionType volatile lastAction = NONE;
 }
 
 
@@ -34,18 +36,16 @@ int downlink::setupRadio() {
 }
 
 void downlink::setFlag() {
-    {
-        // check if the interrupt is enabled
-        if (!enableInterrupt) {
-            return;
-        }
-
-        // we sent a packet, set the flag
-        radioAvailable = true;
-
-        // disable the interrupt
-        enableInterrupt = false;
+    // check if the interrupt is enabled
+    if (!enableInterrupt) {
+        return;
     }
+
+    // we sent a packet, set the flag
+    radioAvailable = true;
+
+    // disable the interrupt
+    enableInterrupt = false;
 }
 
 int downlink::transmit(uint8_t *data, size_t len) {
@@ -53,9 +53,27 @@ int downlink::transmit(uint8_t *data, size_t len) {
         // return 1 if the radio is busy
         return 1;
     }
-    radioAvailable = false;
 
     radioState = radio.startTransmit(data, len);
-    enableInterrupt = true;
+    if (radioState == RADIOLIB_ERR_NONE) {
+        radioAvailable = false;
+        lastAction = TRANSMIT;
+        enableInterrupt = true;
+    }
+    return radioState;
+}
+
+int downlink::receive() {
+    if (!radioAvailable) {
+        // return 1 if the radio is busy
+        return 1;
+    }
+
+    radioState = radio.startReceive();
+    if (radioState == RADIOLIB_ERR_NONE) {
+        radioAvailable = false;
+        lastAction = RECEIVE;
+        enableInterrupt = true;
+    }
     return radioState;
 }

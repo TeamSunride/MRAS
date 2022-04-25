@@ -11,8 +11,9 @@ void test_radio_setup() {
                                                          "https://jgromes.github.io/RadioLib/group__status__codes.html");
 }
 
+uint8_t buffer[3] = {1, 2, 3};
+
 void test_downlink_transmit() {
-    uint8_t buffer[32];
 
     // we expect the first transmission to work without any error (an error is when the return value =/= 0)
     TEST_ASSERT_EQUAL(0, downlink::transmit(buffer, sizeof buffer));
@@ -28,15 +29,55 @@ void test_downlink_transmit() {
     TEST_ASSERT_EQUAL(0, downlink::radioState);
 }
 
+void test_receiver() {
+    delay(1000);
+    TEST_ASSERT_EQUAL(RADIOLIB_ERR_NONE, downlink::receive());
+    // wait for radio to finish receiving
+    delay(1000);
+
+    TEST_ASSERT_TRUE(downlink::radioAvailable)
+
+    TEST_ASSERT_EQUAL(downlink::lastAction, downlink::RECEIVE);
+    uint8_t receivedData[sizeof buffer] = {0, 0, 0};
+    downlink::radio.readData(receivedData, sizeof receivedData);
+    Serial.println("Received data: ");
+    Serial.println(receivedData[0]);
+    Serial.println(receivedData[1]);
+    Serial.println(receivedData[2]);
+    TEST_ASSERT_EQUAL(buffer[0], receivedData[0]);
+    TEST_ASSERT_EQUAL(buffer[1], receivedData[1]);
+    TEST_ASSERT_EQUAL(buffer[2], receivedData[2]);
+
+}
+
 void setup() {
     UNITY_BEGIN();
 
+
     RUN_TEST(test_radio_setup);
     RUN_TEST(test_downlink_transmit);
+
+    Serial.println("CHIP_SELECT_PIN: " + String(CHIP_SELECT_PIN));
+    Serial.println("DIO1_PIN: " + String(DIO1_PIN));
+    Serial.println("RESET_PIN: " + String(RESET_PIN));
+    Serial.println("BUSY_PIN: " + String(BUSY_PIN));
+    Serial.println("RX_ENABLE_PIN: " + String(RX_ENABLE_PIN));
+    Serial.println("TX_ENABLE_PIN: " + String(TX_ENABLE_PIN));
+
+    // if this is the transmitter, end the test here and move on to the main loop
+#if TEST_TRANSMITTER
+    UNITY_END();
+#elif TEST_RECEIVER
+    RUN_TEST(test_receiver);
+#endif
 
     UNITY_END();
 }
 
 void loop() {
-
+#if TEST_TRANSMITTER // this is the transmitter environment
+    if (downlink::radioAvailable) {
+        downlink::transmit(buffer, sizeof buffer);
+    }
+#endif
 }

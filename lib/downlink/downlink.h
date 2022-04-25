@@ -21,7 +21,7 @@ namespace downlink {
 
     // ===[ RADIO PIN DEFINITIONS ]===
 
-    #if BUILD_ENV_NAME == dart
+    #ifdef DART
 
     #define CHIP_SELECT_PIN     10
     #define DIO1_PIN            5
@@ -29,6 +29,15 @@ namespace downlink {
     #define BUSY_PIN            4
     #define RX_ENABLE_PIN       2
     #define TX_ENABLE_PIN       3
+
+    #elif GROUND
+
+    #define CHIP_SELECT_PIN     2
+    #define DIO1_PIN            5
+    #define RESET_PIN           11
+    #define BUSY_PIN            6
+    #define RX_ENABLE_PIN       10
+    #define TX_ENABLE_PIN       9
 
     # else
 
@@ -61,6 +70,12 @@ namespace downlink {
      */
     int transmit(uint8_t* data, size_t len);
 
+    /**
+     *
+     * @return RadioLib status code, or 1 if the radio is busy
+     */
+    int receive();
+
     // https://community.platformio.org/t/platformio-doesnt-compile-when-header-contains-global-variables/6687
 
     // Create radio driver object
@@ -71,6 +86,12 @@ namespace downlink {
 
     // flag to indicate that a packet was sent
     extern volatile bool radioAvailable;
+
+    extern volatile enum DownlinkActionType{
+        NONE,
+        TRANSMIT,
+        RECEIVE
+    } lastAction;
 
     // disable interrupt when it's not needed
     extern volatile bool enableInterrupt;

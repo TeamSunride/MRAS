@@ -21,7 +21,7 @@ namespace downlink {
 
     // ===[ RADIO PIN DEFINITIONS ]===
 
-    #ifdef DART
+    #ifdef TEENSY_RADIO_BREADBOARD_PINS
 
     #define CHIP_SELECT_PIN     10
     #define DIO1_PIN            5
@@ -30,7 +30,7 @@ namespace downlink {
     #define RX_ENABLE_PIN       2
     #define TX_ENABLE_PIN       3
 
-    #elif GROUND
+    #elif NRF52840_FEATHER_SENSE_RADIO_BREADBOARD_PINS
 
     #define CHIP_SELECT_PIN     2
     #define DIO1_PIN            5
@@ -74,7 +74,7 @@ namespace downlink {
      *
      * @return RadioLib status code, or 1 if the radio is busy
      */
-    int receive();
+    int receive(uint32_t timeout = 0xFFFFFF);
 
     // https://community.platformio.org/t/platformio-doesnt-compile-when-header-contains-global-variables/6687
 

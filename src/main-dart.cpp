@@ -21,7 +21,7 @@ Sensor *sensors[] = {barometer};
 SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
     downlink::setupRadio();
 
     // set the Time library to use Teensy's RTC to keep time

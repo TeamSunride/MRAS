@@ -63,13 +63,13 @@ int downlink::transmit(uint8_t *data, size_t len) {
     return radioState;
 }
 
-int downlink::receive() {
+int downlink::receive(uint32_t timeout) {
     if (!radioAvailable) {
         // return 1 if the radio is busy
         return 1;
     }
 
-    radioState = radio.startReceive();
+    radioState = radio.startReceive(timeout);
     if (radioState == RADIOLIB_ERR_NONE) {
         radioAvailable = false;
         lastAction = RECEIVE;

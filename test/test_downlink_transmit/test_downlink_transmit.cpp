@@ -51,6 +51,10 @@ void test_receiver() {
 }
 
 void setup() {
+    // Wait for Serial connection before starting test
+    Serial.begin(115200);
+    while (!Serial) {}
+
     UNITY_BEGIN();
 
 
@@ -65,9 +69,9 @@ void setup() {
     Serial.println("TX_ENABLE_PIN: " + String(TX_ENABLE_PIN));
 
     // if this is the transmitter, end the test here and move on to the main loop
-#if TEST_TRANSMITTER
+#if TEST_RADIO_ROCKET
     UNITY_END();
-#elif TEST_RECEIVER
+#elif TEST_RADIO_GROUND
     RUN_TEST(test_receiver);
 #endif
 
@@ -75,7 +79,7 @@ void setup() {
 }
 
 void loop() {
-#if TEST_TRANSMITTER // this is the transmitter environment
+#if TEST_RADIO_ROCKET // this is the transmitter environment
     if (downlink::radioAvailable) {
         downlink::transmit(buffer, sizeof buffer);
     }

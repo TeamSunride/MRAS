@@ -4,13 +4,11 @@
 // This file runs if built with the "ground" environment
 //
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 void setup() {
-    Serial.begin(9600);
+    Serial.begin(115200);
 }
-
 void loop() {
-    Serial.println("this is the ground station!");
-    delay(1000);
+    Serial.println("This is a test!");
 }

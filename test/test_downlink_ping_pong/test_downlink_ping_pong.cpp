@@ -8,6 +8,7 @@
 
 
 uint8_t message[3] = {1, 2, 3};
+uint8_t receivedMessage[3] = {0, 0, 0};
 
 
 unsigned int iterations = 0;
@@ -18,8 +19,10 @@ void test_radio_setup() {
                                                          "https://jgromes.github.io/RadioLib/group__status__codes.html");
 }
 
-void test_successful_iterations() {
-    TEST_ASSERT_EQUAL(iterations, successes);
+void check_received_data() {
+    TEST_ASSERT_EQUAL(message[0], receivedMessage[0]);
+    TEST_ASSERT_EQUAL(message[1], receivedMessage[1]);
+    TEST_ASSERT_EQUAL(message[2], receivedMessage[2]);
 }
 
 uint32_t ground_timeout_start = 0;
@@ -75,10 +78,10 @@ void loop() {
         case downlink::RECEIVE:
             // we just received a message, read out the response and then transmit another
 
-            // create a buffer to store the received data in
-            uint8_t receivedMessage[3] = {0, 0, 0};
+            // clear the buffer to store the received data in
+            memset(receivedMessage, 0, 3);
 
-            // read received data from the radio into the above defined buffer
+            // read received data from the radio into the buffer
             downlink::radioState = downlink::radio.readData(receivedMessage, sizeof receivedMessage);
             Serial.println("Received a message! Radio state: " + String(downlink::radioState));
 
@@ -101,9 +104,10 @@ void loop() {
             }
             iterations++;
 
+            RUN_TEST(check_received_data);
+
             delay(1000);
 
-            Serial.println(" ");
             Serial.println("=================================");
             Serial.println("Transmitting new message");
             // the "receiver" (THE GROUND STATION) sends a new message to the rocket
@@ -113,7 +117,6 @@ void loop() {
     }
 
     if (iterations >= 10) {
-        RUN_TEST(test_successful_iterations);
         UNITY_END();
     }
 }

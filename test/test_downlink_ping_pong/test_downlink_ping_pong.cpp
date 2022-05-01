@@ -12,7 +12,6 @@ uint8_t receivedMessage[3] = {0, 0, 0};
 
 
 unsigned int iterations = 0;
-unsigned int successes = 0;
 
 void test_radio_setup() {
     TEST_ASSERT_EQUAL_MESSAGE(0, downlink::setupRadio(), "Radio failed to start - view here for status codes "
@@ -97,11 +96,6 @@ void loop() {
             Serial.print("Message contents: ");
             Serial.println(String(receivedMessage[0]) + " " + String(receivedMessage[1])  + " " + String(receivedMessage[2]));
 
-
-            // test that the received data equals that which was sent earlier
-            if (message[0] == receivedMessage[0] && message[1] == receivedMessage[1] && message[2] == receivedMessage[2]) {
-                successes++;
-            }
             iterations++;
 
             RUN_TEST(check_received_data);

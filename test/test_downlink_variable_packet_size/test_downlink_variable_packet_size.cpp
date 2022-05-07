@@ -7,13 +7,13 @@
 #include "downlink.h"
 #include "serializers.h"
 
-enum PayloadType {
+enum PayloadType: uint8_t {
     A,
     B
 };
 
 struct PayloadA {
-    PayloadType type = A;
+    PayloadType type = PayloadType::A;
     int x = 1;
     int y = 2;
     int z = 3;
@@ -27,7 +27,7 @@ struct PayloadA {
 };
 
 struct PayloadB {
-    PayloadType type = B;
+    PayloadType type = PayloadType::B;
     int x = 1;
     int y = 2;
     int z = 3;

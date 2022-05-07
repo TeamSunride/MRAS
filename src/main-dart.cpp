@@ -12,6 +12,8 @@
 #include "global_variables.h"
 #include "timestamp.h"
 #include "downlink.h"
+#include "payloads/Test_Payload.h"
+#include "serializers.h"
 
 // define sensors
 Barometer *barometer = new Barometer_MS5607();
@@ -23,6 +25,9 @@ SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 void setup() {
     Serial.begin(115200);
     downlink::setupRadio();
+
+    // tell the radio to operate in explicit header mode for variable payload types
+    downlink::radio.explicitHeader();
 
     // set the Time library to use Teensy's RTC to keep time
     setSyncProvider(getTeensy3Time);
@@ -75,7 +80,20 @@ void loop() {
     }
 
     if (downlink::radioAvailable) {
-        byte byteArr[3];
-        downlink::transmit(byteArr, 3);
+        // construct payload object for transmission
+        Test_Payload payload(1, 2, 3);
+        // add timestamp to payload
+        payload.timestamp = getTimestampMillis();
+
+        // create byte array to output data to radio
+        uint8_t radioBuffer[sizeof payload];
+
+        // convert payload to byte array for transmission
+        toByteArray<Test_Payload>(radioBuffer, payload);
+
+        // transmit byte array containing payload data
+        downlink::transmit(radioBuffer, sizeof radioBuffer);
+
+        Serial.println("Transmitting payload: " + payload.toLineProtocol());
     }
 }

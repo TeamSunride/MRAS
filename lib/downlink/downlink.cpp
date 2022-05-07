@@ -23,7 +23,7 @@ namespace downlink {
 }
 
 
-int downlink::setupRadio() {
+int downlink::setupRadio(bool explicitHeader) {
     radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power,
                              8, 0, true);
     radio.setRfSwitchPins(RX_ENABLE_PIN, TX_ENABLE_PIN);
@@ -31,6 +31,10 @@ int downlink::setupRadio() {
     // set the function that will be called
     // when packet transmission is finished
     radio.setDio1Action(setFlag);
+
+    if (explicitHeader) {
+        radioState = radio.explicitHeader();
+    }
 
     return radioState;
 }

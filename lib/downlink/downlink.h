@@ -7,6 +7,8 @@
 #define DOWNLINK_H
 
 #include "RadioLib.h"
+#include "serializers.h"
+#include "payloads/payload_types.h"
 
 namespace downlink {
 
@@ -56,7 +58,7 @@ namespace downlink {
      * Refer to `downlink.h` to set these parameters
      * @return RadioLib status code
      */
-    int setupRadio();
+    int setupRadio(bool explicitHeader = true);
 
     // this function is called when a complete packet
     // is transmitted by the module

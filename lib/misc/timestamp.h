@@ -6,6 +6,9 @@
 #include <time.h>
 #include <TimeLib.h>
 
+#ifndef TIMESTAMP_H
+#define TIMESTAMP_H
+
 
 /**
  * @return UNIX time in milliseconds
@@ -40,3 +43,6 @@ time_t getTeensy3Time()
 {
     return Teensy3Clock.get();
 }
+
+
+#endif //TIMESTAMP_H

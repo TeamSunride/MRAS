@@ -37,10 +37,40 @@ public:
     LineProtocolBuilder addTag(const String& tagKey, const int64_t& tagValue);
     LineProtocolBuilder addField(const String& fieldKey, const int64_t& fieldValue);
 
+    // Signed 32-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#integer
+    LineProtocolBuilder addTag(const String& tagKey, const int32_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const int32_t& fieldValue);
+
+    // Signed 16-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#integer
+    LineProtocolBuilder addTag(const String& tagKey, const int16_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const int16_t& fieldValue);
+
+    // Signed 8-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#integer
+    LineProtocolBuilder addTag(const String& tagKey, const int8_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const int8_t& fieldValue);
+
     // Unsigned 64-bit integer value type
     // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#uinteger
     LineProtocolBuilder addTag(const String& tagKey, const uint64_t& tagValue);
     LineProtocolBuilder addField(const String& fieldKey, const uint64_t& fieldValue);
+
+    // Unsigned 32-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#uinteger
+    LineProtocolBuilder addTag(const String& tagKey, const uint32_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const uint32_t& fieldValue);
+
+    // Unsigned 16-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#uinteger
+    LineProtocolBuilder addTag(const String& tagKey, const uint16_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const uint16_t& fieldValue);
+
+    // Unsigned 8-bit integer value type
+    // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#uinteger
+    LineProtocolBuilder addTag(const String& tagKey, const uint8_t& tagValue);
+    LineProtocolBuilder addField(const String& fieldKey, const uint8_t& fieldValue);
 
     // Boolean value type
     // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#boolean

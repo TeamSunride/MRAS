@@ -69,12 +69,60 @@ LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const 
     return _addField(fieldKey, int64String(fieldValue) + "i");
 }
 
+LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const int32_t &tagValue) {
+    return _addTag(tagKey, String(tagValue) + "i");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const int32_t &fieldValue) {
+    return _addField(fieldKey, String(fieldValue) + "i");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const int16_t &tagValue) {
+    return _addTag(tagKey, String(tagValue) + "i");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const int16_t &fieldValue) {
+    return _addField(fieldKey, String(fieldValue) + "i");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const int8_t &tagValue) {
+    return _addTag(tagKey, String(tagValue) + "i");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const int8_t &fieldValue) {
+    return _addField(fieldKey, String(fieldValue) + "i");
+}
+
 LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const uint64_t &tagValue) {
     return _addTag(tagKey, int64String(tagValue) + "u");
 }
 
 LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const uint64_t &fieldValue) {
     return _addField(fieldKey, int64String(fieldValue) + "u");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const uint32_t &tagValue) {
+    return _addTag(tagKey, String(tagValue) + "u");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const uint32_t &fieldValue) {
+    return _addField(fieldKey, String(fieldValue) + "u");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const uint16_t &tagValue) {
+    return _addTag(tagKey, String(tagValue) + "u");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const uint16_t &fieldValue) {
+    return _addField(fieldKey, String(fieldValue) + "u");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const uint8_t &tagValue) {
+    return _addTag(tagKey, String(tagValue) + "u");
+}
+
+LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const uint8_t &fieldValue) {
+    return _addField(fieldKey, String(fieldValue) + "u");
 }
 
 LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const bool &tagValue) {

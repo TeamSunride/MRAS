@@ -31,6 +31,10 @@ namespace downlink {
 
 
 int downlink::setupRadio(bool explicitHeader) {
+#ifdef DART_PINS
+    SPI1.begin();  // DART uses SPI1 for SX1262
+#endif
+
     Serial.println("Calling radio.begin(): ");
     radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power,
                              8, 0, true);

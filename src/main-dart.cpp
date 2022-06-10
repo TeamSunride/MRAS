@@ -9,11 +9,12 @@
 #include "Barometer_MS5607.h"
 #include "SimpleKalmanFilter.h"
 #include "LineProtocolBuilder.h"
-#include "global_variables.h"
+#include "global.h"
 #include "timestamp.h"
 #include "downlink.h"
 #include "payloads/Test_Payload.h"
 #include "serializers.h"
+#include "dart_gpio.h"
 
 // define sensors
 Barometer *barometer = new Barometer_MS5607();
@@ -23,7 +24,12 @@ Sensor *sensors[] = {barometer};
 SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
+    setup_GPIO();
+
+    flashRedLED(100);
     Serial.begin(115200);
+    while (!Serial) {}
+    Serial.println("Setting up radio: ");
     downlink::setupRadio();
 
     // tell the radio to operate in explicit header mode for variable payload types
@@ -59,7 +65,7 @@ void loop() {
             .build());
             */
 
-    switch (system_state) {
+    switch (systemState) {
         case IDLE:
             // check for command / switch to enter LAUNCH_DETECT state
             break;

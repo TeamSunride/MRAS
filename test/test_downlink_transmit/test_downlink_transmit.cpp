@@ -35,7 +35,7 @@ void test_receiver() {
     // wait for radio to finish receiving
     delay(1000);
 
-    TEST_ASSERT_TRUE(downlink::radioAvailable)
+    TEST_ASSERT_TRUE(downlink::radioAvailable);
 
     TEST_ASSERT_EQUAL(downlink::lastAction, downlink::RECEIVE);
     uint8_t receivedData[sizeof buffer] = {0, 0, 0};

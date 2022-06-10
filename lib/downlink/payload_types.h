@@ -6,8 +6,6 @@
 #ifndef PAYLOAD_TYPES_H
 #define PAYLOAD_TYPES_H
 
-#include "RadioLib.h"
-
 namespace downlink {
     enum PayloadType : uint8_t {
         UNDEFINED,

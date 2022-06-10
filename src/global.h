@@ -15,6 +15,6 @@ enum SystemState {
     LANDING_DETECT
 };
 
-SystemState system_state = IDLE;
+SystemState systemState = IDLE;
 
 #endif //MRASV2_GLOBAL_VARIABLES_H

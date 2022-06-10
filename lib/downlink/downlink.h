@@ -8,7 +8,7 @@
 
 #include "RadioLib.h"
 #include "serializers.h"
-#include "payloads/payload_types.h"
+#include "payload_types.h"
 
 namespace downlink {
 
@@ -31,6 +31,15 @@ namespace downlink {
     #define BUSY_PIN            4
     #define RX_ENABLE_PIN       2
     #define TX_ENABLE_PIN       3
+
+    #elif DART_PINS
+
+    #define CHIP_SELECT_PIN     0
+    #define DIO1_PIN            5
+    #define RESET_PIN           32
+    #define BUSY_PIN            33
+    #define RX_ENABLE_PIN       34
+    #define TX_ENABLE_PIN       35
 
     #elif NRF52840_FEATHER_SENSE_RADIO_BREADBOARD_PINS
 

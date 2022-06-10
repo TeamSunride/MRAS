@@ -4,11 +4,18 @@
 //
 
 #include "downlink.h"
+#include "Arduino.h"
 
 namespace downlink {
     // Create radio driver object
+
+#ifdef DART_PINS
+    SX1262 radio = new Module(CHIP_SELECT_PIN, DIO1_PIN, RESET_PIN,
+                              BUSY_PIN, SPI1);
+#else
     SX1262 radio = new Module(CHIP_SELECT_PIN, DIO1_PIN, RESET_PIN,
                               BUSY_PIN);
+#endif
 
 // Store radio state globally
     int radioState = 0;
@@ -24,10 +31,12 @@ namespace downlink {
 
 
 int downlink::setupRadio(bool explicitHeader) {
+    Serial.println("Calling radio.begin(): ");
     radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power,
                              8, 0, true);
+    Serial.println("Setting RF switch pins: ");
     radio.setRfSwitchPins(RX_ENABLE_PIN, TX_ENABLE_PIN);
-
+    Serial.println("Setting DIO1 action: ");
     // set the function that will be called
     // when packet transmission is finished
     radio.setDio1Action(setFlag);
@@ -36,6 +45,7 @@ int downlink::setupRadio(bool explicitHeader) {
         radioState = radio.explicitHeader();
     }
 
+    Serial.println("Radio state: " + String(radioState));
     return radioState;
 }
 

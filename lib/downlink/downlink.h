@@ -35,7 +35,7 @@ namespace downlink {
     #elif DART_PINS
 
     #define CHIP_SELECT_PIN     0
-    #define DIO1_PIN            5
+    #define DIO1_PIN            31
     #define RESET_PIN           32
     #define BUSY_PIN            33
     #define RX_ENABLE_PIN       34

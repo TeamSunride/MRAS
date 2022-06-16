@@ -13,15 +13,15 @@ Vector3D Vector3D::divideScalar(float factor) {
     return returnVector;
 }
 
-float Vector3D::getX() {
+float Vector3D::getX() const {
     return _dimensions[0];
 }
 
-float Vector3D::getY() {
+float Vector3D::getY() const {
     return _dimensions[1];
 }
 
-float Vector3D::getZ() {
+float Vector3D::getZ() const{
     return _dimensions[2];
 }
 

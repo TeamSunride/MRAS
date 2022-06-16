@@ -7,6 +7,7 @@
 #define TEST_PAYLOAD_H
 
 #include "downlink.h"
+#include "LineProtocolBuilder.h"
 
 struct Test_Payload {
     downlink::PayloadType type = downlink::PayloadType::Test_Payload_Type;
@@ -16,13 +17,22 @@ struct Test_Payload {
 
     uint64_t timestamp = 0;
 
-    String toLineProtocol() const;
+    String toLineProtocol() const {
+        return LineProtocolBuilder("Test_Payload")
+                .addField("x", x)
+                .addField("y", y)
+                .addField("z", z)
+                .setTimestamp(timestamp)
+                .build();
+    }
 
     Test_Payload(int16_t _x, int16_t _y, int16_t _z) {
         x = _x;
         y = _y;
         z = _z;
     }
+
+    Test_Payload() = default;
 };
 
 

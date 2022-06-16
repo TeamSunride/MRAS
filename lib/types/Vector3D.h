@@ -10,9 +10,9 @@
 class Vector3D {
 public:
     float _dimensions[3];
-    float getX();
-    float getY();
-    float getZ();
+    float getX() const;
+    float getY() const;
+    float getZ() const;
 
     void setX(float value);
     void setY(float value);

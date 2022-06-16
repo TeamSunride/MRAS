@@ -9,7 +9,8 @@
 namespace downlink {
     enum PayloadType : uint8_t {
         UNDEFINED,
-        Test_Payload_Type
+        Test_Payload_Type,
+        DARTDebugPayload,
     };
 }
 

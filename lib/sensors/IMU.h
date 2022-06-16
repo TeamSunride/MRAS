@@ -22,7 +22,8 @@ public:
     Vector3D getMagnetometerVector() {
         return _magnetometer_vector;
     }
-private:
+
+protected:
     Vector3D _acceleration{};
     Vector3D _gyro_vector{};
     Vector3D _magnetometer_vector{};

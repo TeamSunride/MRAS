@@ -6,6 +6,8 @@
 #ifndef MRASV2_GLOBAL_VARIABLES_H
 #define MRASV2_GLOBAL_VARIABLES_H
 
+#include "Barometer.h"
+
 enum SystemState {
     IDLE,
     LAUNCH_DETECT,

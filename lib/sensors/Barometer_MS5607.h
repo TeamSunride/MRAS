@@ -7,8 +7,8 @@
 #define MRASV2_BAROMETER_MS5607_H
 
 #include <cstdint>
-#include "MS5607.h"
 #include "Barometer.h"
+#include "MS5607.h"
 
 
 class Barometer_MS5607 : public Barometer {

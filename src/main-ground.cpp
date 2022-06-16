@@ -7,6 +7,7 @@
 #include <Arduino.h>
 #include "downlink.h"
 #include "payloads/Test_Payload.h"
+#include "payloads/DARTDebugPayload.h"
 
 uint8_t radioBuffer[255];
 
@@ -32,13 +33,20 @@ void loop() {
         // determine which payload type was received by reading the first byte
         auto receivedPayloadType = static_cast<downlink::PayloadType>(radioBuffer[0]);
 
+        Test_Payload testPayload;
+        DARTDebugPayload dartDebugPayload;
+
         switch (receivedPayloadType) {
             case downlink::UNDEFINED:
                 Serial.println("Received undefined payload type, cannot print result");
                 break;
             case downlink::Test_Payload_Type:
-                Test_Payload testPayload = fromByteArray<Test_Payload>(radioBuffer);
-                Serial.println("Received payload: " + testPayload.toLineProtocol());
+                testPayload = fromByteArray<Test_Payload>(radioBuffer);
+                Serial.println(testPayload.toLineProtocol());
+                break;
+            case downlink::DARTDebugPayload:
+                dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
+                Serial.println(dartDebugPayload.toLineProtocol());
                 break;
         }
 

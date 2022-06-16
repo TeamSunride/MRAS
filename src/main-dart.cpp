@@ -5,8 +5,7 @@
 //
 
 #include "Arduino.h"
-#include "Barometer.h"
-#include "Barometer_MS5607.h"
+
 #include "SimpleKalmanFilter.h"
 #include "LineProtocolBuilder.h"
 #include "global.h"
@@ -15,10 +14,17 @@
 #include "payloads/Test_Payload.h"
 #include "serializers.h"
 #include "dart_gpio.h"
+#include "Wire.h"
+
+// import sensors
+#include "Barometer_MS5607.h"
+#include "IMU_MPU6050.h"
+#include "payloads/DARTDebugPayload.h"
 
 // define sensors
 Barometer *barometer = new Barometer_MS5607();
-Sensor *sensors[] = {barometer};
+IMU *imu = new IMU_MPU6050();
+Sensor *sensors[] = {barometer, imu};
 
 // define filters
 SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
@@ -28,8 +34,11 @@ void setup() {
 
     flashRedLED(100);
     Serial.begin(115200);
+
+    // begin I2C bus
+    Wire.begin();
+
     while (!Serial) {}
-    Serial.println("Setting up radio: ");
     downlink::setupRadio();
 
     // tell the radio to operate in explicit header mode for variable payload types
@@ -51,19 +60,6 @@ void loop() {
         sensor->readData();
     }
     uint32_t data_acq_time = millis() - data_acq_start;
-
-    // do processing with resulting data
-    float measured_pressure = barometer->getPressure();
-    float filtered_pressure = pressureFilter.updateEstimate(measured_pressure);
-    /*
-    Serial.println(
-            LineProtocolBuilder("pressureTest")
-            .addField("measuredPressure", measured_pressure)
-            .addField("filteredPressure", filtered_pressure)
-            .addField("daqTime", (int64_t) data_acq_time)
-            .setTimestamp(getTimestampMillis())
-            .build());
-            */
 
     switch (systemState) {
         case IDLE:
@@ -87,7 +83,9 @@ void loop() {
 
     if (downlink::radioAvailable) {
         // construct payload object for transmission
-        Test_Payload payload(1, 2, 3);
+        DARTDebugPayload payload(
+                imu->getAcceleration(),
+                imu->getGyroVector());
         // add timestamp to payload
         payload.timestamp = getTimestampMillis();
 
@@ -95,7 +93,7 @@ void loop() {
         uint8_t radioBuffer[sizeof payload];
 
         // convert payload to byte array for transmission
-        toByteArray<Test_Payload>(radioBuffer, payload);
+        toByteArray<DARTDebugPayload>(radioBuffer, payload);
 
         // transmit byte array containing payload data
         downlink::transmit(radioBuffer, sizeof radioBuffer);

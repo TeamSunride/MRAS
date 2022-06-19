@@ -23,7 +23,7 @@ struct DARTDebugPayload {
                 .addField("mpuAccelZ", mpuAccel.getZ())
                 .addField("mpuGyroX", mpuGyro.getX())
                 .addField("mpuGyroY", mpuGyro.getY())
-                .addField("mpuGyroY", mpuGyro.getY())
+                .addField("mpuGyroZ", mpuGyro.getZ())
                 .setTimestamp(timestamp)
                 .build();
     }

@@ -30,6 +30,9 @@ Sensor *sensors[] = {barometer, imu};
 SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
+    // set the Time library to use Teensy's RTC to keep time
+    setSyncProvider(getTeensy3Time);
+
     setup_GPIO();
 
     flashRedLED(100);
@@ -38,14 +41,10 @@ void setup() {
     // begin I2C bus
     Wire.begin();
 
-    while (!Serial) {}
     downlink::setupRadio();
 
     // tell the radio to operate in explicit header mode for variable payload types
     downlink::radio.explicitHeader();
-
-    // set the Time library to use Teensy's RTC to keep time
-    setSyncProvider(getTeensy3Time);
 
     // init all sensors
     for (Sensor *sensor: sensors) {

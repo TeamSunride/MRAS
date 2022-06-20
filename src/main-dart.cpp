@@ -5,29 +5,29 @@
 //
 
 #include "Arduino.h"
-
-#include "SimpleKalmanFilter.h"
-#include "LineProtocolBuilder.h"
 #include "global.h"
 #include "timestamp.h"
 #include "downlink.h"
-#include "payloads/Test_Payload.h"
 #include "serializers.h"
 #include "dart_gpio.h"
 #include "Wire.h"
 
 // import sensors
-#include "Barometer_MS5607.h"
-#include "IMU_MPU6050.h"
+#include "impl/Barometer_MS5607.h"
+#include "impl/IMU_MPU6050.h"
+
+// import telemetry payloads
 #include "payloads/DARTDebugPayload.h"
 
-// define sensors
-Barometer *barometer = new Barometer_MS5607();
-IMU *imu = new IMU_MPU6050();
+// define sensors (specific hardware)
+Barometer_MS5607 ms5607 = Barometer_MS5607();
+IMU_MPU6050 mpu6050 = IMU_MPU6050();
+
+// define sensors (interfaces)
+Barometer *barometer = &ms5607;
+IMU *imu = &mpu6050;
 Sensor *sensors[] = {barometer, imu};
 
-// define filters
-SimpleKalmanFilter pressureFilter = SimpleKalmanFilter(1, 1, 1);
 
 void setup() {
     // set the Time library to use Teensy's RTC to keep time

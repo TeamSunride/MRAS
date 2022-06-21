@@ -54,11 +54,11 @@ LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const 
 }
 
 LineProtocolBuilder LineProtocolBuilder::addTag(const String& tagKey, const float& tagValue) {
-    return _addTag(tagKey, String(tagValue, 4));
+    return _addTag(tagKey, String(tagValue, 7));
 }
 
 LineProtocolBuilder LineProtocolBuilder::addField(const String &fieldKey, const float &fieldValue) {
-    return _addField(fieldKey, String(fieldValue, 4));
+    return _addField(fieldKey, String(fieldValue, 7));
 }
 
 LineProtocolBuilder LineProtocolBuilder::addTag(const String &tagKey, const int64_t &tagValue) {

@@ -1,9 +1,6 @@
 [submodule "lib/SimpleKalmanFilter"]
 	path = lib/SimpleKalmanFilter
 	url = https://github.com/TeamSunride/SimpleKalmanFilter
-[submodule "lib/MS5607"]
-	path = lib/MS5607
-	url = https://github.com/TeamSunride/MS5607
 [submodule "lib/Int64String"]
 	path = lib/Int64String
 	url = https://github.com/TeamSunride/Int64String

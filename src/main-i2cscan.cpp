@@ -29,10 +29,11 @@
 
 #include <Wire.h>
 
+#define I2C_PORT Wire2
 
 void setup()
 {
-    Wire.begin();
+    I2C_PORT.begin();
 
     Serial.begin(9600);
     while (!Serial);             // Leonardo: wait for serial monitor
@@ -53,8 +54,8 @@ void loop()
         // The i2c_scanner uses the return value of
         // the Write.endTransmisstion to see if
         // a device did acknowledge to the address.
-        Wire.beginTransmission(address);
-        error = Wire.endTransmission();
+        I2C_PORT.beginTransmission(address);
+        error = I2C_PORT.endTransmission();
 
         if (error == 0)
         {

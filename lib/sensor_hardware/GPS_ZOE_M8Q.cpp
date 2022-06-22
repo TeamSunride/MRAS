@@ -42,7 +42,7 @@ int8_t GPS_ZOE_M8Q::readData() {
         // convert lat and long to degrees
         _latitude = (float) (GNSS.getLatitude() / 1e7);
         _longitude = (float) (GNSS.getLongitude() / 1e7);
-        _altitude = (float) (GNSS.getAltitudeMSL() / 1e3);
+        _altitude = (float) (GNSS.getAltitude() / 1e3);
         _satellites_in_view = GNSS.getSIV();
         _fix_type = GNSS.getFixType();
     }

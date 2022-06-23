@@ -38,7 +38,7 @@ void loop() {
 
         switch (receivedPayloadType) {
             case downlink::UNDEFINED:
-                Serial.println("Received undefined payload type, cannot print result");
+                // Serial.println("Received undefined payload type, cannot print result");
                 break;
             case downlink::Test_Payload_Type:
                 testPayload = fromByteArray<Test_Payload>(radioBuffer);

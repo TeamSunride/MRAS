@@ -11,10 +11,16 @@
 
 class IMU : public Sensor {
 public:
+    /**
+     * @return Current acceleration vector in ms^-2
+     */
     Vector3D getAcceleration() {
         return _acceleration;
     }
 
+    /**
+     * @return Current gyroscope vector in deg/s
+     */
     Vector3D getGyroVector() {
         return _gyro_vector;
     }

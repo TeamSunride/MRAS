@@ -21,7 +21,7 @@
 #include "payloads/DARTDebugPayload.h"
 
 // define sensors (specific hardware)
-Barometer_MS5607 ms5607 = Barometer_MS5607();
+Barometer_MS5607 ms5607 = Barometer_MS5607(0x76, &Wire2);
 IMU_MPU6050 mpu6050 = IMU_MPU6050();
 GPS_ZOE_M8Q zoe_m8q = GPS_ZOE_M8Q();
 

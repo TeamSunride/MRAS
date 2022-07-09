@@ -4,13 +4,120 @@
 //
 
 #include "Barometer_MS5607.h"
+#include "Int64String.h"
 
 int8_t Barometer_MS5607::begin() {
     return readPROM() ? 0 : 1; // return 1 if readPROM fails
 }
 
 int8_t Barometer_MS5607::readData() {
+    uint32_t timeElapsed;
+
+    switch (state) {
+        case IDLE:
+            // sensor is doing nothing, therefore we should start converting pressure
+            pipe->beginTransmission(address);
+            pipe->write(CONV_D1);
+            if (pipe->endTransmission() != 0) return 3;
+
+            state = READING_PRESSURE;
+
+            lastStateChange = millis();
+
+            break;
+        case READING_PRESSURE:
+            timeElapsed = millis() - lastStateChange;
+
+            // check that enough time was spent converting the measurement
+            if (timeElapsed < CONV_Delay) return 1;
+
+            // return status code 2 if ADC read fails and set state to idle
+            if (!readADC(D1_pressure)) {
+                state = IDLE;
+                return 2;
+            }
+
+
+            // finished reading pressure, time to read temperature, so send conversion command
+            pipe->beginTransmission(address);
+            pipe->write(CONV_D2);
+            if (pipe->endTransmission() != 0) return 3;
+
+            state = READING_TEMPERATURE;
+
+            lastStateChange = millis();
+
+            break;
+
+        case READING_TEMPERATURE:
+            timeElapsed = millis() - lastStateChange;
+
+            // check that enough time was spent converting the measurement
+            if (timeElapsed < CONV_Delay) return 1;
+
+            // return status code 2 if ADC read fails and set state to idle
+            if (!readADC(D2_temperature)) {
+                state = IDLE;
+                return 2;
+            }
+
+            state = IDLE;
+
+            // we must now convert D1 and D2 to meaningful values
+            // refer to page 8 on the datasheet
+            dT = (float) D2_temperature - C5 * 256;
+            TEMP = (float) (2000 + dT * (C6 / 8388608.0)); // a value of 2000 corresponds to 20 degrees C
+
+            // calculate temperature compensated pressure
+            OFF = ((int64_t) C2 * ((int64_t) 1 << 17)) + (int64_t) (((float) C4 * dT) / (1 << 6));
+            SENS = ((int64_t) C1 * (1 << 16)) + (int64_t) (((float)C3 * dT) / (1 << 17));
+            P = (int32_t) (((int64_t) D1_pressure * (SENS / (1<<21)) - OFF) / ((int64_t) 1 << 15)); // 110002 = 1100.02 mbar
+
+            Serial.println("dT: " + String(dT));
+            Serial.println("TEMP: " + String(TEMP));
+            Serial.println("OFF: " + int64String(OFF));
+            Serial.println("SENS: " + int64String(SENS));
+            Serial.println("P: " + String(P));
+
+            // convert to correct units and shove into readable stores
+            _pressure = (float) P / 100;
+            _temperature = (float) TEMP / 100;
+
+            // start reading pressure again
+            pipe->beginTransmission(address);
+            pipe->write(CONV_D1);
+            if (pipe->endTransmission() != 0) return 3;
+
+            state = READING_PRESSURE;
+
+            lastStateChange = millis();
+            break;
+    }
+
     return 0;
+}
+
+bool Barometer_MS5607::readADC(uint32_t &output) {
+    uint8_t ADC_buffer[3];
+
+    // read the pressure from the ADC
+    pipe->beginTransmission(address);
+    pipe->write(R_ADC);
+    if (pipe->endTransmission() != 0) return false;
+
+    // we expect the device to return 3 bytes
+    // which comprise the 24-bit result
+    if (pipe->requestFrom(address, (uint8_t) 3) != 3) return false;
+
+    // read 3 bytes from ADC
+    ADC_buffer[0] = pipe->read();
+    ADC_buffer[1] = pipe->read();
+    ADC_buffer[2] = pipe->read();
+
+    // convert result to 32 bit unsigned integer
+    output = ((uint32_t) ADC_buffer[0]) << 16 | ((uint32_t) ADC_buffer[1]) << 8 | (uint32_t) ADC_buffer[2];
+
+    return true;
 }
 
 bool Barometer_MS5607::reset() {
@@ -84,5 +191,42 @@ Barometer_MS5607::Barometer_MS5607(byte i2c_address, TwoWire *i2c_pipe) {
     address = i2c_address;
     pipe = i2c_pipe;
 }
+
+void Barometer_MS5607::setOversampleRate(uint16_t newOversampleRate) {
+    OSR = newOversampleRate;
+    switch (newOversampleRate) {
+        case 256:
+            CONV_D1 = 0x40;
+            CONV_D2 = 0x50;
+            CONV_Delay = 1;
+            break;
+        case 512:
+            CONV_D1 = 0x42;
+            CONV_D2 = 0x52;
+            CONV_Delay = 2;
+            break;
+        case 1024:
+            CONV_D1 = 0x44;
+            CONV_D2 = 0x54;
+            CONV_Delay = 3;
+            break;
+        case 2048:
+            CONV_D1 = 0x46;
+            CONV_D2 = 0x56;
+            CONV_Delay = 5;
+            break;
+        case 4096:
+            CONV_D1 = 0x48;
+            CONV_D2 = 0x58;
+            CONV_Delay = 10;
+            break;
+        default:
+            CONV_D1 = 0x40;
+            CONV_D2 = 0x50;
+            CONV_Delay = 1;
+            break;
+    }
+}
+
 
 

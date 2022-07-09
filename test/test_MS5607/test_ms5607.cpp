@@ -20,6 +20,20 @@ void test_ms5607_begin() {
     TEST_ASSERT_EQUAL(0, ms5607.begin());
 }
 
+void test_ms5607_read() {
+    TEST_ASSERT_EQUAL(Barometer_MS5607::IDLE, ms5607.state);
+    TEST_ASSERT_EQUAL(0, ms5607.readData());
+    TEST_ASSERT_EQUAL(Barometer_MS5607::READING_PRESSURE, ms5607.state);
+    delay(2000);
+    TEST_ASSERT_EQUAL(0, ms5607.readData());
+    TEST_ASSERT_EQUAL(Barometer_MS5607::READING_TEMPERATURE, ms5607.state);
+    delay(2000);
+    TEST_ASSERT_EQUAL(0, ms5607.readData());
+
+    Serial.println("Pressure: " + String(ms5607.getPressure()));
+    Serial.println("Temperature: " + String(ms5607.getTemperature()));
+}
+
 void setup() {
     UNITY_BEGIN();
 
@@ -29,6 +43,7 @@ void setup() {
 
     RUN_TEST(test_MS5607_reset);
     RUN_TEST(test_ms5607_begin);
+    RUN_TEST(test_ms5607_read);
 
     UNITY_END();
 }

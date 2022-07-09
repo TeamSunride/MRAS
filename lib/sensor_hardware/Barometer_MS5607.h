@@ -12,6 +12,7 @@
 
 #define MS5607_RESET 0x1E
 #define MS5607_PROM_READ 0xA0
+#define R_ADC  0X00         // adc read command
 
 class Barometer_MS5607 : public Barometer {
 public:
@@ -21,12 +22,16 @@ public:
 
 
     Barometer_MS5607(byte i2c_address, TwoWire *i2c_pipe);
+
 #ifndef MS5607_GODMODE
 private:
 #endif
     byte address;
     TwoWire *pipe;
-    uint16_t OSR = 256;
+    uint16_t OSR = 4096;     // default oversampling
+    uint8_t CONV_D1 = 0x48;   // corresponding pressure conv. command for OSR
+    uint8_t CONV_D2 = 0x58;   // corresponding temp conv. command for OSR
+    uint8_t CONV_Delay = 10;   // corresponding conv. delay for OSR
 
     // calibration coefficients
     // initialising them all separately looks ugly yes
@@ -36,6 +41,23 @@ private:
     uint16_t C4 = 0;
     uint16_t C5 = 0;
     uint16_t C6 = 0;
+
+    uint32_t D1_pressure;
+    uint32_t D2_temperature;
+
+    float dT, TEMP;
+    int32_t P;
+    int64_t OFF, SENS;
+
+
+    uint32_t lastStateChange = 0;
+
+
+    enum {
+        IDLE,
+        READING_PRESSURE,
+        READING_TEMPERATURE
+    } state = IDLE;
 
 
     /**
@@ -61,7 +83,11 @@ private:
      * @param store The location to store the resulting coefficient
      * @return True if the operation was a success, otherwise False
      */
-    bool readPROMCoefficient(byte command, uint16_t& store);
+    bool readPROMCoefficient(byte command, uint16_t &store);
+
+    void setOversampleRate(uint16_t newOversampleRate);
+
+    bool readADC(uint32_t &output);
 
 };
 

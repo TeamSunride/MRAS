@@ -65,7 +65,7 @@ int8_t Barometer_MS5607::readData() {
 
             // we must now convert D1 and D2 to meaningful values
             // refer to page 8 on the datasheet
-            dT = (float) D2_temperature - C5 * 256;
+            dT = (float) D2_temperature - (float) C5 * 256;
             TEMP = (float) (2000 + dT * (C6 / 8388608.0)); // a value of 2000 corresponds to 20 degrees C
 
             // calculate temperature compensated pressure

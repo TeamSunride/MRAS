@@ -7,16 +7,16 @@
 #define MRASV2_ACCELEROMETER_H
 
 #include "Sensor.h"
-#include "Vector.h"
+#include "Vector3D.h"
 
 class Accelerometer : public Sensor {
 public:
-    Vector<float> getAcceleration() {
+    Vector3D getAcceleration() {
         return _acceleration;
     }
 
 private:
-    Vector<float> _acceleration{};
+    Vector3D  _acceleration{};
 };
 
 #endif //MRASV2_ACCELEROMETER_H

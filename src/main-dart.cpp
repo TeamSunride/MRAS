@@ -43,6 +43,7 @@ void setup() {
 
     // begin I2C bus
     Wire.begin();
+    Wire2.begin();
 
     downlink::setupRadio();
 
@@ -85,7 +86,7 @@ void loop() {
 
     if (downlink::radioAvailable) {
         // construct payload object for transmission
-        DARTDebugPayload payload(imu, gps);
+        DARTDebugPayload payload(imu, gps, barometer);
         // add timestamp to payload
         payload.timestamp = getTimestampMillis();
 

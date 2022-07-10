@@ -145,7 +145,7 @@ bool Barometer_MS5607::reset() {
         return true;
     }
 
-    Serial.println("Error: " + String(error, DEC));
+    Serial.println("MS5607 reset error: " + String(error, DEC));
     return false;
 }
 

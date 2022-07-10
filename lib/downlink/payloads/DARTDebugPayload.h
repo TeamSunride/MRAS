@@ -10,6 +10,7 @@
 #include "Vector3D.h"
 #include "IMU.h"
 #include "GPS.h"
+#include "Barometer.h"
 
 struct DARTDebugPayload {
     downlink::PayloadType type = downlink::PayloadType::DARTDebugPayload;
@@ -24,6 +25,10 @@ struct DARTDebugPayload {
     float altitude = 0;
     uint8_t satellitesInView = 0;
     uint8_t fixType = 0;
+
+    // barometer data
+    float pressure = 0;
+    float temperature = 0;
 
 
     uint64_t timestamp = 0;
@@ -41,11 +46,13 @@ struct DARTDebugPayload {
                 .addField("altGPS", altitude)
                 .addField("SIV", satellitesInView)
                 .addField("fixType", fixType)
+                .addField("pressure", pressure)
+                .addField("temp", temperature)
                 .setTimestamp(timestamp)
                 .build();
     }
 
-    DARTDebugPayload(IMU *imu, GPS *gps) {
+    DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer) {
         // 6dof IMU data
         mpuAccel = imu->getAcceleration();
         mpuGyro = imu->getGyroVector();
@@ -56,6 +63,10 @@ struct DARTDebugPayload {
         altitude = gps->getAltitude();
         satellitesInView = gps->getSatellitesInView();
         fixType = gps->getFixType();
+
+        // barometer data
+        pressure = barometer->getPressure();
+        temperature = barometer->getTemperature();
     }
 
     DARTDebugPayload() = default;

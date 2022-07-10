@@ -22,12 +22,20 @@ void test_ms5607_begin() {
 
 void test_ms5607_read() {
     TEST_ASSERT_EQUAL(Barometer_MS5607::IDLE, ms5607.state);
-    TEST_ASSERT_EQUAL(0, ms5607.readData());
+    TEST_ASSERT_EQUAL(4, ms5607.readData());
     TEST_ASSERT_EQUAL(Barometer_MS5607::READING_PRESSURE, ms5607.state);
-    delay(2000);
-    TEST_ASSERT_EQUAL(0, ms5607.readData());
+
+    // at this point, we expect the sensor to be busy converting the measurement, so readData() should return 1
+    TEST_ASSERT_EQUAL(1, ms5607.readData());
+
+    // after a delay, data conversion should be finished
+    delay(100);
+    TEST_ASSERT_EQUAL(4, ms5607.readData());    // and hence this returns 4 to represent a successful step forwards
+
     TEST_ASSERT_EQUAL(Barometer_MS5607::READING_TEMPERATURE, ms5607.state);
-    delay(2000);
+    delay(100);
+
+    // after reading temperature, the function returns 0 to show that the cycle was completed
     TEST_ASSERT_EQUAL(0, ms5607.readData());
 
     Serial.println("Pressure: " + String(ms5607.getPressure()));

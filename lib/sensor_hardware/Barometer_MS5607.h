@@ -28,7 +28,7 @@ private:
 #endif
     byte address;
     TwoWire *pipe;
-    uint16_t OSR = 4096;     // default oversampling
+    uint16_t OSR = 4096;     // default oversampling ratio
     uint8_t CONV_D1 = 0x48;   // corresponding pressure conv. command for OSR
     uint8_t CONV_D2 = 0x58;   // corresponding temp conv. command for OSR
     uint8_t CONV_Delay = 10;   // corresponding conv. delay for OSR
@@ -85,8 +85,21 @@ private:
      */
     bool readPROMCoefficient(byte command, uint16_t &store);
 
-    void setOversampleRate(uint16_t newOversampleRate);
+    /**
+     * Change the oversampling ratio of the sensor.
+     *
+     * High OSR corresponds to improved resolution but longer conversion times
+     * @param newOversamplingRatio Possible values: 256, 512, 1024, 2048, 4096
+     *
+     * Default OSR is 4096
+     */
+    void setOversamplingRatio(uint16_t newOversamplingRatio);
 
+    /**
+     * Internal method to read the result from the ADC after conversion.
+     * @param output 32-bit unsigned integer variable to write result to
+     * @return True if the operation was successful, otherwise false
+     */
     bool readADC(uint32_t &output);
 
 };

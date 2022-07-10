@@ -10,7 +10,21 @@ int8_t Barometer_MS5607::begin() {
     return readPROM() ? 0 : 1; // return 1 if readPROM fails
 }
 
+/*
+ * This function assumes that is called once per loop. In order to get up-to-date pressure and temperature values,
+ *  you must call this function as frequently as possible
+ *
+ * This is the only way to achieve non-blocking operation with the MS5607.
+ *
+ * STATUS CODES:
+ * 0 - a full read was completed (requires multiple calls of readData() to do this)
+ * 1 - sensor is still converting the measurement
+ * 2 - ADC read failed
+ * 3 - error sending conversion command
+ * 4 - the operation was a success, but readData() must be called again to finish converting the measurement
+ */
 int8_t Barometer_MS5607::readData() {
+
     uint32_t timeElapsed;
 
     switch (state) {
@@ -24,7 +38,7 @@ int8_t Barometer_MS5607::readData() {
 
             lastStateChange = millis();
 
-            break;
+            return 4;
         case READING_PRESSURE:
             timeElapsed = millis() - lastStateChange;
 
@@ -47,7 +61,7 @@ int8_t Barometer_MS5607::readData() {
 
             lastStateChange = millis();
 
-            break;
+            return 4;
 
         case READING_TEMPERATURE:
             timeElapsed = millis() - lastStateChange;
@@ -73,11 +87,13 @@ int8_t Barometer_MS5607::readData() {
             SENS = ((int64_t) C1 * (1 << 16)) + (int64_t) (((float)C3 * dT) / (1 << 17));
             P = (int32_t) (((int64_t) D1_pressure * (SENS / (1<<21)) - OFF) / ((int64_t) 1 << 15)); // 110002 = 1100.02 mbar
 
+            /*
             Serial.println("dT: " + String(dT));
             Serial.println("TEMP: " + String(TEMP));
             Serial.println("OFF: " + int64String(OFF));
             Serial.println("SENS: " + int64String(SENS));
             Serial.println("P: " + String(P));
+            */
 
             // convert to correct units and shove into readable stores
             _pressure = (float) P / 100;
@@ -192,9 +208,9 @@ Barometer_MS5607::Barometer_MS5607(byte i2c_address, TwoWire *i2c_pipe) {
     pipe = i2c_pipe;
 }
 
-void Barometer_MS5607::setOversampleRate(uint16_t newOversampleRate) {
-    OSR = newOversampleRate;
-    switch (newOversampleRate) {
+void Barometer_MS5607::setOversamplingRatio(uint16_t newOversamplingRatio) {
+    OSR = newOversamplingRatio;
+    switch (newOversamplingRatio) {
         case 256:
             CONV_D1 = 0x40;
             CONV_D2 = 0x50;

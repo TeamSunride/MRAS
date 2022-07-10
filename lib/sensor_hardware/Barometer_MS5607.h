@@ -12,8 +12,13 @@
 
 #define MS5607_RESET 0x1E
 #define MS5607_PROM_READ 0xA0
-#define R_ADC  0X00         // adc read command
+#define R_ADC  0X00
 
+
+/**
+ * Non-blocking MS5607 driver. The readData() function MUST be called as frequently as possible in order to keep the
+ * internal data store fresh
+ */
 class Barometer_MS5607 : public Barometer {
 public:
     int8_t begin() override;

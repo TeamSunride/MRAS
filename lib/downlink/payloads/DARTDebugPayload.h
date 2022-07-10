@@ -11,6 +11,7 @@
 #include "IMU.h"
 #include "GPS.h"
 #include "Barometer.h"
+#include "Accelerometer.h"
 
 struct DARTDebugPayload {
     downlink::PayloadType type = downlink::PayloadType::DARTDebugPayload;
@@ -29,6 +30,9 @@ struct DARTDebugPayload {
     // barometer data
     float pressure = 0;
     float temperature = 0;
+
+    // accelerometer data
+    Vector3D adxlAccel{};
 
     uint8_t DAQTime = 0;
 
@@ -51,11 +55,14 @@ struct DARTDebugPayload {
                 .addField("pressure", pressure)
                 .addField("temp", temperature)
                 .addField("DAQTime", DAQTime)
+                .addField("adxlX", adxlAccel.getX())
+                .addField("adxlY", adxlAccel.getY())
+                .addField("adxlZ", adxlAccel.getZ())
                 .setTimestamp(timestamp)
                 .build();
     }
 
-    DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer) {
+    DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {
         // 6dof IMU data
         mpuAccel = imu->getAcceleration();
         mpuGyro = imu->getGyroVector();
@@ -70,6 +77,8 @@ struct DARTDebugPayload {
         // barometer data
         pressure = barometer->getPressure();
         temperature = barometer->getTemperature();
+
+        adxlAccel = accelerometer->getAcceleration();
     }
 
     DARTDebugPayload() = default;

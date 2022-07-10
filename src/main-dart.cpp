@@ -16,6 +16,7 @@
 #include "Barometer_MS5607.h"
 #include "IMU_MPU6050.h"
 #include "GPS_ZOE_M8Q.h"
+#include "Accelerometer_ADXL375.h"
 
 // import telemetry payloads
 #include "payloads/DARTDebugPayload.h"
@@ -24,12 +25,15 @@
 Barometer_MS5607 ms5607 = Barometer_MS5607(0x76, &Wire2);
 IMU_MPU6050 mpu6050 = IMU_MPU6050();
 GPS_ZOE_M8Q zoe_m8q = GPS_ZOE_M8Q();
+Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(0x53, &Wire2);
 
 // define sensors (interfaces)
 Barometer *barometer = &ms5607;
 IMU *imu = &mpu6050;
 GPS *gps = &zoe_m8q;
-Sensor *sensors[] = {barometer, imu, gps};
+Accelerometer *accelerometer = &adxl375;
+
+Sensor *sensors[] = {barometer, imu, gps, accelerometer};
 
 
 void setup() {
@@ -86,7 +90,7 @@ void loop() {
 
     if (downlink::radioAvailable) {
         // construct payload object for transmission
-        DARTDebugPayload payload(imu, gps, barometer);
+        DARTDebugPayload payload(imu, gps, barometer, accelerometer);
         // add timestamp to payload
         payload.timestamp = getTimestampMillis();
         payload.DAQTime = DAQTime > 255 ? 255 : DAQTime;

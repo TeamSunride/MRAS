@@ -15,7 +15,7 @@ public:
         return _acceleration;
     }
 
-private:
+protected:
     Vector3D  _acceleration{};
 };
 

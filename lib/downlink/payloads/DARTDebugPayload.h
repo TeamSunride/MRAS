@@ -30,6 +30,8 @@ struct DARTDebugPayload {
     float pressure = 0;
     float temperature = 0;
 
+    uint8_t DAQTime = 0;
+
 
     uint64_t timestamp = 0;
 
@@ -48,6 +50,7 @@ struct DARTDebugPayload {
                 .addField("fixType", fixType)
                 .addField("pressure", pressure)
                 .addField("temp", temperature)
+                .addField("DAQTime", DAQTime)
                 .setTimestamp(timestamp)
                 .build();
     }

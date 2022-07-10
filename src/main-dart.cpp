@@ -58,11 +58,11 @@ void setup() {
 
 void loop() {
     // Read data from sensors
-    uint32_t data_acq_start = millis();
+    uint32_t DAQStart = millis();
     for (Sensor *sensor: sensors) {
         sensor->readData();
     }
-    uint32_t data_acq_time = millis() - data_acq_start;
+    uint32_t DAQTime = millis() - DAQStart;
 
     switch (systemState) {
         case IDLE:
@@ -89,6 +89,7 @@ void loop() {
         DARTDebugPayload payload(imu, gps, barometer);
         // add timestamp to payload
         payload.timestamp = getTimestampMillis();
+        payload.DAQTime = DAQTime > 255 ? 255 : DAQTime;
 
         // create byte array to output data to radio
         uint8_t radioBuffer[sizeof payload];

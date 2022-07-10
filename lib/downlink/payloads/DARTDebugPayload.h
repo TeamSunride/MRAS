@@ -16,8 +16,8 @@ struct DARTDebugPayload {
     downlink::PayloadType type = downlink::PayloadType::DARTDebugPayload;
 
     // MPU6050 data
-    Vector3D mpuAccel{};
-    Vector3D mpuGyro{};
+    Vector<float> mpuAccel{};
+    Vector<float> mpuGyro{};
 
     // GPS data
     float latitude = 0;
@@ -37,12 +37,12 @@ struct DARTDebugPayload {
 
     String toLineProtocol() const {
         return LineProtocolBuilder("DARTDebugPayload")
-                .addField("mpuAX", mpuAccel.getX())
-                .addField("mpuAY", mpuAccel.getY())
-                .addField("mpuAZ", mpuAccel.getZ())
-                .addField("mpuGX", mpuGyro.getX())
-                .addField("mpuGY", mpuGyro.getY())
-                .addField("mpuGZ", mpuGyro.getZ())
+                .addField("mpuAX", mpuAccel[0])
+                .addField("mpuAY", mpuAccel[1])
+                .addField("mpuAZ", mpuAccel[2])
+                .addField("mpuGX", mpuGyro[0])
+                .addField("mpuGY", mpuGyro[1])
+                .addField("mpuGZ", mpuGyro[2])
                 .addField("lat", latitude)
                 .addField("long", longitude)
                 .addField("altGPS", altitude)

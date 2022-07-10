@@ -44,6 +44,8 @@ void setup() {
     // begin I2C bus
     Wire.begin();
     Wire2.begin();
+    Wire.setClock(400000);
+    Wire2.setClock(400000);
 
     downlink::setupRadio();
 

@@ -7,32 +7,32 @@
 #define MRASV2_IMU_H
 
 #include "Sensor.h"
-#include "Vector3D.h"
+#include "Vector.h"
 
 class IMU : public Sensor {
 public:
     /**
      * @return Current acceleration vector in ms^-2
      */
-    Vector3D getAcceleration() {
+    Vector<float, 3> getAcceleration() {
         return _acceleration;
     }
 
     /**
      * @return Current gyroscope vector in deg/s
      */
-    Vector3D getGyroVector() {
+    Vector<float, 3> getGyroVector() {
         return _gyro_vector;
     }
 
-    Vector3D getMagnetometerVector() {
+    Vector<float, 3> getMagnetometerVector() {
         return _magnetometer_vector;
     }
 
 protected:
-    Vector3D _acceleration{};
-    Vector3D _gyro_vector{};
-    Vector3D _magnetometer_vector{};
+    Vector<float, 3> _acceleration {0,0,0};
+    Vector<float, 3> _gyro_vector {0,0,0};
+    Vector<float, 3> _magnetometer_vector {0,0,0};
 };
 
 #endif //MRASV2_IMU_H

@@ -7,6 +7,7 @@
 
 #include "downlink.h"
 #include "LineProtocolBuilder.h"
+#include "Vector.h"
 #include "Vector3D.h"
 #include "IMU.h"
 #include "GPS.h"
@@ -17,8 +18,8 @@ struct DARTDebugPayload {
     downlink::PayloadType type = downlink::PayloadType::DARTDebugPayload;
 
     // MPU6050 data
-    Vector3D mpuAccel{};
-    Vector3D mpuGyro{};
+    Vector<float, 3> mpuAccel {0,0,0};
+    Vector<float, 3> mpuGyro {0,0,0};
 
     // GPS data
     float latitude = 0;
@@ -32,7 +33,7 @@ struct DARTDebugPayload {
     float temperature = 0;
 
     // accelerometer data
-    Vector3D adxlAccel{};
+    Vector<float, 3> adxlAccel{};
 
     uint8_t DAQTime = 0;
 
@@ -41,12 +42,12 @@ struct DARTDebugPayload {
 
     String toLineProtocol() const {
         return LineProtocolBuilder("DARTDebugPayload")
-                .addField("mpuAX", mpuAccel.getX())
-                .addField("mpuAY", mpuAccel.getY())
-                .addField("mpuAZ", mpuAccel.getZ())
-                .addField("mpuGX", mpuGyro.getX())
-                .addField("mpuGY", mpuGyro.getY())
-                .addField("mpuGZ", mpuGyro.getZ())
+                .addField("mpuAX", mpuAccel[0])
+                .addField("mpuAY", mpuAccel[1])
+                .addField("mpuAZ", mpuAccel[2])
+                .addField("mpuGX", mpuGyro[0])
+                .addField("mpuGY", mpuGyro[1])
+                .addField("mpuGZ", mpuGyro[2])
                 .addField("lat", latitude)
                 .addField("long", longitude)
                 .addField("altGPS", altitude)
@@ -55,9 +56,9 @@ struct DARTDebugPayload {
                 .addField("pressure", pressure)
                 .addField("temp", temperature)
                 .addField("DAQTime", DAQTime)
-                .addField("adxlX", adxlAccel.getX())
-                .addField("adxlY", adxlAccel.getY())
-                .addField("adxlZ", adxlAccel.getZ())
+                .addField("adxlX", adxlAccel[0])
+                .addField("adxlY", adxlAccel[1])
+                .addField("adxlZ", adxlAccel[2])
                 .setTimestamp(timestamp)
                 .build();
     }

@@ -32,6 +32,8 @@ public:
     LineProtocolBuilder addTag(const String& tagKey, const float& tagValue);
     LineProtocolBuilder addField(const String& fieldKey, const float& fieldValue);
 
+    // Double float type
+
     // Signed 64-bit integer value type
     // https://docs.influxdata.com/influxdb/v2.2/reference/syntax/line-protocol/#integer
     LineProtocolBuilder addTag(const String& tagKey, const int64_t& tagValue);

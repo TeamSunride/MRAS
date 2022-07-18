@@ -4,3 +4,6 @@
 [submodule "lib/Int64String"]
 	path = lib/Int64String
 	url = https://github.com/TeamSunride/Int64String
+[submodule "lib/Vector"]
+	path = lib/Vector
+	url = https://github.com/TeamSunride/Vector

@@ -28,11 +28,16 @@ int8_t IMU_MPU6050::readData() {
     int16_t gx, gy, gz;
 
     mpu.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
-    _acceleration.setX((float) (ax / MPU6050_ACCEL_SCALE_FACTOR));
-    _acceleration.setY((float) (ay / MPU6050_ACCEL_SCALE_FACTOR));
-    _acceleration.setZ((float) (az / MPU6050_ACCEL_SCALE_FACTOR));
-    _gyro_vector.setX((float) (gx / MPU6050_GYRO_SCALE_FACTOR));
-    _gyro_vector.setY((float) (gy / MPU6050_GYRO_SCALE_FACTOR));
-    _gyro_vector.setZ((float) (gz / MPU6050_GYRO_SCALE_FACTOR));
+    _acceleration[0] = ax;
+    _acceleration[1] = ay;
+    _acceleration[2] = az;
+
+    _gyro_vector[0] = gx;
+    _gyro_vector[1] = gy;
+    _gyro_vector[2] = gz;
+
+    _acceleration /= MPU6050_ACCEL_SCALE_FACTOR;
+    _gyro_vector /= MPU6050_GYRO_SCALE_FACTOR;
+
     return 0;
 }

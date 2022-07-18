@@ -35,9 +35,11 @@ int8_t Accelerometer_ADXL375::readData() {
     int16_t y = ((int16_t) buffer[2]) | (((int16_t) buffer[3]) << 8);
     int16_t z = ((int16_t) buffer[4]) | (((int16_t) buffer[5]) << 8);
 
-    _acceleration.setX(((float) x * ADXL375_SCALE_FACTOR) / GRAVITY);
-    _acceleration.setY(((float) y * ADXL375_SCALE_FACTOR) / GRAVITY);
-    _acceleration.setZ(((float) z * ADXL375_SCALE_FACTOR) / GRAVITY);
+    _acceleration[0] = (float) x;
+    _acceleration[1] = (float) y;
+    _acceleration[2] = (float) z;
+
+    _acceleration = (_acceleration * ADXL375_SCALE_FACTOR) / GRAVITY;
 
     return 0;
 }

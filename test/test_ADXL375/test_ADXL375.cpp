@@ -16,16 +16,14 @@ void test_adxl375_begin() {
 
 void test_adxl375_acceleration() {
     adxl.readData();
-    Vector3D accelVector = adxl.getAcceleration();
+    Vector<float, 3> accelVector = adxl.getAcceleration();
 
     Serial.println("Accel vector: ");
-    Serial.println("X: " + String(accelVector.getX()));
-    Serial.println("Y: " + String(accelVector.getY()));
-    Serial.println("Z: " + String(accelVector.getZ()));
+    Serial.println("X: " + String(accelVector[0]));
+    Serial.println("Y: " + String(accelVector[1]));
+    Serial.println("Z: " + String(accelVector[2]));
 
-    double magnitude = sqrt(
-            pow(accelVector.getX(), 2) + pow(accelVector.getY(), 2) + pow(accelVector.getZ(), 2)
-    );
+    double magnitude = accelVector.norm();
 
     Serial.println("Accel magnitude: " + String(magnitude) + " m/s^-2");
 

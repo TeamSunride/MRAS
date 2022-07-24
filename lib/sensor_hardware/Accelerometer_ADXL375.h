@@ -9,7 +9,7 @@
 #include "Accelerometer.h"
 #include "protocol.h"
 
-class Accelerometer_ADXL375 : Accelerometer {
+class Accelerometer_ADXL375 : public Accelerometer {
 protected:
     protocol* device;
 public:

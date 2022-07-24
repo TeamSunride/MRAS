@@ -7,6 +7,7 @@
 
 int8_t Accelerometer_ADXL375::begin() {
     device->protocol_begin();
+
     uint8_t deviceID = device->read_reg(0x00);
 
     // device ID should equal 0xE5
@@ -18,8 +19,15 @@ int8_t Accelerometer_ADXL375::begin() {
     // set output data rate to 400Hz
     if (device->write_reg(0x2C, 0b1100) != 0) return 2;
 
+    // fix range of device https://github.com/adafruit/Adafruit_ADXL375/issues/1
+    if (device->write_reg(0x31, 0b00001011) != 0) return 3;
+
     // tell device to enter "measure" mode
     if (device->write_reg(0x2D, 0b1000) != 0) return 4;
+
+    Serial.println("ADXL375 DATA_FORMAT register:");
+    Serial.println(device->read_reg(0x31), BIN);
+    Serial.println("===========");
 
     return 0;
 }
@@ -30,11 +38,7 @@ int8_t Accelerometer_ADXL375::readData() {
 
     device->read_regs(0x32, buffer, 6);
 
-    /*
-    for (uint8_t registerValue : buffer) {
-        Serial.println(registerValue, BIN);
-    }
-     */
+
 
     Vector<int16_t, 3> rawAccel = {
             (int16_t) (buffer[1] << 8 | buffer[0]),
@@ -42,18 +46,27 @@ int8_t Accelerometer_ADXL375::readData() {
             (int16_t) (buffer[5] << 8 | buffer[4])
     };
 
+
+
+    _acceleration = (((Vector<float, 3>) rawAccel) * 0.00981 * 49);
+
+    /*
+    for (uint8_t registerValue : buffer) {
+        Serial.println(registerValue, BIN);
+    }
+
     Serial.println("Raw axis data: ");
-    for (auto axis : {rawAccel[0], rawAccel[0], rawAccel[0]}) {
+    for (auto axis : {rawAccel[0], rawAccel[1], rawAccel[2]}) {
         Serial.println(axis);
     }
 
-    Vector<float, 3> convertedAccel = (((Vector<float, 3>) rawAccel) * 0.049) / 9.81;
-
-    for (auto axis : {convertedAccel[0], convertedAccel[0], convertedAccel[0]}) {
+    for (auto axis : {_acceleration[0], _acceleration[1], _acceleration[2]}) {
         Serial.print(axis);
         Serial.print(", ");
     }
     Serial.println("");
+     */
+
 
     return 0;
 }

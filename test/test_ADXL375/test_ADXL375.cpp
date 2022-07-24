@@ -8,38 +8,24 @@
 #include "Accelerometer_ADXL375.h"
 #include "Int64String.h" // pio being really weird again
 
-Accelerometer_ADXL375 adxl = Accelerometer_ADXL375(0x53, &Wire2);
+Accelerometer_ADXL375 adxl = Accelerometer_ADXL375(&Wire2, 0x53);
 
 void test_adxl375_begin() {
     TEST_ASSERT_EQUAL(0, adxl.begin());
 }
 
-void test_adxl375_acceleration() {
-    adxl.readData();
-    Vector<float, 3> accelVector = adxl.getAcceleration();
-
-    Serial.println("Accel vector: ");
-    Serial.println("X: " + String(accelVector[0]));
-    Serial.println("Y: " + String(accelVector[1]));
-    Serial.println("Z: " + String(accelVector[2]));
-
-    double magnitude = accelVector.norm();
-
-    Serial.println("Accel magnitude: " + String(magnitude) + " m/s^-2");
-
-    TEST_ASSERT_FLOAT_WITHIN(1.5, 9.81, magnitude);
+void test_adxl375_readData() {
+    TEST_ASSERT_EQUAL(0, adxl.readData());
 }
 
 void setup() {
     UNITY_BEGIN();
 
-    Wire2.begin();
-
     RUN_TEST(test_adxl375_begin);
 
-    delay(50);
+    delay(500);
 
-    RUN_TEST(test_adxl375_acceleration);
+    RUN_TEST(test_adxl375_readData);
 
     UNITY_END();
 }

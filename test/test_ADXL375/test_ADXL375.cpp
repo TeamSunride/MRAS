@@ -15,6 +15,10 @@ void test_adxl375_begin() {
 }
 
 void test_adxl375_readData() {
+    for (int i=0; i < 25;i++) {
+        adxl.readData();
+        delay(1000);
+    }
     TEST_ASSERT_EQUAL(0, adxl.readData());
 }
 

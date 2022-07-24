@@ -30,18 +30,30 @@ int8_t Accelerometer_ADXL375::readData() {
 
     device->read_regs(0x32, buffer, 6);
 
+    /*
     for (uint8_t registerValue : buffer) {
         Serial.println(registerValue, BIN);
     }
+     */
 
-    auto x = static_cast<int16_t>(((uint16_t) buffer[1]) << 8 | buffer[0]);
-    auto y = static_cast<int16_t>(((uint16_t) buffer[3]) << 8 | buffer[2]);
-    auto z = static_cast<int16_t>(((uint16_t) buffer[5]) << 8 | buffer[4]);
+    Vector<int16_t, 3> rawAccel = {
+            (int16_t) (buffer[1] << 8 | buffer[0]),
+            (int16_t) (buffer[3] << 8 | buffer[2]),
+            (int16_t) (buffer[5] << 8 | buffer[4])
+    };
 
     Serial.println("Raw axis data: ");
-    for (auto rawAxis : {x, y, z}) {
-        Serial.println(rawAxis);
+    for (auto axis : {rawAccel[0], rawAccel[0], rawAccel[0]}) {
+        Serial.println(axis);
     }
+
+    Vector<float, 3> convertedAccel = (((Vector<float, 3>) rawAccel) * 0.049) / 9.81;
+
+    for (auto axis : {convertedAccel[0], convertedAccel[0], convertedAccel[0]}) {
+        Serial.print(axis);
+        Serial.print(", ");
+    }
+    Serial.println("");
 
     return 0;
 }

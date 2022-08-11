@@ -2,8 +2,8 @@
 // Created by tomto on 14/06/2022.
 //
 
-#ifndef MRASV2_IMU_MPU6050_H
-#define MRASV2_IMU_MPU6050_H
+#ifndef MRAS_IMU_MPU6050_H
+#define MRAS_IMU_MPU6050_H
 
 #include "IMU.h"
 #include "I2Cdev.h"
@@ -18,4 +18,4 @@ private:
 };
 
 
-#endif //MRASV2_IMU_MPU6050_H
+#endif //MRAS_IMU_MPU6050_H

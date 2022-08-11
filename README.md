@@ -1,4 +1,4 @@
-# MRASv2
+# MRAS
 Multi Rocket Avionics System
 
 ## How to init submodules:

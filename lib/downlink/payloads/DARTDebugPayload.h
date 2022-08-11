@@ -2,8 +2,8 @@
 // Created by tomto on 14/06/2022.
 //
 
-#ifndef MRASV2_DARTDEBUGPAYLOAD_H
-#define MRASV2_DARTDEBUGPAYLOAD_H
+#ifndef MRAS_DARTDEBUGPAYLOAD_H
+#define MRAS_DARTDEBUGPAYLOAD_H
 
 #include "downlink.h"
 #include "LineProtocolBuilder.h"
@@ -85,4 +85,4 @@ struct DARTDebugPayload {
     DARTDebugPayload() = default;
 };
 
-#endif //MRASV2_DARTDEBUGPAYLOAD_H
+#endif //MRAS_DARTDEBUGPAYLOAD_H

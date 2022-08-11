@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_IMU_H
-#define MRASV2_IMU_H
+#ifndef MRAS_IMU_H
+#define MRAS_IMU_H
 
 #include "Sensor.h"
 #include "Vector.h"
@@ -35,4 +35,4 @@ protected:
     Vector<float, 3> _magnetometer_vector {0,0,0};
 };
 
-#endif //MRASV2_IMU_H
+#endif //MRAS_IMU_H

@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_BAROMETER_H
-#define MRASV2_BAROMETER_H
+#ifndef MRAS_BAROMETER_H
+#define MRAS_BAROMETER_H
 
 #include "Sensor.h"
 
@@ -32,4 +32,4 @@ protected:
     float _pressure = 0;
 };
 
-#endif //MRASV2_BAROMETER_H
+#endif //MRAS_BAROMETER_H

@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_ACCELEROMETER_ADXL375_H
-#define MRASV2_ACCELEROMETER_ADXL375_H
+#ifndef MRAS_ACCELEROMETER_ADXL375_H
+#define MRAS_ACCELEROMETER_ADXL375_H
 
 #include "Accelerometer.h"
 #include "protocol.h"
@@ -24,4 +24,4 @@ public:
 };
 
 
-#endif //MRASV2_ACCELEROMETER_ADXL375_H
+#endif //MRAS_ACCELEROMETER_ADXL375_H

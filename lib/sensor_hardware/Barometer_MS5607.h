@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_BAROMETER_MS5607_H
-#define MRASV2_BAROMETER_MS5607_H
+#ifndef MRAS_BAROMETER_MS5607_H
+#define MRAS_BAROMETER_MS5607_H
 
 #include <cstdint>
 #include <Wire.h>
@@ -110,4 +110,4 @@ private:
 };
 
 
-#endif //MRASV2_BAROMETER_MS5607_H
+#endif //MRAS_BAROMETER_MS5607_H

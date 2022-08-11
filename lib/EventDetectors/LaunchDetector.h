@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_LAUNCHDETECTOR_H
-#define MRASV2_LAUNCHDETECTOR_H
+#ifndef MRAS_LAUNCHDETECTOR_H
+#define MRAS_LAUNCHDETECTOR_H
 
 #include "Arduino.h"
 
@@ -38,4 +38,4 @@ private:
 };
 
 
-#endif //MRASV2_LAUNCHDETECTOR_H
+#endif //MRAS_LAUNCHDETECTOR_H

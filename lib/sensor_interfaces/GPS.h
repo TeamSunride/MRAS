@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_GPS_H
-#define MRASV2_GPS_H
+#ifndef MRAS_GPS_H
+#define MRAS_GPS_H
 
 #include "Sensor.h"
 
@@ -48,4 +48,4 @@ protected:
     uint8_t _fix_type = 0;
 };
 
-#endif //MRASV2_GPS_H
+#endif //MRAS_GPS_H

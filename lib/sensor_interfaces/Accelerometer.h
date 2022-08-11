@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_ACCELEROMETER_H
-#define MRASV2_ACCELEROMETER_H
+#ifndef MRAS_ACCELEROMETER_H
+#define MRAS_ACCELEROMETER_H
 
 #include "Sensor.h"
 #include "Vector.h"
@@ -19,4 +19,4 @@ protected:
     Vector<float, 3>  _acceleration{};
 };
 
-#endif //MRASV2_ACCELEROMETER_H
+#endif //MRAS_ACCELEROMETER_H

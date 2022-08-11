@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_GLOBAL_VARIABLES_H
-#define MRASV2_GLOBAL_VARIABLES_H
+#ifndef MRAS_GLOBAL_VARIABLES_H
+#define MRAS_GLOBAL_VARIABLES_H
 
 #include "Barometer.h"
 
@@ -19,4 +19,4 @@ enum SystemState {
 
 SystemState systemState = IDLE;
 
-#endif //MRASV2_GLOBAL_VARIABLES_H
+#endif //MRAS_GLOBAL_VARIABLES_H

@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_GPS_ZOE_M8Q_H
-#define MRASV2_GPS_ZOE_M8Q_H
+#ifndef MRAS_GPS_ZOE_M8Q_H
+#define MRAS_GPS_ZOE_M8Q_H
 
 
 #include "SparkFun_u-blox_GNSS_Arduino_Library.h"
@@ -21,4 +21,4 @@ private:
 };
 
 
-#endif //MRASV2_GPS_ZOE_M8Q_H
+#endif //MRAS_GPS_ZOE_M8Q_H

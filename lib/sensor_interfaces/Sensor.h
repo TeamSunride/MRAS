@@ -3,8 +3,8 @@
 // 2022 TeamSunride.
 //
 
-#ifndef MRASV2_SENSOR_H
-#define MRASV2_SENSOR_H
+#ifndef MRAS_SENSOR_H
+#define MRAS_SENSOR_H
 
 #include <cstdint>
 
@@ -38,4 +38,4 @@ public:
     };
 };
 
-#endif //MRASV2_SENSOR_H
+#endif //MRAS_SENSOR_H

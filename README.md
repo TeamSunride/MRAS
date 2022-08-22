@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="C:\Users\tomto\Desktop\Programming\Sunride\MRAS\assets\images\MRAS_banner\MRAS_Banner.jpg" />
+  <img src="assets\images\MRAS_banner\MRAS_Banner.jpg" />
 </p>
 
 During the academic year 2021-2022 the Sunride rocket team worked on 

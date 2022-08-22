@@ -81,7 +81,6 @@ classDiagram
     GPS <-- ZOE_M8Q
 ```
 
-
 ### Start-up sequence
 
 When MRAS is powered on, a call will be made to the `begin()` function of every `Sensor`. This a

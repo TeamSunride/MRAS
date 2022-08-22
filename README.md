@@ -2,7 +2,7 @@
 
 
 <p align="center">
-  <img src="C:\Users\tomto\Desktop\Programming\Sunride\MRAS\assets\images\MRAS_banner\MRAS_Banner.png" />
+  <img src="C:\Users\tomto\Desktop\Programming\Sunride\MRAS\assets\images\MRAS_banner\MRAS_Banner.jpg" />
 </p>
 
 During the academic year 2021-2022 the Sunride rocket team worked on 
@@ -33,30 +33,6 @@ because supply can be unpredictable, so in future the design may change. Also, t
 allows flexibility for the design to evolve without drastic changes to the software.
 
 ## Sensor Interfaces
-
-```mermaid
-classDiagram
-    Sensor <|-- Duck
-    Sensor <|-- Fish
-    Sensor <|-- Zebra
-    Sensor : +int age
-    Sensor : +String gender
-    Sensor: +isMammal()
-    Sensor: +mate()
-    class Duck{
-        +String beakColor
-        +swim()
-        +quack()
-    }
-    class Fish{
-        -int sizeInFeet
-        -canEat()
-    }
-    class Zebra{
-        +bool is_wild
-        +run()
-    }
-```
 
 Every sensor connected to MRAS is a child of the `Sensor` interface. There are 
 several things that all sensors can / must do:

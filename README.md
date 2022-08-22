@@ -44,6 +44,44 @@ The `Sensor` interface defines two virtual functions: `begin()` and `readData()`
 These must be implemented by any children of `Sensor`. This is the case because every 
 sensor can have a start-up routine and can read data, but not all sensors have a self test.
 
+```mermaid
+classDiagram
+    Sensor <|-- Barometer
+    Sensor <|-- Accelerometer
+    Sensor <|-- GPS
+    Sensor : readData()
+    Sensor : begin()
+    Sensor : selfTest()
+    class Barometer{
+        _temperature
+        _pressure
+        getPressure()
+        getTemperature()
+    }
+    class Accelerometer{
+        _acceleration
+        getAcceleration()
+    }
+    class GPS{
+        _latitude
+        _longitude
+        _altitude
+        _satellites_in_view
+        _fix_type
+        getLatitude()
+        getLongitude()
+        getAltitude()
+        getSatellitesInView()
+        getFixType()
+    }
+    Barometer <-- MS5607
+    Barometer <-- BMP280
+    Accelerometer <-- ADXL375
+    Accelerometer <-- MPU6050
+    GPS <-- ZOE_M8Q
+```
+
+
 ### Start-up sequence
 
 When MRAS is powered on, a call will be made to the `begin()` function of every `Sensor`. This a

@@ -1,5 +1,10 @@
 # MRAS - Multi Rocket Avionics System
 
+
+<p align="center">
+  <img src="C:\Users\tomto\Desktop\Programming\Sunride\MRAS\assets\images\MRAS_banner\MRAS_Banner.png" />
+</p>
+
 During the academic year 2021-2022 the Sunride rocket team worked on 
 two rocketry projects, Karman Alpha and SpaceDart. These rockets had 
 different requirements and therefore two avionics systems were designed.
@@ -28,6 +33,30 @@ because supply can be unpredictable, so in future the design may change. Also, t
 allows flexibility for the design to evolve without drastic changes to the software.
 
 ## Sensor Interfaces
+
+```mermaid
+classDiagram
+    Sensor <|-- Duck
+    Sensor <|-- Fish
+    Sensor <|-- Zebra
+    Sensor : +int age
+    Sensor : +String gender
+    Sensor: +isMammal()
+    Sensor: +mate()
+    class Duck{
+        +String beakColor
+        +swim()
+        +quack()
+    }
+    class Fish{
+        -int sizeInFeet
+        -canEat()
+    }
+    class Zebra{
+        +bool is_wild
+        +run()
+    }
+```
 
 Every sensor connected to MRAS is a child of the `Sensor` interface. There are 
 several things that all sensors can / must do:
@@ -81,6 +110,15 @@ result is unknown.
 A return value of `0` means that the `Sensor` passed the test, and is working normally.
 
 A return value that does not equal `-1` or `0` means the test failed.
+
+## Downlink 
+
+[RadioLib](https://github.com/jgromes/RadioLib) is used to send and receive data via a LoRa packet radio.
+The `downlink` library attempts to make RadioLib easier to use in a non-blocking manner.
+> The radio module can take a relatively long time (tens to hundreds of milliseconds) to transmit 
+> a packet. A function is "blocking" if it takes a long time to complete. It is unnecessary to wait 
+> for the radio to finish sending a packet before continuing with other tasks, such as reading data 
+> from sensors, data logging, and state estimation.
 
 ## How to init submodules:
     git pull --recurse-submodules

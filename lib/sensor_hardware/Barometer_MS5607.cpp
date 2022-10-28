@@ -84,7 +84,7 @@ int8_t Barometer_MS5607::readData() {
 
             // calculate temperature compensated pressure
             OFF = ((int64_t) C2 * ((int64_t) 1 << 17)) + (int64_t) (((float) C4 * dT) / (1 << 6));
-            SENS = ((int64_t) C1 * (1 << 16)) + (int64_t) (((float)C3 * dT) / (1 << 17));
+            SENS = ((int64_t) C1 * (1 << 16)) + (int64_t) (((float)C3 * dT) / (1 << 7));
             P = (int32_t) (((int64_t) D1_pressure * (SENS / (1<<21)) - OFF) / ((int64_t) 1 << 15)); // 110002 = 1100.02 mbar
 
             /*

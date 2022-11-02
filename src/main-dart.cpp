@@ -9,7 +9,6 @@
 #include "timestamp.h"
 #include "downlink.h"
 #include "serializers.h"
-#include "dart_gpio.h"
 #include "Wire.h"
 
 // import sensors
@@ -40,9 +39,6 @@ void setup() {
     // set the Time library to use Teensy's RTC to keep time
     setSyncProvider(getTeensy3Time);
 
-    setup_GPIO();
-
-    flashRedLED(100);
     Serial.begin(115200);
 
     // begin I2C bus

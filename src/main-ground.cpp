@@ -8,14 +8,26 @@
 #include "downlink.h"
 #include "payloads/Test_Payload.h"
 #include "payloads/DARTDebugPayload.h"
+#include "buzzer.h"
 
 uint8_t radioBuffer[255];
 
 void setup() {
+    pinMode(BUZZER_PIN, OUTPUT);
     Serial.begin(115200);
-    while (!Serial) {}
+    buzzer_startup();
+    // while (!Serial) {}
     downlink::setupRadio();
     Serial.println("Finished setting up radio. State: " + String(downlink::radioState));
+
+    if (downlink::radioState == 0) {
+        // radio startup was successful
+        buzzer_tone(1800, 100, true);
+        delay(20);
+        buzzer_tone(1800, 100, true);
+    } else {
+        buzzer_error();
+    }
 
     // start receiving data
     downlink::receive();

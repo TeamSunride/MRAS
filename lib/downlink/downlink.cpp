@@ -38,13 +38,17 @@ int downlink::setupRadio(bool explicitHeader) {
     Serial.println("Calling radio.begin()");
     radioState = radio.begin(frequency, bandwidth, spreadingFactor, codeRate, syncWord, power,
                              8, 0, true);
+    Serial.println("Radio state: " + String(radioState));
     Serial.println("Setting RF switch pins");
     radio.setRfSwitchPins(RX_ENABLE_PIN, TX_ENABLE_PIN);
+    Serial.println("Radio state: " + String(radioState));
     Serial.println("Setting DIO1 action");
     // set the function that will be called
     // when packet transmission is finished
     radio.setDio1Action(setFlag);
+    Serial.println("Radio state: " + String(radioState));
 
+    Serial.println("Setting explicit header");
     if (explicitHeader) {
         radioState = radio.explicitHeader();
     }

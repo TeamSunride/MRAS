@@ -45,21 +45,24 @@ void loop() {
         // determine which payload type was received by reading the first byte
         auto receivedPayloadType = static_cast<downlink::PayloadType>(radioBuffer[0]);
 
-        Test_Payload testPayload;
-        DARTDebugPayload dartDebugPayload;
-
         switch (receivedPayloadType) {
             case downlink::UNDEFINED:
                 // Serial.println("Received undefined payload type, cannot print result");
                 break;
-            case downlink::Test_Payload_Type:
-                testPayload = fromByteArray<Test_Payload>(radioBuffer);
+            case downlink::Test_Payload_Type: {
+                Test_Payload testPayload = fromByteArray<Test_Payload>(radioBuffer);
                 Serial.println(testPayload.toLineProtocol());
                 break;
-            case downlink::DARTDebugPayload:
-                dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
-                Serial.println(dartDebugPayload.toLineProtocol());
+            }
+
+
+            case downlink::DARTDebugPayload: {
+                DARTDebugPayload dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
+                char output_string[512];
+                dartDebugPayload.toLineProtocol(output_string);
+                Serial.println(output_string);
                 break;
+            }
         }
 
         // put the radio back into receive mode

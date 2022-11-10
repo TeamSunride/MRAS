@@ -40,7 +40,34 @@ struct DARTDebugPayload {
 
     uint64_t timestamp = 0;
 
-    String toLineProtocol() const {
+    void toLineProtocol(char* output) const {
+        sprintf(output, "DARTDebugPayload "
+                       "mpuAX=%f,"
+                       "mpuAY=%f,"
+                       "mpuAZ=%f,"
+                       "mpuGX=%f,"
+                       "mpuGY=%f,"
+                       "mpuGZ=%f,"
+                       "lat=%f,"
+                       "long=%f,"
+                       "altGPS=%f,"
+                       "SIV=%du,"
+                       "fixType=%du,"
+                       "pressure=%f,"
+                       "temp=%f,"
+                       "DAQTime=%du,"
+                       "adxlX=%f,"
+                       "adxlY=%f,"
+                       "adxlZ=%f %llu",
+                       mpuAccel[0], mpuAccel[1], mpuAccel[2],
+                       mpuGyro[0], mpuGyro[1], mpuGyro[2],
+                       latitude, longitude, altitude, satellitesInView, fixType,
+                       pressure, temperature,
+                       DAQTime,
+                       adxlAccel[0], adxlAccel[1], adxlAccel[2],
+                       timestamp);
+
+        /*
         return LineProtocolBuilder("DARTDebugPayload")
                 .addField("mpuAX", mpuAccel[0])
                 .addField("mpuAY", mpuAccel[1])
@@ -61,6 +88,7 @@ struct DARTDebugPayload {
                 .addField("adxlZ", adxlAccel[2])
                 .setTimestamp(timestamp)
                 .build();
+        */
     }
 
     DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {

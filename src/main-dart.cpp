@@ -100,6 +100,8 @@ void loop() {
         // transmit byte array containing payload data
         downlink::transmit(radioBuffer, sizeof radioBuffer);
 
-        Serial.println("Transmitting payload: " + payload.toLineProtocol());
+        char output_string[512];
+        payload.toLineProtocol(output_string);
+        Serial.println(output_string);
     }
 }

@@ -58,37 +58,13 @@ struct DARTDebugPayload {
                        "DAQTime=%du,"
                        "adxlX=%f,"
                        "adxlY=%f,"
-                       "adxlZ=%f %llu",
+                       "adxlZ=%f",
                        mpuAccel[0], mpuAccel[1], mpuAccel[2],
                        mpuGyro[0], mpuGyro[1], mpuGyro[2],
                        latitude, longitude, altitude, satellitesInView, fixType,
                        pressure, temperature,
                        DAQTime,
-                       adxlAccel[0], adxlAccel[1], adxlAccel[2],
-                       timestamp);
-
-        /*
-        return LineProtocolBuilder("DARTDebugPayload")
-                .addField("mpuAX", mpuAccel[0])
-                .addField("mpuAY", mpuAccel[1])
-                .addField("mpuAZ", mpuAccel[2])
-                .addField("mpuGX", mpuGyro[0])
-                .addField("mpuGY", mpuGyro[1])
-                .addField("mpuGZ", mpuGyro[2])
-                .addField("lat", latitude)
-                .addField("long", longitude)
-                .addField("altGPS", altitude)
-                .addField("SIV", satellitesInView)
-                .addField("fixType", fixType)
-                .addField("pressure", pressure)
-                .addField("temp", temperature)
-                .addField("DAQTime", DAQTime)
-                .addField("adxlX", adxlAccel[0])
-                .addField("adxlY", adxlAccel[1])
-                .addField("adxlZ", adxlAccel[2])
-                .setTimestamp(timestamp)
-                .build();
-        */
+                       adxlAccel[0], adxlAccel[1], adxlAccel[2]);
     }
 
     DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {

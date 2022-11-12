@@ -34,12 +34,14 @@ Accelerometer *accelerometer = &adxl375;
 
 Sensor *sensors[] = {barometer, imu, gps, accelerometer};
 
+int packets_sent = 0;
+uint32_t last_packet_update = 0;
 
 void setup() {
     // set the Time library to use Teensy's RTC to keep time
     setSyncProvider(getTeensy3Time);
 
-    Serial.begin(115200);
+    Serial.begin(2000000);
 
     // begin I2C bus
     Wire.begin();
@@ -100,8 +102,17 @@ void loop() {
         // transmit byte array containing payload data
         downlink::transmit(radioBuffer, sizeof radioBuffer);
 
+
         char output_string[512];
         payload.toLineProtocol(output_string);
-        Serial.println(output_string);
+        //Serial.println(output_string);
+
+        packets_sent++;
+
+        if (millis() - last_packet_update > 1000) {
+            Serial.printf("Packets sent: %d\n", packets_sent);
+            packets_sent = 0;
+            last_packet_update = millis();
+        }
     }
 }

@@ -10,6 +10,7 @@
 #include "downlink.h"
 #include "serializers.h"
 #include "Wire.h"
+#include "buzzer.h"
 
 // import sensors
 #include "Barometer_MS5607.h"
@@ -42,6 +43,7 @@ void setup() {
     setSyncProvider(getTeensy3Time);
 
     Serial.begin(2000000);
+    buzzer_startup();
 
     // begin I2C bus
     Wire.begin();
@@ -53,8 +55,20 @@ void setup() {
     downlink::radio.explicitHeader();
 
     // init all sensors
+    int i = 0;
     for (Sensor *sensor: sensors) {
-        sensor->begin();
+        int8_t result = sensor->begin();
+        if (result == 0) {
+            int frequency = 1500 + i * 100;
+            buzzer_tone(frequency, 100, true);
+            delay(20);
+            buzzer_tone(frequency, 100, true);
+        } else {
+            buzzer_tone(600, 5000, true);
+        }
+
+        delay(100);
+        i++;
     }
 }
 
@@ -108,11 +122,20 @@ void loop() {
         //Serial.println(output_string);
 
         packets_sent++;
+    }
 
-        if (millis() - last_packet_update > 1000) {
-            Serial.printf("Packets sent: %d\n", packets_sent);
-            packets_sent = 0;
-            last_packet_update = millis();
+    if (millis() - last_packet_update > 1000) {
+        Serial.printf("Packets sent: %d\n", packets_sent);
+
+        if (MRAS_ENABLE_BEEPING) {
+            if (packets_sent > 0) {
+                buzzer_tone(1000 + packets_sent * 20, 50);
+            } else {
+                buzzer_tone(500, 100);
+            }
         }
+
+        packets_sent = 0;
+        last_packet_update = millis();
     }
 }

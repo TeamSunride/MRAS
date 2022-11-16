@@ -11,9 +11,9 @@ int8_t GPS_ZOE_M8Q::begin() {
     Serial.println("Setting up ZOE-M8Q");
 
     if (GNSS.begin()) {
-        Serial.println("GPS startup success");
+        Serial.println("GPS begin() success");
     }else {
-        Serial.println("GPS startup failure");
+        Serial.println("GPS begin() failure");
         return -1;
     }
 
@@ -30,6 +30,8 @@ int8_t GPS_ZOE_M8Q::begin() {
 
     if (returnStatusCode != 0) {
         Serial.println("GPS setup failed. Status code: " + String(returnStatusCode));
+    } else {
+        Serial.println("GPS setup success");
     }
 
     return returnStatusCode;

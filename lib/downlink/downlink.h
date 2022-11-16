@@ -50,7 +50,7 @@ namespace downlink {
     #define RX_ENABLE_PIN       10
     #define TX_ENABLE_PIN       9
 
-#elif GS_V1_RADIO_PINS
+#elif GS_V1_PINS
 
     #define CHIP_SELECT_PIN     0
     #define DIO1_PIN            1

@@ -10,6 +10,7 @@
 #include "payloads/DARTDebugPayload.h"
 #include "buzzer.h"
 #include "Adafruit_NeoPixel.h"
+#include "Payload.h"
 
 #define NEOPIXEL_PIN    11
 #define NUM_PIXELS       2
@@ -93,22 +94,22 @@ void loop() {
 
         if (state == 0) {
             // determine which payload type was received by reading the first byte
-            auto receivedPayloadType = static_cast<downlink::PayloadType>(radioBuffer[0]);
+            auto* payload = (Payload*)radioBuffer;
 
-            switch (receivedPayloadType) {
-                case downlink::UNDEFINED:
+            switch (payload->get_type()) {
+                case UNDEFINED:
                     // Serial.println("Received undefined payload type, cannot print result");
                     break;
-                case downlink::Test_Payload_Type: {
+                case Test_Payload_t: {
                     Test_Payload testPayload = fromByteArray<Test_Payload>(radioBuffer);
                     Serial.println(testPayload.toLineProtocol());
                     break;
                 }
-                case downlink::DARTDebugPayload: {
+                case DARTDebugPayload_t: {
                     DARTDebugPayload dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
                     char output_string[512];
                     dartDebugPayload.toLineProtocol(output_string);
-                    // Serial.println(output_string);
+                    Serial.println(output_string);
                     break;
                 }
             }

@@ -14,9 +14,10 @@
 #include "Barometer.h"
 #include "Accelerometer.h"
 
-struct DARTDebugPayload {
-    downlink::PayloadType type = downlink::PayloadType::DARTDebugPayload;
+#include "Payload.h"
 
+class DARTDebugPayload : public Payload {
+public:
     // MPU6050 data
     Vector<float, 3> mpuAccel {0,0,0};
     Vector<float, 3> mpuGyro {0,0,0};
@@ -68,6 +69,8 @@ struct DARTDebugPayload {
     }
 
     DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {
+        type = PayloadType::DARTDebugPayload_t;
+
         // 6dof IMU data
         mpuAccel = imu->getAcceleration();
         mpuGyro = imu->getGyroVector();

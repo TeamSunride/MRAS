@@ -67,6 +67,15 @@ public:
                        DAQTime,
                        adxlAccel[0], adxlAccel[1], adxlAccel[2]);
     }
+    void toCSVformat(char* output) const {
+        sprintf(output, "DARTDebugPayload,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%d,%f,%f,%f",
+                       mpuAccel[0], mpuAccel[1], mpuAccel[2],
+                       mpuGyro[0], mpuGyro[1], mpuGyro[2],
+                       latitude, longitude, altitude, satellitesInView, fixType,
+                       pressure, temperature,
+                       DAQTime,
+                       adxlAccel[0], adxlAccel[1], adxlAccel[2]);
+    }
 
     DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {
         type = PayloadType::DARTDebugPayload_t;

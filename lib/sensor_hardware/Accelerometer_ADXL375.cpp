@@ -41,9 +41,9 @@ int8_t Accelerometer_ADXL375::readData() {
 
 
     Vector<int16_t, 3> rawAccel = {
-            (int16_t) ((int16_t)buffer[1] << 8 | ((int16_t)buffer[0])),
-            (int16_t) ((int16_t)buffer[3] << 8 | (int16_t)buffer[2]),
-            (int16_t) ((int16_t)buffer[5] << 8 | (int16_t)buffer[4])
+            (int16_t) ((uint16_t)buffer[1] << 8 | ((uint16_t)buffer[0])),
+            (int16_t) ((uint16_t)buffer[3] << 8 | (uint16_t)buffer[2]),
+            (int16_t) ((uint16_t)buffer[5] << 8 | (uint16_t)buffer[4])
     };
 
 

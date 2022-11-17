@@ -134,7 +134,7 @@ void loop() {
                 case DARTDebugPayload_t: {
                     DARTDebugPayload dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
                     char output_string[512];
-                    dartDebugPayload.toCSVformat(output_string);
+                    dartDebugPayload.toLineProtocol(output_string);
                     log_file.println(output_string);
                     Serial.println(output_string);
                     break;

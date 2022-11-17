@@ -11,6 +11,7 @@
 #include "buzzer.h"
 #include "Adafruit_NeoPixel.h"
 #include "Payload.h"
+#include "SD.h"
 
 #define NEOPIXEL_PIN    11
 #define NUM_PIXELS       2
@@ -27,6 +28,8 @@ uint8_t radioBuffer[255];
 int packets_received = 0;
 uint32_t last_packet_update = 0;
 
+// file for SD card logging
+File log_file;
 
 
 #if defined(ARDUINO_SAMD_ZERO) && defined(SERIAL_PORT_USBVIRTUAL)
@@ -38,6 +41,9 @@ uint32_t last_packet_update = 0;
 void setup() {
     pinMode(BUZZER_PIN, OUTPUT);
     Serial.begin(2000000);
+
+    while (!Serial) {}
+
     buzzer_startup();
 
     pixels.begin();
@@ -62,6 +68,26 @@ void setup() {
         // set pixel 0 to red to indicate radio startup failure
     }
     pixels.show();
+
+    // setup SD card
+    if (!SD.begin(4)) {
+        Serial.println("SD card init failed");
+        buzzer_error();
+    }
+
+    char filename[8] = "";
+    // pick an appropriate file name
+    for (int i = 0; i < 1000; i++) {
+        sprintf(filename, "%d.csv", i);
+        if (!SD.exists(filename)) {
+            break;
+        }
+    }
+
+    Serial.print("SD filename: ");
+    Serial.println(filename);
+
+    log_file = SD.open(filename, FILE_WRITE);
 
     // start receiving data
     downlink::receive();
@@ -108,7 +134,8 @@ void loop() {
                 case DARTDebugPayload_t: {
                     DARTDebugPayload dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
                     char output_string[512];
-                    dartDebugPayload.toLineProtocol(output_string);
+                    dartDebugPayload.toCSVformat(output_string);
+                    log_file.println(output_string);
                     Serial.println(output_string);
                     break;
                 }
@@ -119,8 +146,10 @@ void loop() {
 
     }
     if (millis() - last_packet_update > 1000) {
-        Serial.printf("Packets received: %d\n", packets_received);
+        //Serial.printf("Packets received: %d\n", packets_received);
 
+        // make sure bytes are written to SD card
+        log_file.flush();
         if (MRAS_ENABLE_BEEPING) {
             if (packets_received > 0) {
                 buzzer_tone(1000 + packets_received * 20, 50);

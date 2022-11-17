@@ -11,6 +11,7 @@
 #include "serializers.h"
 #include "Wire.h"
 #include "buzzer.h"
+#include "SD.h"
 
 // import sensors
 #include "Barometer_MS5607.h"
@@ -36,7 +37,11 @@ Accelerometer *accelerometer = &adxl375;
 Sensor *sensors[] = {barometer, imu, gps, accelerometer};
 
 int packets_sent = 0;
+int packets_logged = 0;
 uint32_t last_packet_update = 0;
+
+// file for SD card logging
+File log_file;
 
 void setup() {
     // set the Time library to use Teensy's RTC to keep time
@@ -70,6 +75,26 @@ void setup() {
         delay(100);
         i++;
     }
+
+    // setup SD card
+    if (!SD.begin(BUILTIN_SDCARD)) {
+        Serial.println("SD card init failed");
+        buzzer_error();
+    }
+
+    char filename[8] = "";
+    // pick an appropriate file name
+    for (int i = 0; i < 1000; i++) {
+        sprintf(filename, "%d.csv", i);
+        if (!SD.exists(filename)) {
+            break;
+        }
+    }
+
+    Serial.print("SD filename: ");
+    Serial.println(filename);
+
+    log_file = SD.open(filename, FILE_WRITE);
 }
 
 void loop() {
@@ -100,12 +125,20 @@ void loop() {
             break;
     }
 
+    // construct payload object for transmission
+    DARTDebugPayload payload(imu, gps, barometer, accelerometer);
+    // add timestamp to payload
+    payload.timestamp = getTimestampMillis();
+    payload.DAQTime = DAQTime > 255 ? 255 : DAQTime;
+
+
+    char output_string[512];
+    payload.toLineProtocol(output_string);
+
+    log_file.println(output_string);
+    packets_logged++;
+
     if (downlink::radioAvailable) {
-        // construct payload object for transmission
-        DARTDebugPayload payload(imu, gps, barometer, accelerometer);
-        // add timestamp to payload
-        payload.timestamp = getTimestampMillis();
-        payload.DAQTime = DAQTime > 255 ? 255 : DAQTime;
 
         // create byte array to output data to radio
         uint8_t radioBuffer[sizeof payload];
@@ -116,16 +149,16 @@ void loop() {
         // transmit byte array containing payload data
         downlink::transmit(radioBuffer, sizeof radioBuffer);
 
-
-        char output_string[512];
-        payload.toLineProtocol(output_string);
         //Serial.println(output_string);
 
         packets_sent++;
     }
 
     if (millis() - last_packet_update > 1000) {
-        Serial.printf("Packets sent: %d\n", packets_sent);
+        Serial.printf("Packets sent: %d Logged: %d\n", packets_sent, packets_logged);
+
+        // make sure bytes are written to SD card
+        log_file.flush();
 
         if (MRAS_ENABLE_BEEPING) {
             if (packets_sent > 0) {
@@ -136,6 +169,7 @@ void loop() {
         }
 
         packets_sent = 0;
+        packets_logged = 0;
         last_packet_update = millis();
     }
 }

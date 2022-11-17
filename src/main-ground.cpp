@@ -42,8 +42,6 @@ void setup() {
     pinMode(BUZZER_PIN, OUTPUT);
     Serial.begin(2000000);
 
-    while (!Serial) {}
-
     buzzer_startup();
 
     pixels.begin();

@@ -96,7 +96,7 @@ int8_t Barometer_MS5607::readData() {
             */
 
             // convert to correct units and shove into readable stores
-            _pressure = (float) P / 100;
+            _pressure = (float) P;
             _temperature = (float) TEMP / 100;
 
             // start reading pressure again

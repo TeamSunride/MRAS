@@ -28,6 +28,9 @@ int8_t GPS_ZOE_M8Q::begin() {
     // Save the current settings to flash and BBR
     if (!GNSS.saveConfiguration()) returnStatusCode = -5;
 
+    // set the GPS dynamic model to DYN_MODEL_AIRBORNE4g (untested)
+    if (!GNSS.setDynamicModel(DYN_MODEL_AIRBORNE4g)) returnStatusCode = -6;
+
     if (returnStatusCode != 0) {
         Serial.println("GPS setup failed. Status code: " + String(returnStatusCode));
     } else {

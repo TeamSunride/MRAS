@@ -13,3 +13,9 @@
 [submodule "lib/Arduino-LSM6DSO32"]
 	path = lib/Arduino-LSM6DSO32
 	url = https://github.com/TeamSunride/Arduino-LSM6DSO32
+[submodule "lib/Fifo"]
+	path = lib/Fifo
+	url = https://github.com/TeamSunride/Fifo
+[submodule "lib/Arduino-LIS3MDL"]
+	path = lib/Arduino-LIS3MDL
+	url = https://github.com/TeamSunride/Arduino-LIS3MDL

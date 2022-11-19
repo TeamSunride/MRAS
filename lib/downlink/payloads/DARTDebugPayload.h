@@ -18,9 +18,10 @@
 
 class DARTDebugPayload : public Payload {
 public:
-    // MPU6050 data
-    Vector<float, 3> mpuAccel {0,0,0};
-    Vector<float, 3> mpuGyro {0,0,0};
+    // IMU data
+    Vector<float, 3> imuAccel {0, 0, 0};
+    Vector<float, 3> imuGyro {0, 0, 0};
+    Vector<float, 3> imuMag {0, 0, 0};
 
     // GPS data
     float latitude = 0;
@@ -43,12 +44,15 @@ public:
 
     void toLineProtocol(char* output) const {
         sprintf(output, "DARTDebugPayload "
-                       "mpuAX=%f,"
-                       "mpuAY=%f,"
-                       "mpuAZ=%f,"
-                       "mpuGX=%f,"
-                       "mpuGY=%f,"
-                       "mpuGZ=%f,"
+                       "imuAX=%f,"
+                       "imuAY=%f,"
+                       "imuAZ=%f,"
+                       "imuGX=%f,"
+                       "imuGY=%f,"
+                       "imuGZ=%f,"
+                       "imuMX=%f,"
+                       "imuMY=%f,"
+                       "imuMZ=%f,"
                        "lat=%f,"
                        "long=%f,"
                        "altGPS=%f,"
@@ -60,29 +64,33 @@ public:
                        "adxlX=%f,"
                        "adxlY=%f,"
                        "adxlZ=%f",
-                       mpuAccel[0], mpuAccel[1], mpuAccel[2],
-                       mpuGyro[0], mpuGyro[1], mpuGyro[2],
-                       latitude, longitude, altitude, satellitesInView, fixType,
-                       pressure, temperature,
-                       DAQTime,
-                       adxlAccel[0], adxlAccel[1], adxlAccel[2]);
+                imuAccel[0], imuAccel[1], imuAccel[2],
+                imuGyro[0], imuGyro[1], imuGyro[2],
+                imuMag[0], imuMag[1], imuMag[2],
+                latitude, longitude, altitude, satellitesInView, fixType,
+                pressure, temperature,
+                DAQTime,
+                adxlAccel[0], adxlAccel[1], adxlAccel[2]);
     }
+
+    // TODO: update this
     void toCSVformat(char* output) const {
         sprintf(output, "DARTDebugPayload,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%d,%f,%f,%f",
-                       mpuAccel[0], mpuAccel[1], mpuAccel[2],
-                       mpuGyro[0], mpuGyro[1], mpuGyro[2],
-                       latitude, longitude, altitude, satellitesInView, fixType,
-                       pressure, temperature,
-                       DAQTime,
-                       adxlAccel[0], adxlAccel[1], adxlAccel[2]);
+                imuAccel[0], imuAccel[1], imuAccel[2],
+                imuGyro[0], imuGyro[1], imuGyro[2],
+                latitude, longitude, altitude, satellitesInView, fixType,
+                pressure, temperature,
+                DAQTime,
+                adxlAccel[0], adxlAccel[1], adxlAccel[2]);
     }
 
     DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {
         type = PayloadType::DARTDebugPayload_t;
 
         // 6dof IMU data
-        mpuAccel = imu->getAcceleration();
-        mpuGyro = imu->getGyroVector();
+        imuAccel = imu->getAcceleration();
+        imuGyro = imu->getGyroVector();
+        imuMag = imu->getMagnetometerVector();
 
         // GPS data
         latitude = gps->getLatitude();

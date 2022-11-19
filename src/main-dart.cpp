@@ -18,24 +18,32 @@
 #include "IMU_MPU6050.h"
 #include "GPS_ZOE_M8Q.h"
 #include "Accelerometer_ADXL375.h"
+#include "IMU_LSM_LIS.h"
+#include "LSM6DSO32.h"
+#include "LIS3MDL.h"
 
 // import telemetry payloads
 #include "payloads/DARTDebugPayload.h"
 
+#define SPI0_FREQUENCY  4000000
+
 // define sensors (specific hardware)
 Barometer_MS5607 ms5607 = Barometer_MS5607(0x76, &Wire2);
-IMU_MPU6050 mpu6050 = IMU_MPU6050();
+//IMU_MPU6050 mpu6050 = IMU_MPU6050();
 GPS_ZOE_M8Q zoe_m8q = GPS_ZOE_M8Q();
 // Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(&Wire2, 0x53);
-Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(3, SPI, 1000000);
+Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(3, SPI, SPI0_FREQUENCY);
+LSM6DSO32 LSM(40, SPI, SPI0_FREQUENCY);
+LIS3MDL LIS(37, SPI, SPI0_FREQUENCY);
+IMU_LSM_LIS imu_lsm_lis = IMU_LSM_LIS(&LSM, &LIS);
 
 // define sensors (interfaces)
 Barometer *barometer = &ms5607;
-IMU *imu = &mpu6050;
+IMU *imu = &imu_lsm_lis;
 GPS *gps = &zoe_m8q;
 Accelerometer *accelerometer = &adxl375;
 
-Sensor *sensors[] = {barometer, imu, gps, accelerometer};
+Sensor *sensors[] = { barometer, imu, gps, accelerometer };
 
 int packets_sent = 0;
 int packets_logged = 0;
@@ -106,6 +114,7 @@ void loop() {
     for (Sensor *sensor: sensors) {
         sensor->readData();
     }
+    delay(2);
     uint32_t DAQTime = millis() - DAQStart;
 
     switch (systemState) {

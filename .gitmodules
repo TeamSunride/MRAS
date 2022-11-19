@@ -10,3 +10,6 @@
 [submodule "lib/Protocol"]
 	path = lib/Protocol
 	url = https://github.com/TeamSunride/Protocol
+[submodule "lib/Arduino-LSM6DSO32"]
+	path = lib/Arduino-LSM6DSO32
+	url = https://github.com/TeamSunride/Arduino-LSM6DSO32

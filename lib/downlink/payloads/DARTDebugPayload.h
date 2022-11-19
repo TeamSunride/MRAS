@@ -75,9 +75,10 @@ public:
 
     // TODO: update this
     void toCSVformat(char* output) const {
-        sprintf(output, "DARTDebugPayload,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%d,%f,%f,%f",
+        sprintf(output, "DARTDebugPayload,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%d,%f,%f,%f",
                 imuAccel[0], imuAccel[1], imuAccel[2],
                 imuGyro[0], imuGyro[1], imuGyro[2],
+                imuMag[0], imuMag[1], imuMag[2],
                 latitude, longitude, altitude, satellitesInView, fixType,
                 pressure, temperature,
                 DAQTime,

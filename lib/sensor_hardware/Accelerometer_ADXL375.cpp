@@ -6,9 +6,14 @@
 #include "Accelerometer_ADXL375.h"
 
 int8_t Accelerometer_ADXL375::begin() {
+    Serial.println("Starting up ADXL375");
     device->protocol_begin();
+    Serial.println("ADXL375 protocol_begin() called");
+
+    delay(10);
 
     uint8_t deviceID = device->read_reg(0x00);
+    Serial.printf("ADXL375 device ID: %x\n", deviceID);
 
     // device ID should equal 0xE5
     if (deviceID != 0xE5) return 1;

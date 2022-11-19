@@ -59,6 +59,15 @@ namespace downlink {
     #define RX_ENABLE_PIN       6
     #define TX_ENABLE_PIN       5
 
+#elif MRAS_DART_PINS
+
+    #define CHIP_SELECT_PIN     31
+    #define DIO1_PIN            33
+    #define RESET_PIN           32
+    #define BUSY_PIN            34
+    #define RX_ENABLE_PIN       36
+    #define TX_ENABLE_PIN       35
+
     # else
 
     // Default pin values for radio (with ARDUINO):

@@ -20,6 +20,10 @@ public:
         device = new I2CProtocol(address, pipe, freq);
     };
 
+    Accelerometer_ADXL375(byte chipSelect, SPIClass& spi, uint32_t frequency) {
+        device = new SPIProtocol(chipSelect, spi, SPISettings(frequency, MSBFIRST, SPI_MODE3), 0b10000000, 0b0);
+    }
+
     // SPI constructor to be added in future when needed
 };
 

@@ -8,9 +8,15 @@
 int8_t GPS_ZOE_M8Q::begin() {
     int8_t returnStatusCode = 0;
 
+#ifdef DART_PINS
+    TwoWire* port = &Wire;
+#elif MRAS_DART_PINS
+    TwoWire* port = &Wire2;
+#endif
+
     Serial.println("Setting up ZOE-M8Q");
 
-    if (GNSS.begin()) {
+    if (GNSS.begin(*port, 0x42, 1100, false)) {
         Serial.println("GPS begin() success");
     }else {
         Serial.println("GPS begin() failure");

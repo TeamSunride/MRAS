@@ -26,7 +26,8 @@
 Barometer_MS5607 ms5607 = Barometer_MS5607(0x76, &Wire2);
 IMU_MPU6050 mpu6050 = IMU_MPU6050();
 GPS_ZOE_M8Q zoe_m8q = GPS_ZOE_M8Q();
-Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(&Wire2, 0x53);
+// Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(&Wire2, 0x53);
+Accelerometer_ADXL375 adxl375 = Accelerometer_ADXL375(3, SPI, 1000000);
 
 // define sensors (interfaces)
 Barometer *barometer = &ms5607;
@@ -48,6 +49,8 @@ void setup() {
     setSyncProvider(getTeensy3Time);
 
     Serial.begin(2000000);
+
+    Serial.println("Welcome to MRAS");
     buzzer_startup();
 
     // begin I2C bus

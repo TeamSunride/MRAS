@@ -56,16 +56,10 @@ void setup() {
         buzzer_tone(1800, 100, true);
         delay(20);
         buzzer_tone(1800, 100, true);
-
-        // set pixel 0 to green to indicate successful radio startup
-        pixels.setPixelColor(0, pixels.Color(0, 255, 0));
     } else {
         buzzer_error();
-
-        pixels.setPixelColor(0, pixels.Color(255, 0, 0));
         // set pixel 0 to red to indicate radio startup failure
     }
-    pixels.show();
 
     // setup SD card
     if (!SD.begin(4)) {
@@ -137,6 +131,34 @@ void loop() {
                     dartDebugPayload.toCSVformat(output_csv);
                     log_file.println(output_csv);
                     Serial.println(output_line_protocol);
+
+                    switch(dartDebugPayload.fixType) {
+                        case 0: {
+                            // No fix, red
+                            pixels.setPixelColor(0, pixels.Color(255, 0, 0));
+                            break;
+                        }
+                        case 1: {
+                            // Dead reckoning, orange
+                            pixels.setPixelColor(0, pixels.Color(255, 120, 10));
+                        }
+                        case 2: {
+                            // 2D fix, yellow
+                            pixels.setPixelColor(0, pixels.Color(250, 222, 42));
+                        }
+                        case 3: {
+                            // 3D fix, green
+                            pixels.setPixelColor(0, pixels.Color(0, 255, 0));
+                        }
+                        case 4: {
+                            // GNSS + Dead Reckoning, purple
+                            pixels.setPixelColor(0, pixels.Color(184, 119, 217));
+                        }
+                        case 5: {
+                            // Time fix, pink
+                            pixels.setPixelColor(0, pixels.Color(255, 115, 131));
+                        }
+                    }
                     break;
                 }
             }

@@ -114,7 +114,6 @@ void loop() {
     for (Sensor *sensor: sensors) {
         sensor->readData();
     }
-    delay(2);
     uint32_t DAQTime = millis() - DAQStart;
 
     switch (systemState) {

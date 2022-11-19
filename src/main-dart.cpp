@@ -43,7 +43,7 @@ IMU *imu = &imu_lsm_lis;
 GPS *gps = &zoe_m8q;
 Accelerometer *accelerometer = &adxl375;
 
-Sensor *sensors[] = { barometer, imu, gps, accelerometer };
+Sensor *sensors[] = { barometer, imu, gps };
 
 int packets_sent = 0;
 int packets_logged = 0;
@@ -138,14 +138,14 @@ void loop() {
     }
 
     // construct payload object for transmission
-    DARTDebugPayload payload(imu, gps, barometer, accelerometer);
+    DARTDebugPayload payload(imu, gps, barometer);
     // add timestamp to payload
     payload.timestamp = getTimestampMillis();
     payload.DAQTime = DAQTime > 255 ? 255 : DAQTime;
 
 
     char output_string[512];
-    payload.toLineProtocol(output_string);
+    payload.toCSVformat(output_string);
 
     log_file.println(output_string);
     packets_logged++;

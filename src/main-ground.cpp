@@ -131,10 +131,12 @@ void loop() {
                 }
                 case DARTDebugPayload_t: {
                     DARTDebugPayload dartDebugPayload = fromByteArray<DARTDebugPayload>(radioBuffer);
-                    char output_string[512];
-                    dartDebugPayload.toLineProtocol(output_string);
-                    log_file.println(output_string);
-                    Serial.println(output_string);
+                    char output_line_protocol[512];
+                    char output_csv[512];
+                    dartDebugPayload.toLineProtocol(output_line_protocol);
+                    dartDebugPayload.toCSVformat(output_csv);
+                    log_file.println(output_csv);
+                    Serial.println(output_line_protocol);
                     break;
                 }
             }
@@ -144,7 +146,7 @@ void loop() {
 
     }
     if (millis() - last_packet_update > 1000) {
-        //Serial.printf("Packets received: %d\n", packets_received);
+        // Serial.printf("Packets received: %d\n", packets_received);
 
         // make sure bytes are written to SD card
         log_file.flush();

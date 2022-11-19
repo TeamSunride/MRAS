@@ -18,6 +18,11 @@ int8_t Accelerometer_ADXL375::begin() {
     // device ID should equal 0xE5
     if (deviceID != 0xE5) return 1;
 
+    // BW_RATE should equal 00001010
+    uint8_t bw_rate = device->read_reg(0x2C);
+    Serial.printf("ADXL375 BW_RATE: %x\n", bw_rate);
+    if (bw_rate != 0b00001010) return 6;
+
     // put device in standby mode
     if (device->write_reg(0x2D, 0b0000) != 0) return 5;
 

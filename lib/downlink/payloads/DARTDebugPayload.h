@@ -73,7 +73,6 @@ public:
                 adxlAccel[0], adxlAccel[1], adxlAccel[2]);
     }
 
-    // TODO: update this
     void toCSVformat(char* output) const {
         sprintf(output, "DARTDebugPayload,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%d,%f,%f,%f",
                 imuAccel[0], imuAccel[1], imuAccel[2],

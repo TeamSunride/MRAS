@@ -87,6 +87,7 @@ void setup() {
         i++;
     }
 
+
     // setup SD card
     if (!SD.begin(BUILTIN_SDCARD)) {
         Serial.println("SD card init failed");
@@ -144,13 +145,16 @@ void loop() {
 
 
     char output_string[512];
+    payload.toLineProtocol(output_string);
+    //Serial.println(output_string);
     payload.toCSVformat(output_string);
 
     log_file.println(output_string);
     packets_logged++;
 
-    if (downlink::radioAvailable) {
 
+    if (downlink::radioAvailable) {
+        delay(1);
         // create byte array to output data to radio
         uint8_t radioBuffer[sizeof payload];
 
@@ -183,4 +187,5 @@ void loop() {
         packets_logged = 0;
         last_packet_update = millis();
     }
+
 }

@@ -8,8 +8,13 @@ int8_t IMU_LSM_LIS::begin() {
     lis->begin();
     lis->default_configuration();
 
+
     lsm->begin();
     lsm->default_configuration();
+
+    lsm->set_accel_ODR(ODR_6667_HZ);
+    lsm->set_gyro_ODR(ODR_6667_HZ);
+    lis->set_mag_ODR(ODR_1000_HZ);
 
     return 0;
 }

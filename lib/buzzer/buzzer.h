@@ -16,7 +16,7 @@
 #endif
 
 #define MRAS_ENABLE_BUZZER true
-#define MRAS_ENABLE_BEEPING false
+#define MRAS_ENABLE_BEEPING true
 
 void buzzer_tone(uint32_t frequency, uint32_t duration, bool block=false);
 

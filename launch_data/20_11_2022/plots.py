@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
 plt.style.use("ggplot")
 
-df = pandas.read_csv("output.csv", usecols=range(1, 20))
+df = pandas.read_csv("launch_1.csv", usecols=range(1, 20))
 df["time_seconds"] = df["timestamp"].subtract(df["timestamp"][0]).div(1000)
 print(df)
 

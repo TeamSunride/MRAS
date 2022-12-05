@@ -6,12 +6,22 @@
 #include "Accelerometer_ADXL375.h"
 
 int8_t Accelerometer_ADXL375::begin() {
+    Serial.println("Starting up ADXL375");
     device->protocol_begin();
+    Serial.println("ADXL375 protocol_begin() called");
+
+    delay(10);
 
     uint8_t deviceID = device->read_reg(0x00);
+    Serial.printf("ADXL375 device ID: %x\n", deviceID);
 
     // device ID should equal 0xE5
     if (deviceID != 0xE5) return 1;
+
+    // BW_RATE should equal 00001010
+    uint8_t bw_rate = device->read_reg(0x2C);
+    Serial.printf("ADXL375 BW_RATE: %x\n", bw_rate);
+    if (bw_rate != 0b00001010) return 6;
 
     // put device in standby mode
     if (device->write_reg(0x2D, 0b0000) != 0) return 5;
@@ -41,9 +51,9 @@ int8_t Accelerometer_ADXL375::readData() {
 
 
     Vector<int16_t, 3> rawAccel = {
-            (int16_t) (buffer[1] << 8 | buffer[0]),
-            (int16_t) (buffer[3] << 8 | buffer[2]),
-            (int16_t) (buffer[5] << 8 | buffer[4])
+            (int16_t) ((uint16_t)buffer[1] << 8 | ((uint16_t)buffer[0])),
+            (int16_t) ((uint16_t)buffer[3] << 8 | (uint16_t)buffer[2]),
+            (int16_t) ((uint16_t)buffer[5] << 8 | (uint16_t)buffer[4])
     };
 
 

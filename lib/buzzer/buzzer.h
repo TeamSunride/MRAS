@@ -7,7 +7,16 @@
 
 #include "Arduino.h"
 
+#ifdef GS_V1_PINS
 #define BUZZER_PIN A5
+#elif DART_PINS
+#define BUZZER_PIN 37
+#elif MRAS_DART_PINS
+#define BUZZER_PIN 2
+#endif
+
+#define MRAS_ENABLE_BUZZER true
+#define MRAS_ENABLE_BEEPING true
 
 void buzzer_tone(uint32_t frequency, uint32_t duration, bool block=false);
 

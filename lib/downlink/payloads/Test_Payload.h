@@ -8,9 +8,10 @@
 
 #include "downlink.h"
 #include "LineProtocolBuilder.h"
+#include "Payload.h"
 
-struct Test_Payload {
-    downlink::PayloadType type = downlink::PayloadType::Test_Payload_Type;
+class Test_Payload : public Payload {
+public:
     uint8_t x = 0;
     uint8_t y = 0;
     uint8_t z = 0;
@@ -27,6 +28,7 @@ struct Test_Payload {
     }
 
     Test_Payload(int16_t _x, int16_t _y, int16_t _z) {
+        type = PayloadType::Test_Payload_t;
         x = _x;
         y = _y;
         z = _z;

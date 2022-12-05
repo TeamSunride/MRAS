@@ -12,14 +12,16 @@
 #include "IMU.h"
 #include "GPS.h"
 #include "Barometer.h"
-#include "Accelerometer.h"
 
-struct DARTDebugPayload {
-    downlink::PayloadType type = downlink::PayloadType::DARTDebugPayload;
+#include "Payload.h"
+#include "Int64String.h"
 
-    // MPU6050 data
-    Vector<float, 3> mpuAccel {0,0,0};
-    Vector<float, 3> mpuGyro {0,0,0};
+class DARTDebugPayload : public Payload {
+public:
+    // IMU data
+    Vector<float, 3> imuAccel {0, 0, 0};
+    Vector<float, 3> imuGyro {0, 0, 0};
+    Vector<float, 3> imuMag {0, 0, 0};
 
     // GPS data
     float latitude = 0;
@@ -32,45 +34,61 @@ struct DARTDebugPayload {
     float pressure = 0;
     float temperature = 0;
 
-    // accelerometer data
-    Vector<float, 3> adxlAccel{};
-
     uint8_t DAQTime = 0;
 
 
     uint64_t timestamp = 0;
 
     void toLineProtocol(char* output) const {
+        char timestamp_str[20];
+        int64String(timestamp).toCharArray(timestamp_str, sizeof timestamp_str);
         sprintf(output, "DARTDebugPayload "
-                       "mpuAX=%f,"
-                       "mpuAY=%f,"
-                       "mpuAZ=%f,"
-                       "mpuGX=%f,"
-                       "mpuGY=%f,"
-                       "mpuGZ=%f,"
+                       "imuAX=%f,"
+                       "imuAY=%f,"
+                       "imuAZ=%f,"
+                       "imuGX=%f,"
+                       "imuGY=%f,"
+                       "imuGZ=%f,"
+                       "imuMX=%f,"
+                       "imuMY=%f,"
+                       "imuMZ=%f,"
                        "lat=%f,"
                        "long=%f,"
                        "altGPS=%f,"
-                       "SIV=%du,"
-                       "fixType=%du,"
+                       "SIV=%d,"
+                       "fixType=%d,"
                        "pressure=%f,"
                        "temp=%f,"
-                       "DAQTime=%du,"
-                       "adxlX=%f,"
-                       "adxlY=%f,"
-                       "adxlZ=%f",
-                       mpuAccel[0], mpuAccel[1], mpuAccel[2],
-                       mpuGyro[0], mpuGyro[1], mpuGyro[2],
-                       latitude, longitude, altitude, satellitesInView, fixType,
-                       pressure, temperature,
-                       DAQTime,
-                       adxlAccel[0], adxlAccel[1], adxlAccel[2]);
+                       "DAQTime=%d,"
+                       "h=%f"
+                       " %s",
+                imuAccel[0], imuAccel[1], imuAccel[2],
+                imuGyro[0], imuGyro[1], imuGyro[2],
+                imuMag[0], imuMag[1], imuMag[2],
+                latitude, longitude, altitude, satellitesInView, fixType,
+                pressure, temperature,
+                DAQTime, getAltitude(), timestamp_str);
     }
 
-    DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer, Accelerometer *accelerometer) {
+    void toCSVformat(char* output) const {
+        char timestamp_str[20];
+        int64String(timestamp).toCharArray(timestamp_str, sizeof timestamp_str);
+        sprintf(output, "DARTDebugPayload,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%f,%d,%d,%f,%f,%d,%f,%s",
+                imuAccel[0], imuAccel[1], imuAccel[2],
+                imuGyro[0], imuGyro[1], imuGyro[2],
+                imuMag[0], imuMag[1], imuMag[2],
+                latitude, longitude, altitude, satellitesInView, fixType,
+                pressure, temperature,
+                DAQTime, getAltitude(), timestamp_str);
+    }
+
+    DARTDebugPayload(IMU *imu, GPS *gps, Barometer *barometer) {
+        type = PayloadType::DARTDebugPayload_t;
+
         // 6dof IMU data
-        mpuAccel = imu->getAcceleration();
-        mpuGyro = imu->getGyroVector();
+        imuAccel = imu->getAcceleration();
+        imuGyro = imu->getGyroVector();
+        imuMag = imu->getMagnetometerVector();
 
         // GPS data
         latitude = gps->getLatitude();
@@ -82,8 +100,12 @@ struct DARTDebugPayload {
         // barometer data
         pressure = barometer->getPressure();
         temperature = barometer->getTemperature();
+    }
 
-        adxlAccel = accelerometer->getAcceleration();
+    float getAltitude() const {
+        if (pressure == 0) return -1;
+        double p = 1013.25/(pressure/100);
+        return (float) (153.84615*(pow(p,0.19) - 1)*(temperature+273.15));
     }
 
     DARTDebugPayload() = default;

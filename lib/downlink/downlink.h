@@ -19,7 +19,7 @@ namespace downlink {
     const uint8_t spreadingFactor = 5;  // LoRa spreading factor
     const uint8_t codeRate = 5; // LoRa coding rate denominator.
     const uint8_t syncWord = 0x22;  // 2-byte LoRa sync word
-    const int8_t power = 12; // output power in dBm
+    const int8_t power = 22; // output power in dBm
 
     // ===[ RADIO PIN DEFINITIONS ]===
 
@@ -50,7 +50,7 @@ namespace downlink {
     #define RX_ENABLE_PIN       10
     #define TX_ENABLE_PIN       9
 
-#elif GS_V1_RADIO_PINS
+#elif GS_V1_PINS
 
     #define CHIP_SELECT_PIN     0
     #define DIO1_PIN            1
@@ -58,6 +58,15 @@ namespace downlink {
     #define BUSY_PIN            9
     #define RX_ENABLE_PIN       6
     #define TX_ENABLE_PIN       5
+
+#elif MRAS_DART_PINS
+
+    #define CHIP_SELECT_PIN     31
+    #define DIO1_PIN            33
+    #define RESET_PIN           32
+    #define BUSY_PIN            34
+    #define RX_ENABLE_PIN       36
+    #define TX_ENABLE_PIN       35
 
     # else
 

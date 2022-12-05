@@ -4,6 +4,7 @@
 #include "buzzer.h"
 
 void buzzer_tone(uint32_t frequency, uint32_t duration, bool block) {
+    if (!MRAS_ENABLE_BUZZER) return;
     tone(BUZZER_PIN, frequency, duration);
 
     if (block) {

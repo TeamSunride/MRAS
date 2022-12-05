@@ -77,6 +77,9 @@ int8_t Barometer_MS5607::readData() {
 
             state = IDLE;
 
+            /*
+             * TOMS CODE THAT DOESNT APPEAR TO WORK WELL:
+             * Values seem to jump around when they shouldn't
             // we must now convert D1 and D2 to meaningful values
             // refer to page 8 on the datasheet
             dT = (float) D2_temperature - (float) C5 * 256;
@@ -86,6 +89,21 @@ int8_t Barometer_MS5607::readData() {
             OFF = ((int64_t) C2 * ((int64_t) 1 << 17)) + (int64_t) (((float) C4 * dT) / (1 << 6));
             SENS = ((int64_t) C1 * (1 << 16)) + (int64_t) (((float)C3 * dT) / (1 << 7));
             P = (int32_t) (((int64_t) D1_pressure * (SENS / (1<<21)) - OFF) / ((int64_t) 1 << 15)); // 110002 = 1100.02 mbar
+            */
+
+            // This code is taken from the UravuLabs/MS5607 library
+            dT = (float)D2_temperature - ((float)C5)*((int)1<<8);
+            //TEMP = 2000.0 + dT * ((float)C6)/(float)((long)1<<23);
+            OFF = (((int64_t)C2)*((long)1<<17)) + dT * ((float)C4)/((int)1<<6);
+            SENS = ((float)C1)*((long)1<<16) + dT * ((float)C3)/((int)1<<7);
+            float pa = (float)((float)D1_pressure/((long)1<<15));
+            float pb = (float)(SENS/((float)((long)1<<21)));
+            float pc = pa*pb;
+            float pd = (float)(OFF/((float)((long)1<<15)));
+            P = pc - pd;
+
+            TEMP = 2000.0 + dT * ((float)C6)/(float)((long)1<<23);
+
 
             /*
             Serial.println("dT: " + String(dT));
@@ -96,7 +114,7 @@ int8_t Barometer_MS5607::readData() {
             */
 
             // convert to correct units and shove into readable stores
-            _pressure = (float) P / 100;
+            _pressure = (float) P;
             _temperature = (float) TEMP / 100;
 
             // start reading pressure again

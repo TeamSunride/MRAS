@@ -14,15 +14,16 @@ enum SystemMessageType {
 };
 
 class SystemMessage {
-protected:
-    SystemMessageType type;
 public:
     explicit SystemMessage(SystemMessageType type) : type(type) {};
-
-    SystemMessageType get_type() {
-        return type;
-    }
+    SystemMessageType get_type();
+protected:
+    SystemMessageType type;
 };
+
+SystemMessageType SystemMessage::get_type() {
+    return type;
+}
 
 
 #endif //MRAS_SYSTEMMESSAGE_H

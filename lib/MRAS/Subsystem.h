@@ -6,6 +6,7 @@
 #define MRAS_SUBSYSTEM_H
 
 #include <cstdint>
+#include "SystemMessage.h"
 
 class Subsystem {
 public:
@@ -74,6 +75,18 @@ protected:
     int8_t self_test_result = -1;
 
     void log(const char* text);
+
+    /**
+     * Can be overridden by Subsystems to handle messages
+     * @param msg The SystemMessage sent by the Publishing Subsystem
+     */
+    void on_message(SystemMessage* msg) {};
+
+    /**
+     * Publish a SystemMessage to any subscribed Subsystems.
+     * @param msg THe SystemMessage to publish.
+     */
+    void publish(SystemMessage* msg);
 };
 
 

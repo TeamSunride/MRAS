@@ -33,3 +33,10 @@ void Subsystem::log(const char *text) {
         logger->_log(get_name(), text);
     }
 }
+
+void Subsystem::publish(SystemMessage *msg) {
+    for (int i = 0; i < subscriber_count; i++) {
+        Subsystem* subscriber = subscribers[i];
+        subscriber->on_message(msg);
+    }
+}

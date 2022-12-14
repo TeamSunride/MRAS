@@ -26,6 +26,7 @@ Adafruit_NeoPixel pixels(NUM_PIXELS, NEOPIXEL_PIN, NEO_GRB + NEO_KHZ800);
 uint8_t radioBuffer[255];
 
 int packets_received = 0;
+int crc_errors = 0;
 uint32_t last_packet_update = 0;
 
 // file for SD card logging
@@ -96,6 +97,8 @@ void loop() {
         int state = downlink::radio.readData(radioBuffer, 0);
         uint32_t read_time = micros() - start;
 
+        packets_received++;
+
         // put the radio back into receive mode
         downlink::receive();
 
@@ -109,6 +112,10 @@ void loop() {
             buzzer_tone(500, 500);
         }
         pixels.show();
+
+        if (state != 0) {
+            crc_errors++;
+        }
 
         if (state == 0) {
             // determine which payload type was received by reading the first byte
@@ -130,7 +137,7 @@ void loop() {
                     dartDebugPayload.toLineProtocol(output_line_protocol);
                     dartDebugPayload.toCSVformat(output_csv);
                     log_file.println(output_csv);
-                    Serial.println(output_line_protocol);
+                    //Serial.println(output_line_protocol);
 
                     switch(dartDebugPayload.fixType) {
                         case 0: {
@@ -162,13 +169,12 @@ void loop() {
                     break;
                 }
             }
-
-            packets_received++;
         }
 
     }
     if (millis() - last_packet_update > 1000) {
-        // Serial.printf("Packets received: %d\n", packets_received);
+        Serial.printf("Packets received: %d\n", packets_received);
+        Serial.printf("SNR: %f RSSI: %f CRC errors: %d", downlink::radio.getSNR(), downlink::radio.getRSSI(), crc_errors);
 
         // make sure bytes are written to SD card
         log_file.flush();
@@ -181,6 +187,7 @@ void loop() {
         }
 
         packets_received = 0;
+        crc_errors = 0;
         last_packet_update = millis();
     }
 }

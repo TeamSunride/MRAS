@@ -19,7 +19,7 @@ namespace downlink {
     const uint8_t spreadingFactor = 5;  // LoRa spreading factor
     const uint8_t codeRate = 5; // LoRa coding rate denominator.
     const uint8_t syncWord = 0x22;  // 2-byte LoRa sync word
-    const int8_t power = 22; // output power in dBm
+    const int8_t power = 14; // output power in dBm
 
     // ===[ RADIO PIN DEFINITIONS ]===
 

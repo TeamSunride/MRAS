@@ -30,7 +30,7 @@ bool Subsystem::add_subscriber(Subsystem *subscriber) {
 void Subsystem::log(const char *text) {
     TextLogger* logger = MRAS_System::get_instance()->get_logger();
     if (logger != nullptr) {
-        logger->_log(get_name(), text);
+        logger->_log("[%s] %s", get_name(), text);
     }
 }
 

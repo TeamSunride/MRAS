@@ -52,7 +52,7 @@ void loop() {
         packets_sent++;
     }
 
-    if (millis() - last_packet_update > 500) {
+    if (millis() - last_packet_update > 100) {
         Serial.printf("Packets sent: %d,  Payload size:  %d\n", packets_sent, payload_size);
 
         packets_sent = 0;

@@ -27,6 +27,7 @@ uint8_t radioBuffer[255];
 
 int packets_received = 0;
 uint32_t last_packet_update = 0;
+uint32_t bad_crcs_recieved = 0;
 
 // file for SD card logging
 File log_file;
@@ -104,8 +105,10 @@ void loop() {
             pixels.setPixelColor(1, pixels.Color(0, 195, 255));     // light blue
         } else if (state == -7) {
             pixels.setPixelColor(1, pixels.Color(255, 132, 0));     // orange
+            bad_crcs_recieved++;
         } else {
             pixels.setPixelColor(1, pixels.Color(255, 0, 0));     // red
+            bad_crcs_recieved++;
             buzzer_tone(500, 500);
         }
         pixels.show();
@@ -120,7 +123,7 @@ void loop() {
                     break;
                 case Test_Payload_t: {
                     Test_Payload testPayload = fromByteArray<Test_Payload>(radioBuffer);
-                    Serial.println(testPayload.toLineProtocol());
+                    //Serial.println(testPayload.toLineProtocol());
                     break;
                 }
                 case DARTDebugPayload_t: {
@@ -130,7 +133,7 @@ void loop() {
                     dartDebugPayload.toLineProtocol(output_line_protocol);
                     dartDebugPayload.toCSVformat(output_csv);
                     log_file.println(output_csv);
-                    Serial.println(output_line_protocol);
+                    //Serial.println(output_line_protocol);
 
                     switch(dartDebugPayload.fixType) {
                         case 0: {
@@ -167,8 +170,10 @@ void loop() {
         }
 
     }
-    if (millis() - last_packet_update > 1000) {
-        // Serial.printf("Packets received: %d\n", packets_received);
+    if (millis() - last_packet_update > 500) {
+        float rssi = downlink::radio.getRSSI();
+        float snr = downlink::radio.getSNR();
+        Serial.printf("Packets received: %d,     RSSI: %f,     SNR: %f,    Bad CRCs: %d \n", packets_received, rssi, snr, bad_crcs_recieved);
 
         // make sure bytes are written to SD card
         log_file.flush();
@@ -181,6 +186,7 @@ void loop() {
         }
 
         packets_received = 0;
+        bad_crcs_recieved = 0;
         last_packet_update = millis();
     }
 }

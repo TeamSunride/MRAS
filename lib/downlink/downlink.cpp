@@ -14,7 +14,7 @@ namespace downlink {
                               BUSY_PIN, SPI1);
 #elif MRAS_DART_PINS
     SX1262 radio = new Module(CHIP_SELECT_PIN, DIO1_PIN, RESET_PIN,
-                              BUSY_PIN, SPI1);
+                              BUSY_PIN);
 #else
     SX1262 radio = new Module(CHIP_SELECT_PIN, DIO1_PIN, RESET_PIN,
                               BUSY_PIN);
@@ -38,6 +38,8 @@ int downlink::setupRadio(bool explicitHeader) {
     SPI1.begin();  // DART uses SPI1 for SX1262
 #elif MRAS_DART_PINS
     SPI1.begin();
+#else
+    SPI.begin();
 #endif
 
 

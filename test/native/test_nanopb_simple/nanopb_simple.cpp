@@ -46,6 +46,7 @@ int main()
         /* Now we are ready to encode the message! */
         status = pb_encode(&stream, SimpleMessage_fields, &message);
         message_length = stream.bytes_written;
+        printf("Bytes written: %d\n", message_length);
 
         /* Then just check for any errors.. */
         if (!status)

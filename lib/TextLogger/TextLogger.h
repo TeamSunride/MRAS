@@ -13,7 +13,8 @@ class TextLogger : public Subsystem {
 public:
     using Subsystem::Subsystem;
 
-    void on_message(SystemMessage *msg) override {} // do nothing
+    SUBSYSTEM_NAME("TextLogger")
+    SUBSYSTEM_NO_MESSAGE_HANDLER
 
     virtual void _log(const char *fmt, va_list args) = 0;
 };

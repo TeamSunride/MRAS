@@ -30,11 +30,8 @@ public:
 
     int8_t loop() override;
 
-    const char *get_name() override {
-        return "LSM6DSO32";
-    }
-
-    void on_message(SystemMessage *msg) override {};
+    SUBSYSTEM_NAME("MS5607")
+    SUBSYSTEM_NO_MESSAGE_HANDLER
 };
 
 

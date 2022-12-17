@@ -14,11 +14,8 @@ public:
     int8_t setup() override;
     int8_t loop() override;
 
-    void on_message(SystemMessage *msg) override {} // do nothing
-
-    const char* get_name() override {
-        return "FakeAccelerometer";
-    }
+    SUBSYSTEM_NO_MESSAGE_HANDLER
+    SUBSYSTEM_NAME("FakeAccelerometer")
 };
 
 

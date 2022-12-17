@@ -30,11 +30,8 @@ public:
 
     int8_t loop() override;
 
-    const char *get_name() override {
-        return "LIS3MDL";
-    }
-
-    void on_message(SystemMessage *msg) override {};
+    SUBSYSTEM_NAME("LIS3MDL")
+    SUBSYSTEM_NO_MESSAGE_HANDLER
 };
 
 

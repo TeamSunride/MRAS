@@ -8,6 +8,11 @@
 #include <cstdint>
 #include "SystemMessage.h"
 
+// macro to define empty message handler for subsystems that don't want to receive messages
+#define SUBSYSTEM_NO_MESSAGE_HANDLER void on_message(SystemMessage *msg) override {};
+
+#define SUBSYSTEM_NAME(name) const char* get_name() override { return name; }
+
 class Subsystem {
 public:
     /**

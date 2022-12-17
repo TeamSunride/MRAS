@@ -16,9 +16,7 @@ public:
 
     void on_message(SystemMessage *msg) override;
 
-    const char* get_name() override {
-        return "NativeDataLogger";
-    }
+    SUBSYSTEM_NAME("NativeDataLogger")
 };
 
 

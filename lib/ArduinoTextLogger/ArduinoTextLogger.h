@@ -30,9 +30,7 @@ public:
         return 0;
     }
 
-    const char* get_name() override {
-        return "ArduinoTextLogger";
-    }
+    SUBSYSTEM_NAME("ArduinoTextLogger")
 };
 
 void ArduinoTextLogger::_log(const char *fmt, va_list args) {

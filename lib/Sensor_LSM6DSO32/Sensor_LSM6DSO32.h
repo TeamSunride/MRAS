@@ -30,7 +30,7 @@ public:
 
     int8_t loop() override;
 
-    SUBSYSTEM_NAME("MS5607")
+    SUBSYSTEM_NAME("LSM6DSO32")
     SUBSYSTEM_NO_MESSAGE_HANDLER
 };
 

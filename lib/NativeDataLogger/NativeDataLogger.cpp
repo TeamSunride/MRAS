@@ -5,6 +5,7 @@
 #include "NativeDataLogger.h"
 #include "system_messages/AccelerometerDataMsg.h"
 #include "system_messages/MagnetometerDataMsg.h"
+#include "system_messages/BarometerDataMsg.h"
 
 int8_t NativeDataLogger::setup() {
     return 0;
@@ -28,6 +29,11 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
                 mag_msg->mag[0],
                 mag_msg->mag[1],
                 mag_msg->mag[2]);
+            break;
+        }
+        case BarometerDataMsg_t: {
+            auto baro_msg = (BarometerDataMsg*) msg;
+            log("BarometerDataMsg: Pressure: %f Temperature: %f", baro_msg->pressure, baro_msg->temperature);
             break;
         }
         default:

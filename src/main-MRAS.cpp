@@ -12,25 +12,25 @@
 #include "Sensor_LIS3MDL.h"
 #include "Sensor_MS5607.h"
 
-TextLogger* logger = new ArduinoTextLogger(0, 115200);
+auto logger = ArduinoTextLogger(0, 115200);
 MRAS_System* mras = MRAS_System::get_instance();
 
-auto *data_logger = new NativeDataLogger(1);
+NativeDataLogger data_logger = NativeDataLogger(1);
 
-auto *accelerometer = new Sensor_LSM6DSO32(2, 40, SPI, 5e6);
-auto *magnetometer = new Sensor_LIS3MDL(3, 37, SPI, 5e6);
-auto *barometer = new Sensor_MS5607(4, 0x76, &Wire2);
+Sensor_LSM6DSO32 accelerometer = Sensor_LSM6DSO32(2, 40, SPI, 5e6);
+Sensor_LIS3MDL magnetometer = Sensor_LIS3MDL(3, 37, SPI, 5e6);
+Sensor_MS5607 barometer = Sensor_MS5607(4, 0x76, &Wire2);
 
 void setup() {
-    mras->set_logger(logger);
+    mras->set_logger(&logger);
 
-    mras->add_subsystem(magnetometer);
-    mras->add_subsystem(accelerometer);
-    mras->add_subsystem(barometer);
+    mras->add_subsystem(&magnetometer);
+    mras->add_subsystem(&accelerometer);
+    mras->add_subsystem(&barometer);
 
-    accelerometer->add_subscriber(data_logger);
-    magnetometer->add_subscriber(data_logger);
-    barometer->add_subscriber(data_logger);
+    accelerometer.add_subscriber(&data_logger);
+    magnetometer.add_subscriber(&data_logger);
+    barometer.add_subscriber(&data_logger);
 
     mras->setup();
 }

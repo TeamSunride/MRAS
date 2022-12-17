@@ -7,6 +7,7 @@
 
 
 #include "Subsystem.h"
+#include <cstdarg>
 
 class TextLogger : public Subsystem {
 public:

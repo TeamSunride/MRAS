@@ -235,10 +235,10 @@ void Sensor_MS5607::set_oversampling_ratio(uint16_t newOversamplingRatio) {
             log("Oversampling ratio set to 4096. Conversion delay set to 10ms");
             break;
         default:
-            CONV_D1 = 0x40;
-            CONV_D2 = 0x50;
-            CONV_Delay = 1;
-            log("Invalid OSR value entered - defaulting to 256. Conversion delay set to 1ms");
+            CONV_D1 = 0x48;
+            CONV_D2 = 0x58;
+            CONV_Delay = 10;
+            log("Invalid OSR value entered - defaulting to 4096. Conversion delay set to 10ms");
             break;
     }
 }

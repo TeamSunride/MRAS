@@ -145,14 +145,14 @@ bool Sensor_MS5607::read_PROM() {
 }
 
 bool Sensor_MS5607::read_PROM_coefficient(uint8_t command, uint16_t &store) {
-    log("Sending PROM read command %x", command);
+    log("Sending PROM read command %X", command);
     // tell the device we wish to read from PROM
     i2c_bus->beginTransmission(i2c_address);
     i2c_bus->write(command);
     uint8_t error = i2c_bus->endTransmission();
 
     if (error != 0) {
-        log("Error sending PROM read command %x", command);
+        log("Error sending PROM read command %X", command);
         return false;
     }
 
@@ -170,7 +170,7 @@ bool Sensor_MS5607::read_PROM_coefficient(uint8_t command, uint16_t &store) {
     uint8_t MSB = i2c_bus->read(); // most significant byte
     uint8_t LSB = i2c_bus->read(); // least significant byte
 
-    log("PROM read %x successful. MSB: %x, LSB: %x", command, MSB, LSB);
+    log("PROM read %X successful. MSB: %X, LSB: %X", command, MSB, LSB);
 
     // convert to unsigned 16-bit integer and output to store (coefficients C1, C2, C3, etc)
     store = ((uint16_t) MSB) << 8 | (uint16_t) LSB;

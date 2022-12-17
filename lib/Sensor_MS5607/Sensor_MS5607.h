@@ -35,8 +35,7 @@ private:
     uint32_t D1_pressure{};
     uint32_t D2_temperature{};
 
-    float dT{}, TEMP{};
-    int32_t P{};
+    float dT{}, TEMP{}, P{};
     int64_t OFF{}, SENS{};
 
     uint32_t lastStateChange = 0;

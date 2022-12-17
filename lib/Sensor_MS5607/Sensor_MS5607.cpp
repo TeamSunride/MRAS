@@ -86,7 +86,7 @@ int8_t Sensor_MS5607::loop() {
             TEMP = 2000.0 + dT * ((float) C6) / (float) ((long) 1 << 23);
 
             // convert to correct units and shove into readable stores
-            auto pressure = (float) P;
+            auto pressure = P;
             auto temperature = (float) TEMP / 100;
 
             // start reading pressure again

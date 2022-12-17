@@ -6,7 +6,7 @@
 #define MRAS_MRAS_SYSTEM_H
 
 #include "Subsystem.h"
-#include "../TextLogger/TextLogger.h"
+#include "TextLogger.h"
 
 
 class MRAS_System {

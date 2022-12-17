@@ -6,9 +6,9 @@
 #define MRAS_ARDUINOTEXTLOGGER_H
 
 #include "Arduino.h"
-#include "../TextLogger/TextLogger.h"
-#include "../../../../../../.platformio/packages/toolchain-gccarmnoneeabi@1.50401.190816/arm-none-eabi/include/c++/5.4.1/cstdio"
-#include "../../../../../../.platformio/packages/toolchain-gccarmnoneeabi@1.50401.190816/arm-none-eabi/include/c++/5.4.1/cstdarg"
+#include "TextLogger.h"
+#include <cstdio>
+#include <cstdarg>
 
 class ArduinoTextLogger : public TextLogger {
 private:

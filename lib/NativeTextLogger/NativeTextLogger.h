@@ -17,12 +17,10 @@ public:
     void _log(const char *fmt, va_list args) override;
 
     int8_t setup() override {
-        log("Setting up %d", 123);
         return 0;
     }
 
     int8_t loop() override {
-        log("Looping");
         return 0;
     }
 

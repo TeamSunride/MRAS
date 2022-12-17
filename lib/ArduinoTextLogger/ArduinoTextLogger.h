@@ -27,7 +27,6 @@ public:
     }
 
     int8_t loop() override {
-
         return 0;
     }
 

@@ -80,7 +80,7 @@ protected:
      * Can be overridden by Subsystems to handle messages
      * @param msg The SystemMessage sent by the Publishing Subsystem
      */
-    void on_message(SystemMessage* msg) {};
+    virtual void on_message(SystemMessage* msg) = 0;
 
     /**
      * Publish a SystemMessage to any subscribed Subsystems.

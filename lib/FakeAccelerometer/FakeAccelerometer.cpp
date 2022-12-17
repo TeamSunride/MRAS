@@ -14,7 +14,6 @@ int8_t FakeAccelerometer::loop() {
     log("Generating fake data");
     auto *msg = new AccelerometerDataMsg();
     msg->acceleration = {0, 1, 0};
-    msg->timestamp = 1234567;
 
     publish(msg);
     return 0;

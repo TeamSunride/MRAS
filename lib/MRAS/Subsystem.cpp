@@ -53,4 +53,6 @@ void Subsystem::publish(SystemMessage *msg) {
         Subsystem* subscriber = subscribers[i];
         subscriber->on_message(msg);
     }
+
+    delete msg;
 }

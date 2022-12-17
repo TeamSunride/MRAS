@@ -14,14 +14,15 @@ class NativeTextLogger : public TextLogger {
 public:
     explicit NativeTextLogger(uint8_t id) : TextLogger(id) {};
 
-    void _log(const char *fmt, ...) override;
+    void _log(const char *fmt, va_list args) override;
 
     int8_t setup() override {
-        log("Setting up");
+        log("Setting up %d", 123);
         return 0;
     }
 
     int8_t loop() override {
+        log("Looping");
         return 0;
     }
 
@@ -30,13 +31,9 @@ public:
     }
 };
 
-void NativeTextLogger::_log(const char *fmt, ...) {
+void NativeTextLogger::_log(const char *fmt, va_list args) {
     // https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro
-    va_list args;
-    va_start(args, fmt);
     vprintf(fmt, args);
-    printf("\n");
-    va_end(args);
 }
 
 

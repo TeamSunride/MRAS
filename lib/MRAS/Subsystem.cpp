@@ -2,6 +2,8 @@
 // Created by Tom Danvers on 13/12/2022.
 //
 
+#include <cstdarg>
+#include <cstdio>
 #include "Subsystem.h"
 #include "MRAS_System.h"
 
@@ -27,12 +29,24 @@ bool Subsystem::add_subscriber(Subsystem *subscriber) {
     }
 }
 
-void Subsystem::log(const char *text) {
+
+void Subsystem::log(const char fmt[], ...) {
+    // https://stackoverflow.com/questions/36881533/passing-va-list-to-other-functions
     TextLogger* logger = MRAS_System::get_instance()->get_logger();
     if (logger != nullptr) {
-        logger->_log("[%s] %s", get_name(), text);
+        char output[255] = {0};
+        sprintf(output, "[%s] %s\n", get_name(), fmt);
+        va_list args;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wvarargs"
+        va_start(args, output);
+#pragma clang diagnostic pop
+        logger->_log(output, args);
+        va_end(args);
+
     }
 }
+
 
 void Subsystem::publish(SystemMessage *msg) {
     for (int i = 0; i < subscriber_count; i++) {

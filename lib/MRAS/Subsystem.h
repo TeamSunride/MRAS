@@ -74,7 +74,7 @@ protected:
     int8_t status = 0;
     int8_t self_test_result = -1;
 
-    void log(const char* text);
+    void log(const char fmt[], ...);
 
     /**
      * Can be overridden by Subsystems to handle messages

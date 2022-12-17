@@ -13,7 +13,9 @@ MRAS_System* mras = MRAS_System::get_instance();
 int main() {
     mras->set_logger(logger);
 
-    mras->get_logger()->_log("Hello world %s", "test");
+    mras->setup();
+
+    mras->loop();
 
     return 0;
 }

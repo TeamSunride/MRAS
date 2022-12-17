@@ -11,7 +11,7 @@
 class TextLogger : public Subsystem {
 public:
     using Subsystem::Subsystem;
-    virtual void _log(const char *fmt, ...) = 0;
+    virtual void _log(const char *fmt, va_list args) = 0;
 };
 
 #endif //MRAS_TEXTLOGGER_H

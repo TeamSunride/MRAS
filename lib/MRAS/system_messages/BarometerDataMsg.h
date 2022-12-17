@@ -12,7 +12,6 @@ struct BarometerDataMsg : public SystemMessage {
 
     float pressure = 0;
     float temperature = 0;
-    uint64_t timestamp = 0;
 };
 
 #endif //MRAS_BAROMETERDATAMSG_H

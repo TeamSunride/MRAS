@@ -10,6 +10,7 @@
 enum SystemMessageType {
     UNDEFINED,
     AccelerometerDataMsg_t,
+    HighGAccelerometerDataMsg_t,
     BarometerDataMsg_t,
     GyroDataMsg_t,
     MagnetometerDataMsg_t

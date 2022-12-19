@@ -19,7 +19,17 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
     switch (msg->get_type()) {
         case AccelerometerDataMsg_t: {
             auto accel_msg = (AccelerometerDataMsg *) msg;
-            log("AccelerometerDataMsg: %f %f %f", accel_msg->acceleration[0], accel_msg->acceleration[1],
+            log("AccelerometerDataMsg: %f %f %f",
+                accel_msg->acceleration[0],
+                accel_msg->acceleration[1],
+                accel_msg->acceleration[2]);
+            break;
+        }
+        case HighGAccelerometerDataMsg_t: {
+            auto accel_msg = (AccelerometerDataMsg *) msg;
+            log("HighGAccelerometerDataMsg_t: %f %f %f",
+                accel_msg->acceleration[0],
+                accel_msg->acceleration[1],
                 accel_msg->acceleration[2]);
             break;
         }

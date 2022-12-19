@@ -25,7 +25,7 @@ int8_t Sensor_LSM6DSO32::setup() {
 
 int8_t Sensor_LSM6DSO32::loop() {
 
-    auto *accel_msg = new AccelerometerDataMsg();
+    auto *accel_msg = new AccelerometerDataMsg(AccelerometerDataMsg_t);
     auto *gyro_msg = new GyroDataMsg();
 
     accel_msg->acceleration = (Vector<float, 3>) lsm->get_accel();

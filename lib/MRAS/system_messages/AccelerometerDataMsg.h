@@ -11,7 +11,7 @@
 
 
 struct AccelerometerDataMsg : public SystemMessage {
-    AccelerometerDataMsg() : SystemMessage(AccelerometerDataMsg_t) {}
+    explicit AccelerometerDataMsg(SystemMessageType accel_msg_type) : SystemMessage(accel_msg_type) {}
 
     Vector<float, 3> acceleration = {0, 0, 0};
 };

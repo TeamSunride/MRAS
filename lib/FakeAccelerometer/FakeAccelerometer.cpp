@@ -12,7 +12,7 @@ int8_t FakeAccelerometer::setup() {
 
 int8_t FakeAccelerometer::loop() {
     log("Generating fake data");
-    auto *msg = new AccelerometerDataMsg();
+    auto *msg = new AccelerometerDataMsg(AccelerometerDataMsg_t);
     msg->acceleration = {0, 1, 0};
 
     publish(msg);

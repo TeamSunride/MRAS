@@ -6,6 +6,7 @@
 #include "system_messages/AccelerometerDataMsg.h"
 #include "system_messages/MagnetometerDataMsg.h"
 #include "system_messages/BarometerDataMsg.h"
+#include "system_messages/GNSSDataMsg.h"
 
 int8_t NativeDataLogger::setup() {
     return 0;
@@ -44,6 +45,16 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
         case BarometerDataMsg_t: {
             auto baro_msg = (BarometerDataMsg*) msg;
             log("BarometerDataMsg: Pressure: %f Temperature: %f", baro_msg->pressure, baro_msg->temperature);
+            break;
+        }
+        case GNSSDataMsg_t: {
+            auto gnss_msg = (GNSSDataMsg*) msg;
+            log("GNSSDataMsg: Lat: %f Lon: %f Alt: %f Fix: %d SIV: %d",
+                gnss_msg->latitude,
+                gnss_msg->longitude,
+                gnss_msg->altitude,
+                gnss_msg->fixType,
+                gnss_msg->SIV);
             break;
         }
         default:

@@ -13,7 +13,8 @@ enum SystemMessageType {
     HighGAccelerometerDataMsg_t,
     BarometerDataMsg_t,
     GyroDataMsg_t,
-    MagnetometerDataMsg_t
+    MagnetometerDataMsg_t,
+    GNSSDataMsg_t
 };
 
 class SystemMessage {

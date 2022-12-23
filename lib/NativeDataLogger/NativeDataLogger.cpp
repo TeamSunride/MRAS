@@ -49,7 +49,7 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
         }
         case GNSSDataMsg_t: {
             auto gnss_msg = (GNSSDataMsg*) msg;
-            log("GNSSDataMsg: Lat: %f Lon: %f Alt: %f Fix: %d SIV: %d",
+            log("GNSSDataMsg: Lat: %f  Lon: %f  Alt: %f  Fix: %d  SIV: %d",
                 gnss_msg->latitude,
                 gnss_msg->longitude,
                 gnss_msg->altitude,

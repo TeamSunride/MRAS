@@ -46,5 +46,5 @@ void setup() {
 
 void loop() {
     mras->loop();
-    delay(100);
+    delay(0);
 }

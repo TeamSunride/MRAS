@@ -11,6 +11,8 @@ int8_t Sensor_ADXL375::setup() {
     log("Loading default configuration");
     uint8_t error = adxl->default_configuration();
 
+    adxl->set_data_rate(ADXL375_ODR_800_HZ);
+
     if (error == 0) {
         log("Default configuration loaded");
     } else {

@@ -3,13 +3,13 @@ import serial_asyncio
 import struct
 from serial.serialutil import SerialException
 import logging
-import HIL_messages_pb2
+import MRAS_pb2
 
 # configure the logging module to output the "INFO" log level
 logging.basicConfig(level=logging.INFO)
 
 
-class SerialLineInput():
+class SerialLineInput:
     """
     Object that connects to a serial port, and calls a list of outputs when a line is read
     """
@@ -51,19 +51,18 @@ class SerialLineInput():
         while self.connected:
             try:
                 # read a line of data from the serial port
-                line = await self.reader.readuntil('\r'.encode("utf-8"))
+                size_data = await self.reader.readexactly(2)
+                size = struct.unpack("<H", size_data)[0]
+                data = await self.reader.read(size)
+                text_msg = MRAS_pb2.ProtobufTextLogMsg()
+                text_msg.ParseFromString(data)
+                print(text_msg.text)
             except (ConnectionResetError, SerialException):
                 self.logger.info(f"Connection lost on port {self.port}")
                 self.connected = False
 
                 # try to reconnect if connection was lost
                 asyncio.create_task(self.connect())
-            else:
-                size = struct.unpack("<H", bytearray([line[0], line[1]]))
-                data = line[2:-1]
-                text_msg = HIL_messages_pb2.ProtobufTextLogMsg()
-                text_msg.ParseFromString(data)
-                print(text_msg.text)
 
 
 loop = asyncio.get_event_loop_policy().get_event_loop()

@@ -7,7 +7,7 @@
 
 #include "Arduino.h"
 #include "TextLogger.h"
-#include "HIL_messages.pb.h"
+#include "MRAS.pb.h"
 #include <pb_encode.h>
 #include <pb_decode.h>
 #include <cstdio>
@@ -51,7 +51,6 @@ void ArduinoTextLogger::_log(const char *fmt, va_list args) {
     uint16_t bytes_written = stream.bytes_written;
     Serial.write(reinterpret_cast<uint8_t*>(&bytes_written), sizeof(bytes_written));
     Serial.write(protobuf_outbuffer, stream.bytes_written);
-    Serial.write('\r');
 #else
     Serial.print(string);
 #endif

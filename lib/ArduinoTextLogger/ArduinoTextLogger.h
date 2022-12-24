@@ -8,8 +8,8 @@
 #include "Arduino.h"
 #include "TextLogger.h"
 #include "MRAS.pb.h"
+#include "protobuf_util.h"
 #include <pb_encode.h>
-#include <pb_decode.h>
 #include <cstdio>
 #include <cstdarg>
 
@@ -44,13 +44,13 @@ void ArduinoTextLogger::_log(const char *fmt, va_list args) {
     vsprintf(string, fmt, args);
 #ifdef PROTOBUF_TEXTLOG
     uint8_t protobuf_outbuffer[300];
-    ProtobufTextLogMsg msg = ProtobufTextLogMsg_init_zero;
-    strcpy(msg.text, string);
-    pb_ostream_t stream = pb_ostream_from_buffer(protobuf_outbuffer, sizeof(protobuf_outbuffer));
-    pb_encode(&stream, ProtobufTextLogMsg_fields, &msg);
-    uint16_t bytes_written = stream.bytes_written;
-    Serial.write(reinterpret_cast<uint8_t*>(&bytes_written), sizeof(bytes_written));
-    Serial.write(protobuf_outbuffer, stream.bytes_written);
+    MRASProtobufMsg msg = MRASProtobufMsg_init_zero;
+    msg.which_message = MRASProtobufMsg_text_log_tag;
+    strcpy(msg.message.text_log.text, string);
+    send_protobuf_serial(protobuf_outbuffer,
+                         sizeof(protobuf_outbuffer),
+                         &msg,
+                         MRASProtobufMsg_fields);
 #else
     Serial.print(string);
 #endif

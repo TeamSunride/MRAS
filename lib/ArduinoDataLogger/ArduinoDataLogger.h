@@ -2,13 +2,14 @@
 // Created by Tom Danvers on 17/12/2022.
 //
 
-#ifndef MRAS_NATIVEDATALOGGER_H
-#define MRAS_NATIVEDATALOGGER_H
+#ifndef MRAS_ARDUINODATALOGGER_H
+#define MRAS_ARDUINODATALOGGER_H
 
 
 #include "Subsystem.h"
+#include "Arduino.h"
 
-class NativeDataLogger: public Subsystem {
+class ArduinoDataLogger: public Subsystem {
 public:
     using Subsystem::Subsystem;
     int8_t setup() override;
@@ -16,8 +17,8 @@ public:
 
     void on_message(SystemMessage *msg) override;
 
-    SUBSYSTEM_NAME("NativeDataLogger")
+    SUBSYSTEM_NAME("ArduinoDataLogger")
 };
 
 
-#endif //MRAS_NATIVEDATALOGGER_H
+#endif //MRAS_ARDUINODATALOGGER_H

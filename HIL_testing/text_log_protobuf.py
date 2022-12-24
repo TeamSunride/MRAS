@@ -4,6 +4,8 @@ import struct
 from serial.serialutil import SerialException
 import logging
 import MRAS_pb2
+from google.protobuf import text_format
+from google.protobuf.message import DecodeError
 
 # configure the logging module to output the "INFO" log level
 logging.basicConfig(level=logging.INFO)
@@ -54,15 +56,27 @@ class SerialLineInput:
                 size_data = await self.reader.readexactly(2)
                 size = struct.unpack("<H", size_data)[0]
                 data = await self.reader.read(size)
-                text_msg = MRAS_pb2.ProtobufTextLogMsg()
-                text_msg.ParseFromString(data)
-                print(text_msg.text)
+                msg = MRAS_pb2.MRASProtobufMsg()
+                msg.ParseFromString(data)
+                which_message = msg.WhichOneof("message")
+                if which_message is None:
+                    continue
+                msg = getattr(msg, which_message)
+                if which_message == "text_log":
+                    print(msg.text)
+                    pass
+                else:
+                    msg_string = text_format.MessageToString(msg, as_one_line=True, print_unknown_fields=True)
+                    print(f"{which_message}<{msg_string}>")
+
             except (ConnectionResetError, SerialException):
                 self.logger.info(f"Connection lost on port {self.port}")
                 self.connected = False
 
                 # try to reconnect if connection was lost
                 asyncio.create_task(self.connect())
+            except DecodeError:
+                pass
 
 
 loop = asyncio.get_event_loop_policy().get_event_loop()

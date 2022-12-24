@@ -6,7 +6,7 @@
 
 #include "MRAS_System.h"
 #include "ArduinoTextLogger.h"
-#include "NativeDataLogger.h"
+#include "ArduinoDataLogger.h"
 #include "Sensor_LSM6DSO32.h"
 #include "Arduino.h"
 #include "Sensor_LIS3MDL.h"
@@ -17,7 +17,7 @@
 auto logger = ArduinoTextLogger(0, 115200);
 MRAS_System* mras = MRAS_System::get_instance();
 
-NativeDataLogger data_logger = NativeDataLogger(1);
+ArduinoDataLogger data_logger = ArduinoDataLogger(1);
 
 Sensor_LSM6DSO32 imu = Sensor_LSM6DSO32(2, 40, SPI, 5e6);
 Sensor_LIS3MDL magnetometer = Sensor_LIS3MDL(3, 37, SPI, 5e6);
@@ -46,5 +46,5 @@ void setup() {
 
 void loop() {
     mras->loop();
-    delay(10);
+    delay(100);
 }

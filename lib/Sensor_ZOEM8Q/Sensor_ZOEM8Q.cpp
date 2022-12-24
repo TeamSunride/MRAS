@@ -5,6 +5,7 @@
 #include "Sensor_ZOEM8Q.h"
 
 int8_t Sensor_ZOEM8Q::setup() {
+    log("Startup...");
     _pipe->begin();
     _pipe->setClock(_freq);
 
@@ -12,8 +13,13 @@ int8_t Sensor_ZOEM8Q::setup() {
         log("GNSS not detected at default I2C address. Please check wiring.");
         return (int8_t) 1; // failure;
     }
+
+    log("Configuring navigation frequency");
     gnss->setNavigationFrequency(5);
+
+    log("Entering autoPVT mode");
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
+    log("Setup complete");
     return 0; // success
 }
 

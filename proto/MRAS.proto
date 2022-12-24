@@ -4,8 +4,44 @@ message ProtobufTextLogMsg {
   string text = 1;
 }
 
+enum AccelerometerType {
+  UNKNOWN = 0;
+  LOW_G = 2;
+  HIGH_G = 1;
+}
+
 message ProtobufAccelerometerDataMsg {
   float x = 1;
   float y = 2;
   float z = 3;
+  AccelerometerType type = 4;
+}
+
+message ProtobufMagnetometerDataMsg {
+  float x = 1;
+  float y = 2;
+  float z = 3;
+}
+
+message ProtobufBarometerDataMsg {
+  float pressure = 1;
+  float temperature = 2;
+}
+
+message ProtobufGNSSDataMsg {
+  float latitude = 1;
+  float longitude = 2;
+  float altitude = 3;
+  float fixType = 4;
+  float SIV = 5;
+}
+
+message MRASProtobufMsg {
+  oneof message {
+    ProtobufAccelerometerDataMsg accelerometer_data = 1;
+    ProtobufTextLogMsg text_log = 2;
+    ProtobufMagnetometerDataMsg magnetometer_data= 3;
+    ProtobufBarometerDataMsg  barometer_data= 4;
+    ProtobufGNSSDataMsg gnss_data = 5;
+  }
 }

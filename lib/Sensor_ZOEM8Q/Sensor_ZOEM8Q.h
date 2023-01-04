@@ -10,6 +10,8 @@
 #include "SparkFun_u-blox_GNSS_Arduino_Library.h"
 #include <Arduino.h>
 #include <Wire.h>
+#include "SD.h"
+#include <TimeLib.h>
 
 #include "system_messages/GNSSDataMsg.h"
 
@@ -27,6 +29,7 @@ public:
         _freq = freq;
     }
 
+
     // Destructor
     ~Sensor_ZOEM8Q() {
         delete gnss;
@@ -35,6 +38,8 @@ public:
     int8_t setup() override;
 
     int8_t loop() override;
+
+    void performOnlineAssist();
 
     SUBSYSTEM_NO_MESSAGE_HANDLER
     SUBSYSTEM_NAME("ZOEM8Q");

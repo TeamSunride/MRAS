@@ -35,10 +35,10 @@ void setup() {
     mras->add_subsystem(&accelerometer);
     mras->add_subsystem(&gnss);
 
-    imu.add_subscriber(&data_logger);
-    magnetometer.add_subscriber(&data_logger);
-    barometer.add_subscriber(&data_logger);
-    accelerometer.add_subscriber(&data_logger);
+//    imu.add_subscriber(&data_logger);
+//    magnetometer.add_subscriber(&data_logger);
+//    barometer.add_subscriber(&data_logger);
+//    accelerometer.add_subscriber(&data_logger);
     gnss.add_subscriber(&data_logger);
 
     mras->setup();

@@ -90,8 +90,8 @@ private:
     bool read_ADC(uint32_t &output);
 
 public:
-    Sensor_MS5607(uint8_t id, byte i2c_address, TwoWire *i2c_bus) : Subsystem(id), i2c_address(i2c_address),
-                                                                    i2c_bus(i2c_bus) {};
+    Sensor_MS5607(uint8_t id, byte i2c_address, TwoWire &i2c_bus) : Subsystem(id), i2c_address(i2c_address),
+                                                                    i2c_bus(&i2c_bus) {};
 
     int8_t setup() override;
 

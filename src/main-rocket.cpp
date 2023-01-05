@@ -5,6 +5,7 @@
 #include <cstdio>
 
 #include "MRAS_System.h"
+#include "MRAS_Config.h"
 #include "ArduinoTextLogger.h"
 #include "NativeDataLogger.h"
 #include "Sensor_LSM6DSO32.h"
@@ -15,15 +16,18 @@
 #include "Sensor_ZOEM8Q.h"
 
 auto logger = ArduinoTextLogger(0, 115200);
-MRAS_System* mras = MRAS_System::get_instance();
+MRAS_System *mras = MRAS_System::get_instance();
 
 NativeDataLogger data_logger = NativeDataLogger(1);
 
-Sensor_LSM6DSO32 imu = Sensor_LSM6DSO32(2, 40, SPI, 5e6);
-Sensor_LIS3MDL magnetometer = Sensor_LIS3MDL(3, 37, SPI, 5e6);
-Sensor_MS5607 barometer = Sensor_MS5607(4, 0x76, &Wire2);
-Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, 3, SPI, 5e6);
-Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, Wire2, 400000);
+Sensor_LSM6DSO32 imu = Sensor_LSM6DSO32(2, MRAS_LSM6DSO32_CHIP_SELECT, MRAS_LSM6DSO32_SPI_BUS,
+                                        MRAS_LSM6DSO32_SPI_FREQUENCY);
+Sensor_LIS3MDL magnetometer = Sensor_LIS3MDL(3, MRAS_LIS3MDL_CHIP_SELECT, MRAS_LIS3MDL_SPI_BUS,
+                                             MRAS_LIS3MDL_SPI_FREQUENCY);
+Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_I2C_BUS);
+Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_ADXL375_SPI_BUS,
+                                              MRAS_ADXL375_SPI_FREQUENCY);
+Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
 
 void setup() {
     mras->set_logger(&logger);

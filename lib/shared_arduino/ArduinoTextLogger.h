@@ -9,6 +9,7 @@
 #include "TextLogger.h"
 #include <cstdio>
 #include <cstdarg>
+#include "MRAS_Config.h"
 
 class ArduinoTextLogger : public TextLogger {
 private:
@@ -23,6 +24,7 @@ public:
     int8_t setup() override {
         Serial.begin(_baud);
         log("Successfully set up Serial connection");
+        Serial.println(MRAS_STARTUP_STRING);
         return 0;
     }
 

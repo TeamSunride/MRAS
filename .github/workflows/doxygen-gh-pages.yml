@@ -5,8 +5,6 @@ branding:
   icon: "upload-cloud"
   color: "purple"
 
-name: Doxygen GitHub Pages Deploy Action
-
 on:
   push:
     branches:

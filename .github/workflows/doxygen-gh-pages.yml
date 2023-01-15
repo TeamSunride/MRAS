@@ -13,10 +13,14 @@ jobs:
         with:
           submodules: "true"
 
+      - name: Download Doxygen
+          uses: wei/wget@v1
+          with:
+            args: https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
+
       - name: Install Doxygen
         uses: wei/wget@v1
         run: |
-          wget https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
           gunzip doxygen-1.9.6.linux.bin.tar.gz
           cd doxygen-1.9.6.linux.bin/doxygen-1.9.6
           make install

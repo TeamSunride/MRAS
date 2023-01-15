@@ -24,7 +24,7 @@ jobs:
           ls
           cd doxygen-1.9.6
           ls
-          make install
+          sudo make install
         shell: bash
 
       - name: Generate Doxygen Documentation

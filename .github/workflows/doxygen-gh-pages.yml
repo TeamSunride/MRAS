@@ -22,7 +22,7 @@ jobs:
         run: |
           tar -xf doxygen-1.9.6.linux.bin.tar.gz
           ls
-          cd doxygen-1.9.6.linux.bin
+          cd doxygen-1.9.6
           ls
           make install
         shell: bash

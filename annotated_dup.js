@@ -1,0 +1,28 @@
+var annotated_dup =
+[
+    [ "_BasicSensorData", "struct__BasicSensorData.html", "struct__BasicSensorData" ],
+    [ "_CommandMessage", "struct__CommandMessage.html", "struct__CommandMessage" ],
+    [ "_Heartbeat", "struct__Heartbeat.html", "struct__Heartbeat" ],
+    [ "_SimpleMessage", "struct__SimpleMessage.html", "struct__SimpleMessage" ],
+    [ "_TelemetryMessage", "struct__TelemetryMessage.html", "struct__TelemetryMessage" ],
+    [ "AccelerometerDataMsg", "structAccelerometerDataMsg.html", "structAccelerometerDataMsg" ],
+    [ "ADXL375", "classADXL375.html", "classADXL375" ],
+    [ "ArduinoTextLogger", "classArduinoTextLogger.html", "classArduinoTextLogger" ],
+    [ "BarometerDataMsg", "structBarometerDataMsg.html", "structBarometerDataMsg" ],
+    [ "FakeAccelerometer", "classFakeAccelerometer.html", "classFakeAccelerometer" ],
+    [ "GNSSDataMsg", "structGNSSDataMsg.html", "structGNSSDataMsg" ],
+    [ "GyroDataMsg", "structGyroDataMsg.html", "structGyroDataMsg" ],
+    [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", "structMagnetometerDataMsg" ],
+    [ "MRAS_System", "classMRAS__System.html", "classMRAS__System" ],
+    [ "NativeDataLogger", "classNativeDataLogger.html", "classNativeDataLogger" ],
+    [ "NativeTextLogger", "classNativeTextLogger.html", "classNativeTextLogger" ],
+    [ "Sensor_ADXL375", "classSensor__ADXL375.html", "classSensor__ADXL375" ],
+    [ "Sensor_LIS3MDL", "classSensor__LIS3MDL.html", "classSensor__LIS3MDL" ],
+    [ "Sensor_LSM6DSO32", "classSensor__LSM6DSO32.html", "classSensor__LSM6DSO32" ],
+    [ "Sensor_MS5607", "classSensor__MS5607.html", "classSensor__MS5607" ],
+    [ "Sensor_ZOEM8Q", "classSensor__ZOEM8Q.html", "classSensor__ZOEM8Q" ],
+    [ "Subsystem", "classSubsystem.html", "classSubsystem" ],
+    [ "SystemMessage", "classSystemMessage.html", "classSystemMessage" ],
+    [ "TelemetrySystem", "classTelemetrySystem.html", "classTelemetrySystem" ],
+    [ "TextLogger", "classTextLogger.html", "classTextLogger" ]
+];

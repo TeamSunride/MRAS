@@ -16,3 +16,7 @@ jobs:
           branch: gh-pages
           folder: docs/html
           config_file: Doxyfile
+      - uses: actions/upload-artifact@v3
+        with:
+          name: html
+          path: /docs/html # or path/to/artifact

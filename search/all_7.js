@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['nativedatalogger_25',['NativeDataLogger',['../classNativeDataLogger.html',1,'']]],
-  ['nativetextlogger_26',['NativeTextLogger',['../classNativeTextLogger.html',1,'']]]
+  ['nativedatalogger_0',['NativeDataLogger',['../classNativeDataLogger.html',1,'']]],
+  ['nativetextlogger_1',['NativeTextLogger',['../classNativeTextLogger.html',1,'']]]
 ];

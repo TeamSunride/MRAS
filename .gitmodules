@@ -1,6 +1,3 @@
 [submodule "lib/Arduino-ADXL375"]
 	path = lib/Arduino-ADXL375
 	url = https://github.com/TeamSunride/Arduino-ADXL375
-[submodule "lib/SparkFun_u-blox_GNSS_Arduino_Library"]
-	path = lib/SparkFun_u-blox_GNSS_Arduino_Library
-	url = https://github.com/sparkfun/SparkFun_u-blox_GNSS_Arduino_Library.git

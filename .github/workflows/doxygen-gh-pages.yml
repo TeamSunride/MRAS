@@ -10,35 +10,36 @@ on:
     branches:
       - rewrite
 
-runs:
-  using: "composite"
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
-      with:
-        submodules: "true"
+jobs:
+  deploy:
+    using: "composite"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          submodules: "true"
 
-    - name: Install Doxygen
-      run: sudo apt-get install doxygen graphviz -y
-      shell: bash
+      - name: Install Doxygen
+        run: sudo apt-get install doxygen graphviz -y
+        shell: bash
 
-    - name: Generate Doxygen Documentation
-      run: doxygen Doxyfile
-      shell: bash
+      - name: Generate Doxygen Documentation
+        run: doxygen Doxyfile
+        shell: bash
 
-    - name: Upload artifact of finished HTML build
-      uses: actions/upload-artifact@v3
-      with:
-        name: html
-        path: docs/html # or path/to/artifact
+      - name: Upload artifact of finished HTML build
+        uses: actions/upload-artifact@v3
+        with:
+          name: html
+          path: docs/html # or path/to/artifact
 
-    - name: Create .nojekyll (ensures pages with underscores work on gh pages)
-      run: touch docs/html/.nojekyll
-      shell: bash
+      - name: Create .nojekyll (ensures pages with underscores work on gh pages)
+        run: touch docs/html/.nojekyll
+        shell: bash
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: gh-pages
-        folder: docs/html
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: docs/html

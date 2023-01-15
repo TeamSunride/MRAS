@@ -21,7 +21,9 @@ jobs:
       - name: Install Doxygen
         run: |
           gunzip doxygen-1.9.6.linux.bin.tar.gz
-          cd doxygen-1.9.6.linux.bin/doxygen-1.9.6
+          ls
+          cd doxygen-1.9.6.linux.bin
+          ls
           make install
         shell: bash
 

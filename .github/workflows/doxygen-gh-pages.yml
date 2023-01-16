@@ -21,9 +21,7 @@ jobs:
       - name: Install Doxygen
         run: |
           tar -xf doxygen-1.9.6.linux.bin.tar.gz
-          ls
           cd doxygen-1.9.6
-          ls
           sudo make install
         shell: bash
 

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['performonlineassist_0',['performOnlineAssist',['../classSensor__ZOEM8Q.html#ad34742f9d267fb86ba5a4cf8de70e3cb',1,'Sensor_ZOEM8Q']]],
-  ['publish_1',['publish',['../classSubsystem.html#abab34124fc7777591cac49e0189a4291',1,'Subsystem']]]
+  ['on_5fmessage_0',['on_message',['../classNativeDataLogger.html#a88837dee85e3ca2ba70e9bab002945bc',1,'NativeDataLogger::on_message()'],['../classSubsystem.html#af75325e817855184984edb1e6aa59f2a',1,'Subsystem::on_message()']]],
+  ['operator_3d_1',['operator=',['../classMRAS__System.html#a10bd1a8580266ae029c1e40ba28bd5d8',1,'MRAS_System']]]
 ];

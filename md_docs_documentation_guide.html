@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11"/>
     <meta name="generator" content="Doxygen 1.9.6"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta property="og:title" content="MRAS: Related Pages">
+    <meta property="og:title" content="MRAS: Technical Guide to Documentation">
     <meta property="og:image" content="https://mras.sunride.space/sunride_logo.png">
     <meta property="og:description" content="Multi Rocket Avionics System">
     <meta name="theme-color" content="#EE3437">
-    <title>MRAS: Related Pages</title>
+    <title>MRAS: Technical Guide to Documentation</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="sunride_rocket.ico" type="image/x-icon"/>
     <script type="text/javascript" src="jquery.js"></script>
@@ -73,7 +73,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('md_docs_documentation_guide.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -98,18 +98,61 @@ $(document).ready(function(){initNavTree('pages.html',''); initResizable(); });
 </div>
 </div>
 
-<div class="header">
-  <div class="headertitle"><div class="title">Related Pages</div></div>
+<div><div class="header">
+  <div class="headertitle"><div class="title">Technical Guide to Documentation </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Here is a list of all related documentation pages:</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_0_" class="arrow" onclick="toggleFolder('0_')">&#9658;</span><a class="el" href="md_lib_Arduino_ADXL375_README.html" target="_self">Arduino-ADXL375</a></td><td class="desc"></td></tr>
-<tr id="row_1_" class="odd"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_1_" class="arrow" onclick="toggleFolder('1_')">&#9658;</span><a class="el" href="md_docs_documentation_guide.html" target="_self">Technical Guide to Documentation</a></td><td class="desc"></td></tr>
-<tr id="row_2_" class="even"><td class="entry"><span style="width:0px;display:inline-block;">&#160;</span><span id="arr_2_" class="arrow" onclick="toggleFolder('2_')">&#9658;</span><a class="el" href="md_docs_subsystem_implementation_guide.html" target="_self">How to implement a new Subsystem</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><p>Documentation for this project is located in the <code>docs</code> folder and in the source code. The documentation is generated using <a href="http://www.doxygen.nl/">Doxygen</a> and <a href="http://www.graphviz.org/">Graphviz</a>. The documentation is generated using the <code>Doxyfile</code> in the project root. The <code>Doxyfile</code> is configured to generate documentation for the <code>lib</code> folder for markdown files located in the <code>docs</code> folder.</p>
+<h1><a class="anchor" id="autotoc_md11"></a>
+How to install Doxygen and Graphviz on Windows</h1>
+<ol type="1">
+<li>Download and install <a href="http://www.graphviz.org/Download_windows.php">Graphviz</a> (tested with v7.0.6)</li>
+<li>Download and install <a href="http://www.doxygen.nl/download.html">Doxygen</a> (v1.9.6 recommended)</li>
+<li>Add the <code>bin</code> folder of Graphviz to your <code>PATH</code> environment variable</li>
+<li>Add the <code>bin</code> folder of Doxygen to your <code>PATH</code> environment variable</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md12"></a>
+How to generate documentation</h1>
+<ol type="1">
+<li>Open a command prompt</li>
+<li>Navigate to the project root</li>
+<li>Run <code>doxygen</code></li>
+</ol>
+<h1><a class="anchor" id="autotoc_md13"></a>
+How to view documentation</h1>
+<p>Open <a href="index.html"><code>docs\html\index.html</code></a> in a browser</p>
+<h1><a class="anchor" id="autotoc_md14"></a>
+Hosted documentation:</h1>
+<p>Documentation is hosted online at the URL <a href="https://mras.sunride.space/">mras.sunride.space</a></p>
+<p>When the documentation is updated, the hosted documentation is updated automatically.</p>
+<p>Commits to the main branch trigger a GitHub Actions workflow. The workflow generates the documentation and pushes it to the <code>gh-pages</code> branch. GitHub charges organizations for hosting Pages sites from private repositories. To get around this, Vercel is used to deploy the files committed to the <code>gh-pages</code> branch.</p>
+<h1><a class="anchor" id="autotoc_md15"></a>
+Creating graphs and diagrams</h1>
+<p>Graphs and diagrams can be created using the <a href="https://www.graphviz.org/pdf/dotguide.pdf">dot</a> tool.</p>
+<p>Example:</p>
+<div class="fragment"><div class="line">@dot</div>
+<div class="line">digraph G {</div>
+<div class="line">size =&quot;4,4&quot;;</div>
+<div class="line">main [shape=box]; /* this is a comment */</div>
+<div class="line">main -&gt; parse [weight=8];</div>
+<div class="line">parse -&gt; execute;</div>
+<div class="line">main -&gt; init [style=dotted];</div>
+<div class="line">main -&gt; cleanup;</div>
+<div class="line">execute -&gt; { make_string; printf}</div>
+<div class="line">init -&gt; make_string;</div>
+<div class="line">edge [color=red]; // so is this</div>
+<div class="line">main -&gt; printf [style=bold,label=&quot;100 times&quot;];</div>
+<div class="line">make_string [label=&quot;make a\nstring&quot;];</div>
+<div class="line">node [shape=box,style=filled,color=&quot;.7 .3 1.0&quot;];</div>
+<div class="line">execute -&gt; compare;</div>
+<div class="line">}</div>
+<div class="line">@enddot</div>
+</div><!-- fragment --><p>Output:</p>
+<div class="dotgraph">
+<img src="dot_inline_dotgraph_1.png" alt="dot_inline_dotgraph_1.png" border="0" usemap="#dot_inline_dotgraph_1.map"/>
+</div>
+ </div></div><!-- contents -->
+</div><!-- PageDoc -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

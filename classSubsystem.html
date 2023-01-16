@@ -107,6 +107,8 @@ $(document).ready(function(){initNavTree('classSubsystem.html',''); initResizabl
   <div class="headertitle"><div class="title">Subsystem Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Subsystem_8h_source.html">Subsystem.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Subsystem:</div>
 <div class="dyncontent">
@@ -174,7 +176,10 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>status</b> = 0</td>
 int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b> = -1</td></tr>
 <tr class="separator:a93bc5cae446258f55bdb16e5174da159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="classSubsystem.html">Subsystem</a> is a class in the MRAS system that represents a specific sensor or system on the device. These classes inherit from the base <a class="el" href="classSubsystem.html">Subsystem</a> class and implement its abstract methods. The <a class="el" href="classSubsystem.html">Subsystem</a> class provides a common interface for all sensors and systems, allowing for easy communication and management by the <a class="el" href="classMRAS__System.html">MRAS_System</a> class.</p>
+<p>The <a class="el" href="classSubsystem.html">Subsystem</a> class has several members that are used to define the behavior and functionality of the sensor or system it represents. These include setup() and loop() methods, which are used to initialize and continuously update the sensor or system, respectively. Additionally, Subsystems have a <a class="el" href="classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622">get_status()</a> method to check the current status of the <a class="el" href="classSubsystem.html">Subsystem</a>, <a class="el" href="classSubsystem.html#a6c2f37ce5335a64781f5719d3569c0be">self_test()</a> method to check that the <a class="el" href="classSubsystem.html">Subsystem</a> is working correctly and <a class="el" href="classSubsystem.html#af75325e817855184984edb1e6aa59f2a">on_message()</a> method to handle messages sent to the <a class="el" href="classSubsystem.html">Subsystem</a>. The <a class="el" href="classSubsystem.html#a19fffb42e27b6720100ff6870e84f382">get_name()</a> method returns a string that provides a human-readable name for the <a class="el" href="classSubsystem.html">Subsystem</a>, used for logging and debugging purposes. Finally, the <a class="el" href="classSubsystem.html#a4a05504b0bf74642351608e7e4eae730">get_id()</a> method returns a unique ID assigned to the <a class="el" href="classSubsystem.html">Subsystem</a>, which is used to identify it within the MRAS system. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6eb8c08dad3e114628c49ecc54c457fb" name="a6eb8c08dad3e114628c49ecc54c457fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6eb8c08dad3e114628c49ecc54c457fb">&#9670;&#160;</a></span>Subsystem()</h2>
 

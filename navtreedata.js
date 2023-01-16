@@ -29,6 +29,17 @@ var NAVTREE =
     [ "Arduino-ADXL375", "md_lib_Arduino_ADXL375_README.html", [
       [ "Running unit tests", "md_lib_Arduino_ADXL375_README.html#autotoc_md1", null ]
     ] ],
+    [ "Technical Guide to Documentation", "md_docs_documentation_guide.html", [
+      [ "How to install Doxygen and Graphviz on Windows", "md_docs_documentation_guide.html#autotoc_md11", null ],
+      [ "How to generate documentation", "md_docs_documentation_guide.html#autotoc_md12", null ],
+      [ "How to view documentation", "md_docs_documentation_guide.html#autotoc_md13", null ],
+      [ "Hosted documentation:", "md_docs_documentation_guide.html#autotoc_md14", null ],
+      [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md15", null ]
+    ] ],
+    [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md18", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md19", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

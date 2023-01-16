@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "MRAS", "index.html", [
-    [ "MRAS (Multi Rocket Avionics System) Documentation", "index.html", null ],
+    [ "MRAS (Multi Rocket Avionics System) Documentation", "index.html", "index" ],
     [ "Arduino-ADXL375", "md_lib_Arduino_ADXL375_README.html", [
       [ "Running unit tests", "md_lib_Arduino_ADXL375_README.html#autotoc_md1", null ]
     ] ],
@@ -37,8 +37,8 @@ var NAVTREE =
       [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md15", null ]
     ] ],
     [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
-      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md18", null ],
-      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md19", null ]
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md22", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md23", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

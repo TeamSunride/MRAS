@@ -13,6 +13,26 @@
 #define MS5607_PROM_READ 0xA0
 #define R_ADC  0X00
 
+/**
+Sensor_MS5607 class is a C++ driver for the MS5607 barometric pressure sensor. It is a child class of the Subsystem base class and is responsible for communicating with the sensor over I2C, reading and interpreting the sensor's data, and providing that data to the system.
+
+##High-level Overview:
+The `setup()` method initializes the I2C bus and reads the sensor's calibration coefficients from its PROM (Programmable Read-Only Memory). It returns 0 on success and a non-zero value on failure.
+
+The `loop()` method reads pressure and temperature data from the sensor. It uses a finite state machine to control the timing of the pressure and temperature measurements. It returns different status codes depending on the state of the sensor and the outcome of the measurements.
+
+The class has several private variables, such as the i2c address of the sensor, the i2c bus object, and the sensor's calibration coefficients. It also has several private constants, such as the OSR (Oversampling Ratio), which determines the resolution of the sensor's measurements, and the CONV_D1, CONV_D2, and CONV_Delay constants, which determine the timing of the pressure and temperature measurements.
+
+##Step by step process for how data is read from the sensor:
+1. In the setup() method, the I2C bus is initialized and the read_PROM() method is called to read the sensor's calibration coefficients from its PROM.
+2. In the loop() method, a switch case statement is used to determine the current state of the sensor, and based on that, the appropriate action is taken.
+3. If the state is IDLE, a command is sent to the sensor to start converting pressure measurement.
+4. After sending the command, the state is set to READING_PRESSURE and the time at which the state was changed is recorded.
+5. The program then waits for the conversion delay.
+6. After the delay, the `read_ADC()` method is called to read the digital value of the pressure measurement from the sensor's ADC (Analog-to-Digital Converter).
+7. If the reading is successful, the state is changed to READING_TEMPERATURE and a similar process is followed to read the temperature measurement.
+8. The read values are then used to calculate the temperature and pressure using the sensor's calibration coefficients and a mathematical formula, taking into account the sensor's OSR value.
+ */
 class Sensor_MS5607 : public Subsystem {
 private:
     uint8_t i2c_address;

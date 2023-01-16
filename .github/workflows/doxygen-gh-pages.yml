@@ -18,11 +18,12 @@ jobs:
         with:
           args: https://www.doxygen.nl/files/doxygen-1.9.6.linux.bin.tar.gz
 
-      - name: Install Doxygen
+      - name: Install Doxygen & Graphviz
         run: |
           tar -xf doxygen-1.9.6.linux.bin.tar.gz
           cd doxygen-1.9.6
           sudo make install
+          sudo apt-get install graphviz
         shell: bash
 
       - name: Generate Doxygen Documentation

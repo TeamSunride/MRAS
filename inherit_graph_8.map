@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classSystemMessage.html" title=" " alt="" coords="5,104,135,129"/>
+<area shape="rect" id="node2" href="$structAccelerometerDataMsg.html" title=" " alt="" coords="183,5,358,31"/>
+<area shape="rect" id="node3" href="$structBarometerDataMsg.html" title=" " alt="" coords="196,55,345,80"/>
+<area shape="rect" id="node4" href="$structGNSSDataMsg.html" title=" " alt="" coords="213,104,329,129"/>
+<area shape="rect" id="node5" href="$structGyroDataMsg.html" title=" " alt="" coords="215,153,326,179"/>
+<area shape="rect" id="node6" href="$structMagnetometerDataMsg.html" title=" " alt="" coords="183,203,359,228"/>
+</map>

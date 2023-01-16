@@ -1,0 +1,8 @@
+digraph "ADXL375"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  Node1 [shape=record,label="{ADXL375\n|# device\l|+ ADXL375()\l+ ADXL375()\l+ begin()\l+ who_am_i()\l+ set_spi_mode()\l+ set_INTERRUPT()\l+ set_low_DATA_RATE()\l+ set_data_rate()\l+ set_measure_mode()\l+ ac_coupled_mode()\land 6 more...\l}",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+}

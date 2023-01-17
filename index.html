@@ -106,9 +106,10 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <img src="sunride_mras.png" alt=""/>
 </div>
     <p>MRAS (Multi Rocket Avionics System) is a flight computer that contains a high-performance microcontroller, high-G accelerometer, Inertial Measurement Unit (IMU), Magnetometer, GNSS receiver, Barometer, and a Telemetry system. It has been designed to provide a robust and reliable avionics package that can be used in high-powered rockets. The system uses a combination of sensors to determine the rocket's position, velocity and attitude, and logs this data for post-flight analysis. The software is designed to work with a variety of sensor hardware and can be easily integrated into existing rocket projects.</p>
-<h1><a class="anchor" id="autotoc_md17"></a>
+<hr  />
+<h1><a class="anchor" id="autotoc_md29"></a>
 Supported hardware</h1>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md30"></a>
 MRAS-DART v1</h2>
 <p>The MRAS-DART v1 is a complete rocket avionics package that is designed to fit within a 38mm ID body tube.</p>
 <ul>
@@ -119,12 +120,34 @@ MRAS-DART v1</h2>
 <li>u-blox ZOE-M8Q was selected as the GNSS receiver for its battery-backed RTC, 72-channel support and fast GPS acquisition performance (<a class="el" href="classSensor__ZOEM8Q.html">Sensor_ZOEM8Q</a>)</li>
 <li>A Barometer, TE Connectivity MS5607, was included in the design to determine altitude by measuring pressure and temperature, and for its high pressure range (<a class="el" href="classSensor__MS5607.html">Sensor_MS5607</a>)</li>
 <li>RF Solutions LAMBDA62 Module was chosen for telemetry as it allows for long-range, low-cost, spread-spectrum, high interference immunity communication via the LoRa protocol (<a class="el" href="classTelemetrySystem.html">TelemetrySystem</a>)</li>
+<li>Adafruit SPI SMT SD card added to provide redundant data logging capability that is resistant to high vibration.</li>
+<li>4x WS2812B "NeoPixels" for displaying status information</li>
+<li>Loud buzzer</li>
+<li>External device connectors (SPI &amp; I2C QWIIC / STEMMA QT)</li>
+<li>XT30 connector for 2s-4s LiPo battery</li>
+<li>4x parachute deployment channels with arming screw switch</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md19"></a>
-Pictures of completed hardware</h2>
+<h3><a class="anchor" id="autotoc_md31"></a>
+Pictures of completed hardware</h3>
 <p>Front side <img src="mras_hardware_front.jpg" alt="" class="inline"/>    </p>
 <p>Rear side <img src="mras_hardware_back.jpg" alt="" class="inline"/>    </p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<hr  />
+<h2><a class="anchor" id="autotoc_md33"></a>
+MRAS Ground Station v1</h2>
+<ul>
+<li>SMA and uFL connectors for different antennas</li>
+<li>RF Solutions LAMBDA62 Module for telemetry</li>
+<li>Adafruit adalogger Feather M0 for data logging</li>
+<li>2x WS2812B "NeoPixels" for displaying status information</li>
+<li>Buzzer</li>
+<li>XT30 connector for 2s-4s LiPo battery</li>
+<li>I2C QWIIC / STEMMA QT connectors for expansion</li>
+<li>Expansion port for upper "display board" (yet to be developed)</li>
+</ul>
+<h3><a class="anchor" id="autotoc_md34"></a>
+Pictures of completed hardware</h3>
+<p><img src="mras_ground_station_v1.jpg" alt="test" height="700" class="inline"/></p>
+<h2><a class="anchor" id="autotoc_md35"></a>
 MRAS-Karman v1</h2>
 <p><em>currently in development</em> </p>
 </div></div><!-- PageDoc -->

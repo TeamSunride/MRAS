@@ -8,7 +8,7 @@ We recommend that you use PlatformIO for VS Code or CLion. CLion is _strongly pr
 completion and analysis features that are not available in VS Code. However, the setup process of CLion is a bit 
 cumbersome, and there is a steeper learning curve.
 
-There are two objectives that you much achieve when setting up the project:
+There are two objectives that you must achieve when setting up the project:
 - Command line access to the `pio` command (installation of PIO core)
 - Integration of PlatformIO with your preferred IDE (such as CLion, VS Code, etc)
 
@@ -67,6 +67,8 @@ Click `Tools -> PlatformIO -> Re-Init`. This will initialise PlatformIO for this
 
 Click "edit configurations", configure a "PlatformIO Upload" configuration as shown and press "OK". Make sure to remove 
 the "build" step before launch, as this is redundant. (See https://docs.platformio.org/en/latest/integration/ide/clion.html#build-upload)
+
+![](images/edit_configurations.png)
 
 ![](images/edit_configurations_2.png)
 

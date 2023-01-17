@@ -10,7 +10,6 @@
 #include "NativeDataLogger.h"
 
 
-
 int main() {
     TextLogger* logger = new NativeTextLogger(0);
     MRAS_System* mras = MRAS_System::get_instance();

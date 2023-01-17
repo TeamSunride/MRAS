@@ -9,6 +9,8 @@ used in high-powered rockets. The system uses a combination of sensors to determ
 attitude, and logs this data for post-flight analysis. The software is designed to work with a variety of sensor
 hardware and can be easily integrated into existing rocket projects.
 
+---
+
 # Supported hardware
 
 ## MRAS-DART v1
@@ -27,14 +29,37 @@ The MRAS-DART v1 is a complete rocket avionics package that is designed to fit w
   temperature, and for its high pressure range (Sensor_MS5607)
 - RF Solutions LAMBDA62 Module was chosen for telemetry as it allows for long-range, low-cost, spread-spectrum, high
   interference immunity communication via the LoRa protocol (TelemetrySystem)
+- Adafruit SPI SMT SD card added to provide redundant data logging capability that is resistant to high vibration.
+- 4x WS2812B "NeoPixels" for displaying status information
+- Loud buzzer
+- External device connectors (SPI & I2C QWIIC / STEMMA QT)
+- XT30 connector for 2s-4s LiPo battery
+- 4x parachute deployment channels with arming screw switch
 
-## Pictures of completed hardware
+### Pictures of completed hardware
 
 Front side
 ![](images/mras_hardware_front.jpg)
 
 Rear side
 ![](images/mras_hardware_back.jpg)
+
+---
+
+## MRAS Ground Station v1
+
+- SMA and uFL connectors for different antennas
+- RF Solutions LAMBDA62 Module for telemetry
+- Adafruit adalogger Feather M0 for data logging
+- 2x WS2812B "NeoPixels" for displaying status information
+- Buzzer
+- XT30 connector for 2s-4s LiPo battery
+- I2C QWIIC / STEMMA QT connectors for expansion
+- Expansion port for upper "display board" (yet to be developed)
+
+### Pictures of completed hardware
+
+<img src="mras_ground_station_v1.jpg" height="700" alt="test"/>
 
 ## MRAS-Karman v1
 

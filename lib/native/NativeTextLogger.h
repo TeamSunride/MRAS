@@ -7,6 +7,7 @@
 
 
 #include "TextLogger.h"
+#include "MRAS_Config.h"
 #include <cstdio>
 #include <cstdarg>
 
@@ -17,6 +18,8 @@ public:
     void _log(const char *fmt, va_list args) override;
 
     int8_t setup() override {
+        log("Setup...");
+        printf(MRAS_STARTUP_STRING);
         return 0;
     }
 

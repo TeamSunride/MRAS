@@ -59,7 +59,7 @@ Rear side
 
 ### Pictures of completed hardware
 
-<img src="mras_ground_station_v1.jpg" height="700" alt="test"/>
+![](images/mras_ground_station_v1.jpg)
 
 ## MRAS-Karman v1
 

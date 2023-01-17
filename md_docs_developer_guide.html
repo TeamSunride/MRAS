@@ -105,7 +105,7 @@ $(document).ready(function(){initNavTree('md_docs_developer_guide.html',''); ini
 <div class="textblock"><p>This project is built with <a href="https://platformio.org/">PlatformIO</a>.</p>
 <p>PlatformIO can be used with many different IDEs. See the following guide: <a href="https://platformio.org/install/integration">https://platformio.org/install/integration</a></p>
 <p>We recommend that you use PlatformIO for VS Code or CLion. CLion is <em>strongly preferred</em> as it provides many code completion and analysis features that are not available in VS Code. However, the setup process of CLion is a bit cumbersome, and there is a steeper learning curve.</p>
-<p>There are two objectives that you much achieve when setting up the project:</p><ul>
+<p>There are two objectives that you must achieve when setting up the project:</p><ul>
 <li>Command line access to the <code>pio</code> command (installation of PIO core)</li>
 <li>Integration of PlatformIO with your preferred IDE (such as CLion, VS Code, etc)</li>
 </ul>
@@ -154,6 +154,9 @@ Opening the MRAS project in CLion</h1>
 </div>
     <p>Click "edit configurations", configure a "PlatformIO Upload" configuration as shown and press "OK". Make sure to remove the "build" step before launch, as this is redundant. (See <a href="https://docs.platformio.org/en/latest/integration/ide/clion.html#build-upload">https://docs.platformio.org/en/latest/integration/ide/clion.html#build-upload</a>)</p>
 <div class="image">
+<img src="edit_configurations.png" alt=""/>
+</div>
+    <div class="image">
 <img src="edit_configurations_2.png" alt=""/>
 </div>
     <p>Go to <code>File -&gt; Settings -&gt; Build, Execution, Deployment -&gt; CMake</code>. Remove the default "Debug" profile and click the + button 3 times to create the <code>rocket</code>, <code>ground</code> and <code>native</code> profiles.</p>

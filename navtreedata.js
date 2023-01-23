@@ -26,32 +26,29 @@ var NAVTREE =
 [
   [ "MRAS", "index.html", [
     [ "MRAS (Multi Rocket Avionics System) Documentation", "index.html", "index" ],
-    [ "Arduino-ADXL375", "md_lib_Arduino_ADXL375_README.html", [
-      [ "Running unit tests", "md_lib_Arduino_ADXL375_README.html#autotoc_md1", null ]
-    ] ],
     [ "Developer Guide", "md_docs_developer_guide.html", [
-      [ "Installing PlatformIO", "md_docs_developer_guide.html#autotoc_md11", null ],
-      [ "Adding pio to PATH", "md_docs_developer_guide.html#autotoc_md12", null ],
-      [ "Integrating PlatformIO with CLion", "md_docs_developer_guide.html#autotoc_md13", null ],
-      [ "Opening the MRAS project in CLion", "md_docs_developer_guide.html#autotoc_md14", null ],
-      [ "Uploading code to the targets", "md_docs_developer_guide.html#autotoc_md15", [
-        [ "Uploading code to rocket environment", "md_docs_developer_guide.html#autotoc_md16", null ],
-        [ "Uploading code to ground environment", "md_docs_developer_guide.html#autotoc_md17", null ],
-        [ "Running code in native environment", "md_docs_developer_guide.html#autotoc_md18", null ]
+      [ "Installing PlatformIO", "md_docs_developer_guide.html#autotoc_md10", null ],
+      [ "Adding pio to PATH", "md_docs_developer_guide.html#autotoc_md11", null ],
+      [ "Integrating PlatformIO with CLion", "md_docs_developer_guide.html#autotoc_md12", null ],
+      [ "Opening the MRAS project in CLion", "md_docs_developer_guide.html#autotoc_md13", null ],
+      [ "Uploading code to the targets", "md_docs_developer_guide.html#autotoc_md14", [
+        [ "Uploading code to rocket environment", "md_docs_developer_guide.html#autotoc_md15", null ],
+        [ "Uploading code to ground environment", "md_docs_developer_guide.html#autotoc_md16", null ],
+        [ "Running code in native environment", "md_docs_developer_guide.html#autotoc_md17", null ]
       ] ],
-      [ "Project file structure", "md_docs_developer_guide.html#autotoc_md19", null ],
-      [ "Code completion", "md_docs_developer_guide.html#autotoc_md20", null ]
+      [ "Project file structure", "md_docs_developer_guide.html#autotoc_md18", null ],
+      [ "Code completion", "md_docs_developer_guide.html#autotoc_md19", null ]
     ] ],
     [ "Technical Guide to Documentation", "md_docs_documentation_guide.html", [
-      [ "How to install Doxygen and Graphviz on Windows", "md_docs_documentation_guide.html#autotoc_md22", null ],
-      [ "How to generate documentation", "md_docs_documentation_guide.html#autotoc_md23", null ],
-      [ "How to view documentation", "md_docs_documentation_guide.html#autotoc_md24", null ],
-      [ "Hosted documentation:", "md_docs_documentation_guide.html#autotoc_md25", null ],
-      [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md26", null ]
+      [ "How to install Doxygen and Graphviz on Windows", "md_docs_documentation_guide.html#autotoc_md21", null ],
+      [ "How to generate documentation", "md_docs_documentation_guide.html#autotoc_md22", null ],
+      [ "How to view documentation", "md_docs_documentation_guide.html#autotoc_md23", null ],
+      [ "Hosted documentation:", "md_docs_documentation_guide.html#autotoc_md24", null ],
+      [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md25", null ]
     ] ],
     [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
-      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md37", null ],
-      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md38", null ]
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md27", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md28", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

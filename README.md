@@ -1,6 +1,6 @@
 # MRAS (Multi Rocket Avionics System) Documentation
 
-![](images/sunride_mras.png)
+![](docs/images/sunride_mras.png)
 
 MRAS (Multi Rocket Avionics System) is a flight computer that contains a high-performance microcontroller, high-G
 accelerometer, Inertial Measurement Unit (IMU), Magnetometer, GNSS receiver,
@@ -39,10 +39,10 @@ The MRAS-DART v1 is a complete rocket avionics package that is designed to fit w
 ### Pictures of completed hardware
 
 Front side
-![](images/mras_hardware_front.jpg)
+![](docs/images/mras_hardware_front.jpg)
 
 Rear side
-![](images/mras_hardware_back.jpg)
+![](docs/images/mras_hardware_back.jpg)
 
 ---
 
@@ -59,7 +59,7 @@ Rear side
 
 ### Pictures of completed hardware
 
-![](images/mras_ground_station_v1.jpg)
+![](docs/images/mras_ground_station_v1.jpg)
 
 ## MRAS-Karman v1
 

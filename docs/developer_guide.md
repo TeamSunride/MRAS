@@ -49,8 +49,6 @@ above regarding any issues. The setup process is quite detailed, please read the
 3. Init all submodules (`git submodule update --init --recursive`)
 4. Open the MRAS project in CLion
 
-> The project is currently being rewritten. Switch to the `rewrite` branch. (Remove this message if no longer true)
-
 You will be greeted by this window. Close this window for now.
 
 ![](images/clion_open_new_project.png)

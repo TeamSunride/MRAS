@@ -46,9 +46,15 @@ var NAVTREE =
       [ "Hosted documentation:", "md_docs_documentation_guide.html#autotoc_md24", null ],
       [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md25", null ]
     ] ],
+    [ "Software Architecture Overview", "md_docs_software_architecture_overview.html", [
+      [ "System Messages", "md_docs_software_architecture_overview.html#autotoc_md27", null ],
+      [ "MRAS_System", "md_docs_software_architecture_overview.html#autotoc_md28", null ],
+      [ "Publishing SystemMessages to other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md29", null ],
+      [ "Receiving SystemMessages from other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md30", null ]
+    ] ],
     [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
-      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md27", null ],
-      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md28", null ]
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md32", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md33", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

@@ -7,6 +7,7 @@ var searchData=
   ['sensor_5fms5607_4',['Sensor_MS5607',['../classSensor__MS5607.html',1,'']]],
   ['sensor_5fzoem8q_5',['Sensor_ZOEM8Q',['../classSensor__ZOEM8Q.html',1,'']]],
   ['set_5fdata_5frate_6',['set_data_rate',['../classADXL375.html#ac4c828d335b0f4eb62791fc083be46bd',1,'ADXL375']]],
-  ['subsystem_7',['Subsystem',['../classSubsystem.html',1,'Subsystem'],['../classSubsystem.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'Subsystem::Subsystem()'],['../classFakeAccelerometer.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'FakeAccelerometer::Subsystem()'],['../classNativeDataLogger.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'NativeDataLogger::Subsystem()'],['../classTextLogger.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'TextLogger::Subsystem()']]],
-  ['systemmessage_8',['SystemMessage',['../classSystemMessage.html',1,'']]]
+  ['software_20architecture_20overview_7',['Software Architecture Overview',['../md_docs_software_architecture_overview.html',1,'']]],
+  ['subsystem_8',['Subsystem',['../classSubsystem.html',1,'Subsystem'],['../classSubsystem.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'Subsystem::Subsystem()'],['../classFakeAccelerometer.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'FakeAccelerometer::Subsystem()'],['../classNativeDataLogger.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'NativeDataLogger::Subsystem()'],['../classTextLogger.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'TextLogger::Subsystem()']]],
+  ['systemmessage_9',['SystemMessage',['../classSystemMessage.html',1,'']]]
 ];

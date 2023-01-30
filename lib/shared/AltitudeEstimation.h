@@ -8,6 +8,7 @@
 #include <cmath>
 #include <map>
 #include <vector>
+#include "eigen.h"
 
 // ----------- Constants ------- //
 #define GAS_CONST 8.31446261815324 // Universal Gas Constant [J/(K*mol)] 
@@ -37,7 +38,7 @@ class AtmosphericObject
         float derivative_pressure_alt(); 
         void test();
         float pressure();
-        // Eigen::Vector4f get_layer_constants(); // going to use normal vectors
+        Eigen::Vector4f get_layer_constants(); // going to use normal vectors
         int To_geopotential(int alt);
         void optimize_alt(int p);
         
@@ -46,11 +47,11 @@ class AtmosphericObject
         // Modifiable values
         int geometric_alt;
         int geopotential_alt;
-       // Eigen::Vector4f layer_const; 
+        Eigen::Vector4f layer_const; 
 
         // matrix of layer constants
-        // each Layer  =  {Geopotential [m], Temperature [K], Temp Gradient[K/m]}
-       // Eigen::Matrix<float, 9, 4> layers;
+        // each Layer  =  {Geopotential [m], Temperature [K], Temp Gradient[K/m]} 
+       Eigen::Matrix<float, 9, 4> layers;
         
         
 };

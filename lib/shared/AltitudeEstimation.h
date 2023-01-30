@@ -21,6 +21,10 @@
 #define SPECIFIC_GAS_CONST 287.05287 // specific gas constant (Assumed constant)
 #define RADIUS_OF_EARTH 6356766     //See references for this number
 
+// --- Other Definitions ---- // 
+
+#define BASE_PRESSURE layer_const(0)
+// to be completed, to tidy up the code....
 
 
 
@@ -28,19 +32,14 @@
 class AtmosphericObject
 {
     public:
-        // TODO: look into the size of input
+
         AtmosphericObject(float pressure); // constructor
-        // AtmosphericObject(int altitude); // ignore for now
-        
         float get_altitude();
         float get_temperature();
-        float pressure_altitude_relation(int p); // maybe change the type
-        float derivative_pressure_alt(); 
-        void test();
-        float pressure();
-        Eigen::Vector4f get_layer_constants(); // going to use normal vectors
-        int To_geopotential(int alt);
-        void optimize_alt(int p);
+        float altitude(int p);
+        Eigen::Vector4f get_layer_constants(int p); 
+        int To_geopotential(int alt); // additional feture to be added, right now everything is in geometric
+        //void optimize_alt(int p); 
         
     private:
 

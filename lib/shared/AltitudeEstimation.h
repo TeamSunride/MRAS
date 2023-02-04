@@ -36,10 +36,8 @@ class AtmosphericObject
         AtmosphericObject(float pressure); // constructor
         float get_altitude();
         float get_temperature();
-        float altitude(int p);
         Eigen::Vector4f get_layer_constants(int p); 
         int To_geopotential(int alt); // additional feture to be added, right now everything is in geometric
-        //void optimize_alt(int p); 
         
     private:
 
@@ -48,6 +46,7 @@ class AtmosphericObject
         int geopotential_alt;
         Eigen::Vector4f layer_const; 
 
+        float altitude(int p);
         // matrix of layer constants
         // each Layer  =  {Geopotential [m], Temperature [K], Temp Gradient[K/m]} 
        Eigen::Matrix<float, 9, 4> layers;

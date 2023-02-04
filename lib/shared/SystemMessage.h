@@ -14,9 +14,15 @@ enum SystemMessageType {
     BarometerDataMsg_t,
     GyroDataMsg_t,
     MagnetometerDataMsg_t,
-    GNSSDataMsg_t
+    GNSSDataMsg_t,
+    QueueTelemetryMessageMsg_t,
+    ReceivedTelemetryMessageMsg_t
 };
 
+/*
+ * System messages are used to send data between
+ * subsystems.
+ */
 class SystemMessage {
 public:
     explicit SystemMessage(SystemMessageType type) : type(type) {};

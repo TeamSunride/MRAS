@@ -9,8 +9,13 @@
 #include "Subsystem.h"
 #include "RadioLib.h"
 #include "MRAS_Config.h"
+#include "Fifo.h"
 
 class TelemetrySystem : public Subsystem {
+public:
+    explicit TelemetrySystem(uint8_t id) : Subsystem(id) {}
+    Fifo
+private:
     // create subsystem boilerplate
     SUBSYSTEM_NAME("TelemetrySystem")
     SUBSYSTEM_NO_MESSAGE_HANDLER
@@ -25,8 +30,15 @@ class TelemetrySystem : public Subsystem {
                               RADIO_RESET_PIN,
                               RADIO_BUSY_PIN,
                               RADIO_SPI_BUS);
-public:
-    explicit TelemetrySystem(uint8_t id) : Subsystem(id) {}
+
+    enum RadioState {
+        RADIO_STATE_IDLE,
+        RADIO_STATE_TX,
+        RADIO_STATE_RX
+    } radio_state = RADIO_STATE_IDLE;
+
+    bool radio_available();
+
 };
 
 

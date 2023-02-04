@@ -3,11 +3,17 @@
 //
 
 #include "Arduino.h"
+#include "ArduinoTextLogger.h"
+#include "MRAS_System.h"
+
+auto logger = ArduinoTextLogger(0, 115200);
+MRAS_System *mras = MRAS_System::get_instance();
 
 void setup() {
-    Serial.begin(9600);
+    mras->set_logger(&logger);
+    mras->setup();
 }
 
 void loop() {
-    Serial.print("I am alive!");
+    mras->loop();
 }

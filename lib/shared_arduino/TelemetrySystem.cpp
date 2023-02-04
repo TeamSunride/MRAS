@@ -46,5 +46,11 @@ int8_t TelemetrySystem::setup() {
 }
 
 int8_t TelemetrySystem::loop() {
+
     return 0;
+}
+
+bool TelemetrySystem::radio_available() {
+    // radio is available for next transmit when the IRQ pin is high
+    return radio.getMod()->digitalRead(radio.getMod()->getIrq());
 }

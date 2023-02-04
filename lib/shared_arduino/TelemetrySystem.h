@@ -9,12 +9,10 @@
 #include "Subsystem.h"
 #include "RadioLib.h"
 #include "MRAS_Config.h"
-#include "Fifo.h"
+#include "TelemetryMessage.h"
+#include "system_messages/QueueTelemetryMessageMsg.h"
 
 class TelemetrySystem : public Subsystem {
-public:
-    explicit TelemetrySystem(uint8_t id) : Subsystem(id) {}
-    Fifo
 private:
     // create subsystem boilerplate
     SUBSYSTEM_NAME("TelemetrySystem")
@@ -37,8 +35,24 @@ private:
         RADIO_STATE_RX
     } radio_state = RADIO_STATE_IDLE;
 
+    uint8_t radio_buffer[255];
+
     bool radio_available();
 
+    QueueTelemetryMessageMsg* get_next_message();
+
+    void transmit_next_message();
+    void receive_next_message(uint32_t timeout = 0xFFFFFF);
+
+public:
+    enum TelemetrySystemType {
+        GROUND,
+        ROCKET
+    } telemetry_system_type;
+
+    explicit TelemetrySystem(uint8_t id, TelemetrySystemType type) : Subsystem(id) {
+        telemetry_system_type = type;
+    }
 };
 
 

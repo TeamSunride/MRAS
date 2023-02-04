@@ -6,21 +6,22 @@
 #define MRAS_TELEMETRYMESSAGE_H
 
 enum TelemetryMessageType {
-    UNDEFINED,
+    UNDEFINED_TELEMETRY_MESSAGE,
     /*
      * Rocket sends this message to the ground in order to
      * initiate a new transfer opportunity
      */
-    TransferWindowInit,
+    TransferWindowInitMsg_t,
 
     /*
      * Ground sends this in response to a TransferWindowInit
      * in the case where it does not have any data to send
      * to the rocket
      */
-    TransferWindowAck,
-    CommandMessage,
-    CommandResponse
+    TransferWindowAckMsg_t,
+    CommandMsg_t, // unused for now
+    CommandResponseMsg_t, // unused for now
+    TelemetryDataMsg_t
 };
 
 /*
@@ -38,6 +39,7 @@ protected:
     TelemetryMessageType type;
 public:
     explicit TelemetryMessage(TelemetryMessageType type) : type(type) {};
+    TelemetryMessageType get_type() { return type; };
 };
 
 

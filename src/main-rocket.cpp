@@ -30,7 +30,7 @@ Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_
                                               MRAS_ADXL375_SPI_FREQUENCY);
 Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
 
-TelemetrySystem telemetry_system = TelemetrySystem(7);
+TelemetrySystem telemetry_system = TelemetrySystem(7, TelemetrySystem::ROCKET);
 
 void setup() {
     mras->set_logger(&logger);

@@ -42,7 +42,7 @@ Shown here:
 
 ```cpp
 enum SystemMessageType {
-    UNDEFINED,
+    UNDEFINED_SYSTEM_MESSAGE,
     AccelerometerDataMsg_t,
     HighGAccelerometerDataMsg_t,
     BarometerDataMsg_t,

@@ -13,7 +13,6 @@ struct ReceivedTelemetryMessageMsg : public SystemMessage {
     ReceivedTelemetryMessageMsg() : SystemMessage(ReceivedTelemetryMessageMsg_t) {}
 
     TelemetryMessage* telemetry_message = nullptr;
-    size_t size = 0;
 };
 
 #endif //MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H

@@ -1,5 +1,7 @@
 #include "unity.h"
 #include "AltitudeEstimation.h"
+#include <fstream>
+
 
 void setUp(){}
 void tearDown(){}
@@ -144,9 +146,24 @@ void test_altitude_conversion_layer9(void)
     return;
 }
 
+void CSVwrite(void)
+{
+    std::ofstream altitudeFile;
+    altitudeFile.open("test/native/test_altitude_conversion/altPressure.csv");
+
+    for (int i = 110000; i > 1; i = i - 1000)
+    {
+        AtmosphericObject Rocket(i);
+        altitudeFile << i << "," << Rocket.get_altitude() << "\n";
+    }
+
+    altitudeFile.close();
+    printf("this ran @@@");
+}
 
 int main()
 {
+    CSVwrite();
     UNITY_BEGIN();
     RUN_TEST(test_altitude_conversion_layer1);
     RUN_TEST(test_altitude_conversion_layer2);

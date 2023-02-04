@@ -30,6 +30,15 @@
 
 /**
 A class that calculates the altitude from the pressure values, using the ICAO 1993 standard. 
+Altitude Calculation is different for when the tempreature gradient, beta is zero versus when not. 
+When beta != 0:
+    \f{eqnarray*}{
+        H = H_b + \frac{T_b}{\beta} ((\frac{P_b}{P})^{\frac{\beta R}{g_0}} - 1)
+    \f}
+When beta = 0:
+    \f{eqnarray*}{
+        H = H_b + \frac{RT}{g_0} \log{\frac{P_b}{P}}
+    \f}
 */
 class AtmosphericObject
 {

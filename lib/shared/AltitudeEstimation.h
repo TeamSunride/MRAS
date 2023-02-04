@@ -37,7 +37,7 @@ When beta != 0:
     \f}
 When beta = 0:
     \f{eqnarray*}{
-        H = H_b + \frac{RT}{g_0} \log{\frac{P_b}{P}}
+        H = H_b + \frac{RT}{g_0} ln({\frac{P_b}{P}})
     \f}
 */
 class AtmosphericObject

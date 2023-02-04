@@ -77,3 +77,49 @@ node [shape=box,style=filled,color=".7 .3 1.0"];
 execute -> compare;
 }
 @enddot
+
+## LaTeX: Including formulas
+
+See the doxygen documentation: https://www.doxygen.nl/manual/formulas.html
+
+We are using MathJax. From the docs:
+
+> For the HTML output there is also an alternative solution using MathJax which 
+> does not require the above tools. If you enable USE_MATHJAX in the configuration 
+> then the latex formulas will be copied to the HTML "as is" and a client side 
+> javascript will parse them and turn them into (interactive) images.
+
+### Examples:
+
+```
+  The distance between \f$(x_1,y_1)\f$ and \f$(x_2,y_2)\f$ is 
+  \f$\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\f$.
+```
+
+The distance between \f$(x_1,y_1)\f$ and \f$(x_2,y_2)\f$ is
+\f$\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\f$.
+
+```
+  \f[
+    |I_2|=\left| \int_{0}^T \psi(t) 
+             \left\{ 
+                u(a,t)-
+                \int_{\gamma(t)}^a 
+                \frac{d\theta}{k(\theta,t)}
+                \int_{a}^\theta c(\xi)u_t(\xi,t)\,d\xi
+             \right\} dt
+          \right|
+  \f]
+```
+
+\f[
+|I_2|=\left| \int_{0}^T \psi(t)
+\left\{
+u(a,t)-
+\int_{\gamma(t)}^a
+\frac{d\theta}{k(\theta,t)}
+\int_{a}^\theta c(\xi)u_t(\xi,t)\,d\xi
+\right\} dt
+\right|
+\f]
+

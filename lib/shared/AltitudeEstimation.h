@@ -28,7 +28,9 @@
 
 
 
-
+/**
+A class that calculates the altitude from the pressure values, using the ICAO 1993 standard. 
+*/
 class AtmosphericObject
 {
     public:
@@ -36,8 +38,8 @@ class AtmosphericObject
         AtmosphericObject(float pressure); // constructor
         float get_altitude();
         float get_temperature();
-        Eigen::Vector4f get_layer_constants(int p); 
-        int To_geopotential(int alt); // additional feture to be added, right now everything is in geometric
+        Eigen::Vector4f get_layer_constants(float p); 
+        int To_geopotential(float alt); // additional feture to be added, right now everything is in geometric
         
     private:
 
@@ -46,7 +48,7 @@ class AtmosphericObject
         int geopotential_alt;
         Eigen::Vector4f layer_const; 
 
-        float altitude(int p);
+        float altitude(float p);
         // matrix of layer constants
         // each Layer  =  {Geopotential [m], Temperature [K], Temp Gradient[K/m]} 
        Eigen::Matrix<float, 9, 4> layers;

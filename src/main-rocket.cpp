@@ -14,7 +14,7 @@
 #include "Sensor_MS5607.h"
 #include "Sensor_ADXL375.h"
 #include "Sensor_ZOEM8Q.h"
-#include "TelemetrySystem.h"
+#include "RocketTelemetrySystem.h"
 
 auto logger = ArduinoTextLogger(0, 115200);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -30,7 +30,7 @@ Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_
                                               MRAS_ADXL375_SPI_FREQUENCY);
 Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
 
-TelemetrySystem telemetry_system = TelemetrySystem(7, TelemetrySystem::ROCKET);
+RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
 void setup() {
     mras->set_logger(&logger);

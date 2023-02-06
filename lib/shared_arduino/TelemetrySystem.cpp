@@ -13,8 +13,6 @@ int8_t TelemetrySystem::setup() {
 
     log("Radio startup");
 
-    int radio_state = 0;
-
     radio_state = radio.begin(RADIO_FREQUENCY,
                               RADIO_BANDWIDTH,
                               RADIO_SPREADING_FACTOR,
@@ -48,57 +46,6 @@ int8_t TelemetrySystem::setup() {
     return 0;
 }
 
-int8_t TelemetrySystem::loop() {
-
-    Module *mod = radio.getMod();
-    if (radio_state != RADIO_STATE_IDLE) {
-        // check interrupt pin of radio and return if the radio is busy
-        if (!mod->digitalRead(mod->getIrq())) {
-            return 0;
-        }
-
-        radio.finishTransmit();
-    }
-
-    switch (radio_state) {
-        case RADIO_STATE_IDLE: {
-            // if we are the ground station, start receiving
-            if (telemetry_system_type == GROUND) {
-                receive_next_message();
-            } else if (telemetry_system_type == ROCKET) {
-                transmit_next_message();
-            }
-            break;
-        }
-        case RADIO_STATE_TX: {
-            transmit_next_message();
-            break;
-        }
-        case RADIO_STATE_RX: {
-            uint8_t radioBuffer[255];
-
-            int state = radio.readData(radioBuffer, 0);
-
-            receive_next_message();
-
-            // TODO: CRC CHECK
-
-            // process the new message
-            auto telemetry_message = (TelemetryMessage*) radioBuffer;
-
-            auto *received_message = new ReceivedTelemetryMessageMsg();
-            received_message->telemetry_message = telemetry_message;
-            publish(received_message);
-        }
-    }
-    return 0;
-}
-
-bool TelemetrySystem::radio_available() {
-    // radio is available for next transmit when the IRQ pin is high
-    return radio.getMod()->digitalRead(radio.getMod()->getIrq());
-}
-
 QueueTelemetryMessageMsg *TelemetrySystem::get_next_message() {
     auto *message = new TelemetryDataMsg();
     message->x = 1;
@@ -118,13 +65,42 @@ void TelemetrySystem::transmit_next_message() {
     log("Transmitting new telemetry message size %d", next_message->size);
     auto* bytes_to_transmit = (uint8_t *) next_message->telemetry_message;
     radio.startTransmit(bytes_to_transmit, next_message->size);
-    radio_state = RADIO_STATE_TX;
+    telemetry_system_state = TX;
 
     delete next_message->telemetry_message;
 }
 
-void TelemetrySystem::receive_next_message(uint32_t timeout) {
+void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
     log("Receiving new telemetry message");
     radio.startReceive(timeout);
-    radio_state = RADIO_STATE_RX;
+    telemetry_system_state = RX;
+}
+
+bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* &output, bool receive_again) {
+    uint8_t radioBuffer[255];
+
+    radio_state = radio.readData(radioBuffer, 0);
+
+    if (receive_again) start_receiving_next_message();
+
+    if (radio_state == RADIOLIB_ERR_CRC_MISMATCH) {
+        // The calculated and expected CRCs of received packet do not match.
+        return false;
+    }
+
+    // process the new message
+    auto telemetry_message = (TelemetryMessage*) radioBuffer;
+
+    auto *received_message = new ReceivedTelemetryMessageMsg();
+    received_message->telemetry_message = telemetry_message;
+    output = received_message;
+    if (radio_state == RADIOLIB_ERR_NONE) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+int16_t TelemetrySystem::get_radio_state() const {
+    return radio_state;
 }

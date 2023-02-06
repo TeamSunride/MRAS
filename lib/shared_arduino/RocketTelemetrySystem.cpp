@@ -15,7 +15,7 @@ int8_t RocketTelemetrySystem::loop() {
         radio.finishTransmit();
     }
 
-    switch (telemetry_system_state) { return 0;
+    switch (telemetry_system_state) {
         case IDLE: {
             transmit_next_message();
             break;
@@ -31,6 +31,9 @@ int8_t RocketTelemetrySystem::loop() {
             } else {
                 log("CRC or radio error");
             }
+            break;
         }
     }
+
+    return 0;
 }

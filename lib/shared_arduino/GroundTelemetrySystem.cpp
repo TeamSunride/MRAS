@@ -15,7 +15,7 @@ int8_t GroundTelemetrySystem::loop() {
         radio.finishTransmit();
     }
 
-    switch (telemetry_system_state) { return 0;
+    switch (telemetry_system_state) {
         case IDLE: {
             // ground station starts by receiving the next message
             start_receiving_next_message();
@@ -34,4 +34,5 @@ int8_t GroundTelemetrySystem::loop() {
             }
         }
     }
+    return 0;
 }

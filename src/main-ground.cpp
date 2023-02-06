@@ -5,13 +5,13 @@
 #include "Arduino.h"
 #include "ArduinoTextLogger.h"
 #include "MRAS_System.h"
-#include "TelemetrySystem.h"
 #include "NativeDataLogger.h"
+#include "GroundTelemetrySystem.h"
 
 auto logger = ArduinoTextLogger(0, 115200);
 MRAS_System *mras = MRAS_System::get_instance();
 
-TelemetrySystem telemetry_system = TelemetrySystem(7, TelemetrySystem::GROUND);
+GroundTelemetrySystem telemetry_system = GroundTelemetrySystem(7);
 NativeDataLogger data_logger = NativeDataLogger(1);
 
 void setup() {

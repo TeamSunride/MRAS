@@ -11,11 +11,15 @@ var annotated_dup =
     [ "BarometerDataMsg", "structBarometerDataMsg.html", null ],
     [ "FakeAccelerometer", "classFakeAccelerometer.html", "classFakeAccelerometer" ],
     [ "GNSSDataMsg", "structGNSSDataMsg.html", "structGNSSDataMsg" ],
+    [ "GroundTelemetrySystem", "classGroundTelemetrySystem.html", null ],
     [ "GyroDataMsg", "structGyroDataMsg.html", null ],
     [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
     [ "MRAS_System", "classMRAS__System.html", "classMRAS__System" ],
     [ "NativeDataLogger", "classNativeDataLogger.html", "classNativeDataLogger" ],
     [ "NativeTextLogger", "classNativeTextLogger.html", "classNativeTextLogger" ],
+    [ "QueueTelemetryMessageMsg", "structQueueTelemetryMessageMsg.html", null ],
+    [ "ReceivedTelemetryMessageMsg", "structReceivedTelemetryMessageMsg.html", null ],
+    [ "RocketTelemetrySystem", "classRocketTelemetrySystem.html", null ],
     [ "Sensor_ADXL375", "classSensor__ADXL375.html", null ],
     [ "Sensor_LIS3MDL", "classSensor__LIS3MDL.html", null ],
     [ "Sensor_LSM6DSO32", "classSensor__LSM6DSO32.html", null ],
@@ -23,6 +27,10 @@ var annotated_dup =
     [ "Sensor_ZOEM8Q", "classSensor__ZOEM8Q.html", "classSensor__ZOEM8Q" ],
     [ "Subsystem", "classSubsystem.html", "classSubsystem" ],
     [ "SystemMessage", "classSystemMessage.html", null ],
-    [ "TelemetrySystem", "classTelemetrySystem.html", null ],
-    [ "TextLogger", "classTextLogger.html", "classTextLogger" ]
+    [ "TelemetryDataMsg", "structTelemetryDataMsg.html", null ],
+    [ "TelemetryMessage", "classTelemetryMessage.html", null ],
+    [ "TelemetrySystem", "classTelemetrySystem.html", "classTelemetrySystem" ],
+    [ "TextLogger", "classTextLogger.html", "classTextLogger" ],
+    [ "TransferWindowAckMsg", "structTransferWindowAckMsg.html", null ],
+    [ "TransferWindowInitMsg", "structTransferWindowInitMsg.html", null ]
 ];

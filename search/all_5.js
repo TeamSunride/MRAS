@@ -5,5 +5,6 @@ var searchData=
   ['get_5fname_2',['get_name',['../classNativeTextLogger.html#ac0baa51553319023bc068e50f887fb2c',1,'NativeTextLogger::get_name()'],['../classSubsystem.html#a19fffb42e27b6720100ff6870e84f382',1,'Subsystem::get_name()=0']]],
   ['get_5fstatus_3',['get_status',['../classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622',1,'Subsystem']]],
   ['gnssdatamsg_4',['GNSSDataMsg',['../structGNSSDataMsg.html',1,'']]],
-  ['gyrodatamsg_5',['GyroDataMsg',['../structGyroDataMsg.html',1,'']]]
+  ['groundtelemetrysystem_5',['GroundTelemetrySystem',['../classGroundTelemetrySystem.html',1,'']]],
+  ['gyrodatamsg_6',['GyroDataMsg',['../structGyroDataMsg.html',1,'']]]
 ];

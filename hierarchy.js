@@ -15,7 +15,10 @@ var hierarchy =
       [ "Sensor_LSM6DSO32", "classSensor__LSM6DSO32.html", null ],
       [ "Sensor_MS5607", "classSensor__MS5607.html", null ],
       [ "Sensor_ZOEM8Q", "classSensor__ZOEM8Q.html", null ],
-      [ "TelemetrySystem", "classTelemetrySystem.html", null ],
+      [ "TelemetrySystem", "classTelemetrySystem.html", [
+        [ "GroundTelemetrySystem", "classGroundTelemetrySystem.html", null ],
+        [ "RocketTelemetrySystem", "classRocketTelemetrySystem.html", null ]
+      ] ],
       [ "TextLogger", "classTextLogger.html", [
         [ "ArduinoTextLogger", "classArduinoTextLogger.html", null ],
         [ "NativeTextLogger", "classNativeTextLogger.html", null ]
@@ -26,6 +29,13 @@ var hierarchy =
       [ "BarometerDataMsg", "structBarometerDataMsg.html", null ],
       [ "GNSSDataMsg", "structGNSSDataMsg.html", null ],
       [ "GyroDataMsg", "structGyroDataMsg.html", null ],
-      [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ]
+      [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
+      [ "QueueTelemetryMessageMsg", "structQueueTelemetryMessageMsg.html", null ],
+      [ "ReceivedTelemetryMessageMsg", "structReceivedTelemetryMessageMsg.html", null ]
+    ] ],
+    [ "TelemetryMessage", "classTelemetryMessage.html", [
+      [ "TelemetryDataMsg", "structTelemetryDataMsg.html", null ],
+      [ "TransferWindowAckMsg", "structTransferWindowAckMsg.html", null ],
+      [ "TransferWindowInitMsg", "structTransferWindowInitMsg.html", null ]
     ] ]
 ];

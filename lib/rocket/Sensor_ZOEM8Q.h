@@ -47,5 +47,6 @@ public:
 
 };
 
+uint64_t getTimestampMillisGPS();
 
 #endif //MRAS_SENSOR_ZOEM8Q_H

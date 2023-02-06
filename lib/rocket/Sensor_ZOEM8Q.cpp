@@ -12,10 +12,12 @@ int8_t Sensor_ZOEM8Q::setup() {
         log("GNSS not detected at default I2C address. Please check wiring.");
         return (int8_t) 1; // failure;
     }
+
     gnss->setNavigationFrequency(5);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
     performOnlineAssist();
+    log("GNSS setup success");
     return 0; // success
 }
 
@@ -44,11 +46,10 @@ int8_t Sensor_ZOEM8Q::loop() {
 
 // From Daedalus code
 
-uint64_t getTimestampMillisGPS() {// syncs the RTC on tje teensy 4.1 with the unix time at compile time
+uint64_t getTimestampMillisGPS() {/// syncs the RTC on tje teensy 4.1 with the unix time at compile time
     // Created by Ashley Shaw on 19/04/2022 using stuff from https://forum.pjrc.com/threads/68062-Teensy-4-1-RTC-get-milliseconds-correctly
     // 2022 TeamSunride.
     //
-
     uint64_t periods;
     uint32_t hi1 = SNVS_HPRTCMR, lo1 = SNVS_HPRTCLR;
     while (true) {
@@ -57,13 +58,10 @@ uint64_t getTimestampMillisGPS() {// syncs the RTC on tje teensy 4.1 with the un
         {
             periods = (uint64_t)hi2 << 32 | lo2;
             break;
-
         }
         hi1 = hi2;
         lo1 = lo2;
-
     }
-
     uint32_t ms = (1000 * (periods % 32768)) / 32768;
     time_t sec = periods / 32768;
     tm t = *gmtime(&sec);
@@ -75,8 +73,6 @@ uint64_t getTimestampMillisGPS() {// syncs the RTC on tje teensy 4.1 with the un
 }
 
 
-
-
 unsigned short GPSweek() {
     // 315964800 is the unix timestamp (s) of midnight 6th Jan 1980 - the start of GPS time
     // There has been 18 leap seconds since this date (unix time does not account for leap seconds)
@@ -84,7 +80,6 @@ unsigned short GPSweek() {
     u_int64_t diff = (getTimestampMillisGPS()/1000) - 315964800 + 18;
     return (unsigned short) (diff / SECS_PER_WEEK);
 }
-
 
 unsigned int actualTimeOfWeekms() {
     // The time of week is the number of seconds since Sunday midnight (00:00:00)
@@ -114,179 +109,108 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
         bool sdCardInitialised = false;
         for (int i=0;i<10;i++) {
             if (!SD.begin(BUILTIN_SDCARD)) {
-                Serial.println("SD Card failed to initialize");
+                log("SD Card failed to initialize");
                 delay(500);
             } else {
-                Serial.println("SD Card initialized");
+                log("SD Card initialized");
                 sdCardInitialised = true;
                 break;
             }
             delay(1000);
-
         }
-
         if (!sdCardInitialised) {
-
-            Serial.println("Could not mount SD card");
-
+            log("Could not mount SD card");
             while(1);
-
         }
-
     }
-
-    Serial.println("Card initialised");
-
-
-
+    log("Card initialised");
 
     /// this file ("mgaonline.ubx") should be loaded into the onboard SD card
-
     /// the file should be obtained from the ublocks server
-
     /// the generator token for that can be obtained from thingstream from ublocks
-
     /// See https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide for more details
-
     File dataFile = SD.open("mgaonline.ubx");
 
     const int numbytes = dataFile.available();
 
-    Serial.printf("File size: %d\n", numbytes);
+    log("File size: %d\n", numbytes);
 
     if (!dataFile) {
-
-        Serial.println("Failed to open file");
-
+        log("Failed to open file");
         while (true);
 
     }
-
     byte * fileBuffer = new byte[numbytes]; // use new for array of variable size - remember to delete[] !
-
     dataFile.readBytes(reinterpret_cast<char *>(fileBuffer), numbytes);
 
 
+    log("%d:%d:%d,  %d/%d/%d", hour(), minute(), second(), day(), month(), year());
+    log("GPS WEEK: %d\n", GPSweek());
+    log("GPS time of week: %d\n", actualTimeOfWeekms());
 
-
-    Serial.printf("%d:%d:%d,  %d/%d/%d", hour(), minute(), second(), day(), month(), year());
-
-    Serial.printf("GPS WEEK: %d\n", GPSweek());
-
-    Serial.printf("GPS time of week: %d\n", actualTimeOfWeekms());
-
-
-
-
+// https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=-20.22;lon=50.55;alt=1000;pacc=1000;tacc=1;latency=0;filteronpos
     // alter the necessary fields in the file buffer AID_INI
-
-
-
 
     // configure week number, little endian /:)
 
     int headerLength = 6;
-
     unsigned short gpsweek = GPSweek();
-
     fileBuffer[18+headerLength] = (gpsweek & 0x00FF);
-
     fileBuffer[19+headerLength] = (gpsweek & 0xFF00) >> 8;
 
-
-
-
     // configure time of week, little endian /:)
-
     unsigned long timeOfWeekms = actualTimeOfWeekms()+150;
-
     fileBuffer[20+headerLength] = (timeOfWeekms & 0x000000FF);
-
     fileBuffer[21+headerLength] = (timeOfWeekms & 0x0000FF00) >> 8;
-
     fileBuffer[22+headerLength] = (timeOfWeekms & 0x00FF0000) >> 16;
-
     fileBuffer[23+headerLength] = (timeOfWeekms & 0xFF000000) >> 24;
 
-
-
-
-    Serial.println("\n\n\n");
-
-
-
+    log("\n\n\n");
 
     // setting the new checksums
-
     uint8_t CK_A = 0;
-
     uint8_t CK_B = 0;
-
-
-
-
     for (int i=2;i<54;i++) {
-
         CK_A += fileBuffer[i];
-
         CK_B += CK_A;
-
     }
 
     fileBuffer[54] = CK_A;
-
     fileBuffer[55] = CK_B;
-
-    Serial.printf("CK_A: %02X      CK_B: %02X", CK_A, CK_B);
-
-
-
+    log("CK_A: %02X      CK_B: %02X", CK_A, CK_B);
 
     for (int i=0;i<56;i++) {
-        Serial.printf("%02X ",fileBuffer[i]);
+        log("%02X ",fileBuffer[i]);
     }
 
-    Serial.println("HERE1");
+    log("HERE1");
+    delay(1000);
 
-    gnss->setAckAiding(1);
+//    gnss->enableDebugging(Serial, true);
+//    gnss->setAckAiding(1);
+//    gnss->setI2CpollingWait(1);
+//    gnss->pushAssistNowData(fileBuffer, numbytes, SFE_UBLOX_MGA_ASSIST_ACK_ENQUIRE, 100);
+//    gnss->setI2CpollingWait(2);
 
-    gnss->setI2CpollingWait(1);
+    log("HERE2");
 
-    gnss->enableDebugging(Serial, true);
-
-    gnss->pushAssistNowData(fileBuffer, (size_t)fileBuffer, SFE_UBLOX_MGA_ASSIST_ACK_ENQUIRE, 100);
-
-    gnss->setI2CpollingWait(2);
-
-    Serial.println("HERE2");
-
+    gnss->pushRawData(fileBuffer, numbytes);
 
 
 
-//    Serial.printf("\nAvailable for write: %d\n", gpsSerial.availableForWrite());
-
+// How we did it over serial on Daedalus
+//    log("\nAvailable for write: %d\n", gpsSerial.availableForWrite());
 //    for (int  i=0;i<numbytes; i++) {
-
 //        gpsSerial.write(fileBuffer[i]);
-
 //        gpsSerial.flush(); // flush waits for the above write to finish
-
 //
-
 //    }
 
-
-
-
     dataFile.close();
-
     delete[] fileBuffer; // delete[] - very important - we don't like them segfaults
 
-
-
-
-    Serial.println("\nFinished performOnlineAssist()\n");
-
+    log("Finished performOnlineAssist()\n");
+    delay(1000);
 
 
 

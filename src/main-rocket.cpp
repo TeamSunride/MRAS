@@ -33,26 +33,29 @@ Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY
 TelemetrySystem telemetry_system = TelemetrySystem(7);
 
 void setup() {
+    delay(5000);
     mras->set_logger(&logger);
 
     mras->add_subsystem(&data_logger);
-    mras->add_subsystem(&magnetometer);
-    mras->add_subsystem(&imu);
-    mras->add_subsystem(&barometer);
-    mras->add_subsystem(&accelerometer);
-//    mras->add_subsystem(&gnss);
-    mras->add_subsystem(&telemetry_system);
+//    mras->add_subsystem(&magnetometer);
+//    mras->add_subsystem(&imu);
+//    mras->add_subsystem(&barometer);
+//    mras->add_subsystem(&accelerometer);
+    mras->add_subsystem(&gnss);
+//    mras->add_subsystem(&telemetry_system);
+//
+//    imu.add_subscriber(&data_logger);
+//    magnetometer.add_subscriber(&data_logger);
+//    barometer.add_subscriber(&data_logger);
+//    accelerometer.add_subscriber(&data_logger);
 
-    imu.add_subscriber(&data_logger);
-    magnetometer.add_subscriber(&data_logger);
-    barometer.add_subscriber(&data_logger);
-    accelerometer.add_subscriber(&data_logger);
-//    gnss.add_subscriber(&data_logger);
+    gnss.add_subscriber(&data_logger);
 
     mras->setup();
 }
 
 void loop() {
     mras->loop();
+    Serial.printf("Unix time: %llu\n Time: %d:%d:%d,  %d/%d/%d\n", (long long unsigned int) getTimestampMillisGPS(), hour(), minute(), second(), day(), month(), year());
     delay(500);
 }

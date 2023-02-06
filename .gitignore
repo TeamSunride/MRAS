@@ -7,3 +7,4 @@ cmake-build-*/
 test/__pycache__/
 docs/html
 .DS_Store
+/test/native/test_altitude_conversion/altPressure.csv

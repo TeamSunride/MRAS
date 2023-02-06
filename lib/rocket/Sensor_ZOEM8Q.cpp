@@ -16,8 +16,9 @@ int8_t Sensor_ZOEM8Q::setup() {
     gnss->setNavigationFrequency(5);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
+    // perform the online assist process - uses mgaonline.ubx file from SD card
     performOnlineAssist();
-    log("GNSS setup success");
+    log("GNSS setup finished");
     return 0; // success
 }
 
@@ -33,6 +34,8 @@ int8_t Sensor_ZOEM8Q::loop() {
 
         gnss_msg->fixType = gnss->getFixType(); /// 1: no fix, 2: 2D fix, 3: 3D fix 4: GNSS + dead reckoning combined, 5: time only fix
         gnss_msg->SIV = gnss->getSIV();
+
+        log("Time From GPS: %d:%d:%d,  %d/%d/%d\n", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
 
         publish(gnss_msg);
     }
@@ -66,7 +69,8 @@ uint64_t getTimestampMillisGPS() {/// syncs the RTC on tje teensy 4.1 with the u
     time_t sec = periods / 32768;
     tm t = *gmtime(&sec);
 
-    setTime(t.tm_hour-1, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon + 1, t.tm_year + 1900);
+    // the first parameter needs decremented by one if Daylight saving is in effect (from last sunday in March to last sunday in October - https://www.gov.uk/when-do-the-clocks-change
+    setTime(t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon + 1, t.tm_year + 1900);
 
     uint64_t unixTime = (uint64_t(now()) * 1000) + ms;
     return unixTime;
@@ -138,21 +142,23 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
     if (!dataFile) {
         log("Failed to open file");
         while (true);
-
     }
     byte * fileBuffer = new byte[numbytes]; // use new for array of variable size - remember to delete[] !
     dataFile.readBytes(reinterpret_cast<char *>(fileBuffer), numbytes);
 
 
-    log("%d:%d:%d,  %d/%d/%d", hour(), minute(), second(), day(), month(), year());
+    log("Unix time: %llu", (long long unsigned int) getTimestampMillisGPS());
+    log("Time: %d:%d:%d,  %d/%d/%d", hour(), minute(), second(), day(), month(), year());
     log("GPS WEEK: %d\n", GPSweek());
     log("GPS time of week: %d\n", actualTimeOfWeekms());
 
 // https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=-20.22;lon=50.55;alt=1000;pacc=1000;tacc=1;latency=0;filteronpos
+// https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=-20.22;lon=50.55;alt=1000;pacc=1000;tacc=1;latency=0;filteronpos
+// https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=52.662409;lon=-1.522920;alt=104;pacc=1000;tacc=1;latency=0;filteronpos
+
+
     // alter the necessary fields in the file buffer AID_INI
-
     // configure week number, little endian /:)
-
     int headerLength = 6;
     unsigned short gpsweek = GPSweek();
     fileBuffer[18+headerLength] = (gpsweek & 0x00FF);
@@ -164,8 +170,6 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
     fileBuffer[21+headerLength] = (timeOfWeekms & 0x0000FF00) >> 8;
     fileBuffer[22+headerLength] = (timeOfWeekms & 0x00FF0000) >> 16;
     fileBuffer[23+headerLength] = (timeOfWeekms & 0xFF000000) >> 24;
-
-    log("\n\n\n");
 
     // setting the new checksums
     uint8_t CK_A = 0;

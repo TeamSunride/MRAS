@@ -56,6 +56,6 @@ void setup() {
 
 void loop() {
     mras->loop();
-    Serial.printf("Unix time: %llu\n Time: %d:%d:%d,  %d/%d/%d\n", (long long unsigned int) getTimestampMillisGPS(), hour(), minute(), second(), day(), month(), year());
-    delay(500);
+
+    delay(100);
 }

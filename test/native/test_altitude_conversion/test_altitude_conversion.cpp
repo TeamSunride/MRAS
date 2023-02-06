@@ -9,18 +9,7 @@ void tearDown() {}
 
 float error = 0.025; // 2.5%
 
-void test_altitude_conversion_layer1(void) {
-
-    Atmosphere Rocket(1.77687e5);
-
-    float delta = (float) (Rocket.get_altitude() - -5.00e3);
-
-
-    TEST_ASSERT_TRUE(abs((delta / -5.00e3)) < error);
-
-    return;
-}
-
+// layer 1 is attenuated
 void test_altitude_conversion_layer2(void) {
 
     Atmosphere Rocket(101325);
@@ -151,7 +140,7 @@ int main() {
     CSVwrite();
 #endif
     UNITY_BEGIN();
-    RUN_TEST(test_altitude_conversion_layer1);
+
     RUN_TEST(test_altitude_conversion_layer2);
     RUN_TEST(test_altitude_conversion_layer3);
     RUN_TEST(test_altitude_conversion_layer4);

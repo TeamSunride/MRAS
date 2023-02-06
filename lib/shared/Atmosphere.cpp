@@ -16,7 +16,21 @@ Atmosphere::Atmosphere(float pressure)
             51.00e3,    270.65,     -2.80e-3,   6.69384e1,
             71.00e3,    214.65,     -2.00e-3,   3.95639e0,
             80.00e3,    196.65,     -2.00e-3,   8.86272e-1;
-        
+
+    if (pressure < 8.86272e-1)
+    {
+        geometric_alt = 80.00e3;
+        layer_const << 80.00e3,    196.65,     -2.00e-3,   8.86272e-1;
+        return;
+    }
+    if (pressure > 1.01325e5)
+    {
+        geometric_alt = 0.00;
+        layer_const << 0.00e3,     288.15,     -6.50e-3,   1.01325e5;
+        return;
+    }
+    
+     
     layer_const = get_layer_constants(pressure);
     geometric_alt = altitude(pressure);
 }

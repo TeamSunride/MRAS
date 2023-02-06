@@ -1,5 +1,5 @@
 #include "unity.h"
-#include "AltitudeEstimation.h"
+#include "Atmosphere.h"
 
 
 void setUp() {}
@@ -11,7 +11,7 @@ float error = 0.025; // 2.5%
 
 void test_altitude_conversion_layer1(void) {
 
-    AtmosphericObject Rocket(1.77687e5);
+    Atmosphere Rocket(1.77687e5);
 
     float delta = (float) (Rocket.get_altitude() - -5.00e3);
 
@@ -23,7 +23,7 @@ void test_altitude_conversion_layer1(void) {
 
 void test_altitude_conversion_layer2(void) {
 
-    AtmosphericObject Rocket(101325);
+    Atmosphere Rocket(101325);
 
     float delta = (float) (Rocket.get_altitude() - -5.20301488e-13);
 
@@ -38,7 +38,7 @@ void test_altitude_conversion_layer2(void) {
 void test_altitude_conversion_layer3(void) {
 
 
-    AtmosphericObject Rocket(2.26999e4);
+    Atmosphere Rocket(2.26999e4);
 
 
     float delta = (float) (Rocket.get_altitude() - 1.10000103e+04);
@@ -52,7 +52,7 @@ void test_altitude_conversion_layer3(void) {
 
 void test_altitude_conversion_layer4(void) {
 
-    AtmosphericObject Rocket(5.52929e3);
+    Atmosphere Rocket(5.52929e3);
 
     float delta = (float) (Rocket.get_altitude() - 2.00000009e+04);
 
@@ -65,7 +65,7 @@ void test_altitude_conversion_layer4(void) {
 void test_altitude_conversion_layer5(void) {
 
 
-    AtmosphericObject Rocket(8.89060e2);
+    Atmosphere Rocket(8.89060e2);
 
     float delta = (float) (Rocket.get_altitude() - 3.20000019e+04);
 
@@ -77,7 +77,7 @@ void test_altitude_conversion_layer5(void) {
 
 void test_altitude_conversion_layer6(void) {
 
-    AtmosphericObject Rocket(1.10906e2);
+    Atmosphere Rocket(1.10906e2);
 
     float delta = (float) (Rocket.get_altitude() - 4.73500593e+04);
 
@@ -91,7 +91,7 @@ void test_altitude_conversion_layer6(void) {
 void test_altitude_conversion_layer7(void) {
 
 
-    AtmosphericObject Rocket(7.04576e1);
+    Atmosphere Rocket(7.04576e1);
 
     float delta = (float) (Rocket.get_altitude() - 5.10000220e+04);
 
@@ -104,7 +104,7 @@ void test_altitude_conversion_layer7(void) {
 void test_altitude_conversion_layer8(void) {
 
 
-    AtmosphericObject Rocket(4.47955);
+    Atmosphere Rocket(4.47955);
 
     float delta = (float) (Rocket.get_altitude() - 7.09999610e+04);
 
@@ -117,7 +117,7 @@ void test_altitude_conversion_layer8(void) {
 void test_altitude_conversion_layer9(void) {
 
 
-    AtmosphericObject Rocket(1.05247);
+    Atmosphere Rocket(1.05247);
 
     float delta = (float) (Rocket.get_altitude() - 7.99999687e+04);
 
@@ -136,7 +136,7 @@ void CSVwrite(void) {
     altitudeFile.open("test/native/test_altitude_conversion/altPressure.csv");
 
     for (int i = 110000; i > 1; i = i - 1) {
-        AtmosphericObject Rocket(i);
+        Atmosphere Rocket(i);
         altitudeFile << i << "," << Rocket.get_altitude() << "\n";
     }
 

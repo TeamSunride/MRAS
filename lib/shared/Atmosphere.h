@@ -40,27 +40,30 @@ When beta = 0:
         H = H_b + \frac{RT}{g_0} ln({\frac{P_b}{P}})
     \f}
 */
-class AtmosphericObject
-{
-    public:
+class Atmosphere {
+public:
 
-        AtmosphericObject(float pressure); // constructor
-        float get_altitude();
-        float get_temperature();
-        Eigen::Vector4f get_layer_constants(float p); 
-        int To_geopotential(float alt); // additional feture to be added, right now everything is in geometric
-        
-    private:
+    Atmosphere(float pressure); // constructor
+    float get_altitude();
 
-        // Modifiable values
-        int geometric_alt;
-        int geopotential_alt;
-        Eigen::Vector4f layer_const; 
+    float get_temperature();
 
-        float altitude(float p);
-        // matrix of layer constants
-        // each Layer  =  {Geopotential [m], Temperature [K], Temp Gradient[K/m]} 
-       Eigen::Matrix<float, 9, 4> layers;
-        
-        
+    Eigen::Vector4f get_layer_constants(float p);
+
+    int to_geopotential(float alt); // additional feture to be added, right now everything is in geometric
+
+private:
+
+    // Modifiable values
+    int geometric_alt;
+    int geopotential_alt;
+    Eigen::Vector4f layer_const;
+
+    float altitude(float pressure);
+
+    // matrix of layer constants
+    // each Layer  =  {Geopotential [m], Temperature [K], Temp Gradient[K/m]}
+    Eigen::Matrix<float, 9, 4> layers;
+
+
 };

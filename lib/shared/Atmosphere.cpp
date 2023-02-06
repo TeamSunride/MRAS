@@ -1,9 +1,9 @@
 // Written by Nikilesh
 
-#include "AltitudeEstimation.h"
+#include "Atmosphere.h"
 
 // constructor
-AtmosphericObject::AtmosphericObject(float pressure)
+Atmosphere::Atmosphere(float pressure)
 {
     
     // initializing the layer constant matrix
@@ -21,37 +21,37 @@ AtmosphericObject::AtmosphericObject(float pressure)
     geometric_alt = altitude(pressure);
 }
 
-int AtmosphericObject::To_geopotential(float alt)
+int Atmosphere::to_geopotential(float alt)
 {
 
     return RADIUS_OF_EARTH*alt/(RADIUS_OF_EARTH + alt);
 }
 
-float AtmosphericObject::get_altitude()
+float Atmosphere::get_altitude()
 {
-    return To_geopotential(geometric_alt);
+    return to_geopotential(geometric_alt);
 }
 
-float AtmosphericObject::altitude(float p)
+float Atmosphere::altitude(float pressure)
 {
 
    // if beta is non-zero
    float f_altitude = 0;
    if(layer_const(2) == 0)
    {
-        f_altitude = layer_const(0) + (SPECIFIC_GAS_CONST * layer_const(1))/GRAVITY_ACCEL * log(layer_const(3)/p);
+        f_altitude = layer_const(0) + (SPECIFIC_GAS_CONST * layer_const(1))/GRAVITY_ACCEL * log(layer_const(3) / pressure);
         return f_altitude;
    } 
 
     // if beta is zero
-    float base = (float)(layer_const(3)/p);
+    float base = (float)(layer_const(3) / pressure);
     float power = (float)((layer_const(2)*SPECIFIC_GAS_CONST)/GRAVITY_ACCEL);
     f_altitude = layer_const(0) + (layer_const(1)/layer_const(2)) * (pow(base, power) -1);
 
     return f_altitude;
 }
 
-Eigen::Vector4f AtmosphericObject::get_layer_constants(float p)
+Eigen::Vector4f Atmosphere::get_layer_constants(float p)
 {
     int rows = layers.rows();
     Eigen::Vector4f _layer_const; 

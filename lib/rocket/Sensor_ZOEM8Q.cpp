@@ -95,7 +95,7 @@ unsigned int actualTimeOfWeekms() {
     return (unsigned int) ((diff) % (SECS_PER_WEEK*1000));
 }
 
-void Sensor_ZOEM8Q::performOnlineAssist() {
+int8_t Sensor_ZOEM8Q::performOnlineAssist() {
     /** --------- AIDING SEQUENCE--------- Datasheet section 13.5 (pg. 34)
      *   --- Note that we are altering the AID_INI part of the message and leaving the rest as is. ---
      • Power-up the GPS receiver
@@ -114,7 +114,6 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
         for (int i=0;i<10;i++) {
             if (!SD.begin(BUILTIN_SDCARD)) {
                 log("SD Card failed to initialize");
-                delay(500);
             } else {
                 log("SD Card initialized");
                 sdCardInitialised = true;
@@ -124,7 +123,7 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
         }
         if (!sdCardInitialised) {
             log("Could not mount SD card");
-            while(1);
+            return -1;
         }
     }
     log("Card initialised");
@@ -141,7 +140,6 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
 
     if (!dataFile) {
         log("Failed to open file");
-        while (true);
     }
     byte * fileBuffer = new byte[numbytes]; // use new for array of variable size - remember to delete[] !
     dataFile.readBytes(reinterpret_cast<char *>(fileBuffer), numbytes);
@@ -152,9 +150,6 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
     log("GPS WEEK: %d\n", GPSweek());
     log("GPS time of week: %d\n", actualTimeOfWeekms());
 
-// https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=-20.22;lon=50.55;alt=1000;pacc=1000;tacc=1;latency=0;filteronpos
-// https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=-20.22;lon=50.55;alt=1000;pacc=1000;tacc=1;latency=0;filteronpos
-// https://online-live2.services.u-blox.com/GetOnlineData.ashx?token=gj6WVp8hTTiDA6QX9NJfJw;datatype=eph,alm,aux,pos;format=aid;gnss=gps;lat=52.662409;lon=-1.522920;alt=104;pacc=1000;tacc=1;latency=0;filteronpos
 
 
     // alter the necessary fields in the file buffer AID_INI
@@ -187,16 +182,8 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
         log("%02X ",fileBuffer[i]);
     }
 
-    log("HERE1");
     delay(1000);
 
-//    gnss->enableDebugging(Serial, true);
-//    gnss->setAckAiding(1);
-//    gnss->setI2CpollingWait(1);
-//    gnss->pushAssistNowData(fileBuffer, numbytes, SFE_UBLOX_MGA_ASSIST_ACK_ENQUIRE, 100);
-//    gnss->setI2CpollingWait(2);
-
-    log("HERE2");
 
     gnss->pushRawData(fileBuffer, numbytes);
 
@@ -214,8 +201,5 @@ void Sensor_ZOEM8Q::performOnlineAssist() {
     delete[] fileBuffer; // delete[] - very important - we don't like them segfaults
 
     log("Finished performOnlineAssist()\n");
-    delay(1000);
-
-
-
+    return 0;
 }

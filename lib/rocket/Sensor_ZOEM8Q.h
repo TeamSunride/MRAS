@@ -39,7 +39,7 @@ public:
 
     int8_t loop() override;
 
-    void performOnlineAssist();
+    int8_t performOnlineAssist();
 
     SUBSYSTEM_NO_MESSAGE_HANDLER
     SUBSYSTEM_NAME("ZOEM8Q");

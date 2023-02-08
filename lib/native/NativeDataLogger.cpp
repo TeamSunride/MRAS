@@ -7,6 +7,8 @@
 #include "system_messages/MagnetometerDataMsg.h"
 #include "system_messages/BarometerDataMsg.h"
 #include "system_messages/GNSSDataMsg.h"
+#include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "telemetry_messages/TelemetryDataMsg.h"
 
 int8_t NativeDataLogger::setup() {
     return 0;
@@ -35,7 +37,7 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
             break;
         }
         case MagnetometerDataMsg_t: {
-            auto mag_msg = (MagnetometerDataMsg*) msg;
+            auto mag_msg = (MagnetometerDataMsg *) msg;
             log("MagnetometerDataMsg: %f %f %f",
                 mag_msg->mag[0],
                 mag_msg->mag[1],
@@ -43,12 +45,12 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
             break;
         }
         case BarometerDataMsg_t: {
-            auto baro_msg = (BarometerDataMsg*) msg;
+            auto baro_msg = (BarometerDataMsg *) msg;
             log("BarometerDataMsg: Pressure: %f Temperature: %f", baro_msg->pressure, baro_msg->temperature);
             break;
         }
         case GNSSDataMsg_t: {
-            auto gnss_msg = (GNSSDataMsg*) msg;
+            auto gnss_msg = (GNSSDataMsg *) msg;
             log("GNSSDataMsg: Lat: %f  Lon: %f  Alt: %f  Fix: %d  SIV: %d",
                 gnss_msg->latitude,
                 gnss_msg->longitude,
@@ -56,6 +58,22 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
                 gnss_msg->fixType,
                 gnss_msg->SIV);
             break;
+        }
+        case ReceivedTelemetryMessageMsg_t: {
+            auto system_message = (ReceivedTelemetryMessageMsg *) msg;
+            TelemetryMessage *telemetry_message = system_message->telemetry_message;
+            switch (telemetry_message->get_type()) {
+                case TelemetryDataMsg_t: {
+                    auto data_msg = (TelemetryDataMsg*) telemetry_message;
+                    int16_t x = data_msg->x;
+                    int16_t y = data_msg->y;
+                    int16_t z = data_msg->z;
+                    log("TelemetryDataMsg: x: %d y: %d z: %d",
+                        x,
+                        y,
+                        z);
+                }
+            }
         }
         default:
             break;

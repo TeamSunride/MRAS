@@ -3,14 +3,15 @@
 //
 
 #include "TelemetrySystem.h"
+#include "telemetry_messages/TelemetryDataMsg.h"
+#include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "serializers.h"
 
 int8_t TelemetrySystem::setup() {
     log("Starting SPI bus for radio");
     RADIO_SPI_BUS.begin();
 
     log("Radio startup");
-
-    int radio_state = 0;
 
     radio_state = radio.begin(RADIO_FREQUENCY,
                               RADIO_BANDWIDTH,
@@ -45,6 +46,61 @@ int8_t TelemetrySystem::setup() {
     return 0;
 }
 
-int8_t TelemetrySystem::loop() {
-    return 0;
+QueueTelemetryMessageMsg *TelemetrySystem::get_next_message() {
+    auto *message = new TelemetryDataMsg();
+    message->x = 1;
+    message->y = 2;
+    message->z = 3;
+
+    auto *queue_message = new QueueTelemetryMessageMsg();
+    queue_message->telemetry_message = message;
+    queue_message->size = sizeof(TelemetryDataMsg);
+
+    return queue_message;
+}
+
+void TelemetrySystem::transmit_next_message() {
+
+    QueueTelemetryMessageMsg *next_message = get_next_message();
+    log("Transmitting new telemetry message size %d", next_message->size);
+    auto* bytes_to_transmit = (uint8_t *) next_message->telemetry_message;
+    radio.startTransmit(bytes_to_transmit, next_message->size);
+    telemetry_system_state = TX;
+
+    delete next_message->telemetry_message;
+}
+
+void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
+    log("Receiving new telemetry message");
+    radio.startReceive(timeout);
+    telemetry_system_state = RX;
+}
+
+bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* &output, bool receive_again) {
+    uint8_t radioBuffer[255];
+
+    radio_state = radio.readData(radioBuffer, 0);
+
+    if (receive_again) start_receiving_next_message();
+
+    if (radio_state == RADIOLIB_ERR_CRC_MISMATCH) {
+        // The calculated and expected CRCs of received packet do not match.
+        return false;
+    }
+
+    // process the new message
+    auto telemetry_message = (TelemetryMessage*) radioBuffer;
+
+    auto *received_message = new ReceivedTelemetryMessageMsg();
+    received_message->telemetry_message = telemetry_message;
+    output = received_message;
+    if (radio_state == RADIOLIB_ERR_NONE) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+int16_t TelemetrySystem::get_radio_state() const {
+    return radio_state;
 }

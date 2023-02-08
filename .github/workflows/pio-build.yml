@@ -34,7 +34,7 @@ jobs:
         run: pio test -e native
 
       - name: Upload artifact of finished build
-          uses: actions/upload-artifact@v3
-          with:
-            name: build
-            path: .pio/libdeps # or path/to/artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .pio/libdeps # or path/to/artifact

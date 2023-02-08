@@ -139,7 +139,9 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
     log("File size: %d\n", numbytes);
 
     if (!dataFile) {
+        dataFile.close();
         log("Failed to open file");
+        return -1;
     }
     byte * fileBuffer = new byte[numbytes]; // use new for array of variable size - remember to delete[] !
     dataFile.readBytes(reinterpret_cast<char *>(fileBuffer), numbytes);

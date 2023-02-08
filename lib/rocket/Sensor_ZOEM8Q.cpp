@@ -180,9 +180,10 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
     fileBuffer[55] = CK_B;
     log("CK_A: %02X      CK_B: %02X", CK_A, CK_B);
 
-    for (int i=0;i<56;i++) {
-        log("%02X ",fileBuffer[i]);
-    }
+    // Commenting out Sam's spam
+//    for (int i=0;i<56;i++) {
+//        log("%02X ",fileBuffer[i]);
+//    }
 
     delay(1000);
 

@@ -15,6 +15,7 @@
 #include "Sensor_ADXL375.h"
 #include "Sensor_ZOEM8Q.h"
 #include "RocketTelemetrySystem.h"
+#include "SDLogger.h"
 
 auto logger = ArduinoTextLogger(0, 115200);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -32,6 +33,8 @@ Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
+SDLogger sd_logger = SDLogger(8);
+
 void setup() {
     delay(5000);
     mras->set_logger(&logger);
@@ -43,6 +46,7 @@ void setup() {
     mras->add_subsystem(&accelerometer);
     mras->add_subsystem(&gnss);
     mras->add_subsystem(&telemetry_system);
+    mras->add_subsystem(&sd_logger);
 
     imu.add_subscriber(&data_logger);
     magnetometer.add_subscriber(&data_logger);
@@ -56,5 +60,5 @@ void setup() {
 
 void loop() {
     mras->loop();
-    delay(100);
+    delay(1000);
 }

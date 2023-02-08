@@ -1,6 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classTelemetryMessage.html" title=" " alt="" coords="5,55,151,80"/>
-<area shape="rect" id="node2" href="$structTelemetryDataMsg.html" title=" " alt="" coords="215,5,360,31"/>
-<area shape="rect" id="node3" href="$structTransferWindowAckMsg.html" title=" " alt="" coords="199,55,376,80"/>
-<area shape="rect" id="node4" href="$structTransferWindowInitMsg.html" title=" " alt="" coords="200,104,375,129"/>
+<area shape="rect" id="node1" href="$classSystemMessage.html" title=" " alt="" coords="5,153,135,179"/>
+<area shape="rect" id="node2" href="$structAccelerometerDataMsg.html" title=" " alt="" coords="211,5,386,31"/>
+<area shape="rect" id="node3" href="$structBarometerDataMsg.html" title=" " alt="" coords="224,55,373,80"/>
+<area shape="rect" id="node4" href="$structGNSSDataMsg.html" title=" " alt="" coords="241,104,357,129"/>
+<area shape="rect" id="node5" href="$structGyroDataMsg.html" title=" " alt="" coords="243,153,354,179"/>
+<area shape="rect" id="node6" href="$structMagnetometerDataMsg.html" title=" " alt="" coords="211,203,387,228"/>
+<area shape="rect" id="node7" href="$structQueueTelemetryMessageMsg.html" title=" " alt="" coords="191,252,406,277"/>
+<area shape="rect" id="node8" href="$structReceivedTelemetryMessageMsg.html" title=" " alt="" coords="183,301,415,327"/>
 </map>

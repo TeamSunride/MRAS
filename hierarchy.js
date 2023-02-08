@@ -6,6 +6,7 @@ var hierarchy =
     [ "_SimpleMessage", "struct__SimpleMessage.html", null ],
     [ "_TelemetryMessage", "struct__TelemetryMessage.html", null ],
     [ "ADXL375", "classADXL375.html", null ],
+    [ "Atmosphere", "classAtmosphere.html", null ],
     [ "MRAS_System", "classMRAS__System.html", null ],
     [ "Subsystem", "classSubsystem.html", [
       [ "FakeAccelerometer", "classFakeAccelerometer.html", null ],

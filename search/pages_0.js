@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['developer_20guide_0',['Developer Guide',['../md_docs_developer_guide.html',1,'']]]
+  ['atmosphere_20class_0',['Atmosphere Class',['../md_docs_atmosphere_class_guide.html',1,'']]]
 ];

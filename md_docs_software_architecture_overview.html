@@ -122,7 +122,7 @@ MRAS Subsystem Architecture Overview</div></div>
 <blockquote class="doxtable">
 <p>&zwj;It is worth noting here that we only have one thread available. MRAS is currently single-threaded. Therefore, the <code>loop()</code> function within each <a class="el" href="classSubsystem.html">Subsystem</a> must be designed to return almost immediately. No blocking calls to functions such as <code>delay()</code> are allowed. Each <a class="el" href="classSubsystem.html">Subsystem</a> should be thoroughly tested to make sure it is not blocking the operaton of other Subsystems. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md29"></a>
+<h1><a class="anchor" id="autotoc_md33"></a>
 System Messages</h1>
 <div class="image">
 <img src="system_message.png" alt=""/>
@@ -138,7 +138,7 @@ System Messages</div></div>
 <div class="line">    MagnetometerDataMsg_t,</div>
 <div class="line">    GNSSDataMsg_t</div>
 <div class="line">};</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md30"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md34"></a>
 MRAS_System</h1>
 <p>A pointer to the <a class="el" href="classMRAS__System.html">MRAS_System</a> class (accessible globally) can be attained as follows:</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classMRAS__System.html">MRAS_System</a> *mras = <a class="code hl_function" href="classMRAS__System.html#a07cf9d005ca99766edd263fb5ab8d2c7">MRAS_System::get_instance</a>();</div>
@@ -153,7 +153,7 @@ MRAS_System</h1>
 </div><!-- fragment --><p>In the main Arduino program, the <code>setup()</code> and <code>loop()</code> functions of <a class="el" href="classMRAS__System.html">MRAS_System</a> need to be called. This allows MRAS to run the <code>setup()</code> and <code>loop()</code> functions for each <a class="el" href="classSubsystem.html">Subsystem</a>.</p>
 <div class="fragment"><div class="line">mras-&gt;setup();</div>
 <div class="line">mras-&gt;loop();</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md31"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md35"></a>
 Publishing SystemMessages to other Subsystems</h1>
 <p>For this section we will use an example of a Magnetometer. Specifically, <a class="el" href="classSensor__LIS3MDL.html">Sensor_LIS3MDL</a>.</p>
 <p>Start by creating an instance of a new <a class="el" href="structMagnetometerDataMsg.html">MagnetometerDataMsg</a>:</p>
@@ -163,7 +163,7 @@ Publishing SystemMessages to other Subsystems</h1>
 <div class="fragment"><div class="line">mag_msg-&gt;mag = (Vector&lt;float, 3&gt;) lis-&gt;get_mag();</div>
 </div><!-- fragment --><p>Then publish the <a class="el" href="classSystemMessage.html">SystemMessage</a> to all subscribed subsystems using the <code>publish()</code> function.</p>
 <div class="fragment"><div class="line">publish(mag_msg);</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md32"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md36"></a>
 Receiving SystemMessages from other Subsystems</h1>
 <p>Each <a class="el" href="classSubsystem.html">Subsystem</a> can override a message handler as shown:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> on_message(<a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> *msg) <span class="keyword">override</span>;</div>

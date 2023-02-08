@@ -8,6 +8,7 @@ var annotated_dup =
     [ "AccelerometerDataMsg", "structAccelerometerDataMsg.html", null ],
     [ "ADXL375", "classADXL375.html", "classADXL375" ],
     [ "ArduinoTextLogger", "classArduinoTextLogger.html", null ],
+    [ "Atmosphere", "classAtmosphere.html", null ],
     [ "BarometerDataMsg", "structBarometerDataMsg.html", null ],
     [ "FakeAccelerometer", "classFakeAccelerometer.html", "classFakeAccelerometer" ],
     [ "GNSSDataMsg", "structGNSSDataMsg.html", "structGNSSDataMsg" ],

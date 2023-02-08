@@ -140,8 +140,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:af8c17ea3fa9f85c95099f886054cc4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cbd8c73bf8c0e646cd3c03e23568807"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807">loop</a> () override</td></tr>
 <tr class="separator:a9cbd8c73bf8c0e646cd3c03e23568807"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad34742f9d267fb86ba5a4cf8de70e3cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSensor__ZOEM8Q.html#ad34742f9d267fb86ba5a4cf8de70e3cb">performOnlineAssist</a> ()</td></tr>
-<tr class="separator:ad34742f9d267fb86ba5a4cf8de70e3cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23e75e857628594a7fd513357be81fbd"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSensor__ZOEM8Q.html#a23e75e857628594a7fd513357be81fbd">performOnlineAssist</a> ()</td></tr>
+<tr class="separator:a23e75e857628594a7fd513357be81fbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3188fe84174e9fc7dc4acd5475f1e9ec"><td class="memItemLeft" align="right" valign="top"><a id="a3188fe84174e9fc7dc4acd5475f1e9ec" name="a3188fe84174e9fc7dc4acd5475f1e9ec"></a>
 SUBSYSTEM_NO_MESSAGE_HANDLER&#160;</td><td class="memItemRight" valign="bottom"><b>SUBSYSTEM_NAME</b> (&quot;ZOEM8Q&quot;)</td></tr>
 <tr class="separator:a3188fe84174e9fc7dc4acd5475f1e9ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,14 +211,14 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 
 </div>
 </div>
-<a id="ad34742f9d267fb86ba5a4cf8de70e3cb" name="ad34742f9d267fb86ba5a4cf8de70e3cb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad34742f9d267fb86ba5a4cf8de70e3cb">&#9670;&#160;</a></span>performOnlineAssist()</h2>
+<a id="a23e75e857628594a7fd513357be81fbd" name="a23e75e857628594a7fd513357be81fbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a23e75e857628594a7fd513357be81fbd">&#9670;&#160;</a></span>performOnlineAssist()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Sensor_ZOEM8Q::performOnlineAssist </td>
+          <td class="memname">int8_t Sensor_ZOEM8Q::performOnlineAssist </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -226,10 +226,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
       </table>
 </div><div class="memdoc">
 <p>------&mdash; AIDING SEQUENCE------&mdash; Datasheet section 13.5 (pg. 34) &mdash; Note that we are altering the AID_INI part of the message and leaving the rest as is. &mdash; • Power-up the GPS receiver • Send UBX-AID-INI (time, clock and position) message. • Send UBX-AID-EPH (ephemeris) message. • Apply optional hardware time synchronization pulse within 0.5 s after (or before, depending on the configuration in UBX-AID-INI) sending the UBX-AID-INI message if hardware time synchronization is required. When sending the message before applying the pulse, make sure to allow the GPS receiver to parse and process the aiding message. The time for parsing depends on the baud rate. The processing time is 100 ms maximum. • Send optional UBX-AID-HUI (health, UTC and ionosphere parameters) message. • Send optional UBX-AID-ALM (almanac) message.</p>
-<p>this file ("mgaonline.ubx") should be loaded into the onboard SD card</p>
-<p>the file should be obtained from the ublocks server</p>
-<p>the generator token for that can be obtained from thingstream from ublocks</p>
-<p>See <a href="https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide">https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide</a> for more details</p>
+<p>this file ("mgaonline.ubx") should be loaded into the onboard SD card the file should be obtained from the ublocks server the generator token for that can be obtained from thingstream from ublocks See <a href="https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide">https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide</a> for more details</p>
 
 </div>
 </div>

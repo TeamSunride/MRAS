@@ -44,7 +44,7 @@
 #define RADIO_BANDWIDTH                     500.0
 
 // LoRa spreading factor
-#define RADIO_SPREADING_FACTOR              12
+#define RADIO_SPREADING_FACTOR              5
 
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
 #define RADIO_CODING_RATE                   5

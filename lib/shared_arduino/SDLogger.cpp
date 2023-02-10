@@ -5,6 +5,8 @@
 #include "SDLogger.h"
 
 int8_t SDLogger::setup() {
+    log("Starting SD card with CS Pin %d", SD_pin);
+
     if (SD.begin(SD_pin)) {
         log("SD card initialised");
     } else {

@@ -14,6 +14,10 @@ struct TelemetryDataMsg : public TelemetryMessage {
     int16_t x = 0;
     int16_t y = 0;
     int16_t z = 0;
+
+    void to_csv(char *buffer, size_t buffer_size) const {
+        snprintf(buffer, buffer_size, "%d,%d,%d", x, y, z);
+    }
 };
 
 #endif //MRAS_TELEMETRYDATAMSG_H

@@ -19,7 +19,7 @@ class RocketSDLogger : public SDLogger {
 
     uint32_t last_log_entry = millis();
 
-    struct DataLogPayload {
+    struct RocketDataLogPayload {
         Vector<float, 3> accel = {};
         Vector<float, 3> accel_high_G = {};
         Vector<float, 3> gyro = {};

@@ -10,7 +10,7 @@
 #include "system_messages/GNSSDataMsg.h"
 
 int8_t RocketSDLogger::loop() {
-    //flush_sd_cards();
+    if (!setup_complete) return -1;
 
     if (millis() - last_log_entry > 1) {
         // I ADORE you GitHub Copilot

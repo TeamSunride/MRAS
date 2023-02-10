@@ -111,7 +111,7 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
 
     if (!SD.begin(BUILTIN_SDCARD)) {
         bool sdCardInitialised = false;
-        for (int i=0;i<10;i++) {
+        for (int i=0;i<3;i++) {
             if (!SD.begin(BUILTIN_SDCARD)) {
                 log("SD Card failed to initialize");
             } else {

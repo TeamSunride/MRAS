@@ -16,10 +16,10 @@
 
 class Sensor_LSM6DSO32 : public Subsystem {
 private:
-    LSM6DSO32 *lsm;
+    LSM6DSO32::LSM6DSO32 *lsm;
 public:
     Sensor_LSM6DSO32(uint8_t id, uint8_t chip_select, SPIClass &spi, uint32_t frequency) : Subsystem(id) {
-        lsm = new LSM6DSO32(chip_select, spi, frequency);
+        lsm = new LSM6DSO32::LSM6DSO32(chip_select, spi, frequency);
     }
 
     ~Sensor_LSM6DSO32() {

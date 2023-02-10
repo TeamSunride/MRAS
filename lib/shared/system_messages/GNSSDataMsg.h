@@ -17,7 +17,7 @@ struct GNSSDataMsg : public SystemMessage {
     float altitude = 0; /// meters
 //    float speed = 0;
 //    float heading = 0;
-    uint8_t fixType = 0;
+    uint8_t fix_type = 0;
     uint8_t SIV = 0;
 
 

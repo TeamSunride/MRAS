@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <cstdarg>
 #include "MRAS_Config.h"
+#include "system_messages/TextLogMsg.h"
 
 class ArduinoTextLogger : public TextLogger {
 private:
@@ -37,9 +38,10 @@ public:
 
 void ArduinoTextLogger::_log(const char *fmt, va_list args) {
     // https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro
-    char buffer[255] = {};
-    vsprintf(buffer, fmt, args);
-    Serial.print(buffer);
+    auto* msg = new TextLogMsg();
+    vsprintf(msg->text, fmt, args);
+    Serial.print(msg->text);
+    publish(msg);
 }
 
 #endif //MRAS_ARDUINOTEXTLOGGER_H

@@ -55,7 +55,7 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
                 gnss_msg->latitude,
                 gnss_msg->longitude,
                 gnss_msg->altitude,
-                gnss_msg->fixType,
+                gnss_msg->fix_type,
                 gnss_msg->SIV);
             break;
         }

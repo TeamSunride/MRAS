@@ -12,22 +12,32 @@ int8_t SDLogger::setup() {
         return -1;
     }
 
-    char filename[8] = "";
+    char data_filename[8] = "";
     // pick an appropriate file name
     for (int i = 0; i < 9999; i++) {
-        sprintf(filename, "%d.csv", i);
-        if (!SD.exists(filename)) {
+        sprintf(data_filename, "%d.csv", i);
+        if (!SD.exists(data_filename)) {
             break;
         }
     }
 
-    log("SD filename: %s", filename);
+    log("SD data filename: %s", data_filename);
 
-    log_file = SD.open(filename, FILE_WRITE);
+    data_file = SD.open(data_filename, FILE_WRITE);
 
-    return 0;
-}
+    char log_filename[8] = "";
+    // pick an appropriate file name
+    for (int i = 0; i < 9999; i++) {
+        sprintf(log_filename, "%d.log", i);
+        if (!SD.exists(log_filename)) {
+            break;
+        }
+    }
 
-int8_t SDLogger::loop() {
+    log("SD log filename: %s", log_filename);
+
+    log_file = SD.open(log_filename, FILE_WRITE);
+
+    setup_complete = true;
     return 0;
 }

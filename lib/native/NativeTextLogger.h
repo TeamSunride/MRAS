@@ -8,6 +8,7 @@
 
 #include "TextLogger.h"
 #include "MRAS_Config.h"
+#include "system_messages/TextLogMsg.h"
 #include <cstdio>
 #include <cstdarg>
 
@@ -34,7 +35,10 @@ public:
 
 void NativeTextLogger::_log(const char *fmt, va_list args) {
     // https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro
-    vprintf(fmt, args);
+    auto* msg = new TextLogMsg();
+    vsprintf(msg->text, fmt, args);
+    printf("%s", msg->text);
+    publish(msg);
 }
 
 

@@ -22,10 +22,10 @@ private:
 
     int8_t setup() override;
 
-    int8_t loop() override;
-
-    SUBSYSTEM_NO_MESSAGE_HANDLER
+protected:
+    File data_file;
     File log_file;
+    bool setup_complete = false;
 };
 
 

@@ -5,7 +5,7 @@
 #include "SDLogger.h"
 
 int8_t SDLogger::setup() {
-    if (SD.begin(BUILTIN_SDCARD)) {
+    if (SD.begin(SD_pin)) {
         log("SD card initialised");
     } else {
         log("SD card failed to initialise");
@@ -14,7 +14,7 @@ int8_t SDLogger::setup() {
 
     char filename[8] = "";
     // pick an appropriate file name
-    for (uint32_t i = 0; i < 65535; i++) {
+    for (int i = 0; i < 9999; i++) {
         sprintf(filename, "%d.csv", i);
         if (!SD.exists(filename)) {
             break;

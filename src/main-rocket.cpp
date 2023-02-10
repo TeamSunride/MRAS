@@ -33,7 +33,7 @@ Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
-SDLogger sd_logger = SDLogger(8);
+SDLogger sd_logger = SDLogger(8, BUILTIN_SDCARD);
 
 void setup() {
     delay(5000);

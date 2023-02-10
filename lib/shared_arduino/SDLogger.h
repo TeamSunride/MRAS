@@ -12,8 +12,12 @@
 
 class SDLogger : public Subsystem {
 public:
-    using Subsystem::Subsystem;
+    SDLogger(uint8_t id, uint8_t sdPin) : Subsystem(id) {
+        SD_pin = sdPin;
+    }
 private:
+    uint8_t SD_pin;
+
     SUBSYSTEM_NAME("SDLogger")
 
     int8_t setup() override;

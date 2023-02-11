@@ -28,7 +28,7 @@ This allows the GPS module to obtain a valid GPS fix in a matter of seconds.
 
 ---
 
-## Obtaining the `mgaonline.ubx` file
+## Obtaining the mgaonline.ubx file
 
 In order to use UBlox's AssistNow service, you need to register for a 'Thingstream' account (see [`assistnow-getting-started-guide`](https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide)), 
 Create an AssistNow Online token, and copy it.

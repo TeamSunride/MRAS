@@ -9,7 +9,7 @@
 #include "GroundTelemetrySystem.h"
 #include "GroundSDLogger.h"
 
-auto logger = ArduinoTextLogger(0, 115200);
+auto logger = ArduinoTextLogger(0, 2000000);
 MRAS_System *mras = MRAS_System::get_instance();
 
 GroundTelemetrySystem telemetry_system = GroundTelemetrySystem(7);

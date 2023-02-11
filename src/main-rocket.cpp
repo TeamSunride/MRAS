@@ -17,7 +17,7 @@
 #include "RocketTelemetrySystem.h"
 #include "RocketSDLogger.h"
 
-auto logger = ArduinoTextLogger(0, 115200);
+auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
 
 NativeDataLogger data_logger = NativeDataLogger(1);
@@ -38,7 +38,7 @@ RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 void setup() {
     mras->set_logger(&logger);
     mras->add_subsystem(&sd_logger);
-    mras->add_subsystem(&data_logger);
+    //mras->add_subsystem(&data_logger);
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
     mras->add_subsystem(&barometer);
@@ -47,13 +47,13 @@ void setup() {
     mras->add_subsystem(&telemetry_system);
 
 
-    imu.add_subscriber(&data_logger);
-    magnetometer.add_subscriber(&data_logger);
-    barometer.add_subscriber(&data_logger);
-    accelerometer.add_subscriber(&data_logger);
-    gnss.add_subscriber(&data_logger);
+//    imu.add_subscriber(&data_logger);
+//    magnetometer.add_subscriber(&data_logger);
+//    barometer.add_subscriber(&data_logger);
+//    accelerometer.add_subscriber(&data_logger);
+//    gnss.add_subscriber(&data_logger);
 
-    // setup SD logger subscriptions
+//     setup SD logger subscriptions
     logger.add_subscriber(&sd_logger);
     imu.add_subscriber(&sd_logger);
     magnetometer.add_subscriber(&sd_logger);
@@ -66,5 +66,6 @@ void setup() {
 
 void loop() {
     mras->loop();
-    delay(1000);
+    delay(0);
+    //Serial.println(millis());
 }

@@ -24,8 +24,8 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
                     char buffer[255];
                     auto telemetry_msg = (TelemetryDataMsg*) new_msg->telemetry_message;
                     telemetry_msg->to_csv(buffer, sizeof buffer);
-                    data_file.println(buffer);
-                    data_file.flush();
+                    log_file.println(buffer);
+                    log_file.flush();
                     break;
                 }
                 default:

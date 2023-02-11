@@ -12,12 +12,16 @@
 struct QueueTelemetryMessageMsg : public SystemMessage {
     QueueTelemetryMessageMsg() : SystemMessage(QueueTelemetryMessageMsg_t) {}
 
+    ~QueueTelemetryMessageMsg() {
+        delete telemetry_message;
+    }
+
     /*
      * A pointer to the TelemetryMessage that we want to send to the ground.
      *
      * This TelemetryMessage must be allocated on the heap.
     */
-    TelemetryMessage* telemetry_message = nullptr;
+    TelemetryMessage *telemetry_message = nullptr;
     size_t size = 0;
 };
 

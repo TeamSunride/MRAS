@@ -25,11 +25,12 @@ int8_t RocketTelemetrySystem::loop() {
             break;
         }
         case RX: {
-            ReceivedTelemetryMessageMsg* msg = nullptr;
+            auto* msg = new ReceivedTelemetryMessageMsg();
             if (read_new_message_from_buffer(msg)) {
                 publish(msg);
             } else {
                 log("CRC or radio error");
+                delete msg;
             }
             break;
         }

@@ -14,23 +14,10 @@ int8_t SDLogger::setup() {
         return -1;
     }
 
-    char data_filename[8] = "";
-    // pick an appropriate file name
-    for (int i = 0; i < 9999; i++) {
-        sprintf(data_filename, "%d.csv", i);
-        if (!SD.exists(data_filename)) {
-            break;
-        }
-    }
-
-    log("SD data filename: %s", data_filename);
-
-    data_file = SD.open(data_filename, FILE_WRITE);
-
     char log_filename[8] = "";
     // pick an appropriate file name
     for (int i = 0; i < 9999; i++) {
-        sprintf(log_filename, "%d.log", i);
+        sprintf(log_filename, "%d.csv", i);
         if (!SD.exists(log_filename)) {
             break;
         }

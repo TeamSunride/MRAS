@@ -12,6 +12,10 @@
 struct ReceivedTelemetryMessageMsg : public SystemMessage {
     ReceivedTelemetryMessageMsg() : SystemMessage(ReceivedTelemetryMessageMsg_t) {}
 
+    ~ReceivedTelemetryMessageMsg() {
+        delete telemetry_message;
+    }
+
     TelemetryMessage* telemetry_message = nullptr;
 };
 

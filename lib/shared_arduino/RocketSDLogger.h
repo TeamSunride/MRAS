@@ -18,6 +18,7 @@ class RocketSDLogger : public SDLogger {
     void on_message(SystemMessage *msg) override;
 
     uint32_t last_log_entry = millis();
+    uint32_t last_flush = millis();
 
     struct RocketDataLogPayload {
         Vector<float, 3> accel = {};

@@ -23,7 +23,6 @@ private:
     int8_t setup() override;
 
 protected:
-    File data_file;
     File log_file;
     bool setup_complete = false;
 };

@@ -14,7 +14,7 @@ int8_t RocketSDLogger::loop() {
 
     if (millis() - last_log_entry > 1) {
         // I ADORE you GitHub Copilot
-        data_file.printf(
+        log_file.printf(
                 "%f,%f,%f"
                 ",%f,%f,%f"
                 ",%f,%f,%f"
@@ -27,7 +27,12 @@ int8_t RocketSDLogger::loop() {
                 data.mag[0], data.mag[1], data.mag[2],
                 data.pressure, data.temperature,
                 data.latitude, data.longitude, data.altitude, data.fix_type, data.SIV);
-        data_file.flush();
+        last_log_entry = millis();
+    }
+
+    if (millis() - last_flush > 1000) {
+        log_file.flush();
+        last_flush = millis();
     }
 
     return 0;
@@ -72,9 +77,9 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
             break;
         }
         case TextLogMsg_t: {
+            // make sure the data file is flushed before we log any text
             auto text_log_msg = (TextLogMsg *) msg;
-            log_file.print(text_log_msg->text);
-            log_file.flush();
+            log_file.printf("#%s", text_log_msg->text);
             break;
         }
         default:

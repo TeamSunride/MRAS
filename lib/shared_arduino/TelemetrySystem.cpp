@@ -67,7 +67,7 @@ void TelemetrySystem::transmit_next_message() {
     radio.startTransmit(bytes_to_transmit, next_message->size);
     telemetry_system_state = TX;
 
-    delete next_message->telemetry_message;
+    delete next_message;
 }
 
 void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
@@ -91,9 +91,7 @@ bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* 
     // process the new message
     auto telemetry_message = (TelemetryMessage*) radioBuffer;
 
-    auto *received_message = new ReceivedTelemetryMessageMsg();
-    received_message->telemetry_message = telemetry_message;
-    output = received_message;
+    output->telemetry_message = telemetry_message;
     if (radio_state == RADIOLIB_ERR_NONE) {
         return true;
     } else {

@@ -5,6 +5,7 @@ var searchData=
   ['telemetrymessage_2',['TelemetryMessage',['../classTelemetryMessage.html',1,'']]],
   ['telemetrysystem_3',['TelemetrySystem',['../classTelemetrySystem.html',1,'']]],
   ['textlogger_4',['TextLogger',['../classTextLogger.html',1,'']]],
-  ['transferwindowackmsg_5',['TransferWindowAckMsg',['../structTransferWindowAckMsg.html',1,'']]],
-  ['transferwindowinitmsg_6',['TransferWindowInitMsg',['../structTransferWindowInitMsg.html',1,'']]]
+  ['textlogmsg_5',['TextLogMsg',['../structTextLogMsg.html',1,'']]],
+  ['transferwindowackmsg_6',['TransferWindowAckMsg',['../structTransferWindowAckMsg.html',1,'']]],
+  ['transferwindowinitmsg_7',['TransferWindowInitMsg',['../structTransferWindowInitMsg.html',1,'']]]
 ];

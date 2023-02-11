@@ -11,6 +11,10 @@ var hierarchy =
     [ "Subsystem", "classSubsystem.html", [
       [ "FakeAccelerometer", "classFakeAccelerometer.html", null ],
       [ "NativeDataLogger", "classNativeDataLogger.html", null ],
+      [ "SDLogger", "classSDLogger.html", [
+        [ "GroundSDLogger", "classGroundSDLogger.html", null ],
+        [ "RocketSDLogger", "classRocketSDLogger.html", null ]
+      ] ],
       [ "Sensor_ADXL375", "classSensor__ADXL375.html", null ],
       [ "Sensor_LIS3MDL", "classSensor__LIS3MDL.html", null ],
       [ "Sensor_LSM6DSO32", "classSensor__LSM6DSO32.html", null ],
@@ -32,7 +36,8 @@ var hierarchy =
       [ "GyroDataMsg", "structGyroDataMsg.html", null ],
       [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
       [ "QueueTelemetryMessageMsg", "structQueueTelemetryMessageMsg.html", null ],
-      [ "ReceivedTelemetryMessageMsg", "structReceivedTelemetryMessageMsg.html", null ]
+      [ "ReceivedTelemetryMessageMsg", "structReceivedTelemetryMessageMsg.html", null ],
+      [ "TextLogMsg", "structTextLogMsg.html", null ]
     ] ],
     [ "TelemetryMessage", "classTelemetryMessage.html", [
       [ "TelemetryDataMsg", "structTelemetryDataMsg.html", null ],

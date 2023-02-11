@@ -112,10 +112,10 @@ $(document).ready(function(){initNavTree('md_docs_atmosphere_class_guide.html','
 <div class="textblock"><p>A class that calculates the altitude from the pressure values, using the ICAO 1993 standard. Altitude Calculation is different for when the tempreature gradient, beta is zero versus when not. The formula is as follows: \(\\ if \beta \neq 0 \) $$H = H_b + \frac{T_b}{\beta} ((\frac{P_b}{P})^{\frac{\beta R}{g_0}} - 1)$$ \( if  \beta = 0 \) $$H = H_b + \frac{RT}{g_0} ln({\frac{P_b}{P}})$$</p>
 <p>The <a class="el" href="classAtmosphere.html">Atmosphere</a> is divided into layers, from -5km to 80km, split into 9 layers. The matrix of the layer values is as below: $$\begin{bmatrix} -5.00e3 &amp; 360.65&amp; -6.50e-3&amp; 1.77687e5 \\ 0.00e3 &amp; 288.15&amp; -6.50e-3&amp; 1.01325e5 \\ 11.00e3 &amp; 216.65&amp; 0.00e-3&amp; 2.26320e4 \\ 20.00e3 &amp; 216.65&amp; 1.00e-3&amp; 5.47487e3 \\ 32.00e3 &amp; 228.65&amp; 2.80e-3&amp; 8.68014e2 \\ 47.00e3 &amp; 270.65&amp; 0.00e-3&amp; 1.10906e2 \\ 51.00e3 &amp; 270.65 &amp; -2.80e-3&amp; 6.69384e1 \\ 71.00e3 &amp; 214.65 &amp; -2.00e-3&amp; 3.95639e0 \\ 80.00e3 &amp; 196.65 &amp; -2.00e-3&amp; 8.86272e-1 \\ \end{bmatrix}$$</p>
 <p>Each row is a vector of \( (H_b, T_b, \beta, P_b) \) where \( H_b \) is base geopotential height (height from sealevel), \(T_b \) is base temperature, \( \beta \) is temperature gradient and \( P_b \) is base pressure within that layer.</p>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md15"></a>
 How to use the class</h1>
 <p>The class constructor require a pressure value, the bounds are [0, 101375] pascals. Invalid pressure inputs are attenuated.</p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
 Example</h2>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;Atmosphere.h&quot;</span></div>
 <div class="line"> </div>
@@ -124,7 +124,7 @@ Example</h2>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">float</span> alt = <span class="keywordtype">object</span>.get_altitude();</div>
 <div class="ttc" id="aclassAtmosphere_html"><div class="ttname"><a href="classAtmosphere.html">Atmosphere</a></div><div class="ttdef"><b>Definition:</b> Atmosphere.h:43</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
 Performance</h1>
 <p>The class ouputs values very close to the ouputs of the Python module Ambiance, within 2% of it's values. The outputs were ploted using matplotlib: <img src="PressureVsAltitude.png" alt="" class="inline" title="Output Plot of Atmosphere Class"/>     </p>
 </div></div><!-- contents -->

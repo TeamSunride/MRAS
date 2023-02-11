@@ -181,12 +181,12 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classSensor__MS5607.html">Sensor_MS5607</a> class is a C++ driver for the MS5607 barometric pressure sensor. It is a child class of the <a class="el" href="classSubsystem.html">Subsystem</a> base class and is responsible for communicating with the sensor over I2C, reading and interpreting the sensor's data, and providing that data to the system.</p>
-<h2><a class="anchor" id="autotoc_md42"></a>
+<h2><a class="anchor" id="autotoc_md47"></a>
 High-level Overview:</h2>
 <p>The <code>setup()</code> method initializes the I2C bus and reads the sensor's calibration coefficients from its PROM (Programmable Read-Only Memory). It returns 0 on success and a non-zero value on failure.</p>
 <p>The <code>loop()</code> method reads pressure and temperature data from the sensor. It uses a finite state machine to control the timing of the pressure and temperature measurements. It returns different status codes depending on the state of the sensor and the outcome of the measurements.</p>
 <p>The class has several private variables, such as the i2c address of the sensor, the i2c bus object, and the sensor's calibration coefficients. It also has several private constants, such as the OSR (Oversampling Ratio), which determines the resolution of the sensor's measurements, and the CONV_D1, CONV_D2, and CONV_Delay constants, which determine the timing of the pressure and temperature measurements.</p>
-<h2><a class="anchor" id="autotoc_md43"></a>
+<h2><a class="anchor" id="autotoc_md48"></a>
 Step by step process for how data is read from the sensor:</h2>
 <ol type="1">
 <li>In the setup() method, the I2C bus is initialized and the read_PROM() method is called to read the sensor's calibration coefficients from its PROM.</li>

@@ -1,6 +1,6 @@
 <map id="TelemetryMessage" name="TelemetryMessage">
 <area shape="rect" id="node1" title=" " alt="" coords="216,5,387,97"/>
-<area shape="rect" id="node2" href="$structTelemetryDataMsg.html" title=" " alt="" coords="5,145,176,252"/>
-<area shape="rect" id="node3" href="$structTransferWindowAckMsg.html" title=" " alt="" coords="200,160,403,237"/>
-<area shape="rect" id="node4" href="$structTransferWindowInitMsg.html" title=" " alt="" coords="427,160,626,237"/>
+<area shape="rect" id="node2" href="$structTelemetryDataMsg.html" title=" " alt="" coords="5,145,176,267"/>
+<area shape="rect" id="node3" href="$structTransferWindowAckMsg.html" title=" " alt="" coords="200,167,403,245"/>
+<area shape="rect" id="node4" href="$structTransferWindowInitMsg.html" title=" " alt="" coords="427,167,626,245"/>
 </map>

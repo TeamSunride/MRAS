@@ -6,6 +6,7 @@ var searchData=
   ['get_5fstatus_3',['get_status',['../classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622',1,'Subsystem']]],
   ['gettimestampmillisgps_4',['getTimestampMillisGPS',['../classSensor__ZOEM8Q.html#a9cc83e1cc7cbc8b68072700249277918',1,'Sensor_ZOEM8Q']]],
   ['gnssdatamsg_5',['GNSSDataMsg',['../structGNSSDataMsg.html',1,'']]],
-  ['groundtelemetrysystem_6',['GroundTelemetrySystem',['../classGroundTelemetrySystem.html',1,'']]],
-  ['gyrodatamsg_7',['GyroDataMsg',['../structGyroDataMsg.html',1,'']]]
+  ['groundsdlogger_6',['GroundSDLogger',['../classGroundSDLogger.html',1,'']]],
+  ['groundtelemetrysystem_7',['GroundTelemetrySystem',['../classGroundTelemetrySystem.html',1,'']]],
+  ['gyrodatamsg_8',['GyroDataMsg',['../structGyroDataMsg.html',1,'']]]
 ];

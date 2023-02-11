@@ -12,6 +12,7 @@ var annotated_dup =
     [ "BarometerDataMsg", "structBarometerDataMsg.html", null ],
     [ "FakeAccelerometer", "classFakeAccelerometer.html", "classFakeAccelerometer" ],
     [ "GNSSDataMsg", "structGNSSDataMsg.html", "structGNSSDataMsg" ],
+    [ "GroundSDLogger", "classGroundSDLogger.html", null ],
     [ "GroundTelemetrySystem", "classGroundTelemetrySystem.html", null ],
     [ "GyroDataMsg", "structGyroDataMsg.html", null ],
     [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
@@ -20,7 +21,9 @@ var annotated_dup =
     [ "NativeTextLogger", "classNativeTextLogger.html", "classNativeTextLogger" ],
     [ "QueueTelemetryMessageMsg", "structQueueTelemetryMessageMsg.html", null ],
     [ "ReceivedTelemetryMessageMsg", "structReceivedTelemetryMessageMsg.html", null ],
+    [ "RocketSDLogger", "classRocketSDLogger.html", null ],
     [ "RocketTelemetrySystem", "classRocketTelemetrySystem.html", null ],
+    [ "SDLogger", "classSDLogger.html", null ],
     [ "Sensor_ADXL375", "classSensor__ADXL375.html", null ],
     [ "Sensor_LIS3MDL", "classSensor__LIS3MDL.html", null ],
     [ "Sensor_LSM6DSO32", "classSensor__LSM6DSO32.html", null ],
@@ -32,6 +35,7 @@ var annotated_dup =
     [ "TelemetryMessage", "classTelemetryMessage.html", null ],
     [ "TelemetrySystem", "classTelemetrySystem.html", "classTelemetrySystem" ],
     [ "TextLogger", "classTextLogger.html", "classTextLogger" ],
+    [ "TextLogMsg", "structTextLogMsg.html", null ],
     [ "TransferWindowAckMsg", "structTransferWindowAckMsg.html", null ],
     [ "TransferWindowInitMsg", "structTransferWindowInitMsg.html", null ]
 ];

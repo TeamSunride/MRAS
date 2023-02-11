@@ -5,6 +5,7 @@ var searchData=
   ['adxl375_2',['ADXL375',['../classADXL375.html',1,'']]],
   ['altitude_3',['altitude',['../structGNSSDataMsg.html#a01a32b53eaa7d8f43588de0047741a3d',1,'GNSSDataMsg']]],
   ['arduinotextlogger_4',['ArduinoTextLogger',['../classArduinoTextLogger.html',1,'']]],
-  ['atmosphere_5',['Atmosphere',['../classAtmosphere.html',1,'']]],
-  ['atmosphere_20class_6',['Atmosphere Class',['../md_docs_atmosphere_class_guide.html',1,'']]]
+  ['assist_20now_20documentation_5',['Assist Now Documentation',['../md_docs_assistNowDocumentation.html',1,'']]],
+  ['atmosphere_6',['Atmosphere',['../classAtmosphere.html',1,'']]],
+  ['atmosphere_20class_7',['Atmosphere Class',['../md_docs_atmosphere_class_guide.html',1,'']]]
 ];

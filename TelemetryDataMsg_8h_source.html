@@ -125,9 +125,13 @@ $(document).ready(function(){initNavTree('TelemetryDataMsg_8h_source.html',''); 
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    int16_t x = 0;</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    int16_t y = 0;</div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    int16_t z = 0;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_TELEMETRYDATAMSG_H</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keywordtype">void</span> to_csv(<span class="keywordtype">char</span> *buffer, <span class="keywordtype">size_t</span> buffer_size)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        snprintf(buffer, buffer_size, <span class="stringliteral">&quot;%d,%d,%d&quot;</span>, x, y, z);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>};</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_TELEMETRYDATAMSG_H</span></div>
 <div class="ttc" id="aclassTelemetryMessage_html"><div class="ttname"><a href="classTelemetryMessage.html">TelemetryMessage</a></div><div class="ttdef"><b>Definition:</b> TelemetryMessage.h:37</div></div>
 <div class="ttc" id="astructTelemetryDataMsg_html"><div class="ttname"><a href="structTelemetryDataMsg.html">TelemetryDataMsg</a></div><div class="ttdef"><b>Definition:</b> TelemetryDataMsg.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->

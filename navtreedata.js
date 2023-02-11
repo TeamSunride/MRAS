@@ -26,44 +26,48 @@ var NAVTREE =
 [
   [ "MRAS", "index.html", [
     [ "MRAS (Multi Rocket Avionics System) Documentation", "index.html", "index" ],
+    [ "Assist Now Documentation", "md_docs_assistNowDocumentation.html", [
+      [ "How this subsystem works", "md_docs_assistNowDocumentation.html#autotoc_md11", null ],
+      [ "Obtaining the <tt>mgaonline.ubx</tt> file", "md_docs_assistNowDocumentation.html#autotoc_md13", null ]
+    ] ],
     [ "Atmosphere Class", "md_docs_atmosphere_class_guide.html", [
-      [ "How to use the class", "md_docs_atmosphere_class_guide.html#autotoc_md10", [
-        [ "Example", "md_docs_atmosphere_class_guide.html#autotoc_md11", null ]
+      [ "How to use the class", "md_docs_atmosphere_class_guide.html#autotoc_md15", [
+        [ "Example", "md_docs_atmosphere_class_guide.html#autotoc_md16", null ]
       ] ],
-      [ "Performance", "md_docs_atmosphere_class_guide.html#autotoc_md12", null ]
+      [ "Performance", "md_docs_atmosphere_class_guide.html#autotoc_md17", null ]
     ] ],
     [ "Developer Guide", "md_docs_developer_guide.html", [
-      [ "Installing PlatformIO", "md_docs_developer_guide.html#autotoc_md14", null ],
-      [ "Adding pio to PATH", "md_docs_developer_guide.html#autotoc_md15", null ],
-      [ "Integrating PlatformIO with CLion", "md_docs_developer_guide.html#autotoc_md16", null ],
-      [ "Opening the MRAS project in CLion", "md_docs_developer_guide.html#autotoc_md17", null ],
-      [ "Uploading code to the targets", "md_docs_developer_guide.html#autotoc_md18", [
-        [ "Uploading code to rocket environment", "md_docs_developer_guide.html#autotoc_md19", null ],
-        [ "Uploading code to ground environment", "md_docs_developer_guide.html#autotoc_md20", null ],
-        [ "Running code in native environment", "md_docs_developer_guide.html#autotoc_md21", null ]
+      [ "Installing PlatformIO", "md_docs_developer_guide.html#autotoc_md19", null ],
+      [ "Adding pio to PATH", "md_docs_developer_guide.html#autotoc_md20", null ],
+      [ "Integrating PlatformIO with CLion", "md_docs_developer_guide.html#autotoc_md21", null ],
+      [ "Opening the MRAS project in CLion", "md_docs_developer_guide.html#autotoc_md22", null ],
+      [ "Uploading code to the targets", "md_docs_developer_guide.html#autotoc_md23", [
+        [ "Uploading code to rocket environment", "md_docs_developer_guide.html#autotoc_md24", null ],
+        [ "Uploading code to ground environment", "md_docs_developer_guide.html#autotoc_md25", null ],
+        [ "Running code in native environment", "md_docs_developer_guide.html#autotoc_md26", null ]
       ] ],
-      [ "Project file structure", "md_docs_developer_guide.html#autotoc_md22", null ],
-      [ "Code completion", "md_docs_developer_guide.html#autotoc_md23", null ]
+      [ "Project file structure", "md_docs_developer_guide.html#autotoc_md27", null ],
+      [ "Code completion", "md_docs_developer_guide.html#autotoc_md28", null ]
     ] ],
     [ "Technical Guide to Documentation", "md_docs_documentation_guide.html", [
-      [ "How to install Doxygen and Graphviz on Windows", "md_docs_documentation_guide.html#autotoc_md25", null ],
-      [ "How to generate documentation", "md_docs_documentation_guide.html#autotoc_md26", null ],
-      [ "How to view documentation", "md_docs_documentation_guide.html#autotoc_md27", null ],
-      [ "Hosted documentation:", "md_docs_documentation_guide.html#autotoc_md28", null ],
-      [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md29", null ],
-      [ "LaTeX: Including formulas", "md_docs_documentation_guide.html#autotoc_md30", [
-        [ "Examples:", "md_docs_documentation_guide.html#autotoc_md31", null ]
+      [ "How to install Doxygen and Graphviz on Windows", "md_docs_documentation_guide.html#autotoc_md30", null ],
+      [ "How to generate documentation", "md_docs_documentation_guide.html#autotoc_md31", null ],
+      [ "How to view documentation", "md_docs_documentation_guide.html#autotoc_md32", null ],
+      [ "Hosted documentation:", "md_docs_documentation_guide.html#autotoc_md33", null ],
+      [ "Creating graphs and diagrams", "md_docs_documentation_guide.html#autotoc_md34", null ],
+      [ "LaTeX: Including formulas", "md_docs_documentation_guide.html#autotoc_md35", [
+        [ "Examples:", "md_docs_documentation_guide.html#autotoc_md36", null ]
       ] ]
     ] ],
     [ "Software Architecture Overview", "md_docs_software_architecture_overview.html", [
-      [ "System Messages", "md_docs_software_architecture_overview.html#autotoc_md33", null ],
-      [ "MRAS_System", "md_docs_software_architecture_overview.html#autotoc_md34", null ],
-      [ "Publishing SystemMessages to other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md35", null ],
-      [ "Receiving SystemMessages from other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md36", null ]
+      [ "System Messages", "md_docs_software_architecture_overview.html#autotoc_md38", null ],
+      [ "MRAS_System", "md_docs_software_architecture_overview.html#autotoc_md39", null ],
+      [ "Publishing SystemMessages to other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md40", null ],
+      [ "Receiving SystemMessages from other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md41", null ]
     ] ],
     [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
-      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md38", null ],
-      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md39", null ]
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md43", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md44", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

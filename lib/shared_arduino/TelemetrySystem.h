@@ -51,7 +51,7 @@ protected:
      * the radio buffer.
      * @return True if the operation was a success, otherwise false (such as in the case of a CRC error)
      */
-    bool read_new_message_from_buffer(ReceivedTelemetryMessageMsg* &output, bool receive_again = true);
+    bool read_new_message_from_buffer(ReceivedTelemetryMessageMsg* output, bool receive_again = true);
 
 public:
     explicit TelemetrySystem(uint8_t id) : Subsystem(id) {}

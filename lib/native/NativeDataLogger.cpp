@@ -72,8 +72,10 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
                         x,
                         y,
                         z);
+                    break;
                 }
             }
+            break;
         }
         default:
             break;

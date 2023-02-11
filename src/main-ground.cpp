@@ -33,9 +33,12 @@ void setup() {
     telemetry_system.add_subscriber(&data_logger);
     telemetry_system.add_subscriber(&sd_logger);
 
+    logger.add_subscriber(&sd_logger);
+
     mras->setup();
 }
 
 void loop() {
     mras->loop();
+    //Serial.println(millis());
 }

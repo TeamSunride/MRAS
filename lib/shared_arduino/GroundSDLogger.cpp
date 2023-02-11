@@ -34,6 +34,7 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
         }
         case TextLogMsg_t: {
             auto text_log_msg = (TextLogMsg *) msg;
+            Serial.println("Writing to log file");
             log_file.print(text_log_msg->text);
             log_file.flush();
             break;

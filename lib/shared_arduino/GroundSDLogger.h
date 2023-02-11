@@ -8,6 +8,9 @@
 
 #include "SDLogger.h"
 
+/**
+ * Data logger for the ground station, uses the SD card to log CSV data and text logs to the same file.
+ */
 class GroundSDLogger : public SDLogger {
     using SDLogger::SDLogger;
 
@@ -17,6 +20,12 @@ class GroundSDLogger : public SDLogger {
 
     uint32_t last_log_entry = millis();
 
+    /**
+     * @brief The data to be logged
+     *
+     * The data is logged as a CSV file with the following columns:
+     * latitude, longitude, altitude, fix_type, SIV
+     */
     struct GroundDataLogPayload {
         float latitude = 0;
         float longitude = 0;

@@ -12,10 +12,21 @@
 #include <cstdio>
 #include <cstdarg>
 
+/**
+ * @brief A TextLogger that is compatible with the Native MRAS build environment
+ *
+ * In the native build environment, we can use printf to log to the console
+ */
 class NativeTextLogger : public TextLogger {
 public:
     explicit NativeTextLogger(uint8_t id) : TextLogger(id) {};
 
+    /**
+     * @brief Log a message to the console
+     *
+     * @param fmt The format string
+     * @param args The arguments to the format string
+     */
     void _log(const char *fmt, va_list args) override;
 
     int8_t setup() override {

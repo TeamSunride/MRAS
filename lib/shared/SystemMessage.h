@@ -20,13 +20,22 @@ enum SystemMessageType {
     TextLogMsg_t
 };
 
-/*
- * System messages are used to send data between
- * subsystems.
+/**
+ * @brief A base class for all system messages
+ *
+ * This class is used to provide a common interface for all system messages.
+ *
+ * System messages are used to communicate between subsystems. See `Software Architecture Overview` for more information.
  */
 class SystemMessage {
 public:
     explicit SystemMessage(SystemMessageType type) : type(type) {};
+
+    /**
+     * @brief Get the type of the message
+     *
+     * @return The SystemMessageType of the SystemMessage
+     */
     SystemMessageType get_type() { return type; };
 protected:
     SystemMessageType type;

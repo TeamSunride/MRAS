@@ -7,17 +7,48 @@
 
 #include "SystemMessage.h"
 
+/**
+ * @brief Message sent by the GNSS (also referred to less correctly as GPS) to the system
+ *
+ * The units of the latitude and longitude are decimal degrees and the altitude is in meters above mean sea level
+ */
 struct GNSSDataMsg : public SystemMessage {
     explicit GNSSDataMsg(SystemMessageType gnss_msg_type) : SystemMessage(gnss_msg_type) {}
 
+    /**
+     * @brief The latitude in decimal degrees
+     */
+    float latitude = 0;
 
-    // Should these be doubles????
-    float latitude = 0; /// degrees
-    float longitude = 0; /// degrees
-    float altitude = 0; /// meters
+    /**
+     * @brief The longitude in decimal degrees
+     */
+    float longitude = 0;
+
+    /**
+     * @brief The altitude in meters above mean sea level
+     */
+    float altitude = 0;
 //    float speed = 0;
 //    float heading = 0;
+
+    /**
+     * @brief The current fix type
+     *
+     * Value | Description
+     * ------|------------
+     * 0     | No fix
+     * 1     | Dead reckoning only
+     * 2     | 2D fix
+     * 3     | 3D fix
+     * 4     | GNSS + dead reckoning combined
+     * 5     | Time only fix
+     */
     uint8_t fix_type = 0;
+
+    /**
+     * @brief The number of satellites used in the fix
+     */
     uint8_t SIV = 0;
 
 
@@ -32,8 +63,6 @@ struct GNSSDataMsg : public SystemMessage {
 //    float headVeh = 0;
 //    float magDec = 0; Magnetic declination at that point according to world magnetic model - A great idea by copilot
 //    float magAcc = 0;    - Magnetic declination not supported by ublox 8 series /:(
-
-
 };
 
 

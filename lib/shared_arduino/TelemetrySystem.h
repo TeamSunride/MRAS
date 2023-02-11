@@ -13,6 +13,13 @@
 #include "system_messages/QueueTelemetryMessageMsg.h"
 #include "system_messages/ReceivedTelemetryMessageMsg.h"
 
+/**
+ * @brief A subsystem for sending and receiving telemetry data using the LoRa radio
+ *
+ * This subsystem is responsible for sending and receiving telemetry data from the rocket.
+ *
+ * This subsystem uses the RadioLib library to communicate with the radio chip.
+ */
 class TelemetrySystem : public Subsystem {
 protected:
     // create subsystem boilerplate
@@ -37,10 +44,14 @@ protected:
     int16_t radio_state = 0;
 
 protected:
-
     QueueTelemetryMessageMsg* get_next_message();
 
     void transmit_next_message();
+
+    /**
+     * Start receiving a new message from the radio.
+     * @param timeout The timeout for the radio to wait for a message before giving up
+     */
     void start_receiving_next_message(uint32_t timeout = 0xFFFFFF);
 
     /**

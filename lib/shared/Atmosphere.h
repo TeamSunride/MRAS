@@ -42,12 +42,23 @@ When beta = 0:
 */
 class Atmosphere {
 public:
+    /**
+     * @brief Construct a new Atmosphere object
+     * @param pressure The current air pressure [Pa]
+     */
+    explicit Atmosphere(float pressure);
 
-    Atmosphere(float pressure); // constructor
+    /**
+     * Get the altitude at this point in the Atmosphere
+     * @return The altitude [m] above Mean Sea Level
+     */
     float get_altitude();
 
-    float get_temperature();
-
+    /**
+     * Get the layer constants for the current pressure
+     * @param p The current pressure [Pa]
+     * @return A vector of \f$ (H_b, T_b, \beta, P_b) \f$ which represents the layer constants
+     */
     Eigen::Vector4f get_layer_constants(float p);
 
     int to_geopotential(float alt); // additional feture to be added, right now everything is in geometric

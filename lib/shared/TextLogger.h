@@ -9,6 +9,12 @@
 #include "Subsystem.h"
 #include <cstdarg>
 
+/**
+ * @brief A base class for ArduinoTextLogger and NativeTextLogger
+ *
+ * This class is used to provide a common interface for both ArduinoTextLogger and NativeTextLogger. This allows
+ * either TextLogger to be used in the same way by MRAS and its Subsystems.
+ */
 class TextLogger : public Subsystem {
 public:
     using Subsystem::Subsystem;

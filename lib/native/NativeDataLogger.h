@@ -8,6 +8,9 @@
 
 #include "Subsystem.h"
 
+/**
+ * @brief A subsystem that logs SystemMessages using its log() function, mostly for debugging
+ */
 class NativeDataLogger: public Subsystem {
 public:
     using Subsystem::Subsystem;

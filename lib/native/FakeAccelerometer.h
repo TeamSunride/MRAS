@@ -8,6 +8,12 @@
 
 #include "Subsystem.h"
 
+/**
+ * @brief A fake accelerometer for testing
+ *
+ * This class is a fake accelerometer that can be used for testing
+ * It will send an AccelerometerDataMsg to the system every time its `loop()` method is called
+ */
 class FakeAccelerometer : public Subsystem {
 public:
     using Subsystem::Subsystem;

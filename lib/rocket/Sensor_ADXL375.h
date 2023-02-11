@@ -10,10 +10,25 @@
 #include <SPI.h>
 #include "ADXL375.h"
 
+/**
+ * @brief A subsystem for the ADXL375 accelerometer
+ *
+ * This Subsystem handles the setup and reading of data from the ADXL375 accelerometer.
+ *
+ * This Subsystem emits AccelerometerDataMsg messages to its subscribers.
+ */
 class Sensor_ADXL375 : public Subsystem {
 private:
     ADXL375 *adxl;
 public:
+    /**
+     * @brief Construct a new Sensor_ADXL375 object
+     *
+     * @param id The ID of the subsystem
+     * @param chip_select The chip select pin for the ADXL375
+     * @param spi The SPI object to use
+     * @param frequency The frequency to use for the SPI bus
+     */
     Sensor_ADXL375(uint8_t id, uint8_t chip_select, SPIClass &spi, uint32_t frequency) : Subsystem(id) {
         adxl = new ADXL375(chip_select, spi, frequency);
     }

@@ -7,10 +7,22 @@
 
 #include "SystemMessage.h"
 
+/**
+ * @brief Message sent by the barometer to the system
+ *
+ * The units of the pressure are Pa and the temperature is in degrees Celsius
+ */
 struct BarometerDataMsg : public SystemMessage {
     BarometerDataMsg() : SystemMessage(BarometerDataMsg_t) {}
 
+    /**
+     * @brief The pressure in Pa
+     */
     float pressure = 0;
+
+    /**
+     * @brief The temperature in degrees Celsius
+     */
     float temperature = 0;
 };
 

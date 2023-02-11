@@ -5,6 +5,7 @@
 #include "Sensor_ZOEM8Q.h"
 
 int8_t Sensor_ZOEM8Q::setup() {
+    log("Startup...");
     _pipe->begin();
     _pipe->setClock(_freq);
 
@@ -12,19 +13,21 @@ int8_t Sensor_ZOEM8Q::setup() {
         log("GNSS not detected at default I2C address. Please check wiring.");
         return (int8_t) 1; // failure;
     }
-
     gnss->setNavigationFrequency(5);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
     // perform the online assist process - uses mgaonline.ubx file from SD card
-    performOnlineAssist();
-    log("GNSS setup finished");
-    return 0; // success
+    int8_t onlineAssistStatus = performOnlineAssist();
+    if (onlineAssistStatus == 0) {
+        log("AssistNow loading successful");
+    } else {
+        log("AssistNow loading failed");
+    }
+    return onlineAssistStatus;
 }
 
 int8_t Sensor_ZOEM8Q::loop() {
     if (gnss->getPVT() &&  !gnss->getInvalidLlh() ) {
-
         auto *gnss_msg = new GNSSDataMsg(GNSSDataMsg_t);
         gnss_msg->latitude = (float) (gnss->getLatitude() * (10e-8)); // degrees
         gnss_msg->longitude = (float) (gnss->getLongitude() * (10e-8)); // degrees
@@ -43,13 +46,8 @@ int8_t Sensor_ZOEM8Q::loop() {
     return 0; // success
 }
 
-
-
-
-
 // From Daedalus code
-
-uint64_t getTimestampMillisGPS() {/// syncs the RTC on tje teensy 4.1 with the unix time at compile time
+uint64_t Sensor_ZOEM8Q::getTimestampMillisGPS() {/// syncs the RTC on tje teensy 4.1 with the unix time at compile time
     // Created by Ashley Shaw on 19/04/2022 using stuff from https://forum.pjrc.com/threads/68062-Teensy-4-1-RTC-get-milliseconds-correctly
     // 2022 TeamSunride.
     //
@@ -77,22 +75,22 @@ uint64_t getTimestampMillisGPS() {/// syncs the RTC on tje teensy 4.1 with the u
 }
 
 
-unsigned short GPSweek() {
+uint16_t Sensor_ZOEM8Q::GPSweek() {
     // 315964800 is the unix timestamp (s) of midnight 6th Jan 1980 - the start of GPS time
     // There has been 18 leap seconds since this date (unix time does not account for leap seconds)
     // not sure when the next leap second is due
     u_int64_t diff = (getTimestampMillisGPS()/1000) - 315964800 + 18;
-    return (unsigned short) (diff / SECS_PER_WEEK);
+    return (uint16_t) (diff / SECS_PER_WEEK);
 }
 
-unsigned int actualTimeOfWeekms() {
+uint32_t Sensor_ZOEM8Q::actualTimeOfWeekms() {
     // The time of week is the number of seconds since Sunday midnight (00:00:00)
 
     // 315964800000 is the unix timestamp (ms) of 6th Jan 1980 - the start of GPS time |
     // There has been 18 leap seconds since this date (unix time does not account for leap seconds)
     // not sure when the next leap second is due
     u_int64_t diff = (getTimestampMillisGPS()) - 315964800000 + 18000;
-    return (unsigned int) ((diff) % (SECS_PER_WEEK*1000));
+    return (uint32_t) ((diff) % (SECS_PER_WEEK*1000));
 }
 
 int8_t Sensor_ZOEM8Q::performOnlineAssist() {
@@ -132,6 +130,8 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
     /// the file should be obtained from the ublocks server
     /// the generator token for that can be obtained from thingstream from ublocks
     /// See https://developer.thingstream.io/guides/location-services/assistnow-getting-started-guide for more details
+
+    /// Note: The file needs to be called "mgaonline.ubx" and placed in the root of the SD card
     File dataFile = SD.open("mgaonline.ubx");
 
     const int numbytes = dataFile.available();
@@ -141,18 +141,16 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
     if (!dataFile) {
         dataFile.close();
         log("Failed to open file");
-        return -1;
+        return -2;
     }
     byte * fileBuffer = new byte[numbytes]; // use new for array of variable size - remember to delete[] !
     dataFile.readBytes(reinterpret_cast<char *>(fileBuffer), numbytes);
 
-
+    log("--------ENSURE THE TIME BELOW IS ACCURATE: --------");
     log("Unix time: %llu", (long long unsigned int) getTimestampMillisGPS());
     log("Time: %d:%d:%d,  %d/%d/%d", hour(), minute(), second(), day(), month(), year());
-    log("GPS WEEK: %d\n", GPSweek());
+    log("GPS WEEK: %d", GPSweek());
     log("GPS time of week: %d\n", actualTimeOfWeekms());
-
-
 
     // alter the necessary fields in the file buffer AID_INI
     // configure week number, little endian /:)
@@ -178,27 +176,15 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
 
     fileBuffer[54] = CK_A;
     fileBuffer[55] = CK_B;
-    log("CK_A: %02X      CK_B: %02X", CK_A, CK_B);
 
-    // Commenting out Sam's spam
+//    log("CK_A: %02X      CK_B: %02X", CK_A, CK_B);
+
+
 //    for (int i=0;i<56;i++) {
 //        log("%02X ",fileBuffer[i]);
 //    }
 
-    delay(1000);
-
-
     gnss->pushRawData(fileBuffer, numbytes);
-
-
-
-// How we did it over serial on Daedalus
-//    log("\nAvailable for write: %d\n", gpsSerial.availableForWrite());
-//    for (int  i=0;i<numbytes; i++) {
-//        gpsSerial.write(fileBuffer[i]);
-//        gpsSerial.flush(); // flush waits for the above write to finish
-//
-//    }
 
     dataFile.close();
     delete[] fileBuffer; // delete[] - very important - we don't like them segfaults

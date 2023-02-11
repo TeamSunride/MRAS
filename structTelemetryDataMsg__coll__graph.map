@@ -1,4 +1,4 @@
 <map id="TelemetryDataMsg" name="TelemetryDataMsg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,176,267"/>
-<area shape="rect" id="node2" href="$classTelemetryMessage.html" title=" " alt="" coords="5,5,176,97"/>
+<area shape="rect" id="node1" title="A message containing data from the rocket." alt="" coords="5,145,176,267"/>
+<area shape="rect" id="node2" href="$classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="5,5,176,97"/>
 </map>

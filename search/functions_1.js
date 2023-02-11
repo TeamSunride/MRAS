@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['get_5fid_0',['get_id',['../classSubsystem.html#a4a05504b0bf74642351608e7e4eae730',1,'Subsystem']]],
-  ['get_5finstance_1',['get_instance',['../classMRAS__System.html#a07cf9d005ca99766edd263fb5ab8d2c7',1,'MRAS_System']]],
-  ['get_5fname_2',['get_name',['../classNativeTextLogger.html#ac0baa51553319023bc068e50f887fb2c',1,'NativeTextLogger::get_name()'],['../classSubsystem.html#a19fffb42e27b6720100ff6870e84f382',1,'Subsystem::get_name()=0']]],
-  ['get_5fstatus_3',['get_status',['../classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622',1,'Subsystem']]],
-  ['gettimestampmillisgps_4',['getTimestampMillisGPS',['../classSensor__ZOEM8Q.html#a9cc83e1cc7cbc8b68072700249277918',1,'Sensor_ZOEM8Q']]]
+  ['add_5fsubscriber_0',['add_subscriber',['../classSubsystem.html#a2889256c514795843bae996625348f83',1,'Subsystem']]],
+  ['add_5fsubsystem_1',['add_subsystem',['../classMRAS__System.html#aa59711a03276ece5fcb27c8b64d3d9aa',1,'MRAS_System']]],
+  ['arduinotextlogger_2',['ArduinoTextLogger',['../classArduinoTextLogger.html#a50fb213603f6ba7e7cbfb3f9545f9aaf',1,'ArduinoTextLogger']]],
+  ['atmosphere_3',['Atmosphere',['../classAtmosphere.html#ae506896acc77a6b8baf906926f9e5e5d',1,'Atmosphere']]]
 ];

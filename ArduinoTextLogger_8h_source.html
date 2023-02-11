@@ -123,43 +123,48 @@ $(document).ready(function(){initNavTree('ArduinoTextLogger_8h_source.html','');
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;MRAS_Config.h&quot;</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;system_messages/TextLogMsg.h&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="classArduinoTextLogger.html">   15</a></span><span class="keyword">class </span><a class="code hl_class" href="classArduinoTextLogger.html">ArduinoTextLogger</a> : <span class="keyword">public</span> <a class="code hl_class" href="classTextLogger.html">TextLogger</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keywordtype">long</span> _baud;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classArduinoTextLogger.html">ArduinoTextLogger</a>(uint8_t <span class="keywordtype">id</span>, <span class="keywordtype">long</span> baud) : <a class="code hl_class" href="classTextLogger.html">TextLogger</a>(<span class="keywordtype">id</span>) {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        _baud = baud;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    };</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="keywordtype">void</span> _log(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list args) <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    int8_t setup()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        Serial.begin(_baud);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        log(<span class="stringliteral">&quot;Successfully set up Serial connection&quot;</span>);</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        Serial.println(MRAS_STARTUP_STRING);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    int8_t loop()<span class="keyword"> override </span>{</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;ArduinoTextLogger&quot;</span>)</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>};</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keywordtype">void</span> ArduinoTextLogger::_log(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list args) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">auto</span>* msg = <span class="keyword">new</span> <a class="code hl_struct" href="structTextLogMsg.html">TextLogMsg</a>();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    vsprintf(msg-&gt;text, fmt, args);</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    Serial.print(msg-&gt;text);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <a class="code hl_function" href="classSubsystem.html#abab34124fc7777591cac49e0189a4291">publish</a>(msg);</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>}</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ARDUINOTEXTLOGGER_H</span></div>
-<div class="ttc" id="aclassArduinoTextLogger_html"><div class="ttname"><a href="classArduinoTextLogger.html">ArduinoTextLogger</a></div><div class="ttdef"><b>Definition:</b> ArduinoTextLogger.h:15</div></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classArduinoTextLogger.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="classArduinoTextLogger.html">ArduinoTextLogger</a> : <span class="keyword">public</span> <a class="code hl_class" href="classTextLogger.html">TextLogger</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordtype">long</span> _baud;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="classArduinoTextLogger.html#a50fb213603f6ba7e7cbfb3f9545f9aaf">   30</a></span>    <span class="keyword">explicit</span> <a class="code hl_function" href="classArduinoTextLogger.html#a50fb213603f6ba7e7cbfb3f9545f9aaf">ArduinoTextLogger</a>(uint8_t <span class="keywordtype">id</span>, <span class="keywordtype">long</span> baud) : <a class="code hl_class" href="classTextLogger.html">TextLogger</a>(id) {</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        _baud = baud;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    };</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classArduinoTextLogger.html#a2cc67eaae281f97fbb6a8c40524fb692">_log</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list args) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classArduinoTextLogger.html#a48639531fdab63baabb61172137c061d">   47</a></span>    int8_t <a class="code hl_function" href="classArduinoTextLogger.html#a48639531fdab63baabb61172137c061d">setup</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        Serial.begin(_baud);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        log(<span class="stringliteral">&quot;Successfully set up Serial connection&quot;</span>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        Serial.println(MRAS_STARTUP_STRING);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="classArduinoTextLogger.html#a51747eafac2dafb15122aa9658392781">   59</a></span>    int8_t <a class="code hl_function" href="classArduinoTextLogger.html#a51747eafac2dafb15122aa9658392781">loop</a>()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;ArduinoTextLogger&quot;</span>)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>};</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classArduinoTextLogger.html#a2cc67eaae281f97fbb6a8c40524fb692">   67</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="classArduinoTextLogger.html#a2cc67eaae281f97fbb6a8c40524fb692">ArduinoTextLogger::_log</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, va_list args) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="comment">// https://stackoverflow.com/questions/20639632/how-to-wrap-printf-into-a-function-or-macro</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keyword">auto</span>* msg = <span class="keyword">new</span> <a class="code hl_struct" href="structTextLogMsg.html">TextLogMsg</a>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    vsprintf(msg-&gt;text, fmt, args);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    Serial.print(msg-&gt;text);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <a class="code hl_function" href="classSubsystem.html#abab34124fc7777591cac49e0189a4291">publish</a>(msg);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>}</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ARDUINOTEXTLOGGER_H</span></div>
+<div class="ttc" id="aclassArduinoTextLogger_html"><div class="ttname"><a href="classArduinoTextLogger.html">ArduinoTextLogger</a></div><div class="ttdoc">A TextLogger that logs to the Arduino Serial connection.</div><div class="ttdef"><b>Definition:</b> ArduinoTextLogger.h:20</div></div>
+<div class="ttc" id="aclassArduinoTextLogger_html_a2cc67eaae281f97fbb6a8c40524fb692"><div class="ttname"><a href="classArduinoTextLogger.html#a2cc67eaae281f97fbb6a8c40524fb692">ArduinoTextLogger::_log</a></div><div class="ttdeci">void _log(const char *fmt, va_list args) override</div><div class="ttdoc">Log a message to the Arduino Serial connection.</div><div class="ttdef"><b>Definition:</b> ArduinoTextLogger.h:67</div></div>
+<div class="ttc" id="aclassArduinoTextLogger_html_a48639531fdab63baabb61172137c061d"><div class="ttname"><a href="classArduinoTextLogger.html#a48639531fdab63baabb61172137c061d">ArduinoTextLogger::setup</a></div><div class="ttdeci">int8_t setup() override</div><div class="ttdoc">Set up the Serial connection.</div><div class="ttdef"><b>Definition:</b> ArduinoTextLogger.h:47</div></div>
+<div class="ttc" id="aclassArduinoTextLogger_html_a50fb213603f6ba7e7cbfb3f9545f9aaf"><div class="ttname"><a href="classArduinoTextLogger.html#a50fb213603f6ba7e7cbfb3f9545f9aaf">ArduinoTextLogger::ArduinoTextLogger</a></div><div class="ttdeci">ArduinoTextLogger(uint8_t id, long baud)</div><div class="ttdoc">Construct a new Arduino Text Logger object.</div><div class="ttdef"><b>Definition:</b> ArduinoTextLogger.h:30</div></div>
+<div class="ttc" id="aclassArduinoTextLogger_html_a51747eafac2dafb15122aa9658392781"><div class="ttname"><a href="classArduinoTextLogger.html#a51747eafac2dafb15122aa9658392781">ArduinoTextLogger::loop</a></div><div class="ttdeci">int8_t loop() override</div><div class="ttdoc">Do nothing.</div><div class="ttdef"><b>Definition:</b> ArduinoTextLogger.h:59</div></div>
 <div class="ttc" id="aclassSubsystem_html_abab34124fc7777591cac49e0189a4291"><div class="ttname"><a href="classSubsystem.html#abab34124fc7777591cac49e0189a4291">Subsystem::publish</a></div><div class="ttdeci">void publish(SystemMessage *msg)</div><div class="ttdef"><b>Definition:</b> Subsystem.cpp:51</div></div>
-<div class="ttc" id="aclassTextLogger_html"><div class="ttname"><a href="classTextLogger.html">TextLogger</a></div><div class="ttdef"><b>Definition:</b> TextLogger.h:12</div></div>
-<div class="ttc" id="astructTextLogMsg_html"><div class="ttname"><a href="structTextLogMsg.html">TextLogMsg</a></div><div class="ttdef"><b>Definition:</b> TextLogMsg.h:10</div></div>
+<div class="ttc" id="aclassTextLogger_html"><div class="ttname"><a href="classTextLogger.html">TextLogger</a></div><div class="ttdoc">A base class for ArduinoTextLogger and NativeTextLogger.</div><div class="ttdef"><b>Definition:</b> TextLogger.h:18</div></div>
+<div class="ttc" id="astructTextLogMsg_html"><div class="ttname"><a href="structTextLogMsg.html">TextLogMsg</a></div><div class="ttdoc">A message containing text to be logged.</div><div class="ttdef"><b>Definition:</b> TextLogMsg.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

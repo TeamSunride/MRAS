@@ -1,4 +1,4 @@
 <map id="TextLogMsg" name="TextLogMsg">
-<area shape="rect" id="node1" title=" " alt="" coords="21,145,145,223"/>
-<area shape="rect" id="node2" href="$classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" id="node1" title="A message containing text to be logged." alt="" coords="21,145,145,223"/>
+<area shape="rect" id="node2" href="$classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>

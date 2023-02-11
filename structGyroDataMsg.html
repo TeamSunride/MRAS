@@ -112,13 +112,18 @@ $(document).ready(function(){initNavTree('structGyroDataMsg.html',''); initResiz
   <div class="headertitle"><div class="title">GyroDataMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Message sent by the gyroscope to the system.  
+ <a href="structGyroDataMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="GyroDataMsg_8h_source.html">GyroDataMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GyroDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structGyroDataMsg__inherit__graph.png" border="0" usemap="#aGyroDataMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aGyroDataMsg_inherit__map" id="aGyroDataMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="15,145,151,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="Message sent by the gyroscope to the system." alt="" coords="15,145,151,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,15 +131,15 @@ Collaboration diagram for GyroDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structGyroDataMsg__coll__graph.png" border="0" usemap="#aGyroDataMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aGyroDataMsg_coll__map" id="aGyroDataMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="15,145,151,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="Message sent by the gyroscope to the system." alt="" coords="15,145,151,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ab00361325237df0959602f438057f289"><td class="memItemLeft" align="right" valign="top"><a id="ab00361325237df0959602f438057f289" name="ab00361325237df0959602f438057f289"></a>
-Vector&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>gyro</b> = {0, 0, 0}</td></tr>
+<tr class="memitem:ab00361325237df0959602f438057f289"><td class="memItemLeft" align="right" valign="top">Vector&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGyroDataMsg.html#ab00361325237df0959602f438057f289">gyro</a> = {0, 0, 0}</td></tr>
+<tr class="memdesc:ab00361325237df0959602f438057f289"><td class="mdescLeft">&#160;</td><td class="mdescRight">The angular velocity in rad/s.  <br /></td></tr>
 <tr class="separator:ab00361325237df0959602f438057f289"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -143,14 +148,35 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classSystemMessage"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classSystemMessage')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classSystemMessage.html">SystemMessage</a></td></tr>
 <tr class="memitem:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a3812c3e0ed3f4ae792bbf45797e8f1f7" name="a3812c3e0ed3f4ae792bbf45797e8f1f7"></a>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Message sent by the gyroscope to the system. </p>
+<p>The units of the angular velocity are rad/s and are stored as a Vector&lt;float, 3&gt; </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="ab00361325237df0959602f438057f289" name="ab00361325237df0959602f438057f289"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab00361325237df0959602f438057f289">&#9670;&#160;</a></span>gyro</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt;float, 3&gt; GyroDataMsg::gyro = {0, 0, 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The angular velocity in rad/s. </p>
+<p>The angular velocity is stored as a Vector&lt;float, 3&gt; where the first element is the x-axis, the second is the y-axis and the third is the z-axis </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/system_messages/<a class="el" href="GyroDataMsg_8h_source.html">GyroDataMsg.h</a></li>
 </ul>

@@ -1,4 +1,4 @@
 <map id="TransferWindowInitMsg" name="TransferWindowInitMsg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,204,223"/>
-<area shape="rect" id="node2" href="$classTelemetryMessage.html" title=" " alt="" coords="19,5,190,97"/>
+<area shape="rect" id="node1" title="A message sent by the rocket to initiate a transfer window." alt="" coords="5,145,204,223"/>
+<area shape="rect" id="node2" href="$classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="19,5,190,97"/>
 </map>

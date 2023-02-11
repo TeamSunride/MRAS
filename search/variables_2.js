@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['longitude_0',['longitude',['../structGNSSDataMsg.html#a1c9a05107f5d7d98dcd8718208858662',1,'GNSSDataMsg']]]
+  ['gyro_0',['gyro',['../structGyroDataMsg.html#ab00361325237df0959602f438057f289',1,'GyroDataMsg']]]
 ];

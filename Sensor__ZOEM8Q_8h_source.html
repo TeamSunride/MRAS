@@ -126,52 +126,51 @@ $(document).ready(function(){initNavTree('Sensor__ZOEM8Q_8h_source.html',''); in
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
 <div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;system_messages/GNSSDataMsg.h&quot;</span></div>
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classSensor__ZOEM8Q.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classSensor__ZOEM8Q.html">Sensor_ZOEM8Q</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSubsystem.html">Subsystem</a>{</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    SFE_UBLOX_GNSS *gnss{};</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    TwoWire *_pipe;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    uint32_t _freq;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// Constructor</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <a class="code hl_class" href="classSensor__ZOEM8Q.html">Sensor_ZOEM8Q</a>(uint8_t <span class="keywordtype">id</span>, TwoWire&amp; pipe, uint32_t freq) : <a class="code hl_class" href="classSubsystem.html">Subsystem</a>(<span class="keywordtype">id</span>) {</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        gnss = <span class="keyword">new</span> SFE_UBLOX_GNSS();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        _pipe = &amp;pipe;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        _freq = freq;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// Destructor</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <a class="code hl_class" href="classSensor__ZOEM8Q.html">~Sensor_ZOEM8Q</a>() {</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keyword">delete</span> gnss;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    }</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    int8_t setup() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    int8_t <a class="code hl_function" href="classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807">loop</a>() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">static</span> uint64_t <a class="code hl_function" href="classSensor__ZOEM8Q.html#a9cc83e1cc7cbc8b68072700249277918">getTimestampMillisGPS</a>();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classSensor__ZOEM8Q.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="classSensor__ZOEM8Q.html">Sensor_ZOEM8Q</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSubsystem.html">Subsystem</a>{</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    SFE_UBLOX_GNSS *gnss{};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    TwoWire *_pipe;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    uint32_t _freq;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="classSensor__ZOEM8Q.html#a6cc670e361cc418083b87a8830f262fa">   38</a></span>    <a class="code hl_function" href="classSensor__ZOEM8Q.html#a6cc670e361cc418083b87a8830f262fa">Sensor_ZOEM8Q</a>(uint8_t <span class="keywordtype">id</span>, TwoWire&amp; pipe, uint32_t freq) : <a class="code hl_class" href="classSubsystem.html">Subsystem</a>(id) {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        gnss = <span class="keyword">new</span> SFE_UBLOX_GNSS();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        _pipe = &amp;pipe;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        _freq = freq;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keyword">static</span> uint16_t GPSweek();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keyword">static</span> uint32_t actualTimeOfWeekms();</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    int8_t <a class="code hl_function" href="classSensor__ZOEM8Q.html#a23e75e857628594a7fd513357be81fbd">performOnlineAssist</a>();</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Destructor</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <a class="code hl_class" href="classSensor__ZOEM8Q.html">~Sensor_ZOEM8Q</a>() {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">delete</span> gnss;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    SUBSYSTEM_NO_MESSAGE_HANDLER</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;ZOEM8Q&quot;</span>);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    int8_t setup() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    int8_t <a class="code hl_function" href="classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807">loop</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keyword">static</span> uint64_t <a class="code hl_function" href="classSensor__ZOEM8Q.html#a9cc83e1cc7cbc8b68072700249277918">getTimestampMillisGPS</a>();</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>uint64_t getTimestampMillisGPS();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keyword">static</span> uint16_t GPSweek();</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_SENSOR_ZOEM8Q_H</span></div>
-<div class="ttc" id="aclassSensor__ZOEM8Q_html"><div class="ttname"><a href="classSensor__ZOEM8Q.html">Sensor_ZOEM8Q</a></div><div class="ttdef"><b>Definition:</b> Sensor_ZOEM8Q.h:19</div></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keyword">static</span> uint32_t actualTimeOfWeekms();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    int8_t <a class="code hl_function" href="classSensor__ZOEM8Q.html#a23e75e857628594a7fd513357be81fbd">performOnlineAssist</a>();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    SUBSYSTEM_NO_MESSAGE_HANDLER</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;ZOEM8Q&quot;</span>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>uint64_t getTimestampMillisGPS();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_SENSOR_ZOEM8Q_H</span></div>
+<div class="ttc" id="aclassSensor__ZOEM8Q_html"><div class="ttname"><a href="classSensor__ZOEM8Q.html">Sensor_ZOEM8Q</a></div><div class="ttdoc">A subsystem for the Ublox ZOEM8Q GNSS module.</div><div class="ttdef"><b>Definition:</b> Sensor_ZOEM8Q.h:25</div></div>
 <div class="ttc" id="aclassSensor__ZOEM8Q_html_a23e75e857628594a7fd513357be81fbd"><div class="ttname"><a href="classSensor__ZOEM8Q.html#a23e75e857628594a7fd513357be81fbd">Sensor_ZOEM8Q::performOnlineAssist</a></div><div class="ttdeci">int8_t performOnlineAssist()</div><div class="ttdef"><b>Definition:</b> Sensor_ZOEM8Q.cpp:96</div></div>
+<div class="ttc" id="aclassSensor__ZOEM8Q_html_a6cc670e361cc418083b87a8830f262fa"><div class="ttname"><a href="classSensor__ZOEM8Q.html#a6cc670e361cc418083b87a8830f262fa">Sensor_ZOEM8Q::Sensor_ZOEM8Q</a></div><div class="ttdeci">Sensor_ZOEM8Q(uint8_t id, TwoWire &amp;pipe, uint32_t freq)</div><div class="ttdoc">Construct a new Sensor_ZOEM8Q object.</div><div class="ttdef"><b>Definition:</b> Sensor_ZOEM8Q.h:38</div></div>
 <div class="ttc" id="aclassSensor__ZOEM8Q_html_a9cbd8c73bf8c0e646cd3c03e23568807"><div class="ttname"><a href="classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807">Sensor_ZOEM8Q::loop</a></div><div class="ttdeci">int8_t loop() override</div><div class="ttdef"><b>Definition:</b> Sensor_ZOEM8Q.cpp:29</div></div>
 <div class="ttc" id="aclassSensor__ZOEM8Q_html_a9cc83e1cc7cbc8b68072700249277918"><div class="ttname"><a href="classSensor__ZOEM8Q.html#a9cc83e1cc7cbc8b68072700249277918">Sensor_ZOEM8Q::getTimestampMillisGPS</a></div><div class="ttdeci">static uint64_t getTimestampMillisGPS()</div><div class="ttdef"><b>Definition:</b> Sensor_ZOEM8Q.cpp:50</div></div>
-<div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:31</div></div>
+<div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:30</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

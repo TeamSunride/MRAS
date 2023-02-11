@@ -113,20 +113,25 @@ $(document).ready(function(){initNavTree('classSystemMessage.html',''); initResi
   <div class="headertitle"><div class="title">SystemMessage Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A base class for all system messages.  
+ <a href="classSystemMessage.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="SystemMessage_8h_source.html">SystemMessage.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for SystemMessage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemMessage__inherit__graph.png" border="0" usemap="#aSystemMessage_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSystemMessage_inherit__map" id="aSystemMessage_inherit__map">
-<area shape="rect" title=" " alt="" coords="681,5,836,97"/>
-<area shape="rect" href="structAccelerometerDataMsg.html" title=" " alt="" coords="5,175,205,252"/>
-<area shape="rect" href="structBarometerDataMsg.html" title=" " alt="" coords="230,167,405,259"/>
-<area shape="rect" href="structGNSSDataMsg.html" title=" " alt="" coords="429,145,571,281"/>
-<area shape="rect" href="structGyroDataMsg.html" title=" " alt="" coords="595,175,731,252"/>
-<area shape="rect" href="structMagnetometerDataMsg.html" title=" " alt="" coords="755,175,957,252"/>
-<area shape="rect" href="structQueueTelemetryMessageMsg.html" title=" " alt="" coords="981,160,1232,267"/>
-<area shape="rect" href="structReceivedTelemetryMessageMsg.html" title=" " alt="" coords="1256,167,1488,259"/>
-<area shape="rect" href="structTextLogMsg.html" title=" " alt="" coords="1513,175,1637,252"/>
+<area shape="rect" title="A base class for all system messages." alt="" coords="681,5,836,97"/>
+<area shape="rect" href="structAccelerometerDataMsg.html" title="Message sent by the accelerometer to the system." alt="" coords="5,175,205,252"/>
+<area shape="rect" href="structBarometerDataMsg.html" title="Message sent by the barometer to the system." alt="" coords="230,167,405,259"/>
+<area shape="rect" href="structGNSSDataMsg.html" title="Message sent by the GNSS (also referred to less correctly as GPS) to the system." alt="" coords="429,145,571,281"/>
+<area shape="rect" href="structGyroDataMsg.html" title="Message sent by the gyroscope to the system." alt="" coords="595,175,731,252"/>
+<area shape="rect" href="structMagnetometerDataMsg.html" title="Message sent by the magnetometer to the system." alt="" coords="755,175,957,252"/>
+<area shape="rect" href="structQueueTelemetryMessageMsg.html" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="981,160,1232,267"/>
+<area shape="rect" href="structReceivedTelemetryMessageMsg.html" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="1256,167,1488,259"/>
+<area shape="rect" href="structTextLogMsg.html" title="A message containing text to be logged." alt="" coords="1513,175,1637,252"/>
 </map>
 </div>
 <div class="dynheader">
@@ -134,7 +139,7 @@ Collaboration diagram for SystemMessage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classSystemMessage__coll__graph.png" border="0" usemap="#aSystemMessage_coll__map" alt="Collaboration graph"/></div>
 <map name="aSystemMessage_coll__map" id="aSystemMessage_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -143,8 +148,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -153,6 +158,39 @@ Protected Attributes</h2></td></tr>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A base class for all system messages. </p>
+<p>This class is used to provide a common interface for all system messages.</p>
+<p>System messages are used to communicate between subsystems. See <code>Software Architecture Overview</code> for more information. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a52115712bcb3591a2054dff75932279a">&#9670;&#160;</a></span>get_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SystemMessageType SystemMessage::get_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the type of the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>The SystemMessageType of the <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/shared/<a class="el" href="SystemMessage_8h_source.html">SystemMessage.h</a></li>
 </ul>

@@ -1,6 +1,6 @@
 <map id="TelemetrySystem" name="TelemetrySystem">
-<area shape="rect" id="node1" title=" " alt="" coords="97,292,301,516"/>
-<area shape="rect" id="node3" href="$classGroundTelemetrySystem.html" title=" " alt="" coords="5,564,188,641"/>
-<area shape="rect" id="node4" href="$classRocketTelemetrySystem.html" title=" " alt="" coords="212,564,392,641"/>
+<area shape="rect" id="node1" title="A subsystem for sending and receiving telemetry data using the LoRa radio." alt="" coords="97,292,301,516"/>
+<area shape="rect" id="node3" href="$classGroundTelemetrySystem.html" title="Telemetry system for the ground station." alt="" coords="5,564,188,641"/>
+<area shape="rect" id="node4" href="$classRocketTelemetrySystem.html" title="The telemetry system for the rocket." alt="" coords="212,564,392,641"/>
 <area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="127,5,272,244"/>
 </map>

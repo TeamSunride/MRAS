@@ -122,22 +122,22 @@ Inheritance diagram for Subsystem:</div>
 <div class="center"><img src="classSubsystem__inherit__graph.png" border="0" usemap="#aSubsystem_inherit__map" alt="Inheritance graph"/></div>
 <map name="aSubsystem_inherit__map" id="aSubsystem_inherit__map">
 <area shape="rect" title=" " alt="" coords="809,5,954,244"/>
-<area shape="rect" href="classFakeAccelerometer.html" title=" " alt="" coords="5,351,152,457"/>
-<area shape="rect" href="classNativeDataLogger.html" title=" " alt="" coords="177,343,317,465"/>
-<area shape="rect" href="classSDLogger.html" title=" " alt="" coords="341,358,483,450"/>
-<area shape="rect" href="classSensor__ADXL375.html" title=" " alt="" coords="507,343,675,465"/>
-<area shape="rect" href="classSensor__LIS3MDL.html" title=" " alt="" coords="699,343,864,465"/>
-<area shape="rect" href="classSensor__LSM6DSO32.html" title=" " alt="" coords="889,343,1077,465"/>
+<area shape="rect" href="classFakeAccelerometer.html" title="A fake accelerometer for testing." alt="" coords="5,351,152,457"/>
+<area shape="rect" href="classNativeDataLogger.html" title="A subsystem that logs SystemMessages using its log() function, mostly for debugging." alt="" coords="177,343,317,465"/>
+<area shape="rect" href="classSDLogger.html" title="General SD logger class, used by both the ground and rocket SD loggers. This class is not intended to..." alt="" coords="341,358,483,450"/>
+<area shape="rect" href="classSensor__ADXL375.html" title="A subsystem for the ADXL375 accelerometer." alt="" coords="507,343,675,465"/>
+<area shape="rect" href="classSensor__LIS3MDL.html" title="A subsystem for the LIS3MDL magnetometer." alt="" coords="699,343,864,465"/>
+<area shape="rect" href="classSensor__LSM6DSO32.html" title="A subsystem for the LSM6DSO32 accelerometer and gyroscope." alt="" coords="889,343,1077,465"/>
 <area shape="rect" href="classSensor__MS5607.html" title=" " alt="" coords="1101,351,1251,457"/>
-<area shape="rect" href="classSensor__ZOEM8Q.html" title=" " alt="" coords="1276,307,1479,501"/>
-<area shape="rect" href="classTelemetrySystem.html" title=" " alt="" coords="1503,292,1707,516"/>
-<area shape="rect" href="classTextLogger.html" title=" " alt="" coords="1745,358,1863,450"/>
+<area shape="rect" href="classSensor__ZOEM8Q.html" title="A subsystem for the Ublox ZOEM8Q GNSS module." alt="" coords="1276,307,1479,501"/>
+<area shape="rect" href="classTelemetrySystem.html" title="A subsystem for sending and receiving telemetry data using the LoRa radio." alt="" coords="1503,292,1707,516"/>
+<area shape="rect" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="1745,358,1863,450"/>
 <area shape="rect" href="classGroundSDLogger.html" title=" " alt="" coords="271,593,401,671"/>
-<area shape="rect" href="classRocketSDLogger.html" title=" " alt="" coords="425,593,553,671"/>
-<area shape="rect" href="classGroundTelemetrySystem.html" title=" " alt="" coords="1309,593,1491,671"/>
-<area shape="rect" href="classRocketTelemetrySystem.html" title=" " alt="" coords="1515,593,1695,671"/>
-<area shape="rect" href="classArduinoTextLogger.html" title=" " alt="" coords="1720,571,1888,693"/>
-<area shape="rect" href="classNativeTextLogger.html" title=" " alt="" coords="1913,564,2074,700"/>
+<area shape="rect" href="classRocketSDLogger.html" title="Data logger for the rocket, uses the Teensy SD card to log CSV data and text logs to the same file." alt="" coords="425,593,553,671"/>
+<area shape="rect" href="classGroundTelemetrySystem.html" title="Telemetry system for the ground station." alt="" coords="1309,593,1491,671"/>
+<area shape="rect" href="classRocketTelemetrySystem.html" title="The telemetry system for the rocket." alt="" coords="1515,593,1695,671"/>
+<area shape="rect" href="classArduinoTextLogger.html" title="A TextLogger that logs to the Arduino Serial connection." alt="" coords="1720,571,1888,693"/>
+<area shape="rect" href="classNativeTextLogger.html" title="A TextLogger that is compatible with the Native MRAS build environment." alt="" coords="1913,564,2074,700"/>
 </map>
 </div>
 <div class="dynheader">
@@ -153,8 +153,7 @@ Collaboration diagram for Subsystem:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a19fffb42e27b6720100ff6870e84f382"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubsystem.html#a19fffb42e27b6720100ff6870e84f382">get_name</a> ()=0</td></tr>
 <tr class="separator:a19fffb42e27b6720100ff6870e84f382"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad536bedb67f716122e1907f1fd6c9e94"><td class="memItemLeft" align="right" valign="top"><a id="ad536bedb67f716122e1907f1fd6c9e94" name="ad536bedb67f716122e1907f1fd6c9e94"></a>
-virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()=0</td></tr>
+<tr class="memitem:ad536bedb67f716122e1907f1fd6c9e94"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubsystem.html#ad536bedb67f716122e1907f1fd6c9e94">setup</a> ()=0</td></tr>
 <tr class="separator:ad536bedb67f716122e1907f1fd6c9e94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b3f458b7072d828935db162dda0853"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubsystem.html#a64b3f458b7072d828935db162dda0853">loop</a> ()=0</td></tr>
 <tr class="separator:a64b3f458b7072d828935db162dda0853"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -189,8 +188,8 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 <tr class="separator:a93bc5cae446258f55bdb16e5174da159"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="classSubsystem.html">Subsystem</a> is a class in the MRAS system that represents a specific sensor or system on the device. These classes inherit from the base <a class="el" href="classSubsystem.html">Subsystem</a> class and implement its abstract methods. The <a class="el" href="classSubsystem.html">Subsystem</a> class provides a common interface for all sensors and systems, allowing for easy communication and management by the <a class="el" href="classMRAS__System.html">MRAS_System</a> class.</p>
-<p>The <a class="el" href="classSubsystem.html">Subsystem</a> class has several members that are used to define the behavior and functionality of the sensor or system it represents. These include setup() and loop() methods, which are used to initialize and continuously update the sensor or system, respectively. Additionally, Subsystems have a <a class="el" href="classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622">get_status()</a> method to check the current status of the <a class="el" href="classSubsystem.html">Subsystem</a>, <a class="el" href="classSubsystem.html#a6c2f37ce5335a64781f5719d3569c0be">self_test()</a> method to check that the <a class="el" href="classSubsystem.html">Subsystem</a> is working correctly and <a class="el" href="classSubsystem.html#af75325e817855184984edb1e6aa59f2a">on_message()</a> method to handle messages sent to the <a class="el" href="classSubsystem.html">Subsystem</a>. The <a class="el" href="classSubsystem.html#a19fffb42e27b6720100ff6870e84f382">get_name()</a> method returns a string that provides a human-readable name for the <a class="el" href="classSubsystem.html">Subsystem</a>, used for logging and debugging purposes. Finally, the <a class="el" href="classSubsystem.html#a4a05504b0bf74642351608e7e4eae730">get_id()</a> method returns a unique ID assigned to the <a class="el" href="classSubsystem.html">Subsystem</a>, which is used to identify it within the MRAS system. The distance between \((x_1,y_1)\) and \((x_2,y_2)\) is \(\sqrt{(x_2-x_1)^2+(y_2-y_1)^2}\). </p>
+<div class="textblock"><p>A <a class="el" href="classSubsystem.html">Subsystem</a> is a class in the MRAS system that represents a specific sensor or system on the device. These classes inherit from the base <a class="el" href="classSubsystem.html">Subsystem</a> class and implement its abstract methods. The <a class="el" href="classSubsystem.html">Subsystem</a> class provides a common interface for all sensors and systems, allowing for easy communication and management by the <a class="el" href="classMRAS__System.html" title="The main class of the MRAS system.">MRAS_System</a> class.</p>
+<p>The <a class="el" href="classSubsystem.html">Subsystem</a> class has several members that are used to define the behavior and functionality of the sensor or system it represents. These include setup() and loop() methods, which are used to initialize and continuously update the sensor or system, respectively. Additionally, Subsystems have a <a class="el" href="classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622">get_status()</a> method to check the current status of the <a class="el" href="classSubsystem.html">Subsystem</a>, <a class="el" href="classSubsystem.html#a6c2f37ce5335a64781f5719d3569c0be">self_test()</a> method to check that the <a class="el" href="classSubsystem.html">Subsystem</a> is working correctly and <a class="el" href="classSubsystem.html#af75325e817855184984edb1e6aa59f2a">on_message()</a> method to handle messages sent to the <a class="el" href="classSubsystem.html">Subsystem</a>. The <a class="el" href="classSubsystem.html#a19fffb42e27b6720100ff6870e84f382">get_name()</a> method returns a string that provides a human-readable name for the <a class="el" href="classSubsystem.html">Subsystem</a>, used for logging and debugging purposes. Finally, the <a class="el" href="classSubsystem.html#a4a05504b0bf74642351608e7e4eae730">get_id()</a> method returns a unique ID assigned to the <a class="el" href="classSubsystem.html">Subsystem</a>, which is used to identify it within the MRAS system. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6eb8c08dad3e114628c49ecc54c457fb" name="a6eb8c08dad3e114628c49ecc54c457fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6eb8c08dad3e114628c49ecc54c457fb">&#9670;&#160;</a></span>Subsystem()</h2>
@@ -241,7 +240,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
       </table>
 </div><div class="memdoc">
 <p>Add a new <a class="el" href="classSubsystem.html">Subsystem</a> subscriber to the <a class="el" href="classSubsystem.html">Subsystem</a></p>
-<p>The <a class="el" href="classSubsystem.html#af75325e817855184984edb1e6aa59f2a">on_message()</a> function of the subscribed <a class="el" href="classSubsystem.html">Subsystem</a> will be called whenever the <a class="el" href="classSubsystem.html#abab34124fc7777591cac49e0189a4291">publish()</a> function is called with a <a class="el" href="classSystemMessage.html">SystemMessage</a>. This allows for communication between Subsystems.</p>
+<p>The <a class="el" href="classSubsystem.html#af75325e817855184984edb1e6aa59f2a">on_message()</a> function of the subscribed <a class="el" href="classSubsystem.html">Subsystem</a> will be called whenever the <a class="el" href="classSubsystem.html#abab34124fc7777591cac49e0189a4291">publish()</a> function is called with a <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a>. This allows for communication between Subsystems.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">subscriber</td><td>The <a class="el" href="classSubsystem.html">Subsystem</a> to subscribe to this <a class="el" href="classSubsystem.html">Subsystem</a> </td></tr>
@@ -339,7 +338,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807">Sensor_ZOEM8Q</a>.</p>
+<p>Implemented in <a class="el" href="classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807">Sensor_ZOEM8Q</a>, and <a class="el" href="classArduinoTextLogger.html#a51747eafac2dafb15122aa9658392781">ArduinoTextLogger</a>.</p>
 
 </div>
 </div>
@@ -368,7 +367,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 </div><div class="memdoc">
 <p>Can be overridden by Subsystems to handle messages </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>The <a class="el" href="classSystemMessage.html">SystemMessage</a> sent by the Publishing <a class="el" href="classSubsystem.html">Subsystem</a> </td></tr>
+    <tr><td class="paramname">msg</td><td>The <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> sent by the Publishing <a class="el" href="classSubsystem.html">Subsystem</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -400,9 +399,9 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Publish a <a class="el" href="classSystemMessage.html">SystemMessage</a> to any subscribed Subsystems. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Publish a <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> to any subscribed Subsystems. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">msg</td><td>THe <a class="el" href="classSystemMessage.html">SystemMessage</a> to publish. </td></tr>
+    <tr><td class="paramname">msg</td><td>THe <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> to publish. </td></tr>
   </table>
   </dd>
 </dl>
@@ -424,6 +423,33 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
       </table>
 </div><div class="memdoc">
 <p>Run a self test. </p><dl class="section return"><dt>Returns</dt><dd>-1 if the self test is not implemented. 0 if success. Any other value represents an error. </dd></dl>
+
+</div>
+</div>
+<a id="ad536bedb67f716122e1907f1fd6c9e94" name="ad536bedb67f716122e1907f1fd6c9e94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad536bedb67f716122e1907f1fd6c9e94">&#9670;&#160;</a></span>setup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual int8_t Subsystem::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classArduinoTextLogger.html#a48639531fdab63baabb61172137c061d">ArduinoTextLogger</a>.</p>
 
 </div>
 </div>

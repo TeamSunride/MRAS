@@ -120,26 +120,28 @@ $(document).ready(function(){initNavTree('QueueTelemetryMessageMsg_8h_source.htm
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;SystemMessage.h&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;TelemetryMessage.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="structQueueTelemetryMessageMsg.html">   12</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a>() : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(QueueTelemetryMessageMsg_t) {}</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">~QueueTelemetryMessageMsg</a>() {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="keyword">delete</span> telemetry_message;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    }</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">/*</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="comment">     * A pointer to the TelemetryMessage that we want to send to the ground.</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">     *</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="comment">     * This TelemetryMessage must be allocated on the heap.</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="comment">    */</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_class" href="classTelemetryMessage.html">TelemetryMessage</a> *telemetry_message = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordtype">size_t</span> size = 0;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_QUEUETELEMETRYMESSAGEMSG_H</span></div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdef"><b>Definition:</b> SystemMessage.h:27</div></div>
-<div class="ttc" id="aclassTelemetryMessage_html"><div class="ttname"><a href="classTelemetryMessage.html">TelemetryMessage</a></div><div class="ttdef"><b>Definition:</b> TelemetryMessage.h:37</div></div>
-<div class="ttc" id="astructQueueTelemetryMessageMsg_html"><div class="ttname"><a href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a></div><div class="ttdef"><b>Definition:</b> QueueTelemetryMessageMsg.h:12</div></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structQueueTelemetryMessageMsg.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a>() : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(QueueTelemetryMessageMsg_t) {}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">~QueueTelemetryMessageMsg</a>() {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="keyword">delete</span> telemetry_message;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <span class="comment">// TODO: change how the memory is allocated here so it acts like the ReceiveTelemetryMessageMsg</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">/*</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="comment">     * A pointer to the TelemetryMessage that we want to send to the ground.</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="comment">     *</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="comment">     * This TelemetryMessage must be allocated on the heap.</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="comment">    */</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <a class="code hl_class" href="classTelemetryMessage.html">TelemetryMessage</a> *telemetry_message = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordtype">size_t</span> size = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_QUEUETELEMETRYMESSAGEMSG_H</span></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:30</div></div>
+<div class="ttc" id="aclassTelemetryMessage_html"><div class="ttname"><a href="classTelemetryMessage.html">TelemetryMessage</a></div><div class="ttdoc">A base class for all telemetry messages.</div><div class="ttdef"><b>Definition:</b> TelemetryMessage.h:39</div></div>
+<div class="ttc" id="astructQueueTelemetryMessageMsg_html"><div class="ttname"><a href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a></div><div class="ttdoc">A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket.</div><div class="ttdef"><b>Definition:</b> QueueTelemetryMessageMsg.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

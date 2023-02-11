@@ -113,13 +113,18 @@ $(document).ready(function(){initNavTree('structAccelerometerDataMsg.html',''); 
   <div class="headertitle"><div class="title">AccelerometerDataMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Message sent by the accelerometer to the system.  
+ <a href="structAccelerometerDataMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="AccelerometerDataMsg_8h_source.html">AccelerometerDataMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for AccelerometerDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structAccelerometerDataMsg__inherit__graph.png" border="0" usemap="#aAccelerometerDataMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aAccelerometerDataMsg_inherit__map" id="aAccelerometerDataMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,205,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="28,5,183,97"/>
+<area shape="rect" title="Message sent by the accelerometer to the system." alt="" coords="5,145,205,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="28,5,183,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -127,8 +132,8 @@ Collaboration diagram for AccelerometerDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structAccelerometerDataMsg__coll__graph.png" border="0" usemap="#aAccelerometerDataMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aAccelerometerDataMsg_coll__map" id="aAccelerometerDataMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="5,145,205,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="28,5,183,97"/>
+<area shape="rect" title="Message sent by the accelerometer to the system." alt="" coords="5,145,205,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="28,5,183,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -141,14 +146,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a2b4cb4e12583eba46d09058a6aa41678"><td class="memItemLeft" align="right" valign="top"><a id="a2b4cb4e12583eba46d09058a6aa41678" name="a2b4cb4e12583eba46d09058a6aa41678"></a>
-Vector&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>acceleration</b> = {0, 0, 0}</td></tr>
+<tr class="memitem:a2b4cb4e12583eba46d09058a6aa41678"><td class="memItemLeft" align="right" valign="top">Vector&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structAccelerometerDataMsg.html#a2b4cb4e12583eba46d09058a6aa41678">acceleration</a> = {0, 0, 0}</td></tr>
+<tr class="memdesc:a2b4cb4e12583eba46d09058a6aa41678"><td class="mdescLeft">&#160;</td><td class="mdescRight">The acceleration in m/s^2.  <br /></td></tr>
 <tr class="separator:a2b4cb4e12583eba46d09058a6aa41678"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -158,6 +163,27 @@ Additional Inherited Members</h2></td></tr>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Message sent by the accelerometer to the system. </p>
+<p>The units of the acceleration are m/s^2 and are stored as a Vector&lt;float, 3&gt; </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a2b4cb4e12583eba46d09058a6aa41678" name="a2b4cb4e12583eba46d09058a6aa41678"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2b4cb4e12583eba46d09058a6aa41678">&#9670;&#160;</a></span>acceleration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt;float, 3&gt; AccelerometerDataMsg::acceleration = {0, 0, 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The acceleration in m/s^2. </p>
+<p>The acceleration is stored as a Vector&lt;float, 3&gt; where the first element is the x-axis, the second is the y-axis and the third is the z-axis </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/system_messages/<a class="el" href="AccelerometerDataMsg_8h_source.html">AccelerometerDataMsg.h</a></li>
 </ul>

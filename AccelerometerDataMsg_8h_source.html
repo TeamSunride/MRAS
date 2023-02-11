@@ -120,16 +120,16 @@ $(document).ready(function(){initNavTree('AccelerometerDataMsg_8h_source.html','
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;SystemMessage.h&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Vector.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structAccelerometerDataMsg.html">   13</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">explicit</span> <a class="code hl_struct" href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a>(SystemMessageType accel_msg_type) : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(accel_msg_type) {}</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    Vector&lt;float, 3&gt; acceleration = {0, 0, 0};</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>};</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ACCELEROMETERDATAMSG_H</span></div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdef"><b>Definition:</b> SystemMessage.h:27</div></div>
-<div class="ttc" id="astructAccelerometerDataMsg_html"><div class="ttname"><a href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a></div><div class="ttdef"><b>Definition:</b> AccelerometerDataMsg.h:13</div></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="structAccelerometerDataMsg.html">   17</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="keyword">explicit</span> <a class="code hl_struct" href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a>(SystemMessageType accel_msg_type) : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(accel_msg_type) {}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structAccelerometerDataMsg.html#a2b4cb4e12583eba46d09058a6aa41678">   26</a></span>    Vector&lt;float, 3&gt; <a class="code hl_variable" href="structAccelerometerDataMsg.html#a2b4cb4e12583eba46d09058a6aa41678">acceleration</a> = {0, 0, 0};</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ACCELEROMETERDATAMSG_H</span></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:30</div></div>
+<div class="ttc" id="astructAccelerometerDataMsg_html"><div class="ttname"><a href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a></div><div class="ttdoc">Message sent by the accelerometer to the system.</div><div class="ttdef"><b>Definition:</b> AccelerometerDataMsg.h:17</div></div>
+<div class="ttc" id="astructAccelerometerDataMsg_html_a2b4cb4e12583eba46d09058a6aa41678"><div class="ttname"><a href="structAccelerometerDataMsg.html#a2b4cb4e12583eba46d09058a6aa41678">AccelerometerDataMsg::acceleration</a></div><div class="ttdeci">Vector&lt; float, 3 &gt; acceleration</div><div class="ttdoc">The acceleration in m/s^2.</div><div class="ttdef"><b>Definition:</b> AccelerometerDataMsg.h:26</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -109,7 +109,7 @@ $(document).ready(function(){initNavTree('md_docs_subsystem_implementation_guide
   <div class="headertitle"><div class="title">How to implement a new <a class="el" href="classSubsystem.html">Subsystem</a> </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>A <a class="el" href="classSubsystem.html">Subsystem</a> is a class in the MRAS system that represents a specific sensor or system on the device. These classes inherit from the base <a class="el" href="classSubsystem.html">Subsystem</a> class and implement its abstract methods. The <a class="el" href="classSubsystem.html">Subsystem</a> class provides a common interface for all sensors and systems, allowing for easy communication and management by the <a class="el" href="classMRAS__System.html">MRAS_System</a> class.</p>
+<div class="textblock"><p>A <a class="el" href="classSubsystem.html">Subsystem</a> is a class in the MRAS system that represents a specific sensor or system on the device. These classes inherit from the base <a class="el" href="classSubsystem.html">Subsystem</a> class and implement its abstract methods. The <a class="el" href="classSubsystem.html">Subsystem</a> class provides a common interface for all sensors and systems, allowing for easy communication and management by the <a class="el" href="classMRAS__System.html" title="The main class of the MRAS system.">MRAS_System</a> class.</p>
 <p>The <a class="el" href="classSubsystem.html">Subsystem</a> class has several members that are used to define the behavior and functionality of the sensor or system it represents. These include setup() and loop() methods, which are used to initialize and continuously update the sensor or system, respectively. Additionally, Subsystems have a get_status() method to check the current status of the <a class="el" href="classSubsystem.html">Subsystem</a>, self_test() method to check that the <a class="el" href="classSubsystem.html">Subsystem</a> is working correctly and on_message() method to handle messages sent to the <a class="el" href="classSubsystem.html">Subsystem</a>. The get_name() method returns a string that provides a human-readable name for the <a class="el" href="classSubsystem.html">Subsystem</a>, used for logging and debugging purposes. Finally, the get_id() method returns a unique ID assigned to the <a class="el" href="classSubsystem.html">Subsystem</a>, which is used to identify it within the MRAS system.</p>
 <h1><a class="anchor" id="autotoc_md43"></a>
 Step-by-step guide</h1>
@@ -120,7 +120,7 @@ Step-by-step guide</h1>
 <li>Implement the <code>setup()</code> function in the class. This function should handle any one-time setup required for the sensor, such as initializing the sensor object and configuring it for use.</li>
 <li>Implement the <code>loop()</code> function in the class. This function should handle the main functionality of your sensor subsystem, such as reading data from the sensor and publishing it to other subsystems.</li>
 <li>Implement any additional functions or overrides that you want your sensor subsystem to have. For example, you may want to include a self-test function that verifies that the sensor is functioning properly.</li>
-<li>In the main <code>setup()</code> function of the <a class="el" href="classMRAS__System.html">MRAS_System</a>, instantiate an object of your new sensor class, and add it as a subsystem to the <a class="el" href="classMRAS__System.html">MRAS_System</a> by calling <code>mras-&gt;add_subsystem(&amp;sensor);</code></li>
+<li>In the main <code>setup()</code> function of the <a class="el" href="classMRAS__System.html" title="The main class of the MRAS system.">MRAS_System</a>, instantiate an object of your new sensor class, and add it as a subsystem to the <a class="el" href="classMRAS__System.html" title="The main class of the MRAS system.">MRAS_System</a> by calling <code>mras-&gt;add_subsystem(&amp;sensor);</code></li>
 <li>If necessary, add the sensor class as a subscriber to other subsystems to allow for data transfer between them.</li>
 </ol>
 <h1><a class="anchor" id="autotoc_md44"></a>
@@ -155,7 +155,7 @@ Example</h1>
 <div class="line"> </div>
 <div class="line">    SUBSYSTEM_NAME(<span class="stringliteral">&quot;NewSensor&quot;</span>)</div>
 <div class="line">};</div>
-<div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:31</div></div>
+<div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:30</div></div>
 <div class="ttc" id="aclassSubsystem_html_abab34124fc7777591cac49e0189a4291"><div class="ttname"><a href="classSubsystem.html#abab34124fc7777591cac49e0189a4291">Subsystem::publish</a></div><div class="ttdeci">void publish(SystemMessage *msg)</div><div class="ttdef"><b>Definition:</b> Subsystem.cpp:51</div></div>
 </div><!-- fragment --> </div></div><!-- contents -->
 </div><!-- PageDoc -->

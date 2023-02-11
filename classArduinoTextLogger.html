@@ -112,13 +112,18 @@ $(document).ready(function(){initNavTree('classArduinoTextLogger.html',''); init
   <div class="headertitle"><div class="title">ArduinoTextLogger Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger.">TextLogger</a> that logs to the Arduino Serial connection.  
+ <a href="classArduinoTextLogger.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ArduinoTextLogger_8h_source.html">ArduinoTextLogger.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for ArduinoTextLogger:</div>
 <div class="dyncontent">
 <div class="center"><img src="classArduinoTextLogger__inherit__graph.png" border="0" usemap="#aArduinoTextLogger_inherit__map" alt="Inheritance graph"/></div>
 <map name="aArduinoTextLogger_inherit__map" id="aArduinoTextLogger_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,432,173,553"/>
-<area shape="rect" href="classTextLogger.html" title=" " alt="" coords="30,292,149,384"/>
+<area shape="rect" title="A TextLogger that logs to the Arduino Serial connection." alt="" coords="5,432,173,553"/>
+<area shape="rect" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="30,292,149,384"/>
 <area shape="rect" href="classSubsystem.html" title=" " alt="" coords="17,5,162,244"/>
 </map>
 </div>
@@ -127,34 +132,35 @@ Collaboration diagram for ArduinoTextLogger:</div>
 <div class="dyncontent">
 <div class="center"><img src="classArduinoTextLogger__coll__graph.png" border="0" usemap="#aArduinoTextLogger_coll__map" alt="Collaboration graph"/></div>
 <map name="aArduinoTextLogger_coll__map" id="aArduinoTextLogger_coll__map">
-<area shape="rect" title=" " alt="" coords="5,432,173,553"/>
-<area shape="rect" href="classTextLogger.html" title=" " alt="" coords="30,292,149,384"/>
+<area shape="rect" title="A TextLogger that logs to the Arduino Serial connection." alt="" coords="5,432,173,553"/>
+<area shape="rect" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="30,292,149,384"/>
 <area shape="rect" href="classSubsystem.html" title=" " alt="" coords="17,5,162,244"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a50fb213603f6ba7e7cbfb3f9545f9aaf"><td class="memItemLeft" align="right" valign="top"><a id="a50fb213603f6ba7e7cbfb3f9545f9aaf" name="a50fb213603f6ba7e7cbfb3f9545f9aaf"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ArduinoTextLogger</b> (uint8_t id, long baud)</td></tr>
+<tr class="memitem:a50fb213603f6ba7e7cbfb3f9545f9aaf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArduinoTextLogger.html#a50fb213603f6ba7e7cbfb3f9545f9aaf">ArduinoTextLogger</a> (uint8_t id, long baud)</td></tr>
+<tr class="memdesc:a50fb213603f6ba7e7cbfb3f9545f9aaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new Arduino Text Logger object.  <br /></td></tr>
 <tr class="separator:a50fb213603f6ba7e7cbfb3f9545f9aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2cc67eaae281f97fbb6a8c40524fb692"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArduinoTextLogger.html#a2cc67eaae281f97fbb6a8c40524fb692">_log</a> (const char *fmt, va_list args) override</td></tr>
+<tr class="memdesc:a2cc67eaae281f97fbb6a8c40524fb692"><td class="mdescLeft">&#160;</td><td class="mdescRight">Log a message to the Arduino Serial connection.  <br /></td></tr>
 <tr class="separator:a2cc67eaae281f97fbb6a8c40524fb692"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a48639531fdab63baabb61172137c061d"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArduinoTextLogger.html#a48639531fdab63baabb61172137c061d">setup</a> () override</td></tr>
+<tr class="memdesc:a48639531fdab63baabb61172137c061d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set up the Serial connection.  <br /></td></tr>
 <tr class="separator:a48639531fdab63baabb61172137c061d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a51747eafac2dafb15122aa9658392781"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classArduinoTextLogger.html#a51747eafac2dafb15122aa9658392781">loop</a> () override</td></tr>
+<tr class="memdesc:a51747eafac2dafb15122aa9658392781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Do nothing.  <br /></td></tr>
 <tr class="separator:a51747eafac2dafb15122aa9658392781"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classTextLogger"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classTextLogger')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classTextLogger.html">TextLogger</a></td></tr>
-<tr class="memitem:a87d8d009e36137d22be78a7a56975d01 inherit pub_methods_classTextLogger"><td class="memItemLeft" align="right" valign="top"><a id="a87d8d009e36137d22be78a7a56975d01" name="a87d8d009e36137d22be78a7a56975d01"></a>
-virtual SUBSYSTEM_NO_MESSAGE_HANDLER void&#160;</td><td class="memItemRight" valign="bottom"><b>_log</b> (const char *fmt, va_list args)=0</td></tr>
+<tr class="memitem:a87d8d009e36137d22be78a7a56975d01 inherit pub_methods_classTextLogger"><td class="memItemLeft" align="right" valign="top">virtual SUBSYSTEM_NO_MESSAGE_HANDLER void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextLogger.html#a87d8d009e36137d22be78a7a56975d01">_log</a> (const char *fmt, va_list args)=0</td></tr>
 <tr class="separator:a87d8d009e36137d22be78a7a56975d01 inherit pub_methods_classTextLogger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6eb8c08dad3e114628c49ecc54c457fb inherit pub_methods_classTextLogger"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTextLogger.html#a6eb8c08dad3e114628c49ecc54c457fb">Subsystem</a> (uint8_t id)</td></tr>
 <tr class="separator:a6eb8c08dad3e114628c49ecc54c457fb inherit pub_methods_classTextLogger"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classSubsystem"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classSubsystem')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classSubsystem.html">Subsystem</a></td></tr>
 <tr class="memitem:a19fffb42e27b6720100ff6870e84f382 inherit pub_methods_classSubsystem"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubsystem.html#a19fffb42e27b6720100ff6870e84f382">get_name</a> ()=0</td></tr>
 <tr class="separator:a19fffb42e27b6720100ff6870e84f382 inherit pub_methods_classSubsystem"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad536bedb67f716122e1907f1fd6c9e94 inherit pub_methods_classSubsystem"><td class="memItemLeft" align="right" valign="top"><a id="ad536bedb67f716122e1907f1fd6c9e94" name="ad536bedb67f716122e1907f1fd6c9e94"></a>
-virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>setup</b> ()=0</td></tr>
+<tr class="memitem:ad536bedb67f716122e1907f1fd6c9e94 inherit pub_methods_classSubsystem"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubsystem.html#ad536bedb67f716122e1907f1fd6c9e94">setup</a> ()=0</td></tr>
 <tr class="separator:ad536bedb67f716122e1907f1fd6c9e94 inherit pub_methods_classSubsystem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b3f458b7072d828935db162dda0853 inherit pub_methods_classSubsystem"><td class="memItemLeft" align="right" valign="top">virtual int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubsystem.html#a64b3f458b7072d828935db162dda0853">loop</a> ()=0</td></tr>
 <tr class="separator:a64b3f458b7072d828935db162dda0853 inherit pub_methods_classSubsystem"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -187,6 +193,55 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>status</b> = 0</td>
 int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b> = -1</td></tr>
 <tr class="separator:a93bc5cae446258f55bdb16e5174da159 inherit pro_attribs_classSubsystem"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger.">TextLogger</a> that logs to the Arduino Serial connection. </p>
+<p>This class handles the setup of the Serial connection and the logging of messages to the Serial connection </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a50fb213603f6ba7e7cbfb3f9545f9aaf" name="a50fb213603f6ba7e7cbfb3f9545f9aaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50fb213603f6ba7e7cbfb3f9545f9aaf">&#9670;&#160;</a></span>ArduinoTextLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ArduinoTextLogger::ArduinoTextLogger </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>baud</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new Arduino Text Logger object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">id</td><td>The ID of the logger </td></tr>
+    <tr><td class="paramname">baud</td><td>The baud rate of the Serial connection </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a2cc67eaae281f97fbb6a8c40524fb692" name="a2cc67eaae281f97fbb6a8c40524fb692"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2cc67eaae281f97fbb6a8c40524fb692">&#9670;&#160;</a></span>_log()</h2>
@@ -222,6 +277,15 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 </table>
 </div><div class="memdoc">
 
+<p>Log a message to the Arduino Serial connection. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fmt</td><td>The format string </td></tr>
+    <tr><td class="paramname">args</td><td>The arguments to the format string </td></tr>
+  </table>
+  </dd>
+</dl>
+
 <p>Implements <a class="el" href="classTextLogger.html">TextLogger</a>.</p>
 
 </div>
@@ -249,6 +313,9 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 </table>
 </div><div class="memdoc">
 
+<p>Do nothing. </p>
+<dl class="section return"><dt>Returns</dt><dd>int8_t 0 on success </dd></dl>
+
 <p>Implements <a class="el" href="classSubsystem.html">Subsystem</a>.</p>
 
 </div>
@@ -275,6 +342,9 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Set up the Serial connection. </p>
+<dl class="section return"><dt>Returns</dt><dd>int8_t 0 on success </dd></dl>
 
 <p>Implements <a class="el" href="classSubsystem.html">Subsystem</a>.</p>
 

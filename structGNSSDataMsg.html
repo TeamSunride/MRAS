@@ -113,13 +113,18 @@ $(document).ready(function(){initNavTree('structGNSSDataMsg.html',''); initResiz
   <div class="headertitle"><div class="title">GNSSDataMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Message sent by the GNSS (also referred to less correctly as GPS) to the system.  
+ <a href="structGNSSDataMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="GNSSDataMsg_8h_source.html">GNSSDataMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for GNSSDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structGNSSDataMsg__inherit__graph.png" border="0" usemap="#aGNSSDataMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aGNSSDataMsg_inherit__map" id="aGNSSDataMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="12,145,153,281"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="Message sent by the GNSS (also referred to less correctly as GPS) to the system." alt="" coords="12,145,153,281"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -127,8 +132,8 @@ Collaboration diagram for GNSSDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structGNSSDataMsg__coll__graph.png" border="0" usemap="#aGNSSDataMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aGNSSDataMsg_coll__map" id="aGNSSDataMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="12,145,153,281"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="Message sent by the GNSS (also referred to less correctly as GPS) to the system." alt="" coords="12,145,153,281"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -141,29 +146,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr class="memitem:a82ceb0241475aaa1cee560fd67dea4c6"><td class="memItemLeft" align="right" valign="top"><a id="a82ceb0241475aaa1cee560fd67dea4c6" name="a82ceb0241475aaa1cee560fd67dea4c6"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>latitude</b> = 0</td></tr>
+<tr class="memdesc:a82ceb0241475aaa1cee560fd67dea4c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The latitude in decimal degrees. <br /></td></tr>
 <tr class="separator:a82ceb0241475aaa1cee560fd67dea4c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c9a05107f5d7d98dcd8718208858662"><td class="memItemLeft" align="right" valign="top"><a id="a1c9a05107f5d7d98dcd8718208858662" name="a1c9a05107f5d7d98dcd8718208858662"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>longitude</b> = 0</td></tr>
-<tr class="memdesc:a1c9a05107f5d7d98dcd8718208858662"><td class="mdescLeft">&#160;</td><td class="mdescRight">degrees <br /></td></tr>
+<tr class="memdesc:a1c9a05107f5d7d98dcd8718208858662"><td class="mdescLeft">&#160;</td><td class="mdescRight">The longitude in decimal degrees. <br /></td></tr>
 <tr class="separator:a1c9a05107f5d7d98dcd8718208858662"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01a32b53eaa7d8f43588de0047741a3d"><td class="memItemLeft" align="right" valign="top"><a id="a01a32b53eaa7d8f43588de0047741a3d" name="a01a32b53eaa7d8f43588de0047741a3d"></a>
 float&#160;</td><td class="memItemRight" valign="bottom"><b>altitude</b> = 0</td></tr>
-<tr class="memdesc:a01a32b53eaa7d8f43588de0047741a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">degrees <br /></td></tr>
+<tr class="memdesc:a01a32b53eaa7d8f43588de0047741a3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The altitude in meters above mean sea level. <br /></td></tr>
 <tr class="separator:a01a32b53eaa7d8f43588de0047741a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32f506a288460ed4a8f70d7e79c94c1b"><td class="memItemLeft" align="right" valign="top"><a id="a32f506a288460ed4a8f70d7e79c94c1b" name="a32f506a288460ed4a8f70d7e79c94c1b"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>fix_type</b> = 0</td></tr>
-<tr class="memdesc:a32f506a288460ed4a8f70d7e79c94c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">meters <br /></td></tr>
+<tr class="memitem:a32f506a288460ed4a8f70d7e79c94c1b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structGNSSDataMsg.html#a32f506a288460ed4a8f70d7e79c94c1b">fix_type</a> = 0</td></tr>
+<tr class="memdesc:a32f506a288460ed4a8f70d7e79c94c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current fix type.  <br /></td></tr>
 <tr class="separator:a32f506a288460ed4a8f70d7e79c94c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dce88cb0a7ac03253bf83bfa0f6f068"><td class="memItemLeft" align="right" valign="top"><a id="a4dce88cb0a7ac03253bf83bfa0f6f068" name="a4dce88cb0a7ac03253bf83bfa0f6f068"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>SIV</b> = 0</td></tr>
+<tr class="memdesc:a4dce88cb0a7ac03253bf83bfa0f6f068"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of satellites used in the fix. <br /></td></tr>
 <tr class="separator:a4dce88cb0a7ac03253bf83bfa0f6f068"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -173,6 +179,42 @@ Additional Inherited Members</h2></td></tr>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Message sent by the GNSS (also referred to less correctly as GPS) to the system. </p>
+<p>The units of the latitude and longitude are decimal degrees and the altitude is in meters above mean sea level </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a32f506a288460ed4a8f70d7e79c94c1b" name="a32f506a288460ed4a8f70d7e79c94c1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f506a288460ed4a8f70d7e79c94c1b">&#9670;&#160;</a></span>fix_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t GNSSDataMsg::fix_type = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The current fix type. </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">Value   </th><th class="markdownTableHeadNone">Description    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">0   </td><td class="markdownTableBodyNone">No fix    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">1   </td><td class="markdownTableBodyNone">Dead reckoning only    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">2   </td><td class="markdownTableBodyNone">2D fix    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">3   </td><td class="markdownTableBodyNone">3D fix    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">4   </td><td class="markdownTableBodyNone">GNSS + dead reckoning combined    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone">5   </td><td class="markdownTableBodyNone">Time only fix   </td></tr>
+</table>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/system_messages/<a class="el" href="GNSSDataMsg_8h_source.html">GNSSDataMsg.h</a></li>
 </ul>

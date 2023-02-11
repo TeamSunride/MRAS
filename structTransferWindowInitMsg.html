@@ -111,13 +111,18 @@ $(document).ready(function(){initNavTree('structTransferWindowInitMsg.html','');
   <div class="headertitle"><div class="title">TransferWindowInitMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A message sent by the rocket to initiate a transfer window.  
+ <a href="structTransferWindowInitMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TransferWindowInitMsg_8h_source.html">TransferWindowInitMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TransferWindowInitMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structTransferWindowInitMsg__inherit__graph.png" border="0" usemap="#aTransferWindowInitMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aTransferWindowInitMsg_inherit__map" id="aTransferWindowInitMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,204,223"/>
-<area shape="rect" href="classTelemetryMessage.html" title=" " alt="" coords="19,5,190,97"/>
+<area shape="rect" title="A message sent by the rocket to initiate a transfer window." alt="" coords="5,145,204,223"/>
+<area shape="rect" href="classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="19,5,190,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -125,8 +130,8 @@ Collaboration diagram for TransferWindowInitMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structTransferWindowInitMsg__coll__graph.png" border="0" usemap="#aTransferWindowInitMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aTransferWindowInitMsg_coll__map" id="aTransferWindowInitMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="5,145,204,223"/>
-<area shape="rect" href="classTelemetryMessage.html" title=" " alt="" coords="19,5,190,97"/>
+<area shape="rect" title="A message sent by the rocket to initiate a transfer window." alt="" coords="5,145,204,223"/>
+<area shape="rect" href="classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="19,5,190,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -136,15 +141,18 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:aa4eac87f0710225882f9059902d2901e inherit pub_methods_classTelemetryMessage"><td class="memItemLeft" align="right" valign="top"><a id="aa4eac87f0710225882f9059902d2901e" name="aa4eac87f0710225882f9059902d2901e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TelemetryMessage</b> (TelemetryMessageType type)</td></tr>
 <tr class="separator:aa4eac87f0710225882f9059902d2901e inherit pub_methods_classTelemetryMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af42f546eeec1b2bd0e1059f5e3edb37b inherit pub_methods_classTelemetryMessage"><td class="memItemLeft" align="right" valign="top"><a id="af42f546eeec1b2bd0e1059f5e3edb37b" name="af42f546eeec1b2bd0e1059f5e3edb37b"></a>
-TelemetryMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:af42f546eeec1b2bd0e1059f5e3edb37b inherit pub_methods_classTelemetryMessage"><td class="memItemLeft" align="right" valign="top">TelemetryMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTelemetryMessage.html#af42f546eeec1b2bd0e1059f5e3edb37b">get_type</a> ()</td></tr>
+<tr class="memdesc:af42f546eeec1b2bd0e1059f5e3edb37b inherit pub_methods_classTelemetryMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:af42f546eeec1b2bd0e1059f5e3edb37b inherit pub_methods_classTelemetryMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classTelemetryMessage"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classTelemetryMessage')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classTelemetryMessage.html">TelemetryMessage</a></td></tr>
 <tr class="memitem:a0fa04adac63b640f721e6c86c44a38f7 inherit pro_attribs_classTelemetryMessage"><td class="memItemLeft" align="right" valign="top"><a id="a0fa04adac63b640f721e6c86c44a38f7" name="a0fa04adac63b640f721e6c86c44a38f7"></a>
 TelemetryMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a0fa04adac63b640f721e6c86c44a38f7 inherit pro_attribs_classTelemetryMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A message sent by the rocket to initiate a transfer window. </p>
+<p>This message is sent by the rocket in order to initiate a new transfer opportunity. The ground station will respond with a <a class="el" href="structTransferWindowAckMsg.html" title="A message sent by the ground station to acknowledge a transfer window.">TransferWindowAckMsg</a> if it has no data to send or a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> if it does. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/telemetry_messages/<a class="el" href="TransferWindowInitMsg_8h_source.html">TransferWindowInitMsg.h</a></li>
 </ul>
 </div><!-- contents -->

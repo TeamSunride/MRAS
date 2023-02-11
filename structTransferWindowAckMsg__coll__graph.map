@@ -1,4 +1,4 @@
 <map id="TransferWindowAckMsg" name="TransferWindowAckMsg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,208,223"/>
-<area shape="rect" id="node2" href="$classTelemetryMessage.html" title=" " alt="" coords="21,5,192,97"/>
+<area shape="rect" id="node1" title="A message sent by the ground station to acknowledge a transfer window." alt="" coords="5,145,208,223"/>
+<area shape="rect" id="node2" href="$classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="21,5,192,97"/>
 </map>

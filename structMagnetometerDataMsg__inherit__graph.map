@@ -1,4 +1,4 @@
 <map id="MagnetometerDataMsg" name="MagnetometerDataMsg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,207,223"/>
-<area shape="rect" id="node2" href="$classSystemMessage.html" title=" " alt="" coords="29,5,183,97"/>
+<area shape="rect" id="node1" title="Message sent by the magnetometer to the system." alt="" coords="5,145,207,223"/>
+<area shape="rect" id="node2" href="$classSystemMessage.html" title="A base class for all system messages." alt="" coords="29,5,183,97"/>
 </map>

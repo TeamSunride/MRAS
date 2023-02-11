@@ -112,13 +112,18 @@ $(document).ready(function(){initNavTree('structTextLogMsg.html',''); initResiza
   <div class="headertitle"><div class="title">TextLogMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A message containing text to be logged.  
+ <a href="structTextLogMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TextLogMsg_8h_source.html">TextLogMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TextLogMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structTextLogMsg__inherit__graph.png" border="0" usemap="#aTextLogMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aTextLogMsg_inherit__map" id="aTextLogMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="21,145,145,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="A message containing text to be logged." alt="" coords="21,145,145,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,8 +131,8 @@ Collaboration diagram for TextLogMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structTextLogMsg__coll__graph.png" border="0" usemap="#aTextLogMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aTextLogMsg_coll__map" id="aTextLogMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="21,145,145,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
+<area shape="rect" title="A message containing text to be logged." alt="" coords="21,145,145,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -135,6 +140,7 @@ Collaboration diagram for TextLogMsg:</div>
 Public Attributes</h2></td></tr>
 <tr class="memitem:aee3d3ca2713c75f03096f969ba33df48"><td class="memItemLeft" align="right" valign="top"><a id="aee3d3ca2713c75f03096f969ba33df48" name="aee3d3ca2713c75f03096f969ba33df48"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>text</b> [255] = {}</td></tr>
+<tr class="memdesc:aee3d3ca2713c75f03096f969ba33df48"><td class="mdescLeft">&#160;</td><td class="mdescRight">The text to be logged. Max 255 chars in length. <br /></td></tr>
 <tr class="separator:aee3d3ca2713c75f03096f969ba33df48"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -143,15 +149,18 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classSystemMessage"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classSystemMessage')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classSystemMessage.html">SystemMessage</a></td></tr>
 <tr class="memitem:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a3812c3e0ed3f4ae792bbf45797e8f1f7" name="a3812c3e0ed3f4ae792bbf45797e8f1f7"></a>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A message containing text to be logged. </p>
+<p>This message is emitted by the <a class="el" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger.">TextLogger</a> subsystems and allows the <a class="el" href="classSDLogger.html" title="General SD logger class, used by both the ground and rocket SD loggers. This class is not intended to...">SDLogger</a> to log text to the SD card. </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/system_messages/<a class="el" href="TextLogMsg_8h_source.html">TextLogMsg.h</a></li>
 </ul>
 </div><!-- contents -->

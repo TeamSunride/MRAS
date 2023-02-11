@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['self_5ftest_0',['self_test',['../classADXL375.html#a369fa3a9c8fcf8a3148181bd1fe34676',1,'ADXL375::self_test()'],['../classSubsystem.html#a6c2f37ce5335a64781f5719d3569c0be',1,'Subsystem::self_test()']]],
-  ['set_5fdata_5frate_1',['set_data_rate',['../classADXL375.html#ac4c828d335b0f4eb62791fc083be46bd',1,'ADXL375']]],
-  ['subsystem_2',['Subsystem',['../classSubsystem.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'Subsystem::Subsystem()'],['../classFakeAccelerometer.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'FakeAccelerometer::Subsystem()'],['../classNativeDataLogger.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'NativeDataLogger::Subsystem()'],['../classTextLogger.html#a6eb8c08dad3e114628c49ecc54c457fb',1,'TextLogger::Subsystem()']]]
+  ['read_5fnew_5fmessage_5ffrom_5fbuffer_0',['read_new_message_from_buffer',['../classTelemetrySystem.html#a71b68e7b1b8a1a35aa843a2b2249a5b6',1,'TelemetrySystem']]],
+  ['reset_1',['reset',['../classADXL375.html#a6e66c96a6ab314860d343c94c571b262',1,'ADXL375']]]
 ];

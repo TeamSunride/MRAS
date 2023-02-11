@@ -112,13 +112,18 @@ $(document).ready(function(){initNavTree('structQueueTelemetryMessageMsg.html','
   <div class="headertitle"><div class="title">QueueTelemetryMessageMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> that is used to queue a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> for sending to the ground or the rocket.  
+ <a href="structQueueTelemetryMessageMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="QueueTelemetryMessageMsg_8h_source.html">QueueTelemetryMessageMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for QueueTelemetryMessageMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structQueueTelemetryMessageMsg__inherit__graph.png" border="0" usemap="#aQueueTelemetryMessageMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aQueueTelemetryMessageMsg_inherit__map" id="aQueueTelemetryMessageMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,256,252"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="53,5,208,97"/>
+<area shape="rect" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="5,145,256,252"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="53,5,208,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,9 +131,9 @@ Collaboration diagram for QueueTelemetryMessageMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structQueueTelemetryMessageMsg__coll__graph.png" border="0" usemap="#aQueueTelemetryMessageMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aQueueTelemetryMessageMsg_coll__map" id="aQueueTelemetryMessageMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="51,160,301,252"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="5,5,160,97"/>
-<area shape="rect" href="classTelemetryMessage.html" title=" " alt="" coords="184,5,355,97"/>
+<area shape="rect" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="51,160,301,252"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
+<area shape="rect" href="classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="184,5,355,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -147,15 +152,18 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classSystemMessage"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classSystemMessage')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classSystemMessage.html">SystemMessage</a></td></tr>
 <tr class="memitem:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a3812c3e0ed3f4ae792bbf45797e8f1f7" name="a3812c3e0ed3f4ae792bbf45797e8f1f7"></a>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> that is used to queue a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> for sending to the ground or the rocket. </p>
+<p>This message is used by the <a class="el" href="classTelemetrySystem.html" title="A subsystem for sending and receiving telemetry data using the LoRa radio.">TelemetrySystem</a> to queue TelemetryMessages for sending to the ground or the rocket </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/system_messages/<a class="el" href="QueueTelemetryMessageMsg_8h_source.html">QueueTelemetryMessageMsg.h</a></li>
 </ul>
 </div><!-- contents -->

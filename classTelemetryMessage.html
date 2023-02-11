@@ -113,15 +113,20 @@ $(document).ready(function(){initNavTree('classTelemetryMessage.html',''); initR
   <div class="headertitle"><div class="title">TelemetryMessage Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>A base class for all telemetry messages.  
+ <a href="classTelemetryMessage.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="TelemetryMessage_8h_source.html">TelemetryMessage.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for TelemetryMessage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTelemetryMessage__inherit__graph.png" border="0" usemap="#aTelemetryMessage_inherit__map" alt="Inheritance graph"/></div>
 <map name="aTelemetryMessage_inherit__map" id="aTelemetryMessage_inherit__map">
-<area shape="rect" title=" " alt="" coords="216,5,387,97"/>
-<area shape="rect" href="structTelemetryDataMsg.html" title=" " alt="" coords="5,145,176,267"/>
-<area shape="rect" href="structTransferWindowAckMsg.html" title=" " alt="" coords="200,167,403,245"/>
-<area shape="rect" href="structTransferWindowInitMsg.html" title=" " alt="" coords="427,167,626,245"/>
+<area shape="rect" title="A base class for all telemetry messages." alt="" coords="216,5,387,97"/>
+<area shape="rect" href="structTelemetryDataMsg.html" title="A message containing data from the rocket." alt="" coords="5,145,176,267"/>
+<area shape="rect" href="structTransferWindowAckMsg.html" title="A message sent by the ground station to acknowledge a transfer window." alt="" coords="200,167,403,245"/>
+<area shape="rect" href="structTransferWindowInitMsg.html" title="A message sent by the rocket to initiate a transfer window." alt="" coords="427,167,626,245"/>
 </map>
 </div>
 <div class="dynheader">
@@ -129,7 +134,7 @@ Collaboration diagram for TelemetryMessage:</div>
 <div class="dyncontent">
 <div class="center"><img src="classTelemetryMessage__coll__graph.png" border="0" usemap="#aTelemetryMessage_coll__map" alt="Collaboration graph"/></div>
 <map name="aTelemetryMessage_coll__map" id="aTelemetryMessage_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,176,97"/>
+<area shape="rect" title="A base class for all telemetry messages." alt="" coords="5,5,176,97"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -138,8 +143,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aa4eac87f0710225882f9059902d2901e"><td class="memItemLeft" align="right" valign="top"><a id="aa4eac87f0710225882f9059902d2901e" name="aa4eac87f0710225882f9059902d2901e"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>TelemetryMessage</b> (TelemetryMessageType type)</td></tr>
 <tr class="separator:aa4eac87f0710225882f9059902d2901e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af42f546eeec1b2bd0e1059f5e3edb37b"><td class="memItemLeft" align="right" valign="top"><a id="af42f546eeec1b2bd0e1059f5e3edb37b" name="af42f546eeec1b2bd0e1059f5e3edb37b"></a>
-TelemetryMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:af42f546eeec1b2bd0e1059f5e3edb37b"><td class="memItemLeft" align="right" valign="top">TelemetryMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTelemetryMessage.html#af42f546eeec1b2bd0e1059f5e3edb37b">get_type</a> ()</td></tr>
+<tr class="memdesc:af42f546eeec1b2bd0e1059f5e3edb37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:af42f546eeec1b2bd0e1059f5e3edb37b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
@@ -148,6 +153,39 @@ Protected Attributes</h2></td></tr>
 TelemetryMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a0fa04adac63b640f721e6c86c44a38f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A base class for all telemetry messages. </p>
+<p>TelemetryMessages are similar to SystemMessages but are designed for the telemetry system. All data contained within the <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> must be stored within the <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> and not referred to with pointers. This is because the memory of the <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> is copied straight into the radio buffer and sent down to the ground station.</p>
+<p>TelemetryMessages must be allocated on the heap and will be deleted by the <a class="el" href="classTelemetrySystem.html" title="A subsystem for sending and receiving telemetry data using the LoRa radio.">TelemetrySystem</a> once they have been transmitted or processed. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="af42f546eeec1b2bd0e1059f5e3edb37b" name="af42f546eeec1b2bd0e1059f5e3edb37b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af42f546eeec1b2bd0e1059f5e3edb37b">&#9670;&#160;</a></span>get_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">TelemetryMessageType TelemetryMessage::get_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get the type of the message. </p>
+<dl class="section return"><dt>Returns</dt><dd>The TelemetryMessageType of the <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> </dd></dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>lib/shared/<a class="el" href="TelemetryMessage_8h_source.html">TelemetryMessage.h</a></li>
 </ul>

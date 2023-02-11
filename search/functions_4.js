@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['on_5fmessage_0',['on_message',['../classNativeDataLogger.html#a88837dee85e3ca2ba70e9bab002945bc',1,'NativeDataLogger::on_message()'],['../classSubsystem.html#af75325e817855184984edb1e6aa59f2a',1,'Subsystem::on_message()']]],
-  ['operator_3d_1',['operator=',['../classMRAS__System.html#a10bd1a8580266ae029c1e40ba28bd5d8',1,'MRAS_System']]]
+  ['mras_5fsystem_0',['MRAS_System',['../classMRAS__System.html#a539e7079c645c20af80ab37b212cd561',1,'MRAS_System']]]
 ];

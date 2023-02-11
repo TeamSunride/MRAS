@@ -1,4 +1,4 @@
 <map id="Sensor_LIS3MDL" name="Sensor_LIS3MDL">
-<area shape="rect" id="node1" title=" " alt="" coords="5,292,171,413"/>
+<area shape="rect" id="node1" title="A subsystem for the LIS3MDL magnetometer." alt="" coords="5,292,171,413"/>
 <area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="15,5,161,244"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="TextLogger" name="TextLogger">
-<area shape="rect" id="node1" title=" " alt="" coords="19,292,137,384"/>
+<area shape="rect" id="node1" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="19,292,137,384"/>
 <area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="5,5,151,244"/>
 </map>

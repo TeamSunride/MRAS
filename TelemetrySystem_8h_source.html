@@ -124,50 +124,51 @@ $(document).ready(function(){initNavTree('TelemetrySystem_8h_source.html',''); i
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;system_messages/QueueTelemetryMessageMsg.h&quot;</span></div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;system_messages/ReceivedTelemetryMessageMsg.h&quot;</span></div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classTelemetrySystem.html">   16</a></span><span class="keyword">class </span><a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSubsystem.html">Subsystem</a> {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// create subsystem boilerplate</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;TelemetrySystem&quot;</span>)</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    SUBSYSTEM_NO_MESSAGE_HANDLER</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="comment">// create setup and loop functions</span></div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    int8_t setup() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    SX1262 radio = <span class="keyword">new</span> Module(RADIO_CHIP_SELECT_PIN,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>                              RADIO_DIO1_PIN,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>                              RADIO_RESET_PIN,</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>                              RADIO_BUSY_PIN,</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>                              RADIO_SPI_BUS);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">enum</span> TelemetrySystemState {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        IDLE,</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        TX,</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        RX</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    } telemetry_system_state = IDLE;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    int16_t radio_state = 0;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a>* get_next_message();</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> transmit_next_message();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    <span class="keywordtype">void</span> start_receiving_next_message(uint32_t timeout = 0xFFFFFF);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classTelemetrySystem.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSubsystem.html">Subsystem</a> {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// create subsystem boilerplate</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;TelemetrySystem&quot;</span>)</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    SUBSYSTEM_NO_MESSAGE_HANDLER</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// create setup and loop functions</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    int8_t setup() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    SX1262 radio = <span class="keyword">new</span> Module(RADIO_CHIP_SELECT_PIN,</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>                              RADIO_DIO1_PIN,</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>                              RADIO_RESET_PIN,</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                              RADIO_BUSY_PIN,</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                              RADIO_SPI_BUS);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">enum</span> TelemetrySystemState {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        IDLE,</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        TX,</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        RX</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    } telemetry_system_state = IDLE;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    int16_t radio_state = 0;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classTelemetrySystem.html#a71b68e7b1b8a1a35aa843a2b2249a5b6">read_new_message_from_buffer</a>(<a class="code hl_struct" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a>* output, <span class="keywordtype">bool</span> receive_again = <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a>(uint8_t <span class="keywordtype">id</span>) : <a class="code hl_class" href="classSubsystem.html">Subsystem</a>(<span class="keywordtype">id</span>) {}</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    int16_t get_radio_state() <span class="keyword">const</span>;</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>};</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_TELEMETRYSYSTEM_H</span></div>
-<div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:31</div></div>
-<div class="ttc" id="aclassTelemetrySystem_html"><div class="ttname"><a href="classTelemetrySystem.html">TelemetrySystem</a></div><div class="ttdef"><b>Definition:</b> TelemetrySystem.h:16</div></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_struct" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a>* get_next_message();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> transmit_next_message();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classTelemetrySystem.html#a036c8751e7089107a7965ccbf3fc023c">start_receiving_next_message</a>(uint32_t timeout = 0xFFFFFF);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classTelemetrySystem.html#a71b68e7b1b8a1a35aa843a2b2249a5b6">read_new_message_from_buffer</a>(<a class="code hl_struct" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a>* output, <span class="keywordtype">bool</span> receive_again = <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keyword">explicit</span> <a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a>(uint8_t <span class="keywordtype">id</span>) : <a class="code hl_class" href="classSubsystem.html">Subsystem</a>(<span class="keywordtype">id</span>) {}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    int16_t get_radio_state() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_TELEMETRYSYSTEM_H</span></div>
+<div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:30</div></div>
+<div class="ttc" id="aclassTelemetrySystem_html"><div class="ttname"><a href="classTelemetrySystem.html">TelemetrySystem</a></div><div class="ttdoc">A subsystem for sending and receiving telemetry data using the LoRa radio.</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.h:23</div></div>
+<div class="ttc" id="aclassTelemetrySystem_html_a036c8751e7089107a7965ccbf3fc023c"><div class="ttname"><a href="classTelemetrySystem.html#a036c8751e7089107a7965ccbf3fc023c">TelemetrySystem::start_receiving_next_message</a></div><div class="ttdeci">void start_receiving_next_message(uint32_t timeout=0xFFFFFF)</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.cpp:73</div></div>
 <div class="ttc" id="aclassTelemetrySystem_html_a71b68e7b1b8a1a35aa843a2b2249a5b6"><div class="ttname"><a href="classTelemetrySystem.html#a71b68e7b1b8a1a35aa843a2b2249a5b6">TelemetrySystem::read_new_message_from_buffer</a></div><div class="ttdeci">bool read_new_message_from_buffer(ReceivedTelemetryMessageMsg *output, bool receive_again=true)</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.cpp:79</div></div>
-<div class="ttc" id="astructQueueTelemetryMessageMsg_html"><div class="ttname"><a href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a></div><div class="ttdef"><b>Definition:</b> QueueTelemetryMessageMsg.h:12</div></div>
-<div class="ttc" id="astructReceivedTelemetryMessageMsg_html"><div class="ttname"><a href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a></div><div class="ttdef"><b>Definition:</b> ReceivedTelemetryMessageMsg.h:13</div></div>
+<div class="ttc" id="astructQueueTelemetryMessageMsg_html"><div class="ttname"><a href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a></div><div class="ttdoc">A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket.</div><div class="ttdef"><b>Definition:</b> QueueTelemetryMessageMsg.h:17</div></div>
+<div class="ttc" id="astructReceivedTelemetryMessageMsg_html"><div class="ttname"><a href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a></div><div class="ttdoc">A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr...</div><div class="ttdef"><b>Definition:</b> ReceivedTelemetryMessageMsg.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

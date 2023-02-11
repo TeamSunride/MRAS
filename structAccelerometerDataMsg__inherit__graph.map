@@ -1,4 +1,4 @@
 <map id="AccelerometerDataMsg" name="AccelerometerDataMsg">
-<area shape="rect" id="node1" title=" " alt="" coords="5,145,205,223"/>
-<area shape="rect" id="node2" href="$classSystemMessage.html" title=" " alt="" coords="28,5,183,97"/>
+<area shape="rect" id="node1" title="Message sent by the accelerometer to the system." alt="" coords="5,145,205,223"/>
+<area shape="rect" id="node2" href="$classSystemMessage.html" title="A base class for all system messages." alt="" coords="28,5,183,97"/>
 </map>

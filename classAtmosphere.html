@@ -119,23 +119,18 @@ Collaboration diagram for Atmosphere:</div>
 <div class="dyncontent">
 <div class="center"><img src="classAtmosphere__coll__graph.png" border="0" usemap="#aAtmosphere_coll__map" alt="Collaboration graph"/></div>
 <map name="aAtmosphere_coll__map" id="aAtmosphere_coll__map">
-<area shape="rect" title=" " alt="" coords="5,5,184,141"/>
+<area shape="rect" title=" " alt="" coords="5,5,184,127"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae506896acc77a6b8baf906926f9e5e5d"><td class="memItemLeft" align="right" valign="top"><a id="ae506896acc77a6b8baf906926f9e5e5d" name="ae506896acc77a6b8baf906926f9e5e5d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Atmosphere</b> (float pressure)</td></tr>
+<tr class="memitem:ae506896acc77a6b8baf906926f9e5e5d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphere.html#ae506896acc77a6b8baf906926f9e5e5d">Atmosphere</a> (float pressure)</td></tr>
+<tr class="memdesc:ae506896acc77a6b8baf906926f9e5e5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new <a class="el" href="classAtmosphere.html">Atmosphere</a> object.  <br /></td></tr>
 <tr class="separator:ae506896acc77a6b8baf906926f9e5e5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ca8478540fde7cb11686f5e100872c3"><td class="memItemLeft" align="right" valign="top"><a id="a2ca8478540fde7cb11686f5e100872c3" name="a2ca8478540fde7cb11686f5e100872c3"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>get_altitude</b> ()</td></tr>
+<tr class="memitem:a2ca8478540fde7cb11686f5e100872c3"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphere.html#a2ca8478540fde7cb11686f5e100872c3">get_altitude</a> ()</td></tr>
 <tr class="separator:a2ca8478540fde7cb11686f5e100872c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5bceaa0a4dd4683da7d7f3e8ce34207b"><td class="memItemLeft" align="right" valign="top"><a id="a5bceaa0a4dd4683da7d7f3e8ce34207b" name="a5bceaa0a4dd4683da7d7f3e8ce34207b"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>get_temperature</b> ()</td></tr>
-<tr class="separator:a5bceaa0a4dd4683da7d7f3e8ce34207b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaa802a0d468abed468773275e1e48da"><td class="memItemLeft" align="right" valign="top"><a id="acaa802a0d468abed468773275e1e48da" name="acaa802a0d468abed468773275e1e48da"></a>
-Eigen::Vector4f&#160;</td><td class="memItemRight" valign="bottom"><b>get_layer_constants</b> (float p)</td></tr>
+<tr class="memitem:acaa802a0d468abed468773275e1e48da"><td class="memItemLeft" align="right" valign="top">Eigen::Vector4f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphere.html#acaa802a0d468abed468773275e1e48da">get_layer_constants</a> (float p)</td></tr>
 <tr class="separator:acaa802a0d468abed468773275e1e48da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aec8ed71b3ef13142632c46c3412ab88e"><td class="memItemLeft" align="right" valign="top"><a id="aec8ed71b3ef13142632c46c3412ab88e" name="aec8ed71b3ef13142632c46c3412ab88e"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>to_geopotential</b> (float alt)</td></tr>
@@ -152,7 +147,86 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>to_geopotential</b> (f
         H = H_b + \frac{RT}{g_0} ln({\frac{P_b}{P}})
     \end{eqnarray*}
 </p>
- </div><hr/>The documentation for this class was generated from the following files:<ul>
+ </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="ae506896acc77a6b8baf906926f9e5e5d" name="ae506896acc77a6b8baf906926f9e5e5d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae506896acc77a6b8baf906926f9e5e5d">&#9670;&#160;</a></span>Atmosphere()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Atmosphere::Atmosphere </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>pressure</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a new <a class="el" href="classAtmosphere.html">Atmosphere</a> object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pressure</td><td>The current air pressure [Pa] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a2ca8478540fde7cb11686f5e100872c3" name="a2ca8478540fde7cb11686f5e100872c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2ca8478540fde7cb11686f5e100872c3">&#9670;&#160;</a></span>get_altitude()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Atmosphere::get_altitude </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the altitude at this point in the <a class="el" href="classAtmosphere.html">Atmosphere</a> </p><dl class="section return"><dt>Returns</dt><dd>The altitude [m] above Mean Sea Level </dd></dl>
+
+</div>
+</div>
+<a id="acaa802a0d468abed468773275e1e48da" name="acaa802a0d468abed468773275e1e48da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acaa802a0d468abed468773275e1e48da">&#9670;&#160;</a></span>get_layer_constants()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Eigen::Vector4f Atmosphere::get_layer_constants </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the layer constants for the current pressure </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>The current pressure [Pa] </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of \( (H_b, T_b, \beta, P_b) \) which represents the layer constants </dd></dl>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>lib/shared/<a class="el" href="Atmosphere_8h_source.html">Atmosphere.h</a></li>
 <li>lib/shared/Atmosphere.cpp</li>
 </ul>

@@ -118,16 +118,19 @@ $(document).ready(function(){initNavTree('BarometerDataMsg_8h_source.html',''); 
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;SystemMessage.h&quot;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="structBarometerDataMsg.html">   10</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structBarometerDataMsg.html">BarometerDataMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <a class="code hl_struct" href="structBarometerDataMsg.html">BarometerDataMsg</a>() : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(BarometerDataMsg_t) {}</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordtype">float</span> pressure = 0;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keywordtype">float</span> temperature = 0;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>};</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_BAROMETERDATAMSG_H</span></div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdef"><b>Definition:</b> SystemMessage.h:27</div></div>
-<div class="ttc" id="astructBarometerDataMsg_html"><div class="ttname"><a href="structBarometerDataMsg.html">BarometerDataMsg</a></div><div class="ttdef"><b>Definition:</b> BarometerDataMsg.h:10</div></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structBarometerDataMsg.html">   15</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structBarometerDataMsg.html">BarometerDataMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_struct" href="structBarometerDataMsg.html">BarometerDataMsg</a>() : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(BarometerDataMsg_t) {}</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="structBarometerDataMsg.html#afb566492391d1960c024830531af8ce2">   21</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structBarometerDataMsg.html#afb566492391d1960c024830531af8ce2">pressure</a> = 0;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structBarometerDataMsg.html#aa9d229c021a03c1201068fcf29381f5b">   26</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structBarometerDataMsg.html#aa9d229c021a03c1201068fcf29381f5b">temperature</a> = 0;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>};</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_BAROMETERDATAMSG_H</span></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:30</div></div>
+<div class="ttc" id="astructBarometerDataMsg_html"><div class="ttname"><a href="structBarometerDataMsg.html">BarometerDataMsg</a></div><div class="ttdoc">Message sent by the barometer to the system.</div><div class="ttdef"><b>Definition:</b> BarometerDataMsg.h:15</div></div>
+<div class="ttc" id="astructBarometerDataMsg_html_aa9d229c021a03c1201068fcf29381f5b"><div class="ttname"><a href="structBarometerDataMsg.html#aa9d229c021a03c1201068fcf29381f5b">BarometerDataMsg::temperature</a></div><div class="ttdeci">float temperature</div><div class="ttdoc">The temperature in degrees Celsius.</div><div class="ttdef"><b>Definition:</b> BarometerDataMsg.h:26</div></div>
+<div class="ttc" id="astructBarometerDataMsg_html_afb566492391d1960c024830531af8ce2"><div class="ttname"><a href="structBarometerDataMsg.html#afb566492391d1960c024830531af8ce2">BarometerDataMsg::pressure</a></div><div class="ttdeci">float pressure</div><div class="ttdoc">The pressure in Pa.</div><div class="ttdef"><b>Definition:</b> BarometerDataMsg.h:21</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

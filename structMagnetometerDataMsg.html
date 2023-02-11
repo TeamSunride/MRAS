@@ -112,13 +112,18 @@ $(document).ready(function(){initNavTree('structMagnetometerDataMsg.html',''); i
   <div class="headertitle"><div class="title">MagnetometerDataMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Message sent by the magnetometer to the system.  
+ <a href="structMagnetometerDataMsg.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="MagnetometerDataMsg_8h_source.html">MagnetometerDataMsg.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MagnetometerDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structMagnetometerDataMsg__inherit__graph.png" border="0" usemap="#aMagnetometerDataMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aMagnetometerDataMsg_inherit__map" id="aMagnetometerDataMsg_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,145,207,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="29,5,183,97"/>
+<area shape="rect" title="Message sent by the magnetometer to the system." alt="" coords="5,145,207,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="29,5,183,97"/>
 </map>
 </div>
 <div class="dynheader">
@@ -126,15 +131,15 @@ Collaboration diagram for MagnetometerDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structMagnetometerDataMsg__coll__graph.png" border="0" usemap="#aMagnetometerDataMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aMagnetometerDataMsg_coll__map" id="aMagnetometerDataMsg_coll__map">
-<area shape="rect" title=" " alt="" coords="5,145,207,223"/>
-<area shape="rect" href="classSystemMessage.html" title=" " alt="" coords="29,5,183,97"/>
+<area shape="rect" title="Message sent by the magnetometer to the system." alt="" coords="5,145,207,223"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="29,5,183,97"/>
 </map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a255e523f6b17423fbd847b4d16dfaab7"><td class="memItemLeft" align="right" valign="top"><a id="a255e523f6b17423fbd847b4d16dfaab7" name="a255e523f6b17423fbd847b4d16dfaab7"></a>
-Vector&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>mag</b> = {0, 0, 0}</td></tr>
+<tr class="memitem:a255e523f6b17423fbd847b4d16dfaab7"><td class="memItemLeft" align="right" valign="top">Vector&lt; float, 3 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structMagnetometerDataMsg.html#a255e523f6b17423fbd847b4d16dfaab7">mag</a> = {0, 0, 0}</td></tr>
+<tr class="memdesc:a255e523f6b17423fbd847b4d16dfaab7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The magnetic field in Gauss (1e-4 Tesla)  <br /></td></tr>
 <tr class="separator:a255e523f6b17423fbd847b4d16dfaab7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
@@ -143,14 +148,35 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a311f65dbac1489f84e5fab9358841b9a" name="a311f65dbac1489f84e5fab9358841b9a"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>SystemMessage</b> (SystemMessageType type)</td></tr>
 <tr class="separator:a311f65dbac1489f84e5fab9358841b9a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a52115712bcb3591a2054dff75932279a" name="a52115712bcb3591a2054dff75932279a"></a>
-SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>get_type</b> ()</td></tr>
+<tr class="memitem:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memItemLeft" align="right" valign="top">SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">get_type</a> ()</td></tr>
+<tr class="memdesc:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the type of the message.  <br /></td></tr>
 <tr class="separator:a52115712bcb3591a2054dff75932279a inherit pub_methods_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classSystemMessage"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classSystemMessage')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classSystemMessage.html">SystemMessage</a></td></tr>
 <tr class="memitem:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memItemLeft" align="right" valign="top"><a id="a3812c3e0ed3f4ae792bbf45797e8f1f7" name="a3812c3e0ed3f4ae792bbf45797e8f1f7"></a>
 SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b></td></tr>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Message sent by the magnetometer to the system. </p>
+<p>The units of the magnetic field are Gauss and are stored as a Vector&lt;float, 3&gt;. One Gauss is equal to 1e-4 Tesla </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="a255e523f6b17423fbd847b4d16dfaab7" name="a255e523f6b17423fbd847b4d16dfaab7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a255e523f6b17423fbd847b4d16dfaab7">&#9670;&#160;</a></span>mag</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector&lt;float, 3&gt; MagnetometerDataMsg::mag = {0, 0, 0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The magnetic field in Gauss (1e-4 Tesla) </p>
+<p>The magnetic field is stored as a Vector&lt;float, 3&gt; where the first element is the x-axis, the second is the y-axis and the third is the z-axis </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li>lib/shared/system_messages/<a class="el" href="MagnetometerDataMsg_8h_source.html">MagnetometerDataMsg.h</a></li>
 </ul>

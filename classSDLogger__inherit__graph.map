@@ -1,6 +1,6 @@
 <map id="SDLogger" name="SDLogger">
-<area shape="rect" id="node1" title=" " alt="" coords="76,292,217,384"/>
+<area shape="rect" id="node1" title="General SD logger class, used by both the ground and rocket SD loggers. This class is not intended to..." alt="" coords="76,292,217,384"/>
 <area shape="rect" id="node3" href="$classGroundSDLogger.html" title=" " alt="" coords="5,432,136,509"/>
-<area shape="rect" id="node4" href="$classRocketSDLogger.html" title=" " alt="" coords="160,432,288,509"/>
+<area shape="rect" id="node4" href="$classRocketSDLogger.html" title="Data logger for the rocket, uses the Teensy SD card to log CSV data and text logs to the same file." alt="" coords="160,432,288,509"/>
 <area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="74,5,219,244"/>
 </map>

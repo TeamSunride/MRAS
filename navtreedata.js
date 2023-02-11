@@ -28,7 +28,7 @@ var NAVTREE =
     [ "MRAS (Multi Rocket Avionics System) Documentation", "index.html", "index" ],
     [ "Assist Now Documentation", "md_docs_assistNowDocumentation.html", [
       [ "How this subsystem works", "md_docs_assistNowDocumentation.html#autotoc_md11", null ],
-      [ "Obtaining the <tt>mgaonline.ubx</tt> file", "md_docs_assistNowDocumentation.html#autotoc_md13", null ]
+      [ "Obtaining the mgaonline.ubx file", "md_docs_assistNowDocumentation.html#autotoc_md13", null ]
     ] ],
     [ "Atmosphere Class", "md_docs_atmosphere_class_guide.html", [
       [ "How to use the class", "md_docs_atmosphere_class_guide.html#autotoc_md15", [

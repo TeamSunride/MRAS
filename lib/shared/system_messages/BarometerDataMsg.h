@@ -8,7 +8,7 @@
 #include "SystemMessage.h"
 
 struct BarometerDataMsg : public SystemMessage {
-    BarometerDataMsg() : SystemMessage(BarometerDataMsg_t) {}
+    explicit BarometerDataMsg() : SystemMessage(BarometerDataMsg_t) {}
 
     float pressure = 0;
     float temperature = 0;

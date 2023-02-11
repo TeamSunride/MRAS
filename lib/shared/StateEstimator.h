@@ -14,7 +14,8 @@ class StateEstimator : public Subsystem
         int8_t loop() override;
 
         float altitudeEstimate(BarometerDataMsg *msg);
+        void on_message(SystemMessage *msg) override;
 
-        SUBSYSTEM_NO_MESSAGE_HANDLER;
+       // SUBSYSTEM_NO_MESSAGE_HANDLER;
         SUBSYSTEM_NAME("StateEstimator");
 };

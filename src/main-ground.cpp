@@ -9,6 +9,8 @@
 #include "GroundTelemetrySystem.h"
 #include "GroundSDLogger.h"
 
+#define LAMBDA_CS_PIN 0
+
 auto logger = ArduinoTextLogger(0, 2000000);
 MRAS_System *mras = MRAS_System::get_instance();
 
@@ -19,9 +21,13 @@ GroundSDLogger sd_logger = GroundSDLogger(8, 4);
 void setup() {
     while (!Serial) {}
 
+
+    pinMode(LAMBDA_CS_PIN, OUTPUT); // Set the CS pin of the RADIO system HIGH (to disable it) before trying to initialise SD card
+    digitalWrite(LAMBDA_CS_PIN, HIGH); // Otherwise there's interference on the SPI bus,
+
     mras->set_logger(&logger);
-    mras->add_subsystem(&sd_logger);
     mras->add_subsystem(&telemetry_system);
+    mras->add_subsystem(&sd_logger);
     mras->add_subsystem(&data_logger);
 
     telemetry_system.add_subscriber(&data_logger);

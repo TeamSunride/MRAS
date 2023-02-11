@@ -26,8 +26,8 @@ void setup() {
     digitalWrite(LAMBDA_CS_PIN, HIGH); // Otherwise there's interference on the SPI bus,
 
     mras->set_logger(&logger);
-    mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&sd_logger);
+    mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&data_logger);
 
     telemetry_system.add_subscriber(&data_logger);

@@ -36,7 +36,7 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
         }
         case TextLogMsg_t: {
             auto text_log_msg = (TextLogMsg *) msg;
-            log_file.print(text_log_msg->text);
+            log_file.printf("#%s", text_log_msg->text);
             log_file.flush();
             break;
         }

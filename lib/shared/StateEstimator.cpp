@@ -1,4 +1,4 @@
-
+// 10/02/2023c -- Nikilesh
 #include "StateEstimator.h"
 
 int8_t StateEstimator::setup()
@@ -11,7 +11,8 @@ int8_t StateEstimator::loop()
     return 0;
 }
 
-float StateEstimator::altitude_estimate(BarometerDataMsg *msg)
+
+float StateEstimator::altitudeEstimate(BarometerDataMsg *msg)
 {
     Atmosphere rocket(msg->pressure);
     return rocket.get_altitude();

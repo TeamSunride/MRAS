@@ -109,8 +109,10 @@ $(document).ready(function(){initNavTree('md_docs_BeginnerExplanation.html','');
   <div class="headertitle"><div class="title">MRAS code to a Beginner </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>These explain a few concepts that I found difficult to grasp as new member looking into MRAS codebase. Intentionally used informal tone to format it like a conversation rather than a reference material.</p>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<div class="textblock"><h4><a class="anchor" id="autotoc_md19"></a>
+– Author: Nikilesh Ramesh</h4>
+<p>These explain a few concepts that I found difficult to grasp as new member looking into MRAS codebase. Intentionally used informal tone to format it like a conversation rather than a reference material.</p>
+<h1><a class="anchor" id="autotoc_md20"></a>
 System Message Explanation</h1>
 <p>MRAS system is split into sub-systems with each subsytem talking to each other with messages, specifically system messages (<code><a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a></code>). The second most popular word among Sunride software team-members is sub-system, the first being message. So before we explore the sub-systems it's important to understand the messaging infrastructure.</p>
 <p>The <code><a class="el" href="SystemMessage_8h_source.html">SystemMessage.h</a></code> includes a enum <code>SystemMessageType</code> which contains all the <b>types</b> that the <code><a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a></code> can be like barometer data, accelerometer data etc. These data are named using this format <code>{Name of Source}DataMsg_t</code>. So for example baromoter message is named as <code>BarometerDataMsg_t</code>. This is strictly for other classes to diffrentiate message types and is <b>NOT</b> an actual <em>data type</em> in c++ context, an example use case is lets say you only want the environmental data, you would only care about the barometer output so you can use a <code>switch</code> statement to only print out the message <b>if</b> its of the type <code>BarometerDataMsg_t</code>. Since they are contained within an enum each "message type" expands to an int. The acutal <em>data type</em> (in c++ context) is formatted as <code>{Name of Source}DataMsg</code>, an example would be <code><a class="el" href="structBarometerDataMsg.html" title="Message sent by the barometer to the system.">BarometerDataMsg</a></code> (the undersore t is dropped).</p>
@@ -138,7 +140,7 @@ System Message Explanation</h1>
 <div class="ttc" id="aclassSystemMessage_html_a52115712bcb3591a2054dff75932279a"><div class="ttname"><a href="classSystemMessage.html#a52115712bcb3591a2054dff75932279a">SystemMessage::get_type</a></div><div class="ttdeci">SystemMessageType get_type()</div><div class="ttdoc">Get the type of the message.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:39</div></div>
 </div><!-- fragment --><p>The <code>StateEstimator</code> class recieves a catalogue of information everytime a sub-system publishes, the <code><a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a></code> but it only needs the barometer reading so it can simply use the function <code>get_type()</code> in an if statement to filter out the barometer data. <br  />
 </p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md21"></a>
 Subsystem Explanation</h1>
 <p>Now we talk about the sub-systems themselves. There are two types of them in MRAS, Message Handlers and Non-Message Handlers. As I understand it any sub-system that recieves and proccesses the messages is deemed message handlers and the sub-systems that only publish are non-message handlers. So the sensors fall under non-handlers and data logging systems fall under handlers.</p>
 <p>The <code>MRAS_system</code> is the highest level of control in MRAS. It keeps track of all the sub-systems and the paradigm is to operate all the others through the <code>MRAS_system</code>. For example: </p><div class="fragment"><div class="line"><span class="keywordtype">int</span> main() {</div>
@@ -176,11 +178,11 @@ Subsystem Explanation</h1>
 <div class="ttc" id="aclassNativeTextLogger_html"><div class="ttname"><a href="classNativeTextLogger.html">NativeTextLogger</a></div><div class="ttdoc">A TextLogger that is compatible with the Native MRAS build environment.</div><div class="ttdef"><b>Definition:</b> NativeTextLogger.h:20</div></div>
 <div class="ttc" id="aclassTextLogger_html"><div class="ttname"><a href="classTextLogger.html">TextLogger</a></div><div class="ttdoc">A base class for ArduinoTextLogger and NativeTextLogger.</div><div class="ttdef"><b>Definition:</b> TextLogger.h:18</div></div>
 </div><!-- fragment --><p> In this <code>main()</code> we first define all the subsytems with unique IDs. And then call <code>add_subsytem</code> on <code>mras</code> to setup <code>mras</code> to track all the subsytems. Now when <code>setup()</code> and <code>loop()</code> is called on <code>mras</code> it's also called on every other subsystem that was added.</p>
-<h1><a class="anchor" id="autotoc_md21"></a>
+<h1><a class="anchor" id="autotoc_md22"></a>
 Steps to make your own Sub-system:</h1>
 <ol type="1">
 <li>Determine if your subsystem is a message handler or not</li>
-<li>Accordingly implement the class. For non-message handlers a <code>SUBSYSTEM_NO_MESSAGE_HANDLER</code> is added towards at the end of the class (check out <em><a href="https://mras.sunride.space/md_docs_subsystem_implementation_guide.html">How to implement a Subsytem</a></em>)</li>
+<li>Accordingly implement the class. For non-message handlers a <code>SUBSYSTEM_NO_MESSAGE_HANDLER</code> (it simply is a macro that implements an empty <code>on_message()</code> method) is added towards at the end of the class (check out <em><a href="https://mras.sunride.space/md_docs_subsystem_implementation_guide.html">How to implement a Subsytem</a></em>)</li>
 <li>Add your system message type to the <code>SystemMessageType</code></li>
 <li>Now add the struct that defines your sub-system's message in the <code>system_messages</code> folder.</li>
 <li>Now add your sub-system as subscriber to any other sub-system if needed</li>

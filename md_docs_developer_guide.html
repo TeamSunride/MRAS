@@ -119,7 +119,7 @@ $(document).ready(function(){initNavTree('md_docs_developer_guide.html',''); ini
 <blockquote class="doxtable">
 <p>&zwj;Please note that we strongly recommend that you use CLion for this project. If you are a student, you can obtain a free license for CLion from JetBrains. <a href="https://www.jetbrains.com/community/education/#students">https://www.jetbrains.com/community/education/#students</a> </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md19"></a>
+<h1><a class="anchor" id="autotoc_md23"></a>
 Installing PlatformIO</h1>
 <p>The simplest installation method is as follows:</p>
 <ol type="1">
@@ -128,14 +128,14 @@ Installing PlatformIO</h1>
 </ol>
 <p>In the background, this will install the PlatformIO core. This is the easiest way of getting it installed.</p>
 <p>If this method doesn't work, or you want to install PlatformIO in a different way, refer to <a href="https://platformio.org/install/cli">this documentation</a></p>
-<h1><a class="anchor" id="autotoc_md20"></a>
+<h1><a class="anchor" id="autotoc_md24"></a>
 Adding pio to PATH</h1>
 <p>Once you have installed PlatformIO, you need to add the PlatformIO <code>Scripts</code> folder to your PATH. This is so that you can use <code>pio</code> command from any terminal. Therefore, you will need to locate your platformio installation folder. In my case (Windows), it is located here: </p><pre class="fragment">C:\Users\tomto\.platformio\penv\Scripts
-</pre> <h1><a class="anchor" id="autotoc_md21"></a>
+</pre> <h1><a class="anchor" id="autotoc_md25"></a>
 Integrating PlatformIO with CLion</h1>
 <p>Install the <a href="https://docs.platformio.org/en/latest/integration/ide/clion.html">PlatformIO plugin for CLion</a></p>
 <p>Note that there are <em>many known issues</em> with the PlatformIO plugin for CLion, and you should refer to the linked page above regarding any issues. The setup process is quite detailed, please read the documentation carefully.</p>
-<h1><a class="anchor" id="autotoc_md22"></a>
+<h1><a class="anchor" id="autotoc_md26"></a>
 Opening the MRAS project in CLion</h1>
 <ol type="1">
 <li>Git clone the MRAS repository (<code>git clone <a href="https://github.com/TeamSunride/MRAS">https://github.com/TeamSunride/MRAS</a></code>)</li>
@@ -175,23 +175,23 @@ Opening the MRAS project in CLion</h1>
     <blockquote class="doxtable">
 <p>&zwj;If you see an error here, it could be because you forgot to init all submodules after cloning the repository. Refer to the earlier steps to do this. </p>
 </blockquote>
-<h1><a class="anchor" id="autotoc_md23"></a>
+<h1><a class="anchor" id="autotoc_md27"></a>
 Uploading code to the targets</h1>
 <p>In order to list devices plugged into your computer, run <code>pio device list</code>. This will help you identify the correct COM port to use.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Uploading code to rocket environment</h2>
 <pre class="fragment">pio run -e rocket -t upload -t monitor
 </pre><p> If you have more than one device plugged into your computer, you will need to specify the COM port. For example: </p><pre class="fragment">pio run -e rocket -t upload -t monitor -p COM3
-</pre> <h2><a class="anchor" id="autotoc_md25"></a>
+</pre> <h2><a class="anchor" id="autotoc_md29"></a>
 Uploading code to ground environment</h2>
 <pre class="fragment">pio run -e ground -t upload -t monitor
-</pre> <h2><a class="anchor" id="autotoc_md26"></a>
+</pre> <h2><a class="anchor" id="autotoc_md30"></a>
 Running code in native environment</h2>
 <pre class="fragment">pio run -e native -t exec
-</pre> <h1><a class="anchor" id="autotoc_md27"></a>
+</pre> <h1><a class="anchor" id="autotoc_md31"></a>
 Project file structure</h1>
 <p>Most source code is located in the <code>lib</code> folder. The <code>src</code> folder contains the main entry point for the project, and this is different for each environment. The <code>test</code> folder contains unit tests for the project.</p>
-<h1><a class="anchor" id="autotoc_md28"></a>
+<h1><a class="anchor" id="autotoc_md32"></a>
 Code completion</h1>
 <p>When writing code, make sure that the correct "resolve context" is being used for the current environment you are working in. See this menu at the bottom right of the screen:</p>
 <div class="image">

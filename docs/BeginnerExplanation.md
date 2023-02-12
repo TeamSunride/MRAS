@@ -1,5 +1,5 @@
 # MRAS code to a Beginner 
-
+##### -- Author: Nikilesh Ramesh
 These explain a few concepts that I found difficult to grasp as new member looking into MRAS codebase. Intentionally used informal tone to format it like a conversation rather than a reference material. 
 
 ## System Message Explanation
@@ -71,7 +71,7 @@ In this `main()` we first define all the subsytems with unique IDs. And then cal
 ## Steps to make your own Sub-system:
 
 1. Determine if your subsystem is a message handler or not
-2. Accordingly implement the class. For non-message handlers a `SUBSYSTEM_NO_MESSAGE_HANDLER` is added towards at the end of the class (check out *[How to implement a Subsytem](https://mras.sunride.space/md_docs_subsystem_implementation_guide.html)*)
+2. Accordingly implement the class. For non-message handlers a `SUBSYSTEM_NO_MESSAGE_HANDLER` (it simply is a macro that implements an empty `on_message()` method) is added towards at the end of the class (check out *[How to implement a Subsytem](https://mras.sunride.space/md_docs_subsystem_implementation_guide.html)*)
 3. Add your system message type to the `SystemMessageType`
 4. Now add the struct that defines your sub-system's message in the `system_messages` folder.
 5. Now add your sub-system as subscriber to any other sub-system if needed

@@ -7,7 +7,7 @@ MRAS system is split into sub-systems with each subsytem talking to each other w
 
 The `SystemMessage.h` includes a enum `SystemMessageType` which contains all the **types** that the `SystemMessage` can be like barometer data, accelerometer data etc. These data are named using this format `{Name of Source}DataMsg_t`. So for example baromoter message is named as `BarometerDataMsg_t`. This is strictly for other classes to diffrentiate message types and is **NOT** an actual *data type* in c++ context, an example use case is lets say you only want the environmental data, you would only care about the barometer output so you can use a `switch` statement to only print out the message **if** its of the type `BarometerDataMsg_t`. Since they are contained within an enum each "message type" expands to an int. The acutal *data type* (in c++ context) is formatted as `{Name of Source}DataMsg`, an example would be `BarometerDataMsg` (the undersore t is dropped). 
 
-Now lets understand `BarometerDataMsg`. This is its definition:
+Now lets understand `BarometerDataMsg`. This is its definition: 
 ```cpp
 struct BarometerDataMsg : public SystemMessage {
 explicit BarometerDataMsg() : SystemMessage(BarometerDataMsg_t) {}

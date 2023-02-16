@@ -50,7 +50,8 @@ public:
 
     Eigen::Vector4f get_layer_constants(float p);
 
-    int to_geopotential(float alt); // additional feture to be added, right now everything is in geometric
+    float to_geopotential(float alt); // additional feture to be added, right now everything is in geometric
+
 
 private:
 

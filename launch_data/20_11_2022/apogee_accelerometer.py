@@ -2,7 +2,7 @@ import pandas
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pandas.read_csv("launch_1.csv", usecols=range(1, 20))
+df = pandas.read_csv("launch_data/20_11_2022/launch_1.csv", usecols=range(1, 20))
 
 # trim the dataframe for the desired time
 df = df[df["timestamp"] < df["timestamp"][0] + 1000 * 10]

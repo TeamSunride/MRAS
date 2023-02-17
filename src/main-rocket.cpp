@@ -37,13 +37,13 @@ RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
 void setup() {
     mras->set_logger(&logger);
-    mras->add_subsystem(&sd_logger);
+//    mras->add_subsystem(&sd_logger);
     //mras->add_subsystem(&data_logger);
-    mras->add_subsystem(&magnetometer);
-    mras->add_subsystem(&imu);
-    mras->add_subsystem(&barometer);
-    mras->add_subsystem(&accelerometer);
-    mras->add_subsystem(&gnss);
+//    mras->add_subsystem(&magnetometer);
+//    mras->add_subsystem(&imu);
+//    mras->add_subsystem(&barometer);
+//    mras->add_subsystem(&accelerometer);
+//    mras->add_subsystem(&gnss);
     mras->add_subsystem(&telemetry_system);
 
 
@@ -54,18 +54,18 @@ void setup() {
 //    gnss.add_subscriber(&data_logger);
 
 //     setup SD logger subscriptions
-    logger.add_subscriber(&sd_logger);
-    imu.add_subscriber(&sd_logger);
-    magnetometer.add_subscriber(&sd_logger);
-    barometer.add_subscriber(&sd_logger);
-    accelerometer.add_subscriber(&sd_logger);
-    gnss.add_subscriber(&sd_logger);
+//    logger.add_subscriber(&sd_logger);
+//    imu.add_subscriber(&sd_logger);
+//    magnetometer.add_subscriber(&sd_logger);
+//    barometer.add_subscriber(&sd_logger);
+//    accelerometer.add_subscriber(&sd_logger);
+//    gnss.add_subscriber(&sd_logger);
 
     mras->setup();
 }
 
 void loop() {
     mras->loop();
-    delay(0);
+//    delay(100);
     //Serial.println(millis());
 }

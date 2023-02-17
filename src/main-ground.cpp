@@ -26,19 +26,20 @@ void setup() {
     digitalWrite(LAMBDA_CS_PIN, HIGH); // Otherwise there's interference on the SPI bus,
 
     mras->set_logger(&logger);
-    mras->add_subsystem(&sd_logger);
+//    mras->add_subsystem(&sd_logger);
     mras->add_subsystem(&telemetry_system);
-    mras->add_subsystem(&data_logger);
+//    mras->add_subsystem(&data_logger);
 
-    telemetry_system.add_subscriber(&data_logger);
-    telemetry_system.add_subscriber(&sd_logger);
+//    telemetry_system.add_subscriber(&data_logger);
+//    telemetry_system.add_subscriber(&sd_logger);
 
-    logger.add_subscriber(&sd_logger);
+//    logger.add_subscriber(&sd_logger);
 
     mras->setup();
 }
 
 void loop() {
     mras->loop();
+//    delay(100);
     //Serial.println(millis());
 }

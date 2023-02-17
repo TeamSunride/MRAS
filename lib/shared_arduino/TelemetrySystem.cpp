@@ -13,15 +13,16 @@ int8_t TelemetrySystem::setup() {
 
     log("Radio startup");
 
-    radio_state = radio.begin(RADIO_FREQUENCY,
-                              RADIO_BANDWIDTH,
-                              RADIO_SPREADING_FACTOR,
-                              RADIO_CODING_RATE,
-                              RADIO_SYNC_WORD,
-                              RADIO_POWER,
-                              RADIO_PREAMBLE_LENGTH,
-                              RADIO_TCXO_VOLTAGE,
-                              RADIO_USE_LDO);
+//    radio_state = radio.begin(RADIO_FREQUENCY,
+//                              RADIO_BANDWIDTH,
+//                              RADIO_SPREADING_FACTOR,
+//                              RADIO_CODING_RATE,
+//                              RADIO_SYNC_WORD,
+//                              RADIO_POWER,
+//                              RADIO_PREAMBLE_LENGTH);
+//                              RADIO_TCXO_VOLTAGE,
+//                              RADIO_USE_LDO);
+    radio_state = radio.begin();
 
     if (radio_state != RADIOLIB_ERR_NONE) {
         log("Radio begin() failed. RadioLib error code: %d", radio_state);
@@ -42,6 +43,13 @@ int8_t TelemetrySystem::setup() {
     }
 
     log("Radio setup complete");
+
+#ifdef BUILD_ENV_rocket
+    rangingMasterOrSlave = true;
+#endif
+#ifdef BUILD_ENV_ground
+    rangingMasterOrSlave = false;
+#endif
 
     return 0;
 }

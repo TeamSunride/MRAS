@@ -29,7 +29,12 @@ protected:
     // create setup and loop functions
     int8_t setup() override;
 
-    SX1262 radio = new Module(RADIO_CHIP_SELECT_PIN,
+//    SX1262 radio = new Module(RADIO_CHIP_SELECT_PIN,
+//                              RADIO_DIO1_PIN,
+//                              RADIO_RESET_PIN,
+//                              RADIO_BUSY_PIN,
+//                              RADIO_SPI_BUS);
+    SX1280 radio = new Module(RADIO_CHIP_SELECT_PIN,
                               RADIO_DIO1_PIN,
                               RADIO_RESET_PIN,
                               RADIO_BUSY_PIN,
@@ -42,6 +47,7 @@ protected:
     } telemetry_system_state = IDLE;
 
     int16_t radio_state = 0;
+    bool rangingMasterOrSlave;
 
 protected:
     QueueTelemetryMessageMsg* get_next_message();

@@ -38,25 +38,25 @@
  */
 
 // carrier frequency in MHz
-#define RADIO_FREQUENCY                     868.0
+#define RADIO_FREQUENCY                     2400
 
 // bandwidth in kHz
-#define RADIO_BANDWIDTH                     500.0
+#define RADIO_BANDWIDTH                     812.5
 
 // LoRa spreading factor
-#define RADIO_SPREADING_FACTOR              12
+#define RADIO_SPREADING_FACTOR              9
 
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
-#define RADIO_CODING_RATE                   5
+#define RADIO_CODING_RATE                   7
 
 // LoRa sync word
 #define RADIO_SYNC_WORD                     0x22
 
 // output power in dBm
-#define RADIO_POWER                         14
+#define RADIO_POWER                         10
 
 // LoRa preamble length in symbols. Allowed values range from 1 to 65535.
-#define RADIO_PREAMBLE_LENGTH               8
+#define RADIO_PREAMBLE_LENGTH               12
 
 // TCXO reference voltage to be set on DIO3. Defaults to 1.6 V, set to 0 to skip.
 #define RADIO_TCXO_VOLTAGE                  0

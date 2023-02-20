@@ -8,3 +8,4 @@ test/__pycache__/
 docs/html
 .DS_Store
 /test/native/test_altitude_conversion/altPressure.csv
+launch_data/20_11_2022/__pycache__/

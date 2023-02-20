@@ -34,3 +34,7 @@ plt.plot(timestamps, df["h_adjusted"], label="Barometric height")
 plt.legend()
 plt.show()
 
+plt.hist(y_accel)
+plt.show()
+print(np.std(df["h"]))
+print(np.std(y_accel))

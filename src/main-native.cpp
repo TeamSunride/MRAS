@@ -27,6 +27,7 @@ int main() {
     mras->add_subsystem(barometer);
     mras->add_subsystem(altitudeEstimator);
     accelerometer->add_subscriber(data_logger);
+    accelerometer->add_subscriber(altitudeEstimator);
     barometer->add_subscriber(data_logger);
     barometer->add_subscriber(altitudeEstimator);
     altitudeEstimator->add_subscriber(data_logger);

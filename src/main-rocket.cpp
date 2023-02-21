@@ -47,9 +47,11 @@ void setup() {
     mras->add_subsystem(&altitudeEstimator);
 
     imu.add_subscriber(&data_logger);
+    imu.add_subscriber(&altitudeEstimator);
     magnetometer.add_subscriber(&data_logger);
     barometer.add_subscriber(&data_logger);
     barometer.add_subscriber(&altitudeEstimator);
+    //accelerometer.add_subscriber(&altitudeEstimator);
     accelerometer.add_subscriber(&data_logger);
     altitudeEstimator.add_subscriber(&data_logger);
 //    gnss.add_subscriber(&data_logger);

@@ -13,7 +13,7 @@ int8_t StateEstimator::loop()
 {
     if (start == 0)
     {
-        return;
+        return 0;
     }
 
     // test --- success

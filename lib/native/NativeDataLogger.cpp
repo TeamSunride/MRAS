@@ -8,6 +8,7 @@
 #include "system_messages/BarometerDataMsg.h"
 #include "system_messages/GNSSDataMsg.h"
 #include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "system_messages/StateEstimatorMsg.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
 
 int8_t NativeDataLogger::setup() {
@@ -58,6 +59,13 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
                 gnss_msg->fixType,
                 gnss_msg->SIV);
             break;
+        }
+        case StateEstimatorMsg_t: {
+            auto state_msg = (StateEstimatorMsg *) msg;
+            log("StateEstimator: Estimated Altitude: %f Estimated Velocity: %f",
+             state_msg->estimatedAltitude,
+              state_msg->estimatedVelocity);
+            break; 
         }
         case ReceivedTelemetryMessageMsg_t: {
             auto system_message = (ReceivedTelemetryMessageMsg *) msg;

@@ -8,6 +8,7 @@ struct StateEstimatorMsg : public SystemMessage
     explicit StateEstimatorMsg() : SystemMessage(StateEstimatorMsg_t) {}
 
     float estimatedAltitude = 0;
+    float estimatedVelocity = 0;
 };
 
 

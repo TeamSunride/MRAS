@@ -6,6 +6,7 @@ int8_t StateEstimator::setup()
 {
     Filter = new LinearKalmanFilter(0.001, 28, 8.7);
     log("State Estimator initialized...");
+    currentMillis = millis();
     return 0;
 }
 
@@ -16,15 +17,17 @@ int8_t StateEstimator::loop()
         return 0;
     }
 
-    // test --- success
-    // Atmosphere obj(pressure);
-    // log("SIMPLE ALT++++ %f", obj.get_altitude());
+    if ((currentMillis - prevMillis)/1000 < Filter->get_timeStep())
+    {
+        return 0;
+    }
+    
 
     Filter->predict(yAcceleration);
     Filter->update(pressure);
     altitude = Filter->get_altitude();
     velocity = Filter->get_velocity();
-    log("logged alti ======= %f", altitude);
+    // log("logged alti ======= %f", altitude);
     auto stateMsg = new StateEstimatorMsg();
     stateMsg->estimatedAltitude = altitude;
     stateMsg->estimatedVelocity = velocity;

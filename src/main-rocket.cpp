@@ -16,6 +16,7 @@
 #include "Sensor_ZOEM8Q.h"
 #include "RocketTelemetrySystem.h"
 #include "StateEstimator.h"
+#include "RocketSDLogger.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();

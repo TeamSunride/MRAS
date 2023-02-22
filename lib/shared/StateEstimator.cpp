@@ -28,7 +28,7 @@ int8_t StateEstimator::loop()
     Filter->update(pressure);
     altitude = Filter->get_altitude();
     velocity = Filter->get_velocity();
-    log("logged alti ======= %f", altitude);
+    // log("logged alti ======= %f", altitude);
     auto stateMsg = new StateEstimatorMsg();
     stateMsg->estimatedAltitude = altitude;
     stateMsg->estimatedVelocity = velocity;

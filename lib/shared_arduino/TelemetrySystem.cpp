@@ -4,7 +4,7 @@
 
 #include "TelemetrySystem.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
-#include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "system_messages/TelemetryMessageReceivedMsg.h"
 #include "serializers.h"
 
 int8_t TelemetrySystem::setup() {
@@ -46,13 +46,13 @@ int8_t TelemetrySystem::setup() {
     return 0;
 }
 
-QueueTelemetryMessageMsg *TelemetrySystem::get_next_message() {
+TelemetryMessageQueueMsg *TelemetrySystem::get_next_message() {
     auto *message = new TelemetryDataMsg();
     message->x = 1;
     message->y = 2;
     message->z = 3;
 
-    auto *queue_message = new QueueTelemetryMessageMsg();
+    auto *queue_message = new TelemetryMessageQueueMsg();
     queue_message->telemetry_message = message;
     queue_message->size = sizeof(TelemetryDataMsg);
 
@@ -61,7 +61,7 @@ QueueTelemetryMessageMsg *TelemetrySystem::get_next_message() {
 
 void TelemetrySystem::transmit_next_message() {
 
-    QueueTelemetryMessageMsg *next_message = get_next_message();
+    TelemetryMessageQueueMsg *next_message = get_next_message();
     log("Transmitting new telemetry message size %d", next_message->size);
     auto* bytes_to_transmit = (uint8_t *) next_message->telemetry_message;
     radio.startTransmit(bytes_to_transmit, next_message->size);
@@ -76,7 +76,7 @@ void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
     telemetry_system_state = RX;
 }
 
-bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* output, bool receive_again) {
+bool TelemetrySystem::read_new_message_from_buffer(TelemetryMessageReceivedMsg* output, bool receive_again) {
     radio_state = radio.readData((uint8_t*) output->telemetry_message, 0);
 
     if (receive_again) start_receiving_next_message();

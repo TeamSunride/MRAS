@@ -7,7 +7,7 @@
 #include "system_messages/MagnetometerDataMsg.h"
 #include "system_messages/BarometerDataMsg.h"
 #include "system_messages/GNSSDataMsg.h"
-#include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "system_messages/TelemetryMessageReceivedMsg.h"
 #include "system_messages/StateEstimatorMsg.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
 
@@ -68,7 +68,7 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
             break; 
         }
         case ReceivedTelemetryMessageMsg_t: {
-            auto system_message = (ReceivedTelemetryMessageMsg *) msg;
+            auto system_message = (TelemetryMessageReceivedMsg *) msg;
             TelemetryMessage *telemetry_message = system_message->telemetry_message;
             switch (telemetry_message->get_type()) {
                 case TelemetryDataMsg_t: {

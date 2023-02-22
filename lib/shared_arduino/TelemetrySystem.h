@@ -10,8 +10,8 @@
 #include "RadioLib.h"
 #include "MRAS_Config.h"
 #include "TelemetryMessage.h"
-#include "system_messages/QueueTelemetryMessageMsg.h"
-#include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "system_messages/TelemetryMessageQueueMsg.h"
+#include "system_messages/TelemetryMessageReceivedMsg.h"
 
 /**
  * @brief A subsystem for sending and receiving telemetry data using the LoRa radio
@@ -44,7 +44,7 @@ protected:
     int16_t radio_state = 0;
 
 protected:
-    QueueTelemetryMessageMsg* get_next_message();
+    TelemetryMessageQueueMsg* get_next_message();
 
     void transmit_next_message();
 
@@ -62,7 +62,7 @@ protected:
      * the radio buffer.
      * @return True if the operation was a success, otherwise false (such as in the case of a CRC error)
      */
-    bool read_new_message_from_buffer(ReceivedTelemetryMessageMsg* output, bool receive_again = true);
+    bool read_new_message_from_buffer(TelemetryMessageReceivedMsg* output, bool receive_again = true);
 
 public:
     explicit TelemetrySystem(uint8_t id) : Subsystem(id) {}

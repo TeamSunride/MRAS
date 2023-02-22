@@ -2,8 +2,8 @@
 // Created by Tom Danvers on 04/02/2023.
 //
 
-#ifndef MRAS_QUEUETELEMETRYMESSAGEMSG_H
-#define MRAS_QUEUETELEMETRYMESSAGEMSG_H
+#ifndef MRAS_TELEMETRYMESSAGEQUEUEMSG_H
+#define MRAS_TELEMETRYMESSAGEQUEUEMSG_H
 
 #include <cstdio>
 #include "SystemMessage.h"
@@ -14,10 +14,10 @@
  *
  * This message is used by the TelemetrySystem to queue TelemetryMessages for sending to the ground or the rocket
  */
-struct QueueTelemetryMessageMsg : public SystemMessage {
-    QueueTelemetryMessageMsg() : SystemMessage(QueueTelemetryMessageMsg_t) {}
+struct TelemetryMessageQueueMsg : public SystemMessage {
+    TelemetryMessageQueueMsg() : SystemMessage(QueueTelemetryMessageMsg_t) {}
 
-    ~QueueTelemetryMessageMsg() {
+    ~TelemetryMessageQueueMsg() {
         delete telemetry_message;
     }
 
@@ -32,4 +32,4 @@ struct QueueTelemetryMessageMsg : public SystemMessage {
     size_t size = 0;
 };
 
-#endif //MRAS_QUEUETELEMETRYMESSAGEMSG_H
+#endif //MRAS_TELEMETRYMESSAGEQUEUEMSG_H

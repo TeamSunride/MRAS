@@ -3,7 +3,7 @@
 //
 
 #include "GroundSDLogger.h"
-#include "system_messages/ReceivedTelemetryMessageMsg.h"
+#include "system_messages/TelemetryMessageReceivedMsg.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
 #include "system_messages/TextLogMsg.h"
 
@@ -18,7 +18,7 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
 
     switch (msg->get_type()) {
         case ReceivedTelemetryMessageMsg_t: {
-            auto system_message = (ReceivedTelemetryMessageMsg*) msg;
+            auto system_message = (TelemetryMessageReceivedMsg*) msg;
             TelemetryMessage *telemetry_message = system_message->telemetry_message;
             switch (telemetry_message->get_type()) {
                 case TelemetryDataMsg_t: {

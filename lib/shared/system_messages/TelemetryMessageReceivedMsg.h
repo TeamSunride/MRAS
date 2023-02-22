@@ -2,8 +2,8 @@
 // Created by Tom Danvers on 04/02/2023.
 //
 
-#ifndef MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H
-#define MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H
+#ifndef MRAS_TELEMETRYMESSAGERECEIVEDMSG_H
+#define MRAS_TELEMETRYMESSAGERECEIVEDMSG_H
 
 #include <cstdio>
 #include "SystemMessage.h"
@@ -12,8 +12,8 @@
 /**
  * @brief A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the ground or the rocket
  */
-struct ReceivedTelemetryMessageMsg : public SystemMessage {
-    ReceivedTelemetryMessageMsg() : SystemMessage(ReceivedTelemetryMessageMsg_t) {
+struct TelemetryMessageReceivedMsg : public SystemMessage {
+    TelemetryMessageReceivedMsg() : SystemMessage(ReceivedTelemetryMessageMsg_t) {
         telemetry_message = (TelemetryMessage*) radio_buffer;
     }
 
@@ -25,4 +25,4 @@ private:
     int8_t radio_buffer[255] = {};
 };
 
-#endif //MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H
+#endif //MRAS_TELEMETRYMESSAGERECEIVEDMSG_H

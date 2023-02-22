@@ -17,7 +17,7 @@
 #include "RocketTelemetrySystem.h"
 #include "StateEstimator.h"
 
-auto logger = ArduinoTextLogger(0, 115200);
+auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
 
 NativeDataLogger data_logger = NativeDataLogger(1);
@@ -34,15 +34,17 @@ Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 StateEstimator altitudeEstimator = StateEstimator(8);
 
+RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
+
 void setup() {
     mras->set_logger(&logger);
-
-    mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&sd_logger);
+    //mras->add_subsystem(&data_logger);
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
     mras->add_subsystem(&barometer);
     mras->add_subsystem(&accelerometer);
-//    mras->add_subsystem(&gnss);
+    mras->add_subsystem(&gnss);
     mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
 
@@ -56,10 +58,19 @@ void setup() {
     altitudeEstimator.add_subscriber(&data_logger);
 //    gnss.add_subscriber(&data_logger);
 
+//     setup SD logger subscriptions
+    logger.add_subscriber(&sd_logger);
+    imu.add_subscriber(&sd_logger);
+    magnetometer.add_subscriber(&sd_logger);
+    barometer.add_subscriber(&sd_logger);
+    accelerometer.add_subscriber(&sd_logger);
+    gnss.add_subscriber(&sd_logger);
+
     mras->setup();
 }
 
 void loop() {
     mras->loop();
-    delay(500);
+    delay(0);
+    //Serial.println(millis());
 }

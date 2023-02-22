@@ -24,7 +24,9 @@ enum TelemetryMessageType {
     TelemetryDataMsg_t
 };
 
-/*
+/**
+ * @brief A base class for all telemetry messages
+ *
  * TelemetryMessages are similar to SystemMessages but are designed for the
  * telemetry system. All data contained within the TelemetryMessage must be
  * stored within the TelemetryMessage and not referred to with pointers.
@@ -39,6 +41,12 @@ protected:
     TelemetryMessageType type;
 public:
     explicit TelemetryMessage(TelemetryMessageType type) : type(type) {};
+
+    /**
+     * @brief Get the type of the message
+     *
+     * @return The TelemetryMessageType of the TelemetryMessage
+     */
     TelemetryMessageType get_type() { return type; };
 };
 

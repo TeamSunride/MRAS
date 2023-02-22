@@ -67,7 +67,7 @@ void TelemetrySystem::transmit_next_message() {
     radio.startTransmit(bytes_to_transmit, next_message->size);
     telemetry_system_state = TX;
 
-    delete next_message->telemetry_message;
+    delete next_message;
 }
 
 void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
@@ -76,10 +76,8 @@ void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
     telemetry_system_state = RX;
 }
 
-bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* &output, bool receive_again) {
-    uint8_t radioBuffer[255];
-
-    radio_state = radio.readData(radioBuffer, 0);
+bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* output, bool receive_again) {
+    radio_state = radio.readData((uint8_t*) output->telemetry_message, 0);
 
     if (receive_again) start_receiving_next_message();
 
@@ -88,12 +86,6 @@ bool TelemetrySystem::read_new_message_from_buffer(ReceivedTelemetryMessageMsg* 
         return false;
     }
 
-    // process the new message
-    auto telemetry_message = (TelemetryMessage*) radioBuffer;
-
-    auto *received_message = new ReceivedTelemetryMessageMsg();
-    received_message->telemetry_message = telemetry_message;
-    output = received_message;
     if (radio_state == RADIOLIB_ERR_NONE) {
         return true;
     } else {

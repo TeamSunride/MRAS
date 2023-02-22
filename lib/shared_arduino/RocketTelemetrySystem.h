@@ -8,6 +8,14 @@
 
 #include "TelemetrySystem.h"
 
+/**
+ * @brief The telemetry system for the rocket
+ *
+ * This class is a variant of the TelemetrySystem that is specific to the rocket
+ *
+ * The loop() function is set to enter transmit mode first. If a message is received, it will be handled, and the
+ * RocketTelemetrySystem Subsystem will emit a ReceivedTelemetryMessageMsg to all of its subscribers.
+ */
 class RocketTelemetrySystem : public TelemetrySystem {
     using TelemetrySystem::TelemetrySystem;
 

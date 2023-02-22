@@ -8,6 +8,14 @@
 
 #include "TelemetrySystem.h"
 
+/**
+ * @brief Telemetry system for the ground station
+ *
+ * This class is the variant of the TelemetrySystem that is specific to the ground station
+ *
+ * The loop() function is set to enter receive mode first. If a message is received, it will be handled, and the
+ * GroundTelemetrySystem Subsystem will emit a ReceivedTelemetryMessageMsg to all of its subscribers.
+ */
 class GroundTelemetrySystem : public TelemetrySystem {
     using TelemetrySystem::TelemetrySystem;
 

@@ -35,8 +35,8 @@ var hierarchy =
       [ "GNSSDataMsg", "structGNSSDataMsg.html", null ],
       [ "GyroDataMsg", "structGyroDataMsg.html", null ],
       [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
-      [ "QueueTelemetryMessageMsg", "structQueueTelemetryMessageMsg.html", null ],
-      [ "ReceivedTelemetryMessageMsg", "structReceivedTelemetryMessageMsg.html", null ],
+      [ "TelemetryMessageQueueMsg", "structTelemetryMessageQueueMsg.html", null ],
+      [ "TelemetryMessageReceivedMsg", "structTelemetryMessageReceivedMsg.html", null ],
       [ "TextLogMsg", "structTextLogMsg.html", null ]
     ] ],
     [ "TelemetryMessage", "classTelemetryMessage.html", [

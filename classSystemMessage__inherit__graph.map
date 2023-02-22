@@ -5,7 +5,7 @@
 <area shape="rect" id="node4" href="$structGNSSDataMsg.html" title="Message sent by the GNSS (also referred to less correctly as GPS) to the system." alt="" coords="429,145,571,281"/>
 <area shape="rect" id="node5" href="$structGyroDataMsg.html" title="Message sent by the gyroscope to the system." alt="" coords="595,175,731,252"/>
 <area shape="rect" id="node6" href="$structMagnetometerDataMsg.html" title="Message sent by the magnetometer to the system." alt="" coords="755,175,957,252"/>
-<area shape="rect" id="node7" href="$structQueueTelemetryMessageMsg.html" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="981,160,1232,267"/>
-<area shape="rect" id="node8" href="$structReceivedTelemetryMessageMsg.html" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="1256,167,1488,259"/>
+<area shape="rect" id="node7" href="$structTelemetryMessageQueueMsg.html" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="981,160,1232,267"/>
+<area shape="rect" id="node8" href="$structTelemetryMessageReceivedMsg.html" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="1256,167,1488,259"/>
 <area shape="rect" id="node9" href="$structTextLogMsg.html" title="A message containing text to be logged." alt="" coords="1513,175,1637,252"/>
 </map>

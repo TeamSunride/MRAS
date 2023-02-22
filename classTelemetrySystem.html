@@ -179,16 +179,16 @@ Protected Types</h2></td></tr>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a7f5dda27b8ba8b53e54f22c302c8d279"><td class="memItemLeft" align="right" valign="top">SUBSYSTEM_NO_MESSAGE_HANDLER int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTelemetrySystem.html#a7f5dda27b8ba8b53e54f22c302c8d279">setup</a> () override</td></tr>
 <tr class="separator:a7f5dda27b8ba8b53e54f22c302c8d279"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40b06adc6d2bde186946347db057ed3c"><td class="memItemLeft" align="right" valign="top"><a id="a40b06adc6d2bde186946347db057ed3c" name="a40b06adc6d2bde186946347db057ed3c"></a>
-<a class="el" href="structQueueTelemetryMessageMsg.html">QueueTelemetryMessageMsg</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_next_message</b> ()</td></tr>
-<tr class="separator:a40b06adc6d2bde186946347db057ed3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdd6e704aadc285f0bbb851cb1f49609"><td class="memItemLeft" align="right" valign="top"><a id="acdd6e704aadc285f0bbb851cb1f49609" name="acdd6e704aadc285f0bbb851cb1f49609"></a>
+<a class="el" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_next_message</b> ()</td></tr>
+<tr class="separator:acdd6e704aadc285f0bbb851cb1f49609"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49fa7c75a8fb859abed9c17c27ee27ae"><td class="memItemLeft" align="right" valign="top"><a id="a49fa7c75a8fb859abed9c17c27ee27ae" name="a49fa7c75a8fb859abed9c17c27ee27ae"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>transmit_next_message</b> ()</td></tr>
 <tr class="separator:a49fa7c75a8fb859abed9c17c27ee27ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a036c8751e7089107a7965ccbf3fc023c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTelemetrySystem.html#a036c8751e7089107a7965ccbf3fc023c">start_receiving_next_message</a> (uint32_t timeout=0xFFFFFF)</td></tr>
 <tr class="separator:a036c8751e7089107a7965ccbf3fc023c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a71b68e7b1b8a1a35aa843a2b2249a5b6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTelemetrySystem.html#a71b68e7b1b8a1a35aa843a2b2249a5b6">read_new_message_from_buffer</a> (<a class="el" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a> *output, bool receive_again=true)</td></tr>
-<tr class="separator:a71b68e7b1b8a1a35aa843a2b2249a5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a966bb7325720768a8d05ea08d3ce20"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTelemetrySystem.html#a0a966bb7325720768a8d05ea08d3ce20">read_new_message_from_buffer</a> (<a class="el" href="structTelemetryMessageReceivedMsg.html">TelemetryMessageReceivedMsg</a> *output, bool receive_again=true)</td></tr>
+<tr class="separator:a0a966bb7325720768a8d05ea08d3ce20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classSubsystem"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classSubsystem')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classSubsystem.html">Subsystem</a></td></tr>
 <tr class="memitem:ab980c1d634d26eda5616f579c6b11350 inherit pro_methods_classSubsystem"><td class="memItemLeft" align="right" valign="top"><a id="ab980c1d634d26eda5616f579c6b11350" name="ab980c1d634d26eda5616f579c6b11350"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>log</b> (const char fmt[],...)</td></tr>
@@ -221,8 +221,8 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
 <p>This subsystem is responsible for sending and receiving telemetry data from the rocket.</p>
 <p>This subsystem uses the RadioLib library to communicate with the radio chip. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a id="a71b68e7b1b8a1a35aa843a2b2249a5b6" name="a71b68e7b1b8a1a35aa843a2b2249a5b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a71b68e7b1b8a1a35aa843a2b2249a5b6">&#9670;&#160;</a></span>read_new_message_from_buffer()</h2>
+<a id="a0a966bb7325720768a8d05ea08d3ce20" name="a0a966bb7325720768a8d05ea08d3ce20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a966bb7325720768a8d05ea08d3ce20">&#9670;&#160;</a></span>read_new_message_from_buffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,7 +233,7 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
         <tr>
           <td class="memname">bool TelemetrySystem::read_new_message_from_buffer </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structTelemetryMessageReceivedMsg.html">TelemetryMessageReceivedMsg</a> *&#160;</td>
           <td class="paramname"><em>output</em>, </td>
         </tr>
         <tr>
@@ -254,9 +254,9 @@ int8_t&#160;</td><td class="memItemRight" valign="bottom"><b>self_test_result</b
   </tr>
 </table>
 </div><div class="memdoc">
-<p>After the radio is done receiving a new message, read this message from the radio buffer and output the result into the provided <a class="el" href="structReceivedTelemetryMessageMsg.html" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr...">ReceivedTelemetryMessageMsg</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>After the radio is done receiving a new message, read this message from the radio buffer and output the result into the provided ReceivedTelemetryMessageMsg. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">output</td><td>A reference to a <a class="el" href="structReceivedTelemetryMessageMsg.html" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr...">ReceivedTelemetryMessageMsg</a> where the output message is stored </td></tr>
+    <tr><td class="paramname">output</td><td>A reference to a ReceivedTelemetryMessageMsg where the output message is stored </td></tr>
     <tr><td class="paramname">receive_again</td><td>Whether to immediately start receiving data with the radio after reading from the radio buffer. </td></tr>
   </table>
   </dd>

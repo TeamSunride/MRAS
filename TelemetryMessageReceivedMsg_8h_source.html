@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11"/>
     <meta name="generator" content="Doxygen 1.9.6"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta property="og:title" content="MRAS: lib/shared/system_messages/ReceivedTelemetryMessageMsg.h Source File">
+    <meta property="og:title" content="MRAS: lib/shared/system_messages/TelemetryMessageReceivedMsg.h Source File">
     <meta property="og:image" content="https://mras.sunride.space/sunride_logo.png">
     <meta property="og:description" content="Multi Rocket Avionics System">
     <meta name="theme-color" content="#EE3437">
-    <title>MRAS: lib/shared/system_messages/ReceivedTelemetryMessageMsg.h Source File</title>
+    <title>MRAS: lib/shared/system_messages/TelemetryMessageReceivedMsg.h Source File</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="sunride_rocket.ico" type="image/x-icon"/>
     <script type="text/javascript" src="jquery.js"></script>
@@ -80,7 +80,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('ReceivedTelemetryMessageMsg_8h_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('TelemetryMessageReceivedMsg_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -106,41 +106,41 @@ $(document).ready(function(){initNavTree('ReceivedTelemetryMessageMsg_8h_source.
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">ReceivedTelemetryMessageMsg.h</div></div>
+  <div class="headertitle"><div class="title">TelemetryMessageReceivedMsg.h</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by Tom Danvers on 04/02/2023.</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef MRAS_TELEMETRYMESSAGERECEIVEDMSG_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define MRAS_TELEMETRYMESSAGERECEIVEDMSG_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;cstdio&gt;</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;SystemMessage.h&quot;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;TelemetryMessage.h&quot;</span></div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structReceivedTelemetryMessageMsg.html">   15</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_struct" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a>() : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(ReceivedTelemetryMessageMsg_t) {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <a class="code hl_variable" href="structReceivedTelemetryMessageMsg.html#aa8c7f406cd32cddfec025f04949849fc">telemetry_message</a> = (<a class="code hl_class" href="classTelemetryMessage.html">TelemetryMessage</a>*) radio_buffer;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structTelemetryMessageReceivedMsg.html">   15</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structTelemetryMessageReceivedMsg.html">TelemetryMessageReceivedMsg</a> : <span class="keyword">public</span> <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <a class="code hl_struct" href="structTelemetryMessageReceivedMsg.html">TelemetryMessageReceivedMsg</a>() : <a class="code hl_class" href="classSystemMessage.html">SystemMessage</a>(ReceivedTelemetryMessageMsg_t) {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <a class="code hl_variable" href="structTelemetryMessageReceivedMsg.html#a6a2a28c29d5f69d39f2185df41484500">telemetry_message</a> = (<a class="code hl_class" href="classTelemetryMessage.html">TelemetryMessage</a>*) radio_buffer;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    }</div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structReceivedTelemetryMessageMsg.html#aa8c7f406cd32cddfec025f04949849fc">   23</a></span>    <a class="code hl_class" href="classTelemetryMessage.html">TelemetryMessage</a>* <a class="code hl_variable" href="structReceivedTelemetryMessageMsg.html#aa8c7f406cd32cddfec025f04949849fc">telemetry_message</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structTelemetryMessageReceivedMsg.html#a6a2a28c29d5f69d39f2185df41484500">   23</a></span>    <a class="code hl_class" href="classTelemetryMessage.html">TelemetryMessage</a>* <a class="code hl_variable" href="structTelemetryMessageReceivedMsg.html#a6a2a28c29d5f69d39f2185df41484500">telemetry_message</a>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">private</span>:</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    int8_t radio_buffer[255] = {};</div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_RECEIVEDTELEMETRYMESSAGEMSG_H</span></div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_TELEMETRYMESSAGERECEIVEDMSG_H</span></div>
 <div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:30</div></div>
 <div class="ttc" id="aclassTelemetryMessage_html"><div class="ttname"><a href="classTelemetryMessage.html">TelemetryMessage</a></div><div class="ttdoc">A base class for all telemetry messages.</div><div class="ttdef"><b>Definition:</b> TelemetryMessage.h:39</div></div>
-<div class="ttc" id="astructReceivedTelemetryMessageMsg_html"><div class="ttname"><a href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a></div><div class="ttdoc">A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr...</div><div class="ttdef"><b>Definition:</b> ReceivedTelemetryMessageMsg.h:15</div></div>
-<div class="ttc" id="astructReceivedTelemetryMessageMsg_html_aa8c7f406cd32cddfec025f04949849fc"><div class="ttname"><a href="structReceivedTelemetryMessageMsg.html#aa8c7f406cd32cddfec025f04949849fc">ReceivedTelemetryMessageMsg::telemetry_message</a></div><div class="ttdeci">TelemetryMessage * telemetry_message</div><div class="ttdef"><b>Definition:</b> ReceivedTelemetryMessageMsg.h:23</div></div>
+<div class="ttc" id="astructTelemetryMessageReceivedMsg_html"><div class="ttname"><a href="structTelemetryMessageReceivedMsg.html">TelemetryMessageReceivedMsg</a></div><div class="ttdoc">A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr...</div><div class="ttdef"><b>Definition:</b> TelemetryMessageReceivedMsg.h:15</div></div>
+<div class="ttc" id="astructTelemetryMessageReceivedMsg_html_a6a2a28c29d5f69d39f2185df41484500"><div class="ttname"><a href="structTelemetryMessageReceivedMsg.html#a6a2a28c29d5f69d39f2185df41484500">TelemetryMessageReceivedMsg::telemetry_message</a></div><div class="ttdeci">TelemetryMessage * telemetry_message</div><div class="ttdef"><b>Definition:</b> TelemetryMessageReceivedMsg.h:23</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_0ce1951afc5b1d55c9adea1f4ae57fb4.html">shared</a></li><li class="navelem"><a class="el" href="dir_d63f58e25adc299a39ab1922a981f3b5.html">system_messages</a></li><li class="navelem"><b>ReceivedTelemetryMessageMsg.h</b></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_0ce1951afc5b1d55c9adea1f4ae57fb4.html">shared</a></li><li class="navelem"><a class="el" href="dir_d63f58e25adc299a39ab1922a981f3b5.html">system_messages</a></li><li class="navelem"><b>TelemetryMessageReceivedMsg.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

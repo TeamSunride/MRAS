@@ -1,4 +1,4 @@
-<map id="ReceivedTelemetryMessageMsg" name="ReceivedTelemetryMessageMsg">
+<map id="TelemetryMessageReceivedMsg" name="TelemetryMessageReceivedMsg">
 <area shape="rect" id="node1" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="60,160,292,252"/>
 <area shape="rect" id="node2" href="$classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 <area shape="rect" id="node3" href="$classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="184,5,355,97"/>

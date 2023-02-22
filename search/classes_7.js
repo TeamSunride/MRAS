@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['queuetelemetrymessagemsg_0',['QueueTelemetryMessageMsg',['../structQueueTelemetryMessageMsg.html',1,'']]]
+  ['rocketsdlogger_0',['RocketSDLogger',['../classRocketSDLogger.html',1,'']]],
+  ['rockettelemetrysystem_1',['RocketTelemetrySystem',['../classRocketTelemetrySystem.html',1,'']]]
 ];

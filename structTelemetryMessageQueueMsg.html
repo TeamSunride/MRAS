@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11"/>
     <meta name="generator" content="Doxygen 1.9.6"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta property="og:title" content="MRAS: ReceivedTelemetryMessageMsg Struct Reference">
+    <meta property="og:title" content="MRAS: TelemetryMessageQueueMsg Struct Reference">
     <meta property="og:image" content="https://mras.sunride.space/sunride_logo.png">
     <meta property="og:description" content="Multi Rocket Avionics System">
     <meta name="theme-color" content="#EE3437">
-    <title>MRAS: ReceivedTelemetryMessageMsg Struct Reference</title>
+    <title>MRAS: TelemetryMessageQueueMsg Struct Reference</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="sunride_rocket.ico" type="image/x-icon"/>
     <script type="text/javascript" src="jquery.js"></script>
@@ -80,7 +80,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('structReceivedTelemetryMessageMsg.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('structTelemetryMessageQueueMsg.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -108,30 +108,30 @@ $(document).ready(function(){initNavTree('structReceivedTelemetryMessageMsg.html
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Public Attributes</a> &#124;
-<a href="structReceivedTelemetryMessageMsg-members.html">List of all members</a>  </div>
-  <div class="headertitle"><div class="title">ReceivedTelemetryMessageMsg Struct Reference</div></div>
+<a href="structTelemetryMessageQueueMsg-members.html">List of all members</a>  </div>
+  <div class="headertitle"><div class="title">TelemetryMessageQueueMsg Struct Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>A <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> that is output by the <a class="el" href="classTelemetrySystem.html" title="A subsystem for sending and receiving telemetry data using the LoRa radio.">TelemetrySystem</a> when a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> is received from the ground or the rocket.  
- <a href="structReceivedTelemetryMessageMsg.html#details">More...</a></p>
+<p>A <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> that is used to queue a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> for sending to the ground or the rocket.  
+ <a href="structTelemetryMessageQueueMsg.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="ReceivedTelemetryMessageMsg_8h_source.html">ReceivedTelemetryMessageMsg.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="TelemetryMessageQueueMsg_8h_source.html">TelemetryMessageQueueMsg.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for ReceivedTelemetryMessageMsg:</div>
+Inheritance diagram for TelemetryMessageQueueMsg:</div>
 <div class="dyncontent">
-<div class="center"><img src="structReceivedTelemetryMessageMsg__inherit__graph.png" border="0" usemap="#aReceivedTelemetryMessageMsg_inherit__map" alt="Inheritance graph"/></div>
-<map name="aReceivedTelemetryMessageMsg_inherit__map" id="aReceivedTelemetryMessageMsg_inherit__map">
-<area shape="rect" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="5,145,237,237"/>
-<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="44,5,199,97"/>
+<div class="center"><img src="structTelemetryMessageQueueMsg__inherit__graph.png" border="0" usemap="#aTelemetryMessageQueueMsg_inherit__map" alt="Inheritance graph"/></div>
+<map name="aTelemetryMessageQueueMsg_inherit__map" id="aTelemetryMessageQueueMsg_inherit__map">
+<area shape="rect" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="5,145,256,252"/>
+<area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="53,5,208,97"/>
 </map>
 </div>
 <div class="dynheader">
-Collaboration diagram for ReceivedTelemetryMessageMsg:</div>
+Collaboration diagram for TelemetryMessageQueueMsg:</div>
 <div class="dyncontent">
-<div class="center"><img src="structReceivedTelemetryMessageMsg__coll__graph.png" border="0" usemap="#aReceivedTelemetryMessageMsg_coll__map" alt="Collaboration graph"/></div>
-<map name="aReceivedTelemetryMessageMsg_coll__map" id="aReceivedTelemetryMessageMsg_coll__map">
-<area shape="rect" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="60,160,292,252"/>
+<div class="center"><img src="structTelemetryMessageQueueMsg__coll__graph.png" border="0" usemap="#aTelemetryMessageQueueMsg_coll__map" alt="Collaboration graph"/></div>
+<map name="aTelemetryMessageQueueMsg_coll__map" id="aTelemetryMessageQueueMsg_coll__map">
+<area shape="rect" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="51,160,301,252"/>
 <area shape="rect" href="classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 <area shape="rect" href="classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="184,5,355,97"/>
 </map>
@@ -139,8 +139,12 @@ Collaboration diagram for ReceivedTelemetryMessageMsg:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:aa8c7f406cd32cddfec025f04949849fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTelemetryMessage.html">TelemetryMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structReceivedTelemetryMessageMsg.html#aa8c7f406cd32cddfec025f04949849fc">telemetry_message</a></td></tr>
-<tr class="separator:aa8c7f406cd32cddfec025f04949849fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2c3b65b0f830a6a8e035dd4892d8fea"><td class="memItemLeft" align="right" valign="top"><a id="ad2c3b65b0f830a6a8e035dd4892d8fea" name="ad2c3b65b0f830a6a8e035dd4892d8fea"></a>
+<a class="el" href="classTelemetryMessage.html">TelemetryMessage</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>telemetry_message</b> = nullptr</td></tr>
+<tr class="separator:ad2c3b65b0f830a6a8e035dd4892d8fea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a321f7151704f716e39a675af310c3872"><td class="memItemLeft" align="right" valign="top"><a id="a321f7151704f716e39a675af310c3872" name="a321f7151704f716e39a675af310c3872"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>size</b> = 0</td></tr>
+<tr class="separator:a321f7151704f716e39a675af310c3872"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -157,32 +161,17 @@ SystemMessageType&#160;</td><td class="memItemRight" valign="bottom"><b>type</b>
 <tr class="separator:a3812c3e0ed3f4ae792bbf45797e8f1f7 inherit pro_attribs_classSystemMessage"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> that is output by the <a class="el" href="classTelemetrySystem.html" title="A subsystem for sending and receiving telemetry data using the LoRa radio.">TelemetrySystem</a> when a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> is received from the ground or the rocket. </p>
-</div><h2 class="groupheader">Member Data Documentation</h2>
-<a id="aa8c7f406cd32cddfec025f04949849fc" name="aa8c7f406cd32cddfec025f04949849fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8c7f406cd32cddfec025f04949849fc">&#9670;&#160;</a></span>telemetry_message</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classTelemetryMessage.html">TelemetryMessage</a>* ReceivedTelemetryMessageMsg::telemetry_message</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>A pointer to the <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> that was received from the ground or the rocket </p>
-
-</div>
-</div>
-<hr/>The documentation for this struct was generated from the following file:<ul>
-<li>lib/shared/system_messages/<a class="el" href="ReceivedTelemetryMessageMsg_8h_source.html">ReceivedTelemetryMessageMsg.h</a></li>
+<div class="textblock"><p>A <a class="el" href="classSystemMessage.html" title="A base class for all system messages.">SystemMessage</a> that is used to queue a <a class="el" href="classTelemetryMessage.html" title="A base class for all telemetry messages.">TelemetryMessage</a> for sending to the ground or the rocket. </p>
+<p>This message is used by the <a class="el" href="classTelemetrySystem.html" title="A subsystem for sending and receiving telemetry data using the LoRa radio.">TelemetrySystem</a> to queue TelemetryMessages for sending to the ground or the rocket </p>
+</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<li>lib/shared/system_messages/<a class="el" href="TelemetryMessageQueueMsg_8h_source.html">TelemetryMessageQueueMsg.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="structReceivedTelemetryMessageMsg.html">ReceivedTelemetryMessageMsg</a></li>
+    <li class="navelem"><a class="el" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

@@ -1,4 +1,4 @@
-<map id="QueueTelemetryMessageMsg" name="QueueTelemetryMessageMsg">
+<map id="TelemetryMessageQueueMsg" name="TelemetryMessageQueueMsg">
 <area shape="rect" id="node1" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="51,160,301,252"/>
 <area shape="rect" id="node2" href="$classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,5,160,97"/>
 <area shape="rect" id="node3" href="$classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="184,5,355,97"/>

@@ -6,7 +6,9 @@ int8_t StateEstimator::setup()
 {
     Filter = new LinearKalmanFilter(0.001, 28, 8.7);
     log("State Estimator initialized...");
+#ifdef BUILD_ENV_rocket
     currentMillis = millis();
+#endif
     return 0;
 }
 
@@ -16,12 +18,12 @@ int8_t StateEstimator::loop()
     {
         return 0;
     }
-
+    #ifdef BUILD_ENV_rocket
     if ((currentMillis - prevMillis)/1000 < Filter->get_timeStep())
     {
         return 0;
     }
-    
+    #endif
 
     Filter->predict(yAcceleration);
     Filter->update(pressure);

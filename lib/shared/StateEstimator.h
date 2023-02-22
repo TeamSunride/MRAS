@@ -2,7 +2,9 @@
 #include "Subsystem.h"
 #include "LinearKalmanFilter.h"
 #include "system_messages/StateEstimatorMsg.h"
-#include "Arduino.h"
+#ifdef BUILD_ENV_rocket
+#include <Arduino.h>
+#endif
 
 class StateEstimator : public Subsystem
 {
@@ -33,7 +35,6 @@ class StateEstimator : public Subsystem
 
         float currentMillis = 0;
         float prevMillis = 0;
-
         LinearKalmanFilter * Filter;
         AccelerometerDataMsg *acceleration;
         BarometerDataMsg *altimeter;

@@ -11,6 +11,7 @@ class LinearKalmanFilter
         void update(float pressure);
         float get_altitude(){ return altitude;}
         float get_velocity(){return velocity;}
+        float get_timeStep(){return dt;}
 
     private:
         float altitude = 0;

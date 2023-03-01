@@ -123,7 +123,7 @@ Inheritance diagram for TelemetryDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structTelemetryDataMsg__inherit__graph.png" border="0" usemap="#aTelemetryDataMsg_inherit__map" alt="Inheritance graph"/></div>
 <map name="aTelemetryDataMsg_inherit__map" id="aTelemetryDataMsg_inherit__map">
-<area shape="rect" title="A message containing data from the rocket." alt="" coords="5,145,176,267"/>
+<area shape="rect" title="A message containing data from the rocket." alt="" coords="5,145,176,296"/>
 <area shape="rect" href="classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="5,5,176,97"/>
 </map>
 </div>
@@ -132,7 +132,7 @@ Collaboration diagram for TelemetryDataMsg:</div>
 <div class="dyncontent">
 <div class="center"><img src="structTelemetryDataMsg__coll__graph.png" border="0" usemap="#aTelemetryDataMsg_coll__map" alt="Collaboration graph"/></div>
 <map name="aTelemetryDataMsg_coll__map" id="aTelemetryDataMsg_coll__map">
-<area shape="rect" title="A message containing data from the rocket." alt="" coords="5,145,176,267"/>
+<area shape="rect" title="A message containing data from the rocket." alt="" coords="5,145,176,296"/>
 <area shape="rect" href="classTelemetryMessage.html" title="A base class for all telemetry messages." alt="" coords="5,5,176,97"/>
 </map>
 </div>
@@ -152,15 +152,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>to_csv</b> (char *buf
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a37223a3ecf659572952056c105fb0c97"><td class="memItemLeft" align="right" valign="top"><a id="a37223a3ecf659572952056c105fb0c97" name="a37223a3ecf659572952056c105fb0c97"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>x</b> = 0</td></tr>
-<tr class="separator:a37223a3ecf659572952056c105fb0c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad54f8c4fb6b26496fc105ae9f5bdb672"><td class="memItemLeft" align="right" valign="top"><a id="ad54f8c4fb6b26496fc105ae9f5bdb672" name="ad54f8c4fb6b26496fc105ae9f5bdb672"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>y</b> = 0</td></tr>
-<tr class="separator:ad54f8c4fb6b26496fc105ae9f5bdb672"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addf754b304987f4016cf7c15987e0f73"><td class="memItemLeft" align="right" valign="top"><a id="addf754b304987f4016cf7c15987e0f73" name="addf754b304987f4016cf7c15987e0f73"></a>
-int16_t&#160;</td><td class="memItemRight" valign="bottom"><b>z</b> = 0</td></tr>
-<tr class="separator:addf754b304987f4016cf7c15987e0f73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1634d7087b8b44e643be28dac08cb14d"><td class="memItemLeft" align="right" valign="top"><a id="a1634d7087b8b44e643be28dac08cb14d" name="a1634d7087b8b44e643be28dac08cb14d"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>latitude</b> = 0</td></tr>
+<tr class="separator:a1634d7087b8b44e643be28dac08cb14d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5e1017c26dbc1338e6c2446f9d8096e"><td class="memItemLeft" align="right" valign="top"><a id="ab5e1017c26dbc1338e6c2446f9d8096e" name="ab5e1017c26dbc1338e6c2446f9d8096e"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>longitude</b> = 0</td></tr>
+<tr class="separator:ab5e1017c26dbc1338e6c2446f9d8096e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2368005006e4c5c8fec769b5e8a85d11"><td class="memItemLeft" align="right" valign="top"><a id="a2368005006e4c5c8fec769b5e8a85d11" name="a2368005006e4c5c8fec769b5e8a85d11"></a>
+uint16_t&#160;</td><td class="memItemRight" valign="bottom"><b>altitude</b> = 0</td></tr>
+<tr class="separator:a2368005006e4c5c8fec769b5e8a85d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac66dd10049ebbd2df0c3ac86542b5c7b"><td class="memItemLeft" align="right" valign="top"><a id="ac66dd10049ebbd2df0c3ac86542b5c7b" name="ac66dd10049ebbd2df0c3ac86542b5c7b"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>fix_type</b> = 0</td></tr>
+<tr class="separator:ac66dd10049ebbd2df0c3ac86542b5c7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e49535bb58c10ab51605d12d3cf14ea"><td class="memItemLeft" align="right" valign="top"><a id="a5e49535bb58c10ab51605d12d3cf14ea" name="a5e49535bb58c10ab51605d12d3cf14ea"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>satellites</b> = 0</td></tr>
+<tr class="separator:a5e49535bb58c10ab51605d12d3cf14ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>

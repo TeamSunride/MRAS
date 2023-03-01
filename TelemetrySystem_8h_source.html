@@ -128,7 +128,7 @@ $(document).ready(function(){initNavTree('TelemetrySystem_8h_source.html',''); i
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// create subsystem boilerplate</span></div>
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    SUBSYSTEM_NAME(<span class="stringliteral">&quot;TelemetrySystem&quot;</span>)</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    SUBSYSTEM_NO_MESSAGE_HANDLER</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// create setup and loop functions</span></div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    int8_t setup() <span class="keyword">override</span>;</div>
@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('TelemetrySystem_8h_source.html',''); i
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    int16_t radio_state = 0;</div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <a class="code hl_struct" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a>* get_next_message();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">virtual</span> <a class="code hl_struct" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a>* get_default_message() = 0;</div>
 <div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordtype">void</span> transmit_next_message();</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>

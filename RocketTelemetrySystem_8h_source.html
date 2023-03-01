@@ -118,17 +118,30 @@ $(document).ready(function(){initNavTree('RocketTelemetrySystem_8h_source.html',
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;TelemetrySystem.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classRocketTelemetrySystem.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classRocketTelemetrySystem.html">RocketTelemetrySystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">using </span>TelemetrySystem::TelemetrySystem;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    int8_t loop() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>};</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;telemetry_messages/TelemetryDataMsg.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="classRocketTelemetrySystem.html">   20</a></span><span class="keyword">class </span><a class="code hl_class" href="classRocketTelemetrySystem.html">RocketTelemetrySystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a> {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keyword">using </span>TelemetrySystem::TelemetrySystem;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    int8_t loop() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ROCKETTELEMETRYSYSTEM_H</span></div>
-<div class="ttc" id="aclassRocketTelemetrySystem_html"><div class="ttname"><a href="classRocketTelemetrySystem.html">RocketTelemetrySystem</a></div><div class="ttdoc">The telemetry system for the rocket.</div><div class="ttdef"><b>Definition:</b> RocketTelemetrySystem.h:19</div></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_struct" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a>* get_default_message() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keywordtype">void</span> on_message(<a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> *msg) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="keywordtype">float</span> latitude = 0;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">float</span> longitude = 0;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint16_t altitude = 0;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    uint8_t fix_type = 0;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint8_t satellites = 0;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ROCKETTELEMETRYSYSTEM_H</span></div>
+<div class="ttc" id="aclassRocketTelemetrySystem_html"><div class="ttname"><a href="classRocketTelemetrySystem.html">RocketTelemetrySystem</a></div><div class="ttdoc">The telemetry system for the rocket.</div><div class="ttdef"><b>Definition:</b> RocketTelemetrySystem.h:20</div></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:30</div></div>
 <div class="ttc" id="aclassTelemetrySystem_html"><div class="ttname"><a href="classTelemetrySystem.html">TelemetrySystem</a></div><div class="ttdoc">A subsystem for sending and receiving telemetry data using the LoRa radio.</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.h:23</div></div>
+<div class="ttc" id="astructTelemetryMessageQueueMsg_html"><div class="ttname"><a href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a></div><div class="ttdoc">A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket.</div><div class="ttdef"><b>Definition:</b> TelemetryMessageQueueMsg.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

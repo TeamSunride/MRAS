@@ -16,12 +16,16 @@
 struct TelemetryDataMsg : public TelemetryMessage {
     TelemetryDataMsg() : TelemetryMessage(TelemetryDataMsg_t) {}
 
-    int16_t x = 0;
-    int16_t y = 0;
-    int16_t z = 0;
+    float latitude = 0;
+    float longitude = 0;
+    uint16_t altitude = 0;
+    uint8_t fix_type = 0;
+    uint8_t satellites = 0;
 
     void to_csv(char *buffer, size_t buffer_size) const {
-        snprintf(buffer, buffer_size, "%d,%d,%d", x, y, z);
+        //snprintf(buffer, buffer_size, "%d,%d,%d", x, y, z);
+        //snprintf(buffer, buffer_size, "%f,%f,%d", latitude, longitude, altitude);
+        snprintf(buffer, buffer_size, "%f,%f,%d,%d,%d", latitude, longitude, altitude, fix_type, satellites);
     }
 };
 

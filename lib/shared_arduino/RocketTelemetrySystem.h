@@ -7,6 +7,7 @@
 
 
 #include "TelemetrySystem.h"
+#include "telemetry_messages/TelemetryDataMsg.h"
 
 /**
  * @brief The telemetry system for the rocket
@@ -20,6 +21,16 @@ class RocketTelemetrySystem : public TelemetrySystem {
     using TelemetrySystem::TelemetrySystem;
 
     int8_t loop() override;
+
+    TelemetryMessageQueueMsg* get_default_message() override;
+
+    void on_message(SystemMessage *msg) override;
+private:
+    float latitude = 0;
+    float longitude = 0;
+    uint16_t altitude = 0;
+    uint8_t fix_type = 0;
+    uint8_t satellites = 0;
 };
 
 

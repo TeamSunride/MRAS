@@ -3,6 +3,7 @@
 //
 
 #include "GroundTelemetrySystem.h"
+#include "telemetry_messages/TransferWindowAckMsg.h"
 
 int8_t GroundTelemetrySystem::loop() {
     Module *mod = radio.getMod();
@@ -36,4 +37,12 @@ int8_t GroundTelemetrySystem::loop() {
         }
     }
     return 0;
+}
+
+TelemetryMessageQueueMsg *GroundTelemetrySystem::get_default_message() {
+    auto *message = new TransferWindowAckMsg();
+    auto *queue_message = new TelemetryMessageQueueMsg();
+    queue_message->telemetry_message = message;
+    queue_message->size = sizeof(TransferWindowAckMsg);
+    return queue_message;
 }

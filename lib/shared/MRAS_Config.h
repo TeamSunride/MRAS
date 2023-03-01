@@ -41,13 +41,13 @@
 #define RADIO_FREQUENCY                     868.0
 
 // bandwidth in kHz
-#define RADIO_BANDWIDTH                     500.0
+#define RADIO_BANDWIDTH                     125
 
 // LoRa spreading factor
-#define RADIO_SPREADING_FACTOR              12
+#define RADIO_SPREADING_FACTOR              10
 
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
-#define RADIO_CODING_RATE                   5
+#define RADIO_CODING_RATE                   8
 
 // LoRa sync word
 #define RADIO_SYNC_WORD                     0x22

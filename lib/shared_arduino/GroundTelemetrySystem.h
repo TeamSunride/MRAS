@@ -18,8 +18,11 @@
  */
 class GroundTelemetrySystem : public TelemetrySystem {
     using TelemetrySystem::TelemetrySystem;
+    SUBSYSTEM_NO_MESSAGE_HANDLER
 
     int8_t loop() override;
+
+    TelemetryMessageQueueMsg* get_default_message() override;
 };
 
 

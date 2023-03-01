@@ -24,7 +24,7 @@ class TelemetrySystem : public Subsystem {
 protected:
     // create subsystem boilerplate
     SUBSYSTEM_NAME("TelemetrySystem")
-    SUBSYSTEM_NO_MESSAGE_HANDLER
+
 
     // create setup and loop functions
     int8_t setup() override;
@@ -44,7 +44,7 @@ protected:
     int16_t radio_state = 0;
 
 protected:
-    TelemetryMessageQueueMsg* get_next_message();
+    virtual TelemetryMessageQueueMsg* get_default_message() = 0;
 
     void transmit_next_message();
 

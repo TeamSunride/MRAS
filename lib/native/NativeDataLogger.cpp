@@ -65,13 +65,9 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
             switch (telemetry_message->get_type()) {
                 case TelemetryDataMsg_t: {
                     auto data_msg = (TelemetryDataMsg*) telemetry_message;
-                    int16_t x = data_msg->x;
-                    int16_t y = data_msg->y;
-                    int16_t z = data_msg->z;
-                    log("TelemetryDataMsg: x: %d y: %d z: %d",
-                        x,
-                        y,
-                        z);
+                    char buffer[255];
+                    data_msg->to_csv(buffer, sizeof buffer);
+                    log("TelemetryDataMsg: %s", buffer);
                     break;
                 }
             }

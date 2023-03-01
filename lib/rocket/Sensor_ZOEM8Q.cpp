@@ -23,6 +23,9 @@ int8_t Sensor_ZOEM8Q::setup() {
     } else {
         log("AssistNow loading failed");
     }
+
+    log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
+
     return onlineAssistStatus;
 }
 
@@ -38,7 +41,7 @@ int8_t Sensor_ZOEM8Q::loop() {
         gnss_msg->fix_type = gnss->getFixType(); /// 1: no fix, 2: 2D fix, 3: 3D fix 4: GNSS + dead reckoning combined, 5: time only fix
         gnss_msg->SIV = gnss->getSIV();
 
-        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
+
 
         publish(gnss_msg);
     }

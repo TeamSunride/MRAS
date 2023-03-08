@@ -13,16 +13,16 @@ int8_t TelemetrySystem::setup() {
 
     log("Radio startup");
 
-//    radio_state = radio.begin(RADIO_FREQUENCY,
-//                              RADIO_BANDWIDTH,
-//                              RADIO_SPREADING_FACTOR,
-//                              RADIO_CODING_RATE,
-//                              RADIO_SYNC_WORD,
-//                              RADIO_POWER,
-//                              RADIO_PREAMBLE_LENGTH);
+    radio_state = radio.begin(RADIO_FREQUENCY,
+                              RADIO_BANDWIDTH,
+                              RADIO_SPREADING_FACTOR,
+                              RADIO_CODING_RATE,
+                              RADIO_SYNC_WORD,
+                              RADIO_POWER,
+                              RADIO_PREAMBLE_LENGTH);
 //                              RADIO_TCXO_VOLTAGE,
 //                              RADIO_USE_LDO);
-    radio_state = radio.begin();
+//    radio_state = radio.begin();
 
     if (radio_state != RADIOLIB_ERR_NONE) {
         log("Radio begin() failed. RadioLib error code: %d", radio_state);
@@ -79,7 +79,7 @@ void TelemetrySystem::transmit_next_message() {
 }
 
 void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
-    log("Receiving new telemetry message");
+//    log("Receiving new telemetry message");
     radio.startReceive(timeout);
     telemetry_system_state = RX;
 }

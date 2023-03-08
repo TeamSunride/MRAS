@@ -38,13 +38,13 @@
  */
 
 // carrier frequency in MHz
-#define RADIO_FREQUENCY                     2400
+#define RADIO_FREQUENCY                     2406
 
 // bandwidth in kHz
-#define RADIO_BANDWIDTH                     812.5
+#define RADIO_BANDWIDTH                     203.125
 
 // LoRa spreading factor
-#define RADIO_SPREADING_FACTOR              9
+#define RADIO_SPREADING_FACTOR              12
 
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
 #define RADIO_CODING_RATE                   7
@@ -53,7 +53,7 @@
 #define RADIO_SYNC_WORD                     0x22
 
 // output power in dBm
-#define RADIO_POWER                         10
+#define RADIO_POWER                         (4) // -18 to 13 dBm on SX128x
 
 // LoRa preamble length in symbols. Allowed values range from 1 to 65535.
 #define RADIO_PREAMBLE_LENGTH               12

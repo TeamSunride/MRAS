@@ -4,7 +4,7 @@
 
 int8_t StateEstimator::setup()
 {
-    Filter = new LinearKalmanFilter(0.05, 28, 2);
+    Filter = new LinearKalmanFilter(0.05, 20, 1);
     log("State Estimator initialized...");
 #ifdef BUILD_ENV_rocket
     currentMillis = millis();

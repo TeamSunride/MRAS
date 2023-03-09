@@ -36,7 +36,7 @@ RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
 RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
-StateEstimator altitudeEstimator = StateEstimator(9, 0.05);
+StateEstimator altitudeEstimator = StateEstimator(9, 1);
 
 void setup() {
     mras->set_logger(&logger);

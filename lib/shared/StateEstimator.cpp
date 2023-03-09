@@ -6,7 +6,7 @@ int8_t StateEstimator::setup()
 {
     
     log("State Estimator initialized...");
-#ifdef BUILD_ENV_rocket
+#ifdef BUILD_ENV_rocket || BUILD_ENV_rocket-HIL
     currentMillis = millis();
 #endif
     return 0;
@@ -18,7 +18,7 @@ int8_t StateEstimator::loop()
     {
         return 0;
     }
-#ifdef BUILD_ENV_rocket
+#ifdef BUILD_ENV_rocket || BUILD_ENV_rocket-HIL 
     if ((currentMillis - prevMillis)/1000 < Filter->get_timeStep())
     {
         return 0;
@@ -28,7 +28,7 @@ int8_t StateEstimator::loop()
     Filter->update(pressure);
     altitude = Filter->get_altitude();
     velocity = Filter->get_velocity();
-    //log("logged alti ======= %f", altitude);
+    //log("logged alti ======= %f", Filter->get_timeStep());
     auto stateMsg = new StateEstimatorMsg();
     stateMsg->estimatedAltitude = altitude;
     stateMsg->estimatedVelocity = velocity;

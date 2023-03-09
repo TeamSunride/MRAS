@@ -15,9 +15,8 @@
 #include "Sensor_ADXL375.h"
 #include "Sensor_ZOEM8Q.h"
 #include "RocketTelemetrySystem.h"
-#include "StateEstimator.h"
 #include "RocketSDLogger.h"
-#include "SimulinkDataLogger.h"
+#include "StateEstimator.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -34,17 +33,15 @@ Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_
 Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
-StateEstimator altitudeEstimator = StateEstimator(8);
 
-RocketSDLogger sd_logger = RocketSDLogger(9, BUILTIN_SDCARD);
+RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
-SimulinkDataLogger sim_logger = SimulinkDataLogger(10);
-
+StateEstimator altitudeEstimator = StateEstimator(9, 0.05);
 
 void setup() {
     mras->set_logger(&logger);
     mras->add_subsystem(&sd_logger);
-    //mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&data_logger);
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
     mras->add_subsystem(&barometer);
@@ -52,20 +49,16 @@ void setup() {
     mras->add_subsystem(&gnss);
     mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
-    mras->add_subsystem(&sim_logger);
-    altitudeEstimator.add_subscriber(&sim_logger);
-    sim_logger.add_subscriber(&altitudeEstimator);
-    // mras->add_subsystem(&sim_logger);
+
 
     // imu.add_subscriber(&data_logger);
-    imu.add_subscriber(&altitudeEstimator);
     // magnetometer.add_subscriber(&data_logger);
     // barometer.add_subscriber(&data_logger);
-    //barometer.add_subscriber(&altitudeEstimator);
-    //accelerometer.add_subscriber(&altitudeEstimator);
     // accelerometer.add_subscriber(&data_logger);
-    // altitudeEstimator.add_subscriber(&data_logger);
-//    gnss.add_subscriber(&data_logger);
+    gnss.add_subscriber(&data_logger);
+    altitudeEstimator.add_subscriber(&data_logger);
+    imu.add_subscriber(&altitudeEstimator);
+    barometer.add_subscriber(&altitudeEstimator);
 
 //     setup SD logger subscriptions
     logger.add_subscriber(&sd_logger);

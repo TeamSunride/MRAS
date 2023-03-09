@@ -9,7 +9,9 @@
 class StateEstimator : public Subsystem
 {
     public:
-        explicit StateEstimator(uint8_t id) : Subsystem(id) {};
+        explicit StateEstimator(uint8_t id, float tstep) : Subsystem(id) {
+            Filter = new LinearKalmanFilter(tstep, 20, 1);
+        };
         using Subsystem::Subsystem;
         int8_t setup() override;
         int8_t loop() override;

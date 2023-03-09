@@ -1,5 +1,5 @@
 //
-// Created by Tom Danvers on 05/12/2022.
+// Created by Nikilesh -- 8/3/2023
 //
 
 #include <cstdio>
@@ -34,7 +34,7 @@ Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_
 Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
-StateEstimator altitudeEstimator = StateEstimator(8);
+StateEstimator altitudeEstimator = StateEstimator(8, 0.05);
 
 RocketSDLogger sd_logger = RocketSDLogger(9, BUILTIN_SDCARD);
 

@@ -17,6 +17,7 @@ enum SystemMessageType {
     GNSSDataMsg_t,
     QueueTelemetryMessageMsg_t,
     ReceivedTelemetryMessageMsg_t,
+    StateEstimatorMsg_t,
     TextLogMsg_t
 };
 

@@ -21,7 +21,7 @@
  */
 class Sensor_LIS3MDL : public Subsystem {
 private:
-    LIS3MDL *lis;
+    LIS3MDL::LIS3MDL *lis;
 public:
     /**
      * @brief Construct a new Sensor_LIS3MDL object
@@ -34,7 +34,7 @@ public:
     Sensor_LIS3MDL(uint8_t id, uint8_t chip_select,
                    SPIClass &spi, uint32_t frequency)
                    : Subsystem(id) {
-        lis = new LIS3MDL(chip_select, spi, frequency);
+        lis = new LIS3MDL::LIS3MDL(chip_select, spi, frequency);
     }
 
     ~Sensor_LIS3MDL() {

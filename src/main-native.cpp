@@ -19,7 +19,7 @@ int main() {
     auto *accelerometer = new FakeAccelerometer(1);
     auto *data_logger = new NativeDataLogger(2);
     auto *barometer = new FakeBarometer(3);
-    auto *altitudeEstimator = new StateEstimator(4);
+    auto *altitudeEstimator = new StateEstimator(4, 0.1);
 
     mras->set_logger(logger);
 

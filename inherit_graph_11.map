@@ -1,0 +1,12 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classSystemMessage.html" title="A base class for all system messages." alt="" coords="5,203,135,228"/>
+<area shape="rect" id="node2" href="$structAccelerometerDataMsg.html" title="Message sent by the accelerometer to the system." alt="" coords="211,5,386,31"/>
+<area shape="rect" id="node3" href="$structBarometerDataMsg.html" title="Message sent by the barometer to the system." alt="" coords="224,55,373,80"/>
+<area shape="rect" id="node4" href="$structGNSSDataMsg.html" title="Message sent by the GNSS (also referred to less correctly as GPS) to the system." alt="" coords="241,104,357,129"/>
+<area shape="rect" id="node5" href="$structGyroDataMsg.html" title="Message sent by the gyroscope to the system." alt="" coords="243,153,354,179"/>
+<area shape="rect" id="node6" href="$structMagnetometerDataMsg.html" title="Message sent by the magnetometer to the system." alt="" coords="211,203,387,228"/>
+<area shape="rect" id="node7" href="$structStateEstimatorMsg.html" title=" " alt="" coords="225,252,372,277"/>
+<area shape="rect" id="node8" href="$structTelemetryMessageQueueMsg.html" title="A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket." alt="" coords="191,301,406,327"/>
+<area shape="rect" id="node9" href="$structTelemetryMessageReceivedMsg.html" title="A SystemMessage that is output by the TelemetrySystem when a TelemetryMessage is received from the gr..." alt="" coords="183,351,415,376"/>
+<area shape="rect" id="node10" href="$structTextLogMsg.html" title="A message containing text to be logged." alt="" coords="249,400,348,425"/>
+</map>

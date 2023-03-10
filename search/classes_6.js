@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['nativedatalogger_0',['NativeDataLogger',['../classNativeDataLogger.html',1,'']]],
-  ['nativetextlogger_1',['NativeTextLogger',['../classNativeTextLogger.html',1,'']]]
+  ['magnetometerdatamsg_0',['MagnetometerDataMsg',['../structMagnetometerDataMsg.html',1,'']]],
+  ['mras_5fsystem_1',['MRAS_System',['../classMRAS__System.html',1,'']]]
 ];

@@ -1,0 +1,4 @@
+<map id="SimulinkDataLogger" name="SimulinkDataLogger">
+<area shape="rect" id="node1" title="A subsystem that logs SystemMessages using its log() function, for Simulink." alt="" coords="5,292,160,428"/>
+<area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="10,5,155,244"/>
+</map>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['rocketsdlogger_0',['RocketSDLogger',['../classRocketSDLogger.html',1,'']]],
-  ['rockettelemetrysystem_1',['RocketTelemetrySystem',['../classRocketTelemetrySystem.html',1,'']]]
+  ['nativedatalogger_0',['NativeDataLogger',['../classNativeDataLogger.html',1,'']]],
+  ['nativetextlogger_1',['NativeTextLogger',['../classNativeTextLogger.html',1,'']]]
 ];

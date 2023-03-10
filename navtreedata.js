@@ -70,9 +70,10 @@ var NAVTREE =
       [ "Publishing SystemMessages to other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md45", null ],
       [ "Receiving SystemMessages from other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md46", null ]
     ] ],
+    [ "StateEstimator in MRAS", "md_docs_state_estimation.html", null ],
     [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
-      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md48", null ],
-      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md49", null ]
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md52", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md53", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

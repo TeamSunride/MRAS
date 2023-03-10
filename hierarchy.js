@@ -7,9 +7,12 @@ var hierarchy =
     [ "_TelemetryMessage", "struct__TelemetryMessage.html", null ],
     [ "ADXL375", "classADXL375.html", null ],
     [ "Atmosphere", "classAtmosphere.html", null ],
+    [ "FLOATUNION_t", "unionFLOATUNION__t.html", null ],
+    [ "LinearKalmanFilter", "classLinearKalmanFilter.html", null ],
     [ "MRAS_System", "classMRAS__System.html", null ],
     [ "Subsystem", "classSubsystem.html", [
       [ "FakeAccelerometer", "classFakeAccelerometer.html", null ],
+      [ "FakeBarometer", "classFakeBarometer.html", null ],
       [ "NativeDataLogger", "classNativeDataLogger.html", null ],
       [ "SDLogger", "classSDLogger.html", [
         [ "GroundSDLogger", "classGroundSDLogger.html", null ],
@@ -20,6 +23,8 @@ var hierarchy =
       [ "Sensor_LSM6DSO32", "classSensor__LSM6DSO32.html", null ],
       [ "Sensor_MS5607", "classSensor__MS5607.html", null ],
       [ "Sensor_ZOEM8Q", "classSensor__ZOEM8Q.html", null ],
+      [ "SimulinkDataLogger", "classSimulinkDataLogger.html", null ],
+      [ "StateEstimator", "classStateEstimator.html", null ],
       [ "TelemetrySystem", "classTelemetrySystem.html", [
         [ "GroundTelemetrySystem", "classGroundTelemetrySystem.html", null ],
         [ "RocketTelemetrySystem", "classRocketTelemetrySystem.html", null ]
@@ -35,6 +40,7 @@ var hierarchy =
       [ "GNSSDataMsg", "structGNSSDataMsg.html", null ],
       [ "GyroDataMsg", "structGyroDataMsg.html", null ],
       [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
+      [ "StateEstimatorMsg", "structStateEstimatorMsg.html", null ],
       [ "TelemetryMessageQueueMsg", "structTelemetryMessageQueueMsg.html", null ],
       [ "TelemetryMessageReceivedMsg", "structTelemetryMessageReceivedMsg.html", null ],
       [ "TextLogMsg", "structTextLogMsg.html", null ]

@@ -45,3 +45,12 @@ void MRAS_System::set_logger(TextLogger *_logger) {
 TextLogger *MRAS_System::get_logger() {
     return logger;
 }
+
+void MRAS_System::set_buzzer(Buzzer *_buzzer) {
+    buzzer = _buzzer;
+    add_subsystem(buzzer);
+}
+
+Buzzer *MRAS_System::get_buzzer() {
+    return buzzer;
+}

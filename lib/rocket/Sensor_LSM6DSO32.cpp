@@ -19,7 +19,7 @@ int8_t Sensor_LSM6DSO32::setup() {
         log("Error loading default configuration");
         return (int8_t) error;
     }
-
+    buzz(3000);
     return 0;
 }
 

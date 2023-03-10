@@ -56,3 +56,10 @@ void Subsystem::publish(SystemMessage *msg) {
 
     delete msg;
 }
+
+void Subsystem::buzz(uint32_t duration)
+{
+    
+    Buzzer* buzzer = MRAS_System::get_instance()->get_buzzer();
+    buzzer->_buzz(duration);
+}

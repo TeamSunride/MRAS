@@ -7,6 +7,7 @@
 
 #include "Subsystem.h"
 #include "TextLogger.h"
+#include "BuzzerInterfaceSystem.h"
 
 /**
  * @brief The main class of the MRAS system
@@ -38,6 +39,11 @@ private:
      * @brief A pointer to the TextLogger that is used to log messages
      */
     TextLogger* logger = nullptr;
+
+    /**
+     * @brief A pointer to the TextLogger that is used to log messages
+     */
+    Buzzer* buzzer = nullptr;
 public:
 
     /**
@@ -84,6 +90,21 @@ public:
      * @return TextLogger* A pointer to the TextLogger that is used to log messages
      */
     TextLogger* get_logger();
+
+    /**
+     * @brief Set the Buzzer that is used to buzz when called
+     *
+     * @param buzzer A pointer to the Buzzer that is used to buzz
+     */
+    void set_buzzer(Buzzer  *buzzer);
+
+    /**
+     * @brief Get the Buzzer that is used to buzz
+     *
+     * @return Buzzer* A pointer to the Buzz
+     */
+    Buzzer* get_buzzer();
+
 };
 
 

@@ -16,6 +16,7 @@
 #include "Sensor_ZOEM8Q.h"
 #include "RocketTelemetrySystem.h"
 #include "RocketSDLogger.h"
+#include "BuzzerInterfaceSystem.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -35,8 +36,11 @@ RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
 RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
+Buzzer buzzer = Buzzer(9);
+
 void setup() {
     mras->set_logger(&logger);
+    mras->set_buzzer(&buzzer);
     mras->add_subsystem(&sd_logger);
     mras->add_subsystem(&data_logger);
     mras->add_subsystem(&magnetometer);

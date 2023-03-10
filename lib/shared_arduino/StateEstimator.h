@@ -2,9 +2,7 @@
 #include "Subsystem.h"
 #include "LinearKalmanFilter.h"
 #include "system_messages/StateEstimatorMsg.h"
-#ifdef BUILD_ENV_rocket
 #include <Arduino.h>
-#endif
 
 class StateEstimator : public Subsystem
 {

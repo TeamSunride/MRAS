@@ -64,16 +64,17 @@ var NAVTREE =
         [ "Examples:", "md_docs_documentation_guide.html#autotoc_md41", null ]
       ] ]
     ] ],
+    [ "Hardware-In-the-Loop testing in MRAS", "md_docs_HIL_in_MRAS.html", null ],
     [ "Software Architecture Overview", "md_docs_software_architecture_overview.html", [
-      [ "System Messages", "md_docs_software_architecture_overview.html#autotoc_md43", null ],
-      [ "MRAS_System", "md_docs_software_architecture_overview.html#autotoc_md44", null ],
-      [ "Publishing SystemMessages to other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md45", null ],
-      [ "Receiving SystemMessages from other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md46", null ]
+      [ "System Messages", "md_docs_software_architecture_overview.html#autotoc_md49", null ],
+      [ "MRAS_System", "md_docs_software_architecture_overview.html#autotoc_md50", null ],
+      [ "Publishing SystemMessages to other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md51", null ],
+      [ "Receiving SystemMessages from other Subsystems", "md_docs_software_architecture_overview.html#autotoc_md52", null ]
     ] ],
     [ "StateEstimator in MRAS", "md_docs_state_estimation.html", null ],
     [ "How to implement a new Subsystem", "md_docs_subsystem_implementation_guide.html", [
-      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md52", null ],
-      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md53", null ]
+      [ "Step-by-step guide", "md_docs_subsystem_implementation_guide.html#autotoc_md58", null ],
+      [ "Example", "md_docs_subsystem_implementation_guide.html#autotoc_md59", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],

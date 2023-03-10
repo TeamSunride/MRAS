@@ -10,3 +10,4 @@ docs/html
 /test/native/test_altitude_conversion/altPressure.csv
 launch_data/20_11_2022/__pycache__/
 out.txt
+*.autosave

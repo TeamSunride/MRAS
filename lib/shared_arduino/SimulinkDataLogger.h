@@ -24,7 +24,7 @@ public:
     int8_t loop() override;
 
     void on_message(SystemMessage *msg) override;
-    float getFloat();
+    static float getFloat();
 
     SUBSYSTEM_NAME("SimulinkDataLogger")
 private:

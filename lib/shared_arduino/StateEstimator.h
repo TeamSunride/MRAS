@@ -28,9 +28,9 @@ class StateEstimator : public Subsystem
         float altitude = 0;
         float velocity = 0;
 
-        bool start = 0;
-        bool recievedBaro = 0;
-        bool recievedAcc = 0;
+        bool start = false;
+        bool recievedBaro = false;
+        bool recievedAcc = false;
         
         float yAcceleration = 0;
         float pressure = 0;
@@ -38,8 +38,8 @@ class StateEstimator : public Subsystem
         float currentMillis = 0;
         float prevMillis = 0;
         LinearKalmanFilter * Filter;
-        AccelerometerDataMsg *acceleration;
-        BarometerDataMsg *altimeter;
+        AccelerometerDataMsg *acceleration{};
+        BarometerDataMsg *altimeter{};
       
 };
 

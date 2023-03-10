@@ -46,6 +46,7 @@ TextLogger *MRAS_System::get_logger() {
     return logger;
 }
 
+#ifdef BUILD_ENV_rocket || BUILD_ENV_ground
 void MRAS_System::set_buzzer(Buzzer *_buzzer) {
     buzzer = _buzzer;
     add_subsystem(buzzer);
@@ -54,3 +55,4 @@ void MRAS_System::set_buzzer(Buzzer *_buzzer) {
 Buzzer *MRAS_System::get_buzzer() {
     return buzzer;
 }
+#endif

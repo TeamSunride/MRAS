@@ -57,11 +57,7 @@ void Subsystem::publish(SystemMessage *msg) {
     delete msg;
 }
 
-#ifdef BUILD_ENV_rocket || BUILD_ENV_ground 
-void Subsystem::buzz(uint32_t duration)
-{
-    
-    Buzzer* buzzer = MRAS_System::get_instance()->get_buzzer();
-    buzzer->_buzz(duration);
+void Subsystem::buzzer(uint16_t frequency, uint32_t duration) {
+    BuzzerInterface* buzzer = MRAS_System::get_instance()->get_buzzer();
+    buzzer->_buzzer(frequency, duration);
 }
-#endif

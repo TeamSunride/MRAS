@@ -7,9 +7,7 @@
 
 #include "Subsystem.h"
 #include "TextLogger.h"
-#ifdef BUILD_ENV_rocket || BUILD_ENV_ground
-#include "BuzzerInterfaceSystem.h"
-#endif
+#include "BuzzerInterface.h"
 
 /**
  * @brief The main class of the MRAS system
@@ -42,12 +40,7 @@ private:
      */
     TextLogger* logger = nullptr;
 
-    /**
-     * @brief A pointer to the TextLogger that is used to log messages
-     */
-#ifdef BUILD_ENV_rocket || BUILD_ENV_ground
-    Buzzer* buzzer = nullptr;
-#endif
+    BuzzerInterface* buzzer = nullptr;
 public:
 
     /**
@@ -95,21 +88,14 @@ public:
      */
     TextLogger* get_logger();
 
-    /**
-     * @brief Set the Buzzer that is used to buzz when called
-     *
-     * @param buzzer A pointer to the Buzzer that is used to buzz
-     */
-#ifdef BUILD_ENV_rocket || BUILD_ENV_ground
-    void set_buzzer(Buzzer  *buzzer);
+    void set_buzzer(BuzzerInterface *buzzer);
 
     /**
      * @brief Get the Buzzer that is used to buzz
      *
      * @return Buzzer* A pointer to the Buzz
      */
-    Buzzer* get_buzzer();
-#endif
+    BuzzerInterface* get_buzzer();
 };
 
 

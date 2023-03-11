@@ -16,7 +16,7 @@
 #include "Sensor_ZOEM8Q.h"
 #include "RocketTelemetrySystem.h"
 #include "RocketSDLogger.h"
-#include "BuzzerInterfaceSystem.h"
+#include "ArduinoBuzzer.h"
 #include "StateEstimator.h"
 
 auto logger = ArduinoTextLogger(0, 0);
@@ -37,7 +37,7 @@ RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
 RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
-Buzzer buzzer = Buzzer(9);
+ArduinoBuzzer buzzer = ArduinoBuzzer(9, 10);
 
 StateEstimator altitudeEstimator = StateEstimator(9, 0.001);
 
@@ -55,9 +55,9 @@ void setup() {
     mras->add_subsystem(&altitudeEstimator);
 
 
-    // imu.add_subscriber(&data_logger);
+    imu.add_subscriber(&data_logger);
     // magnetometer.add_subscriber(&data_logger);
-    // barometer.add_subscriber(&data_logger);
+    barometer.add_subscriber(&data_logger);
     // accelerometer.add_subscriber(&data_logger);
     gnss.add_subscriber(&data_logger);
     altitudeEstimator.add_subscriber(&data_logger);

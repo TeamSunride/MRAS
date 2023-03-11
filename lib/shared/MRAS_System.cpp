@@ -26,7 +26,11 @@ bool MRAS_System::add_subsystem(Subsystem *subsystem) {
 void MRAS_System::setup() {
     for (int i = 0; i < subsystem_count; i++) {
         Subsystem* system = subsystems[i];
-        system->setup();
+        if (system->setup() == 0) {
+            buzzer->_buzzer(2400, 50);
+        } else {
+            buzzer->_buzzer(2400, 50);
+        }
     }
 }
 
@@ -46,13 +50,11 @@ TextLogger *MRAS_System::get_logger() {
     return logger;
 }
 
-#ifdef BUILD_ENV_rocket || BUILD_ENV_ground
-void MRAS_System::set_buzzer(Buzzer *_buzzer) {
+void MRAS_System::set_buzzer(BuzzerInterface *_buzzer) {
     buzzer = _buzzer;
     add_subsystem(buzzer);
 }
 
-Buzzer *MRAS_System::get_buzzer() {
+BuzzerInterface *MRAS_System::get_buzzer() {
     return buzzer;
 }
-#endif

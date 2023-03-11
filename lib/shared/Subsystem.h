@@ -111,7 +111,7 @@ protected:
      * Turn the buzzer on
      * @param duration time period for which the buzzer should buzz, in seconds.
      */
-    void buzz(uint32_t duration);
+    static void buzzer(uint16_t frequency, uint32_t duration);
 
 };
 

@@ -52,7 +52,7 @@ Rear side
 - RF Solutions LAMBDA62 Module for telemetry
 - Adafruit adalogger Feather M0 for data logging
 - 2x WS2812B "NeoPixels" for displaying status information
-- Buzzer
+- ArduinoBuzzer
 - XT30 connector for 2s-4s LiPo battery
 - I2C QWIIC / STEMMA QT connectors for expansion
 - Expansion port for upper "display board" (yet to be developed)

@@ -1,5 +1,5 @@
 <map id="NativeTextLogger" name="NativeTextLogger">
-<area shape="rect" id="node1" title="A TextLogger that is compatible with the Native MRAS build environment." alt="" coords="5,432,167,568"/>
-<area shape="rect" id="node2" href="$classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="27,292,145,384"/>
-<area shape="rect" id="node3" href="$classSubsystem.html" title=" " alt="" coords="13,5,159,244"/>
+<area shape="rect" id="node1" title="A TextLogger that is compatible with the Native MRAS build environment." alt="" coords="5,447,167,583"/>
+<area shape="rect" id="node2" href="$classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="27,307,145,399"/>
+<area shape="rect" id="node3" href="$classSubsystem.html" title=" " alt="" coords="13,5,159,259"/>
 </map>

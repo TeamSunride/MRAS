@@ -123,7 +123,7 @@ Collaboration diagram for MRAS_System:</div>
 <div class="dyncontent">
 <div class="center"><img src="classMRAS__System__coll__graph.png" border="0" usemap="#aMRAS__System_coll__map" alt="Collaboration graph"/></div>
 <map name="aMRAS__System_coll__map" id="aMRAS__System_coll__map">
-<area shape="rect" title="The main class of the MRAS system." alt="" coords="5,5,155,200"/>
+<area shape="rect" title="The main class of the MRAS system." alt="" coords="5,5,155,229"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -149,6 +149,12 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>loop</b> ()</td></tr>
 <tr class="memitem:aeadac66f50d2b46d185bf11389e9add3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classTextLogger.html">TextLogger</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMRAS__System.html#aeadac66f50d2b46d185bf11389e9add3">get_logger</a> ()</td></tr>
 <tr class="memdesc:aeadac66f50d2b46d185bf11389e9add3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the <a class="el" href="classTextLogger.html" title="A base class for ArduinoTextLogger and NativeTextLogger.">TextLogger</a> that is used to log messages.  <br /></td></tr>
 <tr class="separator:aeadac66f50d2b46d185bf11389e9add3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3fa9a4c7f42cb7f3a31de5f861747eca"><td class="memItemLeft" align="right" valign="top"><a id="a3fa9a4c7f42cb7f3a31de5f861747eca" name="a3fa9a4c7f42cb7f3a31de5f861747eca"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_buzzer</b> (<a class="el" href="classBuzzerInterface.html">BuzzerInterface</a> *buzzer)</td></tr>
+<tr class="separator:a3fa9a4c7f42cb7f3a31de5f861747eca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a208e840f088dc1246ae25ef034752f23"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classBuzzerInterface.html">BuzzerInterface</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMRAS__System.html#a208e840f088dc1246ae25ef034752f23">get_buzzer</a> ()</td></tr>
+<tr class="memdesc:a208e840f088dc1246ae25ef034752f23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the Buzzer that is used to buzz.  <br /></td></tr>
+<tr class="separator:a208e840f088dc1246ae25ef034752f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -213,6 +219,26 @@ Static Public Member Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd><code>true</code> If the <a class="el" href="classSubsystem.html">Subsystem</a> was successfully added </dd>
 <dd>
 <code>false</code> If the <a class="el" href="classSubsystem.html">Subsystem</a> was not successfully added (e.g. if the maximum number of Subsystems has been reached) </dd></dl>
+
+</div>
+</div>
+<a id="a208e840f088dc1246ae25ef034752f23" name="a208e840f088dc1246ae25ef034752f23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a208e840f088dc1246ae25ef034752f23">&#9670;&#160;</a></span>get_buzzer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classBuzzerInterface.html">BuzzerInterface</a> * MRAS_System::get_buzzer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get the Buzzer that is used to buzz. </p>
+<dl class="section return"><dt>Returns</dt><dd>Buzzer* A pointer to the Buzz </dd></dl>
 
 </div>
 </div>

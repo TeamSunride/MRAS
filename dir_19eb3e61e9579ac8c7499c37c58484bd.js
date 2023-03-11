@@ -1,5 +1,6 @@
 var dir_19eb3e61e9579ac8c7499c37c58484bd =
 [
+    [ "ArduinoBuzzer.h", "ArduinoBuzzer_8h_source.html", null ],
     [ "ArduinoTextLogger.h", "ArduinoTextLogger_8h_source.html", null ],
     [ "GroundSDLogger.h", "GroundSDLogger_8h_source.html", null ],
     [ "GroundTelemetrySystem.h", "GroundTelemetrySystem_8h_source.html", null ],

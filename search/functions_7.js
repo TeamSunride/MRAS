@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['read_5fnew_5fmessage_5ffrom_5fbuffer_0',['read_new_message_from_buffer',['../classTelemetrySystem.html#a0a966bb7325720768a8d05ea08d3ce20',1,'TelemetrySystem']]],
-  ['reset_1',['reset',['../classADXL375.html#a6e66c96a6ab314860d343c94c571b262',1,'ADXL375']]]
+  ['performonlineassist_0',['performOnlineAssist',['../classSensor__ZOEM8Q.html#a23e75e857628594a7fd513357be81fbd',1,'Sensor_ZOEM8Q']]],
+  ['publish_1',['publish',['../classSubsystem.html#abab34124fc7777591cac49e0189a4291',1,'Subsystem']]]
 ];

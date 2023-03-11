@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mras_5fsystem_0',['MRAS_System',['../classMRAS__System.html#a539e7079c645c20af80ab37b212cd561',1,'MRAS_System']]]
+  ['loop_0',['loop',['../classSensor__ZOEM8Q.html#a9cbd8c73bf8c0e646cd3c03e23568807',1,'Sensor_ZOEM8Q::loop()'],['../classArduinoTextLogger.html#a51747eafac2dafb15122aa9658392781',1,'ArduinoTextLogger::loop()']]]
 ];

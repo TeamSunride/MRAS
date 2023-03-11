@@ -11,6 +11,9 @@ var hierarchy =
     [ "LinearKalmanFilter", "classLinearKalmanFilter.html", null ],
     [ "MRAS_System", "classMRAS__System.html", null ],
     [ "Subsystem", "classSubsystem.html", [
+      [ "BuzzerInterface", "classBuzzerInterface.html", [
+        [ "ArduinoBuzzer", "classArduinoBuzzer.html", null ]
+      ] ],
       [ "FakeAccelerometer", "classFakeAccelerometer.html", null ],
       [ "FakeBarometer", "classFakeBarometer.html", null ],
       [ "NativeDataLogger", "classNativeDataLogger.html", null ],

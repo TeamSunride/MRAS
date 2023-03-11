@@ -1,6 +1,6 @@
 <map id="TextLogger" name="TextLogger">
-<area shape="rect" id="node1" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="125,292,243,384"/>
-<area shape="rect" id="node3" href="$classArduinoTextLogger.html" title="A TextLogger that logs to the Arduino Serial connection." alt="" coords="5,439,173,561"/>
-<area shape="rect" id="node4" href="$classNativeTextLogger.html" title="A TextLogger that is compatible with the Native MRAS build environment." alt="" coords="198,432,359,568"/>
-<area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="111,5,257,244"/>
+<area shape="rect" id="node1" title="A base class for ArduinoTextLogger and NativeTextLogger." alt="" coords="125,307,243,399"/>
+<area shape="rect" id="node3" href="$classArduinoTextLogger.html" title="A TextLogger that logs to the Arduino Serial connection." alt="" coords="5,454,173,575"/>
+<area shape="rect" id="node4" href="$classNativeTextLogger.html" title="A TextLogger that is compatible with the Native MRAS build environment." alt="" coords="198,447,359,583"/>
+<area shape="rect" id="node2" href="$classSubsystem.html" title=" " alt="" coords="111,5,257,259"/>
 </map>

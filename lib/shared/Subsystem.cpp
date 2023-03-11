@@ -59,5 +59,7 @@ void Subsystem::publish(SystemMessage *msg) {
 
 void Subsystem::buzzer(uint16_t frequency, uint32_t duration) {
     BuzzerInterface* buzzer = MRAS_System::get_instance()->get_buzzer();
-    buzzer->_buzzer(frequency, duration);
+    if (buzzer != nullptr) {
+        buzzer->_buzzer(frequency, duration);
+    }
 }

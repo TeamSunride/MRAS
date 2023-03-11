@@ -26,11 +26,12 @@ bool MRAS_System::add_subsystem(Subsystem *subsystem) {
 void MRAS_System::setup() {
     for (int i = 0; i < subsystem_count; i++) {
         Subsystem* system = subsystems[i];
-        if (system->setup() == 0) {
-            buzzer->_buzzer(2400, 50);
-        } else {
-            buzzer->_buzzer(2400, 50);
-        }
+        system->setup();
+//        if (system->setup() == 0) {
+//            buzzer->_buzzer(2400, 50);
+//        } else {
+//            buzzer->_buzzer(2400, 50);
+//        }
     }
 }
 

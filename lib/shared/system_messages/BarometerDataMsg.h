@@ -13,7 +13,7 @@
  * The units of the pressure are Pa and the temperature is in degrees Celsius
  */
 struct BarometerDataMsg : public SystemMessage {
-    BarometerDataMsg() : SystemMessage(BarometerDataMsg_t) {}
+    explicit BarometerDataMsg() : SystemMessage(BarometerDataMsg_t) {}
 
     /**
      * @brief The pressure in Pa

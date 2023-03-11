@@ -35,7 +35,7 @@ Atmosphere::Atmosphere(float pressure)
     geometric_alt = altitude(pressure);
 }
 
-int Atmosphere::to_geopotential(float alt)
+float Atmosphere::to_geopotential(float alt)
 {
 
     return RADIUS_OF_EARTH*alt/(RADIUS_OF_EARTH + alt);

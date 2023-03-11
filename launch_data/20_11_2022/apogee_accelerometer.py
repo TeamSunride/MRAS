@@ -2,7 +2,7 @@ import pandas
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pandas.read_csv("launch_1.csv", usecols=range(1, 20))
+df = pandas.read_csv("launch_data/20_11_2022/launch_1.csv", usecols=range(1, 20))
 
 # trim the dataframe for the desired time
 df = df[df["timestamp"] < df["timestamp"][0] + 1000 * 10]
@@ -34,3 +34,7 @@ plt.plot(timestamps, df["h_adjusted"], label="Barometric height")
 plt.legend()
 plt.show()
 
+plt.hist(y_accel)
+plt.show()
+print(np.std(df["h"]))
+print(np.std(y_accel))

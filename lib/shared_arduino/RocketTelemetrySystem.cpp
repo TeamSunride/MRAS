@@ -5,6 +5,9 @@
 #include "RocketTelemetrySystem.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
 #include "system_messages/GNSSDataMsg.h"
+#include "system_messages/AccelerometerDataMsg.h"
+#include "system_messages/BarometerDataMsg.h"
+#include "system_messages/StateEstimatorMsg.h"
 
 int8_t RocketTelemetrySystem::loop() {
     Module *mod = radio.getMod();
@@ -51,9 +54,10 @@ TelemetryMessageQueueMsg *RocketTelemetrySystem::get_default_message() {
     message->longitude = longitude;
     message->fix_type = fix_type;
     message->satellites = satellites;
-
-    log("TelemetryDataMsg: %f, %f, %d, %d, %d", message->latitude, message->longitude, message->altitude,
-        message->fix_type, message->satellites);
+    message->y_acceleration = y_acceleration;
+    message->pressure = pressure;
+    message->temperature = temperature;
+    message->altitude_estimate = altitude_estimate;
 
     auto *queue_message = new TelemetryMessageQueueMsg();
     queue_message->telemetry_message = message;
@@ -70,6 +74,16 @@ void RocketTelemetrySystem::on_message(SystemMessage *msg) {
             longitude = ((GNSSDataMsg *) msg)->longitude;
             fix_type = ((GNSSDataMsg *) msg)->fix_type;
             satellites = ((GNSSDataMsg *) msg)->SIV;
+            break;
+        case AccelerometerDataMsg_t:
+            y_acceleration = ((AccelerometerDataMsg *) msg)->acceleration[1];
+            break;
+        case BarometerDataMsg_t:
+            pressure = ((BarometerDataMsg *) msg)->pressure;
+            temperature = ((BarometerDataMsg *) msg)->temperature;
+            break;
+        case StateEstimatorMsg_t:
+            altitude_estimate = ((StateEstimatorMsg *) msg)->estimatedAltitude;
             break;
     }
 }

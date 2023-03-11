@@ -11,6 +11,8 @@ int8_t Sensor_LSM6DSO32::setup() {
     log("Loading default configuration");
     uint8_t error = lsm->default_configuration();
 
+    lsm->set_accel_ODR(LSM6DSO32::ODR_1667_HZ);
+
     // TODO: add error codes for default configuration
 
     if (error == 0) {

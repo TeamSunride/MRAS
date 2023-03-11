@@ -33,8 +33,12 @@ class StateEstimator : public Subsystem
         float yAcceleration = 0;
         float pressure = 0;
 
+        // change this to uint32_t in future please @Nikilesh
         float currentMillis = 0;
         float prevMillis = 0;
+
+        uint32_t last_log = 0;
+
         LinearKalmanFilter * Filter;
         AccelerometerDataMsg *acceleration{};
         BarometerDataMsg *altimeter{};

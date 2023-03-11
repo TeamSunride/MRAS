@@ -8,6 +8,7 @@
 #include "system_messages/GyroDataMsg.h"
 #include "system_messages/MagnetometerDataMsg.h"
 #include "system_messages/GNSSDataMsg.h"
+#include "system_messages/StateEstimatorMsg.h"
 
 int8_t RocketSDLogger::loop() {
     if (!setup_complete) return -1;
@@ -20,13 +21,14 @@ int8_t RocketSDLogger::loop() {
                 ",%f,%f,%f"
                 ",%f,%f,%f"
                 ",%f,%f"
-                ",%f,%f,%f,%d,%d\n",
+                ",%f,%f,%f,%d,%d,%f,%f\n",
                 data.accel[0], data.accel[1], data.accel[2],
                 data.accel_high_G[0], data.accel_high_G[1], data.accel_high_G[2],
                 data.gyro[0], data.gyro[1], data.gyro[2],
                 data.mag[0], data.mag[1], data.mag[2],
                 data.pressure, data.temperature,
-                data.latitude, data.longitude, data.altitude, data.fix_type, data.SIV);
+                data.latitude, data.longitude, data.altitude, data.fix_type, data.SIV,
+                data.altitude_estimate, data.velocity_estimate);
         last_log_entry = millis();
     }
 
@@ -74,6 +76,12 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
             data.latitude = new_msg->latitude;
             data.longitude = new_msg->longitude;
             
+            break;
+        }
+        case StateEstimatorMsg_t: {
+            auto new_msg = (StateEstimatorMsg*) msg;
+            data.altitude_estimate = new_msg->estimatedAltitude;
+            data.velocity_estimate = new_msg->estimatedVelocity;
             break;
         }
         case TextLogMsg_t: {

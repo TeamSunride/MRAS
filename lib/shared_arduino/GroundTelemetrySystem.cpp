@@ -4,6 +4,7 @@
 
 #include "GroundTelemetrySystem.h"
 #include "telemetry_messages/TransferWindowAckMsg.h"
+#include "system_messages/RadioStatusMsg.h"
 
 int8_t GroundTelemetrySystem::loop() {
     Module *mod = radio.getMod();
@@ -30,12 +31,26 @@ int8_t GroundTelemetrySystem::loop() {
             auto* msg = new TelemetryMessageReceivedMsg();
             if (read_new_message_from_buffer(msg)) {
                 publish(msg);
+                packets_received++;
             } else {
                 log("CRC or radio error");
                 delete msg;
             }
         }
     }
+
+    if (millis() - last_PPS_count > 1000) {
+        last_PPS_count = millis();
+        PPS = packets_received;
+        packets_received = 0;
+
+        auto* msg = new RadioStatusMsg();
+        msg->PPS = PPS;
+        msg->RSSI = radio.getRSSI();
+        msg->SNR = radio.getSNR();
+        publish(msg);
+    }
+
     return 0;
 }
 

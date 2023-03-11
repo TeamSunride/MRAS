@@ -7,6 +7,7 @@
 
 
 #include "SDLogger.h"
+#include "system_messages/RadioStatusMsg.h"
 
 /**
  * Data logger for the ground station, uses the SD card to log CSV data and text logs to the same file.
@@ -33,6 +34,8 @@ class GroundSDLogger : public SDLogger {
         uint8_t fix_type = 0;
         uint8_t SIV = 0;
     } data;
+
+    RadioStatusMsg radio_status = {};
 };
 
 

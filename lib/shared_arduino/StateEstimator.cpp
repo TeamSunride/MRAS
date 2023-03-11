@@ -24,11 +24,16 @@ int8_t StateEstimator::loop()
     Filter->update(pressure);
     altitude = Filter->get_altitude();
     velocity = Filter->get_velocity();
-    //log("logged alti ======= %f", Filter->get_timeStep());
     auto stateMsg = new StateEstimatorMsg();
     stateMsg->estimatedAltitude = altitude;
     stateMsg->estimatedVelocity = velocity;
     publish(stateMsg);
+
+    if (millis() - last_log > 1000)
+    {
+        log("Altitude: %f Velocity: %f", altitude, velocity);
+        last_log = millis();
+    }
 
     return 0;
 }

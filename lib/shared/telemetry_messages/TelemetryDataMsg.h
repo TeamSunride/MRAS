@@ -21,11 +21,14 @@ struct TelemetryDataMsg : public TelemetryMessage {
     uint16_t altitude = 0;
     uint8_t fix_type = 0;
     uint8_t satellites = 0;
+    float y_acceleration = 0;
+    float pressure = 0;
+    float temperature = 0;
+    float altitude_estimate = 0;
 
     void to_csv(char *buffer, size_t buffer_size) const {
-        //snprintf(buffer, buffer_size, "%d,%d,%d", x, y, z);
-        //snprintf(buffer, buffer_size, "%f,%f,%d", latitude, longitude, altitude);
-        snprintf(buffer, buffer_size, "%f,%f,%d,%d,%d", latitude, longitude, altitude, fix_type, satellites);
+        snprintf(buffer, buffer_size, "%f,%f,%d,%d,%d,%f,%f,%f,%f", latitude, longitude, altitude, fix_type, satellites,
+                 y_acceleration, pressure, temperature, altitude_estimate);
     }
 };
 

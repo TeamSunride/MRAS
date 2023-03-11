@@ -18,7 +18,8 @@ enum SystemMessageType {
     QueueTelemetryMessageMsg_t,
     ReceivedTelemetryMessageMsg_t,
     StateEstimatorMsg_t,
-    TextLogMsg_t
+    TextLogMsg_t,
+    RadioStatusMsg_t,
 };
 
 /**

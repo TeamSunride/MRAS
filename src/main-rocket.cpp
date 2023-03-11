@@ -28,7 +28,8 @@ Sensor_LSM6DSO32 imu = Sensor_LSM6DSO32(2, MRAS_LSM6DSO32_CHIP_SELECT, MRAS_LSM6
                                         MRAS_LSM6DSO32_SPI_FREQUENCY);
 Sensor_LIS3MDL magnetometer = Sensor_LIS3MDL(3, MRAS_LIS3MDL_CHIP_SELECT, MRAS_LIS3MDL_SPI_BUS,
                                              MRAS_LIS3MDL_SPI_FREQUENCY);
-Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_I2C_BUS);
+Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_I2C_BUS,
+                                        MRAS_MS5607_I2C_FREQUENCY);
 Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_ADXL375_SPI_BUS,
                                               MRAS_ADXL375_SPI_FREQUENCY);
 Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
@@ -48,9 +49,9 @@ void setup() {
     mras->add_subsystem(&data_logger);
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
+    mras->add_subsystem(&gnss);
     mras->add_subsystem(&barometer);
     mras->add_subsystem(&accelerometer);
-    mras->add_subsystem(&gnss);
     mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
 
@@ -60,7 +61,7 @@ void setup() {
     barometer.add_subscriber(&data_logger);
     // accelerometer.add_subscriber(&data_logger);
     gnss.add_subscriber(&data_logger);
-    altitudeEstimator.add_subscriber(&data_logger);
+    // altitudeEstimator.add_subscriber(&data_logger);
     imu.add_subscriber(&altitudeEstimator);
     barometer.add_subscriber(&altitudeEstimator);
 
@@ -71,8 +72,13 @@ void setup() {
     barometer.add_subscriber(&sd_logger);
     accelerometer.add_subscriber(&sd_logger);
     gnss.add_subscriber(&sd_logger);
+    altitudeEstimator.add_subscriber(&sd_logger);
 
     gnss.add_subscriber(&telemetry_system);
+    imu.add_subscriber(&telemetry_system);
+    barometer.add_subscriber(&telemetry_system);
+    altitudeEstimator.add_subscriber(&telemetry_system);
+
 
     mras->setup();
 }

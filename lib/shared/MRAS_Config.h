@@ -25,13 +25,14 @@
 
 #define MRAS_MS5607_I2C_ADDRESS             0x76
 #define MRAS_MS5607_I2C_BUS                 Wire2
+#define MRAS_MS5607_I2C_FREQUENCY           400000
 
 #define MRAS_ADXL375_CHIP_SELECT            3
 #define MRAS_ADXL375_SPI_BUS                MRAS_LSM6DSO32_SPI_BUS
 #define MRAS_ADXL375_SPI_FREQUENCY          MRAS_LSM6DSO32_SPI_FREQUENCY
 
-#define MRAS_GNSS_I2C_BUS                   Wire2
-#define MRAS_GNSS_I2C_FREQUENCY             400000
+#define MRAS_GNSS_I2C_BUS                   MRAS_MS5607_I2C_BUS
+#define MRAS_GNSS_I2C_FREQUENCY             MRAS_MS5607_I2C_FREQUENCY
 
 #endif
 /**
@@ -44,10 +45,10 @@
 #define RADIO_FREQUENCY                     868.0
 
 // bandwidth in kHz
-#define RADIO_BANDWIDTH                     125
+#define RADIO_BANDWIDTH                     250
 
 // LoRa spreading factor
-#define RADIO_SPREADING_FACTOR              10
+#define RADIO_SPREADING_FACTOR              5
 
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
 #define RADIO_CODING_RATE                   8

@@ -42,6 +42,8 @@ class RocketSDLogger : public SDLogger {
         float altitude = 0;
         uint8_t fix_type = 0;
         uint8_t SIV = 0;
+        float altitude_estimate = 0;
+        float velocity_estimate = 0;
     } data;
 };
 

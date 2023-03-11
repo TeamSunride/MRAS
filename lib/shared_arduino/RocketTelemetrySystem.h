@@ -31,6 +31,10 @@ private:
     uint16_t altitude = 0;
     uint8_t fix_type = 0;
     uint8_t satellites = 0;
+    float y_acceleration = 0;
+    float pressure = 0;
+    float temperature = 0;
+    float altitude_estimate = 0;
 };
 
 

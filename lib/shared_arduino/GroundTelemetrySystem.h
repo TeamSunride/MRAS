@@ -23,6 +23,10 @@ class GroundTelemetrySystem : public TelemetrySystem {
     int8_t loop() override;
 
     TelemetryMessageQueueMsg* get_default_message() override;
+
+    int16_t packets_received = 0;
+    uint32_t last_PPS_count = 0;
+    uint16_t PPS = 0;
 };
 
 

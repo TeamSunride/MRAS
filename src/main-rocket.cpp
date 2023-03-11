@@ -39,7 +39,7 @@ RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
 ArduinoBuzzer buzzer = ArduinoBuzzer(9, 10);
 
-StateEstimator altitudeEstimator = StateEstimator(9, 0.001);
+StateEstimator altitudeEstimator = StateEstimator(10, 0.001);
 
 void setup() {
     mras->set_logger(&logger);
@@ -55,12 +55,12 @@ void setup() {
     mras->add_subsystem(&altitudeEstimator);
 
 
-    imu.add_subscriber(&data_logger);
+    // imu.add_subscriber(&data_logger);
     // magnetometer.add_subscriber(&data_logger);
     barometer.add_subscriber(&data_logger);
     // accelerometer.add_subscriber(&data_logger);
     gnss.add_subscriber(&data_logger);
-    altitudeEstimator.add_subscriber(&data_logger);
+    // altitudeEstimator.add_subscriber(&data_logger);
     imu.add_subscriber(&altitudeEstimator);
     barometer.add_subscriber(&altitudeEstimator);
 

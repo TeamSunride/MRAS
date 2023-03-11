@@ -62,9 +62,9 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
         }
         case StateEstimatorMsg_t: {
             auto state_msg = (StateEstimatorMsg *) msg;
-//            log("StateEstimator: Estimated Altitude: %f Estimated Velocity: %f",
-//                state_msg->estimatedAltitude,
-//                state_msg->estimatedVelocity);
+            log("StateEstimator: Estimated Altitude: %f Estimated Velocity: %f",
+                state_msg->estimatedAltitude,
+                state_msg->estimatedVelocity);
             break;
         }
         case ReceivedTelemetryMessageMsg_t: {

@@ -58,6 +58,7 @@ private:
     float dT{}, TEMP{}, P{};
     int64_t OFF{}, SENS{};
 
+    float T2{}, OFF2{}, SENS2{};
     uint32_t lastStateChange = 0;
 
 

@@ -73,17 +73,33 @@ int8_t Sensor_MS5607::loop() {
 
             state = IDLE;
 
-            // This code is taken from the UravuLabs/MS5607 library
+            // This code is taken from the UravuLabs/MS5607 library : Edited as of 11/03/2023
             dT = (float) D2_temperature - ((float) C5) * ((int) 1 << 8);
             OFF = (((int64_t) C2) * ((long) 1 << 17)) + dT * ((float) C4) / ((int) 1 << 6);
             SENS = ((float) C1) * ((long) 1 << 16) + dT * ((float) C3) / ((int) 1 << 7);
-            float pa = (float) ((float) D1_pressure / ((long) 1 << 15));
-            float pb = (float) (SENS / ((float) ((long) 1 << 21)));
-            float pc = pa * pb;
-            float pd = (float) (OFF / ((float) ((long) 1 << 15)));
-            P = pc - pd;
+
 
             TEMP = 2000.0 + dT * ((float) C6) / (float) ((long) 1 << 23);
+
+            if (TEMP > 2000.0){
+                T2 = 0.0;
+                OFF2 = 0.0;
+                SENS2 = 0.0;
+            } else if (TEMP < 2000.0){
+                T2 = (float)((dT * dT) / ((uint32_t)(1 << 31)));
+                OFF2 = (float) (61 * (TEMP-2000.0)*(TEMP-2000.0) /((float) (1<<4)));
+                SENS2 = (float) (2 * (TEMP - 2000.0) * (TEMP - 2000.0));
+            }
+
+            TEMP = TEMP - T2;
+            OFF = OFF - OFF2;
+            SENS = SENS - SENS2;
+
+            float pa = (float) D1_pressure;
+            float pb = (float) (SENS / ((float) ((long) 1 << 21)));
+            float pc = (pa * pb)/((float)((long)1 << 15));
+            float pd = (float) (OFF / ((float) ((long) 1 << 15)));
+            P = pc - pd;
 
             // convert to correct units and shove into readable stores
             auto pressure = P;
@@ -159,6 +175,7 @@ bool Sensor_MS5607::read_PROM_coefficient(uint8_t command, uint16_t &store) {
     // request 2 bytes from the device
     // return false (error) if the amount of returned bytes does not equal 2
     uint8_t returned_bytes = i2c_bus->requestFrom(i2c_address, (uint8_t) 2);
+    delay(2);
     if (returned_bytes != 2) {
         log("Expected 2 bytes, but device returned %d. PROM read error.", returned_bytes);
         return false;

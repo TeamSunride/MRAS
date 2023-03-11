@@ -20,7 +20,6 @@ int8_t StateEstimator::loop()
     {
         return 0;
     }
-#endif
     Filter->predict(yAcceleration);
     Filter->update(pressure);
     altitude = Filter->get_altitude();

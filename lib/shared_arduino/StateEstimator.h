@@ -14,7 +14,7 @@ class StateEstimator : public Subsystem
         int8_t setup() override;
         int8_t loop() override;
 
-        float altitudeEstimate(BarometerDataMsg *msg);
+        static float altitudeEstimate(BarometerDataMsg *msg);
         void on_message(SystemMessage *msg) override;
 
 
@@ -27,8 +27,8 @@ class StateEstimator : public Subsystem
         float velocity = 0;
 
         bool start = false;
-        bool recievedBaro = false;
-        bool recievedAcc = false;
+        bool receivedBaro = false;
+        bool receivedAcc = false;
         
         float yAcceleration = 0;
         float pressure = 0;

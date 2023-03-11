@@ -6,9 +6,7 @@ int8_t StateEstimator::setup()
 {
     
     log("State Estimator initialized...");
-#ifdef BUILD_ENV_rocket || BUILD_ENV_rocket-HIL
     currentMillis = millis();
-#endif
     return 0;
 }
 
@@ -18,7 +16,6 @@ int8_t StateEstimator::loop()
     {
         return 0;
     }
-#ifdef BUILD_ENV_rocket || BUILD_ENV_rocket-HIL 
     if ((currentMillis - prevMillis)/1000 < Filter->get_timeStep())
     {
         return 0;
@@ -53,17 +50,17 @@ void StateEstimator::on_message(SystemMessage *msg)
         altimeter = (BarometerDataMsg *) msg;
         pressure = altimeter->pressure;
         // log("pressure +++++ %f", pressure); // debug
-        recievedBaro = 1;
+        receivedBaro = 1;
 
     } else if (msg->get_type() == AccelerometerDataMsg_t)
     {
         acceleration = (AccelerometerDataMsg *) msg;
         yAcceleration = acceleration->acceleration[1];
-        recievedAcc = 1;
+        receivedAcc = 1;
 
     }  
 
-    if (recievedBaro == 1 && recievedAcc == 1)
+    if (receivedBaro == 1 && receivedAcc == 1)
     {
         start = 1;
     }

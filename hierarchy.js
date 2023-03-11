@@ -43,6 +43,7 @@ var hierarchy =
       [ "GNSSDataMsg", "structGNSSDataMsg.html", null ],
       [ "GyroDataMsg", "structGyroDataMsg.html", null ],
       [ "MagnetometerDataMsg", "structMagnetometerDataMsg.html", null ],
+      [ "RadioStatusMsg", "structRadioStatusMsg.html", null ],
       [ "StateEstimatorMsg", "structStateEstimatorMsg.html", null ],
       [ "TelemetryMessageQueueMsg", "structTelemetryMessageQueueMsg.html", null ],
       [ "TelemetryMessageReceivedMsg", "structTelemetryMessageReceivedMsg.html", null ],

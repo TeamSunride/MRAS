@@ -5,6 +5,7 @@ var dir_d63f58e25adc299a39ab1922a981f3b5 =
     [ "GNSSDataMsg.h", "GNSSDataMsg_8h_source.html", null ],
     [ "GyroDataMsg.h", "GyroDataMsg_8h_source.html", null ],
     [ "MagnetometerDataMsg.h", "MagnetometerDataMsg_8h_source.html", null ],
+    [ "RadioStatusMsg.h", "RadioStatusMsg_8h_source.html", null ],
     [ "StateEstimatorMsg.h", "StateEstimatorMsg_8h_source.html", null ],
     [ "TelemetryMessageQueueMsg.h", "TelemetryMessageQueueMsg_8h_source.html", null ],
     [ "TelemetryMessageReceivedMsg.h", "TelemetryMessageReceivedMsg_8h_source.html", null ],

@@ -24,6 +24,7 @@ var annotated_dup =
     [ "MRAS_System", "classMRAS__System.html", "classMRAS__System" ],
     [ "NativeDataLogger", "classNativeDataLogger.html", "classNativeDataLogger" ],
     [ "NativeTextLogger", "classNativeTextLogger.html", "classNativeTextLogger" ],
+    [ "RadioStatusMsg", "structRadioStatusMsg.html", null ],
     [ "RocketSDLogger", "classRocketSDLogger.html", null ],
     [ "RocketTelemetrySystem", "classRocketTelemetrySystem.html", null ],
     [ "SDLogger", "classSDLogger.html", "classSDLogger" ],

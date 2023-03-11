@@ -143,15 +143,17 @@ $(document).ready(function(){initNavTree('RocketSDLogger_8h_source.html',''); in
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">float</span> altitude = 0;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        uint8_t fix_type = 0;</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        uint8_t SIV = 0;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    } data;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ROCKETSDLOGGER_H</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">float</span> altitude_estimate = 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">float</span> velocity_estimate = 0;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    } data;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>};</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ROCKETSDLOGGER_H</span></div>
 <div class="ttc" id="aclassRocketSDLogger_html"><div class="ttname"><a href="classRocketSDLogger.html">RocketSDLogger</a></div><div class="ttdoc">Data logger for the rocket, uses the Teensy SD card to log CSV data and text logs to the same file.</div><div class="ttdef"><b>Definition:</b> RocketSDLogger.h:16</div></div>
 <div class="ttc" id="aclassSDLogger_html"><div class="ttname"><a href="classSDLogger.html">SDLogger</a></div><div class="ttdoc">General SD logger class, used by both the ground and rocket SD loggers. This class is not intended to...</div><div class="ttdef"><b>Definition:</b> SDLogger.h:21</div></div>
 <div class="ttc" id="aclassSDLogger_html_ad7faa29195dfe71bb66e2b0b9122ce98"><div class="ttname"><a href="classSDLogger.html#ad7faa29195dfe71bb66e2b0b9122ce98">SDLogger::SDLogger</a></div><div class="ttdeci">SDLogger(uint8_t id, uint8_t sdPin)</div><div class="ttdoc">Construct a new SDLogger object.</div><div class="ttdef"><b>Definition:</b> SDLogger.h:29</div></div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:31</div></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:32</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

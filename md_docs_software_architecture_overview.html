@@ -168,7 +168,7 @@ Publishing SystemMessages to other Subsystems</h1>
 Receiving SystemMessages from other Subsystems</h1>
 <p>Each <a class="el" href="classSubsystem.html">Subsystem</a> can override a message handler as shown:</p>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> on_message(<a class="code hl_class" href="classSystemMessage.html">SystemMessage</a> *msg) <span class="keyword">override</span>;</div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:31</div></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:32</div></div>
 </div><!-- fragment --><p>If the <a class="el" href="classSubsystem.html">Subsystem</a> does not need to receive messages, a Macro can be used to skip creating this handler:</p>
 <div class="fragment"><div class="line">SUBSYSTEM_NO_MESSAGE_HANDLER</div>
 </div><!-- fragment --><p>Within this message handler, a switch statement can be used to receive different types of system messages. Shown below is an example of receiving a <a class="el" href="structMagnetometerDataMsg.html" title="Message sent by the magnetometer to the system.">MagnetometerDataMsg</a>:</p>

@@ -144,20 +144,24 @@ $(document).ready(function(){initNavTree('StateEstimator_8h_source.html',''); in
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordtype">float</span> yAcceleration = 0;</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordtype">float</span> pressure = 0;</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordtype">float</span> currentMillis = 0;</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">float</span> prevMillis = 0;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_class" href="classLinearKalmanFilter.html">LinearKalmanFilter</a> * Filter;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <a class="code hl_struct" href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a> *acceleration{};</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_struct" href="structBarometerDataMsg.html">BarometerDataMsg</a> *altimeter{};</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>};</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="comment">// change this to uint32_t in future please @Nikilesh</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordtype">float</span> currentMillis = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">float</span> prevMillis = 0;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        uint32_t last_log = 0;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <a class="code hl_class" href="classLinearKalmanFilter.html">LinearKalmanFilter</a> * Filter;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <a class="code hl_struct" href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a> *acceleration{};</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <a class="code hl_struct" href="structBarometerDataMsg.html">BarometerDataMsg</a> *altimeter{};</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>};</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="ttc" id="aclassLinearKalmanFilter_html"><div class="ttname"><a href="classLinearKalmanFilter.html">LinearKalmanFilter</a></div><div class="ttdef"><b>Definition:</b> LinearKalmanFilter.h:6</div></div>
 <div class="ttc" id="aclassStateEstimator_html"><div class="ttname"><a href="classStateEstimator.html">StateEstimator</a></div><div class="ttdef"><b>Definition:</b> StateEstimator.h:8</div></div>
-<div class="ttc" id="aclassStateEstimator_html_a84539a2ef749162404087d8398d77aad"><div class="ttname"><a href="classStateEstimator.html#a84539a2ef749162404087d8398d77aad">StateEstimator::on_message</a></div><div class="ttdeci">void on_message(SystemMessage *msg) override</div><div class="ttdef"><b>Definition:</b> StateEstimator.cpp:44</div></div>
+<div class="ttc" id="aclassStateEstimator_html_a84539a2ef749162404087d8398d77aad"><div class="ttname"><a href="classStateEstimator.html#a84539a2ef749162404087d8398d77aad">StateEstimator::on_message</a></div><div class="ttdeci">void on_message(SystemMessage *msg) override</div><div class="ttdef"><b>Definition:</b> StateEstimator.cpp:49</div></div>
 <div class="ttc" id="aclassSubsystem_html"><div class="ttname"><a href="classSubsystem.html">Subsystem</a></div><div class="ttdef"><b>Definition:</b> Subsystem.h:30</div></div>
 <div class="ttc" id="aclassSubsystem_html_a6eb8c08dad3e114628c49ecc54c457fb"><div class="ttname"><a href="classSubsystem.html#a6eb8c08dad3e114628c49ecc54c457fb">Subsystem::Subsystem</a></div><div class="ttdeci">Subsystem(uint8_t id)</div><div class="ttdef"><b>Definition:</b> Subsystem.h:86</div></div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:31</div></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:32</div></div>
 <div class="ttc" id="astructAccelerometerDataMsg_html"><div class="ttname"><a href="structAccelerometerDataMsg.html">AccelerometerDataMsg</a></div><div class="ttdoc">Message sent by the accelerometer to the system.</div><div class="ttdef"><b>Definition:</b> AccelerometerDataMsg.h:17</div></div>
 <div class="ttc" id="astructBarometerDataMsg_html"><div class="ttname"><a href="structBarometerDataMsg.html">BarometerDataMsg</a></div><div class="ttdoc">Message sent by the barometer to the system.</div><div class="ttdef"><b>Definition:</b> BarometerDataMsg.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->

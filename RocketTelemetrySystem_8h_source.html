@@ -134,12 +134,16 @@ $(document).ready(function(){initNavTree('RocketTelemetrySystem_8h_source.html',
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    uint16_t altitude = 0;</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    uint8_t fix_type = 0;</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    uint8_t satellites = 0;</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>};</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ROCKETTELEMETRYSYSTEM_H</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">float</span> y_acceleration = 0;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">float</span> pressure = 0;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">float</span> temperature = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">float</span> altitude_estimate = 0;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>};</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_ROCKETTELEMETRYSYSTEM_H</span></div>
 <div class="ttc" id="aclassRocketTelemetrySystem_html"><div class="ttname"><a href="classRocketTelemetrySystem.html">RocketTelemetrySystem</a></div><div class="ttdoc">The telemetry system for the rocket.</div><div class="ttdef"><b>Definition:</b> RocketTelemetrySystem.h:20</div></div>
-<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:31</div></div>
+<div class="ttc" id="aclassSystemMessage_html"><div class="ttname"><a href="classSystemMessage.html">SystemMessage</a></div><div class="ttdoc">A base class for all system messages.</div><div class="ttdef"><b>Definition:</b> SystemMessage.h:32</div></div>
 <div class="ttc" id="aclassTelemetrySystem_html"><div class="ttname"><a href="classTelemetrySystem.html">TelemetrySystem</a></div><div class="ttdoc">A subsystem for sending and receiving telemetry data using the LoRa radio.</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.h:23</div></div>
 <div class="ttc" id="astructTelemetryMessageQueueMsg_html"><div class="ttname"><a href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a></div><div class="ttdoc">A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket.</div><div class="ttdef"><b>Definition:</b> TelemetryMessageQueueMsg.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->

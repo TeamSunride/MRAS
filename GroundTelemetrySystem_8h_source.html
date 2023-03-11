@@ -126,10 +126,14 @@ $(document).ready(function(){initNavTree('GroundTelemetrySystem_8h_source.html',
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    int8_t loop() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_struct" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a>* get_default_message() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>};</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_GROUNDTELEMETRYSYSTEM_H</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    int16_t packets_received = 0;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    uint32_t last_PPS_count = 0;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    uint16_t PPS = 0;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_GROUNDTELEMETRYSYSTEM_H</span></div>
 <div class="ttc" id="aclassGroundTelemetrySystem_html"><div class="ttname"><a href="classGroundTelemetrySystem.html">GroundTelemetrySystem</a></div><div class="ttdoc">Telemetry system for the ground station.</div><div class="ttdef"><b>Definition:</b> GroundTelemetrySystem.h:19</div></div>
 <div class="ttc" id="aclassTelemetrySystem_html"><div class="ttname"><a href="classTelemetrySystem.html">TelemetrySystem</a></div><div class="ttdoc">A subsystem for sending and receiving telemetry data using the LoRa radio.</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.h:23</div></div>
 <div class="ttc" id="astructTelemetryMessageQueueMsg_html"><div class="ttname"><a href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a></div><div class="ttdoc">A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket.</div><div class="ttdef"><b>Definition:</b> TelemetryMessageQueueMsg.h:17</div></div>

@@ -9,6 +9,8 @@
 class ArduinoBuzzer : public BuzzerInterface {
 private:
     uint8_t buzzerPin = 0;
+
+    uint32_t last_buzz = 0;
 public:
     ArduinoBuzzer(uint8_t id, uint8_t pin) : BuzzerInterface(id) {
         buzzerPin = pin;
@@ -18,7 +20,7 @@ public:
 
     int8_t loop() override;
 
-    void _buzzer(uint16_t frequency, uint32_t duration) override;
+    void _buzzer(uint16_t frequency, uint32_t duration, bool block) override;
 
     SUBSYSTEM_NO_MESSAGE_HANDLER;
 

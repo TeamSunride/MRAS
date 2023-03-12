@@ -9,6 +9,7 @@
 #include "system_messages/MagnetometerDataMsg.h"
 #include "system_messages/GNSSDataMsg.h"
 #include "system_messages/StateEstimatorMsg.h"
+#include "timestamp.h"
 
 int8_t RocketSDLogger::loop() {
     if (!setup_complete) return -1;
@@ -21,14 +22,14 @@ int8_t RocketSDLogger::loop() {
                 ",%f,%f,%f"
                 ",%f,%f,%f"
                 ",%f,%f"
-                ",%f,%f,%f,%d,%d,%f,%f\n",
+                ",%f,%f,%f,%d,%d,%f,%f,%llu\n",
                 data.accel[0], data.accel[1], data.accel[2],
                 data.accel_high_G[0], data.accel_high_G[1], data.accel_high_G[2],
                 data.gyro[0], data.gyro[1], data.gyro[2],
                 data.mag[0], data.mag[1], data.mag[2],
                 data.pressure, data.temperature,
                 data.latitude, data.longitude, data.altitude, data.fix_type, data.SIV,
-                data.altitude_estimate, data.velocity_estimate);
+                data.altitude_estimate, data.velocity_estimate, getTimestampMillis());
         last_log_entry = millis();
     }
 
@@ -75,7 +76,7 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
             auto new_msg = (GNSSDataMsg*) msg;
             data.latitude = new_msg->latitude;
             data.longitude = new_msg->longitude;
-            
+            data.altitude = new_msg->altitude;
             break;
         }
         case StateEstimatorMsg_t: {
@@ -84,12 +85,13 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
             data.velocity_estimate = new_msg->estimatedVelocity;
             break;
         }
-        case TextLogMsg_t: {
-            // make sure the data file is flushed before we log any text
-            auto text_log_msg = (TextLogMsg *) msg;
-            log_file.printf("#%s", text_log_msg->text);
-            break;
-        }
+//        case TextLogMsg_t: {
+//            // make sure the data file is flushed before we log any text
+//            auto text_log_msg = (TextLogMsg *) msg;
+//            log_file.printf("#%s", text_log_msg->text);
+//            log_file.flush();
+//            break;
+//        }
         default:
             break;
     }

@@ -3,7 +3,7 @@
 //
 
 #include <cstdio>
-
+#include "timestamp.h"
 #include "MRAS_System.h"
 #include "MRAS_Config.h"
 #include "ArduinoTextLogger.h"
@@ -43,6 +43,8 @@ StateEstimator altitudeEstimator = StateEstimator(9, 0.001);
 ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
 
 void setup() {
+    setSyncProvider(getTeensy3Time);
+
     mras->set_logger(&logger);
     mras->set_buzzer(&buzzer);
     mras->add_subsystem(&sd_logger);
@@ -85,6 +87,5 @@ void setup() {
 
 void loop() {
     mras->loop();
-    delay(0);
     //Serial.println(millis());
 }

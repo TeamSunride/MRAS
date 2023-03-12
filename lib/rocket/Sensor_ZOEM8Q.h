@@ -51,8 +51,6 @@ public:
 
     int8_t loop() override;
 
-    static uint64_t getTimestampMillisGPS();
-
     static uint16_t GPSweek();
 
     static uint32_t actualTimeOfWeekms();

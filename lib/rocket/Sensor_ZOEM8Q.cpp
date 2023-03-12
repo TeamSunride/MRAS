@@ -15,6 +15,7 @@ int8_t Sensor_ZOEM8Q::setup() {
         return (int8_t) 1; // failure;
     }
     gnss->setNavigationFrequency(5);
+    gnss->setDynamicModel(DYN_MODEL_AIRBORNE4g);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
     // perform the online assist process - uses mgaonline.ubx file from SD card

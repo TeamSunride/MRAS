@@ -8,6 +8,5 @@ var searchData=
   ['get_5flogger_5',['get_logger',['../classMRAS__System.html#aeadac66f50d2b46d185bf11389e9add3',1,'MRAS_System']]],
   ['get_5fname_6',['get_name',['../classNativeTextLogger.html#ac0baa51553319023bc068e50f887fb2c',1,'NativeTextLogger::get_name()'],['../classSubsystem.html#a19fffb42e27b6720100ff6870e84f382',1,'Subsystem::get_name()=0']]],
   ['get_5fstatus_7',['get_status',['../classSubsystem.html#a29baf5580b55bc1f1b92cbcafe5aa622',1,'Subsystem']]],
-  ['get_5ftype_8',['get_type',['../classSystemMessage.html#a52115712bcb3591a2054dff75932279a',1,'SystemMessage::get_type()'],['../classTelemetryMessage.html#af42f546eeec1b2bd0e1059f5e3edb37b',1,'TelemetryMessage::get_type()']]],
-  ['gettimestampmillisgps_9',['getTimestampMillisGPS',['../classSensor__ZOEM8Q.html#a9cc83e1cc7cbc8b68072700249277918',1,'Sensor_ZOEM8Q']]]
+  ['get_5ftype_8',['get_type',['../classSystemMessage.html#a52115712bcb3591a2054dff75932279a',1,'SystemMessage::get_type()'],['../classTelemetryMessage.html#af42f546eeec1b2bd0e1059f5e3edb37b',1,'TelemetryMessage::get_type()']]]
 ];

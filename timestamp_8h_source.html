@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=11"/>
     <meta name="generator" content="Doxygen 1.9.6"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta property="og:title" content="MRAS: lib/ground/GroundTelemetrySystem.h Source File">
+    <meta property="og:title" content="MRAS: lib/rocket/timestamp.h Source File">
     <meta property="og:image" content="https://mras.sunride.space/sunride_logo.png">
     <meta property="og:description" content="Multi Rocket Avionics System">
     <meta name="theme-color" content="#EE3437">
-    <title>MRAS: lib/ground/GroundTelemetrySystem.h Source File</title>
+    <title>MRAS: lib/rocket/timestamp.h Source File</title>
     <link href="tabs.css" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" href="sunride_rocket.ico" type="image/x-icon"/>
     <script type="text/javascript" src="jquery.js"></script>
@@ -80,7 +80,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('GroundTelemetrySystem_8h_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('timestamp_8h_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -106,43 +106,32 @@ $(document).ready(function(){initNavTree('GroundTelemetrySystem_8h_source.html',
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">GroundTelemetrySystem.h</div></div>
+  <div class="headertitle"><div class="title">timestamp.h</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">//</span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by Tom Danvers on 06/02/2023.</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// Created by Tom Danvers on 11/03/2023.</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">//</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef MRAS_GROUNDTELEMETRYSYSTEM_H</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define MRAS_GROUNDTELEMETRYSYSTEM_H</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#ifndef MRAS_TIMESTAMP_H</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#define MRAS_TIMESTAMP_H</span></div>
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;TelemetrySystem.h&quot;</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="classGroundTelemetrySystem.html">   19</a></span><span class="keyword">class </span><a class="code hl_class" href="classGroundTelemetrySystem.html">GroundTelemetrySystem</a> : <span class="keyword">public</span> <a class="code hl_class" href="classTelemetrySystem.html">TelemetrySystem</a> {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    <span class="keyword">using </span>TelemetrySystem::TelemetrySystem;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    SUBSYSTEM_NO_MESSAGE_HANDLER</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    int8_t loop() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <a class="code hl_struct" href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a>* get_default_message() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    int16_t packets_received = 0;</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    uint32_t last_PPS_count = 0;</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    uint16_t PPS = 0;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_GROUNDTELEMETRYSYSTEM_H</span></div>
-<div class="ttc" id="aclassGroundTelemetrySystem_html"><div class="ttname"><a href="classGroundTelemetrySystem.html">GroundTelemetrySystem</a></div><div class="ttdoc">Telemetry system for the ground station.</div><div class="ttdef"><b>Definition:</b> GroundTelemetrySystem.h:19</div></div>
-<div class="ttc" id="aclassTelemetrySystem_html"><div class="ttname"><a href="classTelemetrySystem.html">TelemetrySystem</a></div><div class="ttdoc">A subsystem for sending and receiving telemetry data using the LoRa radio.</div><div class="ttdef"><b>Definition:</b> TelemetrySystem.h:23</div></div>
-<div class="ttc" id="astructTelemetryMessageQueueMsg_html"><div class="ttname"><a href="structTelemetryMessageQueueMsg.html">TelemetryMessageQueueMsg</a></div><div class="ttdoc">A SystemMessage that is used to queue a TelemetryMessage for sending to the ground or the rocket.</div><div class="ttdef"><b>Definition:</b> TelemetryMessageQueueMsg.h:17</div></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;TimeLib.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>uint64_t getTimestampMillis();</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>time_t getTeensy3Time();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#endif </span><span class="comment">//MRAS_TIMESTAMP_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_fa9b5125302da60a62d9601960f4aaf9.html">ground</a></li><li class="navelem"><b>GroundTelemetrySystem.h</b></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_3fe7d44db8e4ba5855d5e3a7d0252393.html">rocket</a></li><li class="navelem"><b>timestamp.h</b></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.6 </li>
   </ul>
 </div>

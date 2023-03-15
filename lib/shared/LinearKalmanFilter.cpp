@@ -7,7 +7,7 @@ LinearKalmanFilter::LinearKalmanFilter(float TimeDelta, float STDacceleration, f
     altimeterSTD = STDaltimeter;
     state << 0 , 0;
     covariance << 100, 0, 0, 100;
-    stateTransitionMatrix << 1 , dt, 0, dt;
+    stateTransitionMatrix << 1 , dt, 0, 1;
     controlMatrix << 0.5*(dt*dt) , dt;
     processNoise << (dt*dt*dt*dt)/4, (dt*dt*dt)/3, (dt*dt)/2, dt*dt;
     processNoise = processNoise * (accelSTD*accelSTD);

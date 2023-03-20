@@ -18,6 +18,7 @@
 #include "StateEstimator.h"
 #include "RocketSDLogger.h"
 #include "SimulinkDataLogger.h"
+#include "ArduinoBuzzer.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -40,23 +41,17 @@ RocketSDLogger sd_logger = RocketSDLogger(9, BUILTIN_SDCARD);
 
 SimulinkDataLogger sim_logger = SimulinkDataLogger(10);
 
+ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
 
 void setup() {
     mras->set_logger(&logger);
-    mras->add_subsystem(&sd_logger);
+    mras->set_buzzer(&buzzer);
 
-    mras->add_subsystem(&magnetometer);
-    mras->add_subsystem(&imu);
-    mras->add_subsystem(&barometer);
-    mras->add_subsystem(&accelerometer);
-    mras->add_subsystem(&gnss);
-    mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
     mras->add_subsystem(&sim_logger);
     altitudeEstimator.add_subscriber(&sim_logger);
     sim_logger.add_subscriber(&altitudeEstimator);
 
-    imu.add_subscriber(&altitudeEstimator);
 
     mras->setup();
 }

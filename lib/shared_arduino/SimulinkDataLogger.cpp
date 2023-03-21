@@ -5,11 +5,13 @@
 #include "Arduino.h"
 
 int8_t SimulinkDataLogger::setup() {
+    Serial.begin(115200);
     return 0;
 }
 
 int8_t SimulinkDataLogger::loop() {
 
+    while (!Serial.available()){} // IMPORTANT: else it breaks the HIL
     pressure.number = getFloat();
     yAccel.number = getFloat();
     // delay(1);

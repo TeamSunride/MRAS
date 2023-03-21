@@ -31,7 +31,7 @@ int8_t StateEstimator::loop()
 
     if (millis() - last_log > 1000)
     {
-        log("Altitude: %f Velocity: %f", altitude, velocity);
+        // log("Altitude: %f Velocity: %f", altitude, velocity);
         last_log = millis();
     }
 

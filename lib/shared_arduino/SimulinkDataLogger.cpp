@@ -32,6 +32,9 @@ int8_t SimulinkDataLogger::loop() {
     for (unsigned char byte : velocity.bytes) {
         Serial.write(byte);
     }
+    for (unsigned char byte : phase.bytes) {
+        Serial.write(byte);
+    }
     Serial.print("\n");
     delay(50);
     return 0;
@@ -46,7 +49,7 @@ void SimulinkDataLogger::on_message(SystemMessage *msg) {
 
             position.number = state_msg->estimatedAltitude;
             velocity.number = state_msg->estimatedVelocity;
-
+            phase.number = (float) state_msg->phase;
             break;
         }
         default:

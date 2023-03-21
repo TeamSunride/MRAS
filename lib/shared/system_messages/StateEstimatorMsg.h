@@ -9,6 +9,7 @@ struct StateEstimatorMsg : public SystemMessage
 
     float estimatedAltitude = 0;
     float estimatedVelocity = 0;
+    char phase = 0;
 };
 
 

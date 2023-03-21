@@ -32,6 +32,7 @@ private:
     FLOATUNION_t velocity;
     FLOATUNION_t pressure;
     FLOATUNION_t yAccel;
+    FLOATUNION_t phase;
 };
 
 

@@ -24,15 +24,40 @@ int8_t StateEstimator::loop()
     Filter->update(pressure);
     altitude = Filter->get_altitude();
     velocity = Filter->get_velocity();
+
+
+
+//    if (millis() - last_log > 1000)
+//    {
+//        // log("Altitude: %f Velocity: %f", altitude, velocity);
+//        last_log = millis();
+//    }
+
+    switch (phase) {
+        case 0:
+            if (velocity > THRESHOLD_VELOCITY){
+                phase = 1; // LAUNCH
+            }
+        case 1:
+            if (altitude < prevAltitude){
+                phase = 2; // APOGEE
+            }
+        case 2:
+            if (velocity < THRESHOLD_VELOCITY){
+                phase = 0; // LANDING
+            }
+    }
+
     auto stateMsg = new StateEstimatorMsg();
+
     stateMsg->estimatedAltitude = altitude;
     stateMsg->estimatedVelocity = velocity;
+    stateMsg->phase = phase;
+
     publish(stateMsg);
 
-    if (millis() - last_log > 1000)
-    {
-        // log("Altitude: %f Velocity: %f", altitude, velocity);
-        last_log = millis();
+    if (millis() - last_log > 3000){
+        prevAltitude = altitude;     // REFRESH RATE OF 1 SEC
     }
 
     return 0;

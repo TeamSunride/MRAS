@@ -4,6 +4,9 @@
 #include "system_messages/StateEstimatorMsg.h"
 #include <Arduino.h>
 
+#define THRESHOLD_VELOCITY 25 //ms^-1
+
+
 class StateEstimator : public Subsystem
 {
     public:
@@ -25,6 +28,8 @@ class StateEstimator : public Subsystem
     private:
         float altitude = 0;
         float velocity = 0;
+        float prevAltitude = 0;
+        uint8_t phase = 0;
 
         bool start = false;
         bool receivedBaro = false;

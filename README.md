@@ -2,6 +2,8 @@
 
 ![](docs/images/sunride_mras.png)
 
+![](docs/images/sponsors.png)
+
 MRAS (Multi Rocket Avionics System) is a flight computer that contains a high-performance microcontroller, high-G
 accelerometer, Inertial Measurement Unit (IMU), Magnetometer, GNSS receiver,
 Barometer, and a Telemetry system. It has been designed to provide a robust and reliable avionics package that can be

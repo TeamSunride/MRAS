@@ -26,13 +26,6 @@ int8_t StateEstimator::loop()
     velocity = Filter->get_velocity();
 
 
-
-//    if (millis() - last_log > 1000)
-//    {
-//        // log("Altitude: %f Velocity: %f", altitude, velocity);
-//        last_log = millis();
-//    }
-
     switch (phase) {
         case 0:
             if (velocity > THRESHOLD_VELOCITY){

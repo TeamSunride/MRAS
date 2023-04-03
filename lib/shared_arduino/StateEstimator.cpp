@@ -4,7 +4,7 @@
 
 int8_t StateEstimator::setup()
 {
-    
+
     log("State Estimator initialized...");
     currentMillis = millis();
     return 0;
@@ -16,7 +16,7 @@ int8_t StateEstimator::loop()
     {
         return 0;
     }
-    if ((currentMillis - prevMillis)/1000 < Filter->get_timeStep())
+    if ((currentMillis - prevMillis) < (uint32_t)(1000*Filter->get_timeStep()))
     {
         return 0;
     }
@@ -53,6 +53,7 @@ int8_t StateEstimator::loop()
         prevAltitude = altitude;     // REFRESH RATE OF 1 SEC
     }
 
+    currentMillis = millis();
     return 0;
 }
 
@@ -72,19 +73,19 @@ void StateEstimator::on_message(SystemMessage *msg)
         altimeter = (BarometerDataMsg *) msg;
         pressure = altimeter->pressure;
         // log("pressure +++++ %f", pressure); // debug
-        receivedBaro = 1;
+        receivedBaro = true;
 
     } else if (msg->get_type() == AccelerometerDataMsg_t)
     {
         acceleration = (AccelerometerDataMsg *) msg;
         yAcceleration = acceleration->acceleration[1];
-        receivedAcc = 1;
+        receivedAcc = true;
 
     }  
 
     if (receivedBaro == 1 && receivedAcc == 1)
     {
-        start = 1;
+        start = true;
     }
     
 }

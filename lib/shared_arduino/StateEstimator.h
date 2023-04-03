@@ -3,6 +3,7 @@
 #include "LinearKalmanFilter.h"
 #include "system_messages/StateEstimatorMsg.h"
 #include <Arduino.h>
+#include "Sensor_MS5607.h" // for setup information
 
 #define THRESHOLD_VELOCITY 25 //ms^-1
 
@@ -39,8 +40,8 @@ class StateEstimator : public Subsystem
         float pressure = 0;
 
         // change this to uint32_t in future please @Nikilesh
-        float currentMillis = 0;
-        float prevMillis = 0;
+        uint32_t currentMillis = 0;
+        uint32_t prevMillis = 0;
 
         uint32_t last_log = 0;
 

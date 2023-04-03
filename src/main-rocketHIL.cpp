@@ -34,7 +34,7 @@ Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_
 
 StateEstimator altitudeEstimator = StateEstimator(8, 0.05);
 
-
+RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
 SimulinkDataLogger sim_logger = SimulinkDataLogger(10);
 

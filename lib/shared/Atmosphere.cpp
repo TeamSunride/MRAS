@@ -41,9 +41,9 @@ float Atmosphere::to_geopotential(float alt)
     return RADIUS_OF_EARTH*alt/(RADIUS_OF_EARTH + alt);
 }
 
-float Atmosphere::get_altitude()
+float Atmosphere::get_altitude() const
 {
-    return to_geopotential(geometric_alt);
+    return geometric_alt;
 }
 
 float Atmosphere::altitude(float pressure)
@@ -58,8 +58,8 @@ float Atmosphere::altitude(float pressure)
    } 
 
     // if beta is zero
-    float base = (float)(layer_const(3) / pressure);
-    float power = (float)((layer_const(2)*SPECIFIC_GAS_CONST)/GRAVITY_ACCEL);
+    auto base = (float)(layer_const(3) / pressure);
+    auto power = (float)((layer_const(2)*SPECIFIC_GAS_CONST)/GRAVITY_ACCEL);
     f_altitude = layer_const(0) + (layer_const(1)/layer_const(2)) * (pow(base, power) -1);
 
     return f_altitude;

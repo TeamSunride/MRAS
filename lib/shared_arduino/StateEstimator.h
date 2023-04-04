@@ -3,7 +3,6 @@
 #include "LinearKalmanFilter.h"
 #include "system_messages/StateEstimatorMsg.h"
 #include <Arduino.h>
-#include "Sensor_MS5607.h" // for setup information
 
 #define THRESHOLD_VELOCITY 25 //ms^-1
 
@@ -18,7 +17,7 @@ class StateEstimator : public Subsystem
         int8_t setup() override;
         int8_t loop() override;
 
-        static float altitudeEstimate(BarometerDataMsg *msg);
+        static float altitudeEstimate(float pressure);
         void on_message(SystemMessage *msg) override;
 
 

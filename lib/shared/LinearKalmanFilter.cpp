@@ -38,3 +38,8 @@ void LinearKalmanFilter::update(float pressure)
     altitude = state(0,0);
     velocity = state(1,0); 
 }
+
+void LinearKalmanFilter::initialize(float alt, float vel) {
+    state << alt, vel;
+    covariance << 100, 0, 0, 100;
+}

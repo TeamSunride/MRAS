@@ -58,9 +58,9 @@ int8_t StateEstimator::loop()
 }
 
 
-float StateEstimator::altitudeEstimate(BarometerDataMsg *msg)
+float StateEstimator::altitudeEstimate(float pressure)
 {
-    Atmosphere rocket(msg->pressure);
+    Atmosphere rocket(pressure);
     return rocket.get_altitude();
 }
 
@@ -72,7 +72,6 @@ void StateEstimator::on_message(SystemMessage *msg)
     {
         altimeter = (BarometerDataMsg *) msg;
         pressure = altimeter->pressure;
-        // log("pressure +++++ %f", pressure); // debug
         receivedBaro = true;
 
     } else if (msg->get_type() == AccelerometerDataMsg_t)
@@ -83,8 +82,11 @@ void StateEstimator::on_message(SystemMessage *msg)
 
     }  
 
-    if (receivedBaro == 1 && receivedAcc == 1)
+    // Only runs once when it receives both messages.
+    if (receivedBaro && receivedAcc && !start)
     {
+        altitude = altitudeEstimate(pressure);
+        Filter->initialize(altitude, 0.0);
         start = true;
     }
     

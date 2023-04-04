@@ -52,7 +52,7 @@ public:
      * Get the altitude at this point in the Atmosphere
      * @return The altitude [m] above Mean Sea Level
      */
-    float get_altitude();
+    float get_altitude() const;
 
     /**
      * Get the layer constants for the current pressure
@@ -61,14 +61,15 @@ public:
      */
     Eigen::Vector4f get_layer_constants(float p);
 
-    float to_geopotential(float alt); // additional feture to be added, right now everything is in geometric
+    //TODO: NEEDS FIXING LOL OUTPUTS 2400M WHEN ALT IS 175 OR SOMETHING (NO TIME TO FIX RN)
+    static float to_geopotential(float alt); // additional feture to be added, right now everything is in geometric
 
 
 private:
 
     // Modifiable values
-    int geometric_alt;
-    int geopotential_alt;
+    float geometric_alt;
+    float geopotential_alt;
     Eigen::Vector4f layer_const;
 
     float altitude(float pressure);

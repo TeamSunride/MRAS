@@ -11,6 +11,8 @@ public:
 
     void update(float pressure);
 
+    void initialize(float alt, float vel);
+
     float get_altitude() const { return altitude; }
 
     float get_velocity() const { return velocity; }

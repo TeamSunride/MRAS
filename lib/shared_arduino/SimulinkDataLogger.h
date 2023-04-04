@@ -33,7 +33,8 @@ private:
     FLOATUNION_t pressure;
     FLOATUNION_t yAccel;
     FLOATUNION_t phase;
+    FLOATUNION_t event;
 };
 
 
-#endif //MRAS_NATIVEDATALOGGER_H
+#endif //MRAS_SIMULINKDATALOGGER_H

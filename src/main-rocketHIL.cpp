@@ -19,6 +19,7 @@
 #include "RocketSDLogger.h"
 #include "SimulinkDataLogger.h"
 #include "ArduinoBuzzer.h"
+#include "EventDetector.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -40,15 +41,19 @@ SimulinkDataLogger sim_logger = SimulinkDataLogger(10);
 
 ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
 
+EventDetector eventDetector = EventDetector(11);
+
+
 void setup() {
     mras->set_logger(&logger);
     mras->set_buzzer(&buzzer);
 
     mras->add_subsystem(&altitudeEstimator);
     mras->add_subsystem(&sim_logger);
+    mras->add_subsystem(&eventDetector);
     altitudeEstimator.add_subscriber(&sim_logger);
     sim_logger.add_subscriber(&altitudeEstimator);
-
+    eventDetector.add_subscriber(&sim_logger);
 
     mras->setup();
 }

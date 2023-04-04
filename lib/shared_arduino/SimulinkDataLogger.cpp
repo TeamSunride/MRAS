@@ -3,6 +3,7 @@
 #include "system_messages/BarometerDataMsg.h"
 #include "system_messages/AccelerometerDataMsg.h"
 #include "Arduino.h"
+#include "system_messages/EventDetectorMsg.h"
 
 int8_t SimulinkDataLogger::setup() {
     Serial.begin(115200);
@@ -11,7 +12,7 @@ int8_t SimulinkDataLogger::setup() {
 
 int8_t SimulinkDataLogger::loop() {
 
-    while (!Serial.available()){} // IMPORTANT: else it breaks the HIL
+    while (!Serial.available()) {} // IMPORTANT: else it breaks the HIL
     pressure.number = getFloat();
     yAccel.number = getFloat();
     // delay(1);
@@ -26,13 +27,16 @@ int8_t SimulinkDataLogger::loop() {
     publish(Amsg);
 
     Serial.write('A');
-    for (unsigned char byte : position.bytes) {
+    for (unsigned char byte: position.bytes) {
         Serial.write(byte);
     }
-    for (unsigned char byte : velocity.bytes) {
+    for (unsigned char byte: velocity.bytes) {
         Serial.write(byte);
     }
-    for (unsigned char byte : phase.bytes) {
+    for (unsigned char byte: phase.bytes) {
+        Serial.write(byte);
+    }
+    for (unsigned char byte: event.bytes) {
         Serial.write(byte);
     }
     Serial.print("\n");
@@ -49,14 +53,20 @@ void SimulinkDataLogger::on_message(SystemMessage *msg) {
 
             position.number = state_msg->estimatedAltitude;
             velocity.number = state_msg->estimatedVelocity;
-            phase.number = (float) state_msg->phase;
             break;
         }
+        case EventDetectorMsg_t: {
+            auto event_msg = (EventDetectorMsg *) msg;
+            phase.number = (float) event_msg->phase;
+            event.number = (float) event_msg->event;
+            break;
+        }
+
         default:
             break;
     }
 
-    }
+}
 
 float SimulinkDataLogger::getFloat() {
     int cont = 0;

@@ -3,8 +3,7 @@
 
 #include "SystemMessage.h"
 
-struct StateEstimatorMsg : public SystemMessage
-{
+struct StateEstimatorMsg : public SystemMessage {
     explicit StateEstimatorMsg() : SystemMessage(StateEstimatorMsg_t) {}
 
     float estimatedAltitude = 0;

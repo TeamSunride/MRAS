@@ -4,6 +4,7 @@
 
 #include "EventDetector.h"
 
+
 int8_t EventDetector::setup() {
     phase = SETUP;
     event = NONE;
@@ -13,34 +14,54 @@ int8_t EventDetector::setup() {
 
 int8_t EventDetector::loop() {
     switch (phase) {
-        case SETUP:
+        case SETUP:{
             if (millis() - setupTime > 10000) {
                 phase = PRELAUNCH;
             }
             break;
-        case PRELAUNCH:
+        }
+        case PRELAUNCH:{
             if (velocity > THRESHOLD_VELOCITY) {
                 phase = ASCENT;
                 event = LAUNCH;
             }
             break;
-        case ASCENT:
-            if (velocity > 0){
+        }
+        case ASCENT:{
+            if (velocity < 0){
                 phase = DESCENT;
                 event = APOGEE;
                 apogee = altitude;
                 prevAltitude = altitude;
             }
-            break;
-        case DESCENT:
-            if (prevAltitude - altitude < 4){
-                phase = LANDED;
-                event = TOUCHDOWN;
-                prevAltitude = altitude;
+            if (yAcceleration > ACCELERATION_THRESHOLD){
+                event = BURNOUT;
+                burnoutCounter++;
             }
             break;
-
+        }
+        case DESCENT:{
+            if (prevAltitude - altitude < 4){
+                counter++;
+                prevAltitude = altitude;
+            }
+            else{
+                counter = 0;
+                prevAltitude = altitude;
+            }
+            if (counter > 10000){       // 10 seconds if dt is 0.001
+                phase = LANDED;
+                event = TOUCHDOWN;
+            }
+            break;
+        }
+        case LANDED:
+            break;
     }
+    auto eventMsg = new EventDetectorMsg();
+    eventMsg->event = event;
+    eventMsg->phase = phase;
+    publish(eventMsg);
     return 0;
 }
 
@@ -49,5 +70,9 @@ void EventDetector::on_message(SystemMessage *msg) {
         stateEstimatorMsg = (StateEstimatorMsg *) msg;
         altitude = stateEstimatorMsg->estimatedAltitude;
         velocity = stateEstimatorMsg->estimatedVelocity;
+    }
+    if (msg->get_type() == AccelerometerDataMsg_t){
+        accelerometerDataMsg = (AccelerometerDataMsg *) msg;
+        yAcceleration = accelerometerDataMsg->acceleration[1];
     }
 }

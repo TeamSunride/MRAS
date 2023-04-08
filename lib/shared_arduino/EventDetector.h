@@ -11,6 +11,7 @@
 #include "Arduino.h"
 #include "system_messages/EventDetectorMsg.h"
 #include "system_messages/AccelerometerDataMsg.h"
+#include "cmath"
 
 #define THRESHOLD_VELOCITY 15 //ms^-1
 #define ACCELERATION_THRESHOLD 15 //ms^-2
@@ -60,6 +61,9 @@ private:
     uint16_t counter = 0;
     AccelerometerDataMsg *accelerometerDataMsg;
     float yAcceleration;
+
+    uint32_t settleTimer = 0;
+    bool settleTimerOn = false;
 };
 
 

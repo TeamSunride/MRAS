@@ -44,17 +44,18 @@ int8_t EventDetector::loop() {
             break;
         }
         case DESCENT:{
-            if (abs(prevAltitude - altitude) < 10){
-                counter++;
-            }
-            else{
-                counter = 0;
+            if (abs(altitude - prevAltitude) > 5){
                 prevAltitude = altitude;
+                settleTimerOn = false;
+            } else if (!settleTimerOn){
+                settleTimerOn = true;
+                settleTimer = millis();
             }
-            if (counter > 2000){       // 2 seconds if dt is 0.001
+            if (settleTimerOn && (millis() - settleTimer > 5000)){
                 phase = LANDED;
                 event = TOUCHDOWN;
             }
+
             break;
         }
         case LANDED:

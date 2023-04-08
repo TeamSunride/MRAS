@@ -11,7 +11,7 @@
 #include "Arduino.h"
 #include "system_messages/EventDetectorMsg.h"
 #include "system_messages/AccelerometerDataMsg.h"
-#include "cmath"
+
 
 #define THRESHOLD_VELOCITY 15 //ms^-1
 #define ACCELERATION_THRESHOLD 15 //ms^-2
@@ -64,6 +64,8 @@ private:
 
     uint32_t settleTimer = 0;
     bool settleTimerOn = false;
+
+    static float absolute(float x);
 };
 
 

@@ -65,7 +65,6 @@ private:
     uint32_t settleTimer = 0;
     bool settleTimerOn = false;
 
-    static float absolute(float x);
 };
 
 

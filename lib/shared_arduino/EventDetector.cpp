@@ -45,7 +45,7 @@ int8_t EventDetector::loop() {
             break;
         }
         case DESCENT:{
-            if (absolute(altitude - prevAltitude) > 5){
+            if (abs(altitude - prevAltitude) > 5){
                 prevAltitude = altitude;
                 settleTimerOn = false;
             } else if (!settleTimerOn){
@@ -81,10 +81,3 @@ void EventDetector::on_message(SystemMessage *msg) {
     }
 }
 
-float EventDetector::absolute(float x) {
-    if (x < 0){
-        return -x;
-    } else {
-        return x;
-    }
-}

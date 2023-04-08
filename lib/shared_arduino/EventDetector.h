@@ -15,7 +15,7 @@
 
 #define THRESHOLD_VELOCITY 15 //ms^-1
 #define ACCELERATION_THRESHOLD 15 //ms^-2
-#define ESTIMATED_PEAK_ACCELERATION 80 //ms^-2
+#define ESTIMATED_PEAK_ACCELERATION 70 //ms^-2
 
 enum phase_t {
     SETUP,      // 0

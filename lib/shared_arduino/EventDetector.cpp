@@ -34,6 +34,7 @@ int8_t EventDetector::loop() {
             if (yAcceleration < ACCELERATION_THRESHOLD && startBurnoutDetector){
                 event = BURNOUT;
                 burnoutCounter++;
+                startBurnoutDetector = false;
             }
             if (velocity < 0){
                 phase = DESCENT;

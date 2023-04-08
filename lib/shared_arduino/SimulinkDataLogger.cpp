@@ -12,6 +12,10 @@ int8_t SimulinkDataLogger::setup() {
 
 int8_t SimulinkDataLogger::loop() {
 
+//    if (!receivedStateEstimatorMsg || !receivedEventDetectorMsg) {
+//        return 0;
+//    }  // does't work for some reason
+
     while (!Serial.available()) {} // IMPORTANT: else it breaks the HIL
     pressure.number = getFloat();
     yAccel.number = getFloat();
@@ -41,7 +45,7 @@ int8_t SimulinkDataLogger::loop() {
     }
     Serial.print("\n");
     delay(50);
-    return 0;
+    return 1;
 }
 
 void SimulinkDataLogger::on_message(SystemMessage *msg) {
@@ -53,12 +57,16 @@ void SimulinkDataLogger::on_message(SystemMessage *msg) {
 
             position.number = state_msg->estimatedAltitude;
             velocity.number = state_msg->estimatedVelocity;
+
+            receivedStateEstimatorMsg = true;
             break;
         }
         case EventDetectorMsg_t: {
             auto event_msg = (EventDetectorMsg *) msg;
             phase.number = (float) event_msg->phase;
             event.number = (float) event_msg->event;
+
+            receivedEventDetectorMsg = true;
             break;
         }
 

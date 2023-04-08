@@ -12,23 +12,23 @@
 #include "system_messages/EventDetectorMsg.h"
 #include "system_messages/AccelerometerDataMsg.h"
 
-#define THRESHOLD_VELOCITY 25 //ms^-1
-#define ACCELERATION_THRESHOLD 5 //ms^-2
-
+#define THRESHOLD_VELOCITY 15 //ms^-1
+#define ACCELERATION_THRESHOLD 15 //ms^-2
+#define ESTIMATED_PEAK_ACCELERATION 80 //ms^-2
 
 enum phase_t {
-    SETUP,
-    PRELAUNCH,
-    ASCENT,
-    DESCENT,
-    LANDED
+    SETUP,      // 0
+    PRELAUNCH,  // 1
+    ASCENT,     // 2
+    DESCENT,    // 3
+    LANDED      // 4
 };
 enum event_t {
-    NONE,
-    LAUNCH,
-    BURNOUT,
-    APOGEE,
-    TOUCHDOWN
+    NONE,       // 0
+    LAUNCH,     // 1
+    BURNOUT,    // 2
+    APOGEE,     // 3
+    TOUCHDOWN   // 4
 };
 
 /**
@@ -53,6 +53,7 @@ private:
     phase_t phase;
     event_t event;
 
+    bool startBurnoutDetector = false;
     uint8_t burnoutCounter = 0;
 
     uint32_t setupTime = 0;

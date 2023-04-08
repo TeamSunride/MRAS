@@ -54,6 +54,7 @@ void setup() {
     altitudeEstimator.add_subscriber(&sim_logger);
     sim_logger.add_subscriber(&altitudeEstimator);
     eventDetector.add_subscriber(&sim_logger);
+    altitudeEstimator.add_subscriber(&eventDetector);
 
     mras->setup();
 }

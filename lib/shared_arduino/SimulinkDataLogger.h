@@ -34,6 +34,10 @@ private:
     FLOATUNION_t yAccel;
     FLOATUNION_t phase;
     FLOATUNION_t event;
+
+    bool receivedStateEstimatorMsg = false;
+    bool receivedEventDetectorMsg = false;
+    bool start = false;
 };
 
 

@@ -28,28 +28,30 @@ int8_t EventDetector::loop() {
             break;
         }
         case ASCENT:{
+            if (yAcceleration > ESTIMATED_PEAK_ACCELERATION && !startBurnoutDetector){
+                startBurnoutDetector = true;
+            }
+            if (yAcceleration < ACCELERATION_THRESHOLD && startBurnoutDetector){
+                event = BURNOUT;
+                burnoutCounter++;
+            }
             if (velocity < 0){
                 phase = DESCENT;
                 event = APOGEE;
                 apogee = altitude;
                 prevAltitude = altitude;
             }
-            if (yAcceleration > ACCELERATION_THRESHOLD){
-                event = BURNOUT;
-                burnoutCounter++;
-            }
             break;
         }
         case DESCENT:{
-            if (prevAltitude - altitude < 4){
+            if (abs(prevAltitude - altitude) < 10){
                 counter++;
-                prevAltitude = altitude;
             }
             else{
                 counter = 0;
                 prevAltitude = altitude;
             }
-            if (counter > 10000){       // 10 seconds if dt is 0.001
+            if (counter > 2000){       // 2 seconds if dt is 0.001
                 phase = LANDED;
                 event = TOUCHDOWN;
             }

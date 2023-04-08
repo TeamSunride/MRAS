@@ -21,7 +21,7 @@ int8_t StateEstimator::loop() {
     altitude = Filter->get_altitude();
     velocity = Filter->get_velocity();
 
-
+/*
     switch (phase) {
         case 0:
             if (velocity > THRESHOLD_VELOCITY) {
@@ -36,18 +36,15 @@ int8_t StateEstimator::loop() {
                 phase = 0; // LANDING
             }
     }
-
+*/
     auto stateMsg = new StateEstimatorMsg();
 
     stateMsg->estimatedAltitude = altitude;
     stateMsg->estimatedVelocity = velocity;
-    stateMsg->phase = phase;
+    //stateMsg->phase = phase;
 
     publish(stateMsg);
 
-    if (millis() - last_log > 3000) {
-        prevAltitude = altitude;     // REFRESH RATE OF 1 SEC
-    }
 
     currentMillis = millis();
     return 0;

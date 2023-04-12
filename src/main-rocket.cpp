@@ -36,22 +36,24 @@ RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 RocketSDLogger sd_logger = RocketSDLogger(8, BUILTIN_SDCARD);
 
 void setup() {
+    delay(2000);
     mras->set_logger(&logger);
 //    mras->add_subsystem(&sd_logger);
-    //mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&data_logger);
 //    mras->add_subsystem(&magnetometer);
 //    mras->add_subsystem(&imu);
 //    mras->add_subsystem(&barometer);
 //    mras->add_subsystem(&accelerometer);
-//    mras->add_subsystem(&gnss);
+    mras->add_subsystem(&gnss);
     mras->add_subsystem(&telemetry_system);
+    telemetry_system.add_subscriber(&gnss);
 
 
 //    imu.add_subscriber(&data_logger);
 //    magnetometer.add_subscriber(&data_logger);
 //    barometer.add_subscriber(&data_logger);
 //    accelerometer.add_subscriber(&data_logger);
-//    gnss.add_subscriber(&data_logger);
+    gnss.add_subscriber(&data_logger);
 
 //     setup SD logger subscriptions
 //    logger.add_subscriber(&sd_logger);

@@ -53,7 +53,7 @@
 #define RADIO_SYNC_WORD                     0x22
 
 // output power in dBm
-#define RADIO_POWER                         (4) // -18 to 13 dBm on SX128x
+#define RADIO_POWER                         (13) // -18 to 13 dBm on SX128x
 
 // LoRa preamble length in symbols. Allowed values range from 1 to 65535.
 #define RADIO_PREAMBLE_LENGTH               12

@@ -5,6 +5,7 @@
 #include "Sensor_ZOEM8Q.h"
 #include "timestamp.h"
 #include "MRAS_Config.h"
+#include <chrono>
 
 int8_t Sensor_ZOEM8Q::setup() {
     log("Startup...");
@@ -19,7 +20,7 @@ int8_t Sensor_ZOEM8Q::setup() {
     gnss->setDynamicModel(DYN_MODEL_AIRBORNE4g);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
-    int onlineAssistStatus = 0;
+    int8_t onlineAssistStatus = 0;
     if (USE_ASSISTNOW) {
         // perform the online assist process - uses mgaonline.ubx file from SD card
         onlineAssistStatus = performOnlineAssist();
@@ -47,13 +48,14 @@ int8_t Sensor_ZOEM8Q::loop() {
         gnss_msg->fix_type = gnss->getFixType(); /// 1: no fix, 2: 2D fix, 3: 3D fix 4: GNSS + dead reckoning combined, 5: time only fix
         gnss_msg->SIV = gnss->getSIV();
 
-        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
-
+//        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
         publish(gnss_msg);
     }
 
     return 0; // success
 }
+
+
 
 uint16_t Sensor_ZOEM8Q::GPSweek() {
     // 315964800 is the unix timestamp (s) of midnight 6th Jan 1980 - the start of GPS time

@@ -8,6 +8,7 @@
 #define ENABLE_BUZZER                       true
 #define ENABLE_BEEPING                      false
 #define USE_ASSISTNOW                       false
+#define GPS_TEENSY_RTC_SYNC                 true
 
 /**
  * ================================

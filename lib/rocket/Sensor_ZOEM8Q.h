@@ -1,5 +1,5 @@
 //
-// Created by robos on 23/12/2022.
+// Created by robosam2003 on 23/12/2022.
 //
 
 #ifndef MRAS_SENSOR_ZOEM8Q_H
@@ -35,6 +35,7 @@ public:
      * @param id The ID of the Subsystem
      * @param pipe The I2C bus to use
      * @param freq The frequency to use for the I2C bus
+     * @param navigationRate The rate at which the module will output navigation data
      */
     Sensor_ZOEM8Q(uint8_t id, TwoWire& pipe, uint32_t freq, uint32_t navigationRate) : Subsystem(id) {
         gnss = new SFE_UBLOX_GNSS();

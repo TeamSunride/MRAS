@@ -32,7 +32,9 @@ Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_
                                         MRAS_MS5607_I2C_FREQUENCY);
 Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_ADXL375_SPI_BUS,
                                               MRAS_ADXL375_SPI_FREQUENCY);
-Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
+Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY, MRAS_GNSS_NAVIGATION_RATE);
+
+
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 

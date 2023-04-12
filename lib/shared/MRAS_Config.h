@@ -7,6 +7,7 @@
 
 #define ENABLE_BUZZER                       true
 #define ENABLE_BEEPING                      false
+#define USE_ASSISTNOW                       false
 
 /**
  * ================================
@@ -33,6 +34,7 @@
 
 #define MRAS_GNSS_I2C_BUS                   MRAS_MS5607_I2C_BUS
 #define MRAS_GNSS_I2C_FREQUENCY             MRAS_MS5607_I2C_FREQUENCY
+#define MRAS_GNSS_NAVIGATION_RATE           10
 
 #endif
 /**

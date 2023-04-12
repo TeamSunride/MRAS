@@ -4,6 +4,7 @@
 
 #include "Sensor_ZOEM8Q.h"
 #include "timestamp.h"
+#include "MRAS_Config.h"
 
 int8_t Sensor_ZOEM8Q::setup() {
     log("Startup...");
@@ -14,16 +15,19 @@ int8_t Sensor_ZOEM8Q::setup() {
         log("GNSS not detected at default I2C address. Please check wiring.");
         return (int8_t) 1; // failure;
     }
-    gnss->setNavigationFrequency(5);
+    gnss->setNavigationFrequency(_navigationRate);
     gnss->setDynamicModel(DYN_MODEL_AIRBORNE4g);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
-    // perform the online assist process - uses mgaonline.ubx file from SD card
-    int8_t onlineAssistStatus = performOnlineAssist();
-    if (onlineAssistStatus == 0) {
-        log("AssistNow loading successful");
-    } else {
-        log("AssistNow loading failed");
+    int onlineAssistStatus = 0;
+    if (USE_ASSISTNOW) {
+        // perform the online assist process - uses mgaonline.ubx file from SD card
+        onlineAssistStatus = performOnlineAssist();
+        if (onlineAssistStatus == 0) {
+            log("AssistNow loading successful");
+        } else {
+            log("AssistNow loading failed");
+        }
     }
 
     log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());

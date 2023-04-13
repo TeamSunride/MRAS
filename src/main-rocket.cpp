@@ -48,10 +48,10 @@ ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
 void setup() {
     setSyncProvider(getTeensy3Time);
 
-//    mras->set_logger(&logger);
+    mras->set_logger(&logger);
 //    mras->set_buzzer(&buzzer);
 //    mras->add_subsystem(&sd_logger);
-//    mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&data_logger);
 //    mras->add_subsystem(&magnetometer);
 //    mras->add_subsystem(&imu);
     mras->add_subsystem(&gnss);

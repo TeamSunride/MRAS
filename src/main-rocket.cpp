@@ -18,6 +18,7 @@
 #include "RocketSDLogger.h"
 #include "ArduinoBuzzer.h"
 #include "StateEstimator.h"
+#include "EventDetector.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -42,6 +43,7 @@ StateEstimator altitudeEstimator = StateEstimator(9, 0.001);
 
 ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
 
+EventDetector eventDetector = EventDetector(11);
 void setup() {
     setSyncProvider(getTeensy3Time);
 
@@ -65,7 +67,10 @@ void setup() {
     gnss.add_subscriber(&data_logger);
     // altitudeEstimator.add_subscriber(&data_logger);
     imu.add_subscriber(&altitudeEstimator);
+    imu.add_subscriber(&eventDetector);
     barometer.add_subscriber(&altitudeEstimator);
+    altitudeEstimator.add_subscriber(&eventDetector);
+    eventDetector.add_subscriber(&data_logger);
 
 //     setup SD logger subscriptions
     logger.add_subscriber(&sd_logger);

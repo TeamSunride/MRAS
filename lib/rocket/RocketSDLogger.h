@@ -9,6 +9,7 @@
 #include "SDLogger.h"
 #include "system_messages/TextLogMsg.h"
 #include "Vector.h"
+#include <string>
 
 /**
  * @brief Data logger for the rocket, uses the Teensy SD card to log CSV data and text logs to the same file.
@@ -44,6 +45,8 @@ class RocketSDLogger : public SDLogger {
         uint8_t SIV = 0;
         float altitude_estimate = 0;
         float velocity_estimate = 0;
+        char last_event[16] = "INIT";
+        char phase[16] = "INIT";
     } data;
 };
 

@@ -58,6 +58,7 @@ void setup() {
     mras->add_subsystem(&accelerometer);
     mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
+    mras->add_subsystem(&eventDetector);
 
 
     // imu.add_subscriber(&data_logger);
@@ -80,6 +81,7 @@ void setup() {
     accelerometer.add_subscriber(&sd_logger);
     gnss.add_subscriber(&sd_logger);
     altitudeEstimator.add_subscriber(&sd_logger);
+    eventDetector.add_subscriber(&sd_logger);
 
     gnss.add_subscriber(&telemetry_system);
     imu.add_subscriber(&telemetry_system);

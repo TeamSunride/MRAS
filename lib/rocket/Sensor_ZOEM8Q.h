@@ -7,7 +7,7 @@
 
 
 #include "Subsystem.h"
-#include "SparkFun_u-blox_GNSS_Arduino_Library.h"
+#include "SparkFun_u-blox_GNSS_v3.h"
 #include <Arduino.h>
 #include <Wire.h>
 #include "SD.h"

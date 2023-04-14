@@ -38,6 +38,7 @@ int8_t Sensor_UBLOX_M10S::setup() {
 
 
 int8_t Sensor_UBLOX_M10S::loop() {
+    log("UBLOX looping");
     if (gnss->getPVT() &&  !gnss->getInvalidLlh() ) {
         auto *gnss_msg = new GNSSDataMsg(GNSSDataMsg_t);
         gnss_msg->latitude = (float) (gnss->getLatitude() * (10e-8)); // degrees
@@ -49,7 +50,7 @@ int8_t Sensor_UBLOX_M10S::loop() {
         gnss_msg->fix_type = gnss->getFixType(); /// 1: no fix, 2: 2D fix, 3: 3D fix 4: GNSS + dead reckoning combined, 5: time only fix
         gnss_msg->SIV = gnss->getSIV();
 
-//        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
+        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
         // add in the timestamp at some point
 
         publish(gnss_msg);

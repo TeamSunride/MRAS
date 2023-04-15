@@ -87,7 +87,7 @@ void setup() {
     imu.add_subscriber(&telemetry_system);
     barometer.add_subscriber(&telemetry_system);
     altitudeEstimator.add_subscriber(&telemetry_system);
-
+    eventDetector.add_subscriber(&telemetry_system);
 
     mras->setup();
 }

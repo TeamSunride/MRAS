@@ -8,6 +8,7 @@
 #include "system_messages/AccelerometerDataMsg.h"
 #include "system_messages/BarometerDataMsg.h"
 #include "system_messages/StateEstimatorMsg.h"
+#include "system_messages/EventDetectorMsg.h"
 
 int8_t RocketTelemetrySystem::loop() {
     Module *mod = radio.getMod();
@@ -58,6 +59,8 @@ TelemetryMessageQueueMsg *RocketTelemetrySystem::get_default_message() {
     message->pressure = pressure;
     message->temperature = temperature;
     message->altitude_estimate = altitude_estimate;
+    message->event = event;
+    message->phase = phase;
 
     auto *queue_message = new TelemetryMessageQueueMsg();
     queue_message->telemetry_message = message;
@@ -84,6 +87,10 @@ void RocketTelemetrySystem::on_message(SystemMessage *msg) {
             break;
         case StateEstimatorMsg_t:
             altitude_estimate = ((StateEstimatorMsg *) msg)->estimatedAltitude;
+            break;
+        case EventDetectorMsg_t:
+            event = ((EventDetectorMsg *) msg)->event;
+            phase = ((EventDetectorMsg *) msg)->phase;
             break;
     }
 }

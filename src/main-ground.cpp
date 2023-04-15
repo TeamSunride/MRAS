@@ -31,9 +31,9 @@ void setup() {
     mras->set_buzzer(&buzzer);
     mras->add_subsystem(&sd_logger);
     mras->add_subsystem(&telemetry_system);
-    // mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&data_logger);
 
-    // telemetry_system.add_subscriber(&data_logger);
+    telemetry_system.add_subscriber(&data_logger);
     telemetry_system.add_subscriber(&sd_logger);
 
     logger.add_subscriber(&sd_logger);

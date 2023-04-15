@@ -35,6 +35,8 @@ private:
     float pressure = 0;
     float temperature = 0;
     float altitude_estimate = 0;
+    int event = 0;
+    int phase = 0;
 };
 
 

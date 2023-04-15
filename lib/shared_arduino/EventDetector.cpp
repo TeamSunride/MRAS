@@ -45,7 +45,7 @@ int8_t EventDetector::loop() {
             break;
         }
         case DESCENT:{
-            if (std::abs(altitude - prevAltitude) > 5){
+            if (abs(altitude - prevAltitude) > 5){
                 prevAltitude = altitude;
                 settleTimerOn = false;
             } else if (!settleTimerOn){

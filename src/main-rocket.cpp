@@ -63,7 +63,7 @@ void setup() {
 
     // imu.add_subscriber(&data_logger);
     // magnetometer.add_subscriber(&data_logger);
-    barometer.add_subscriber(&data_logger);
+    //barometer.add_subscriber(&data_logger);
     // accelerometer.add_subscriber(&data_logger);
     gnss.add_subscriber(&data_logger);
     // altitudeEstimator.add_subscriber(&data_logger);
@@ -71,7 +71,6 @@ void setup() {
     imu.add_subscriber(&eventDetector);
     barometer.add_subscriber(&altitudeEstimator);
     altitudeEstimator.add_subscriber(&eventDetector);
-    eventDetector.add_subscriber(&data_logger);
 
 //     setup SD logger subscriptions
     logger.add_subscriber(&sd_logger);
@@ -81,7 +80,7 @@ void setup() {
     accelerometer.add_subscriber(&sd_logger);
     gnss.add_subscriber(&sd_logger);
     altitudeEstimator.add_subscriber(&sd_logger);
-    eventDetector.add_subscriber(&sd_logger);
+
 
     gnss.add_subscriber(&telemetry_system);
     imu.add_subscriber(&telemetry_system);

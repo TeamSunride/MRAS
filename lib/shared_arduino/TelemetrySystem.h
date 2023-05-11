@@ -13,6 +13,9 @@
 #include "system_messages/TelemetryMessageQueueMsg.h"
 #include "system_messages/TelemetryMessageReceivedMsg.h"
 
+#define RADIOLIB_DEBUG
+
+
 /**
  * @brief A subsystem for sending and receiving telemetry data using the LoRa radio
  *
@@ -34,6 +37,13 @@ protected:
                               RADIO_RESET_PIN,
                               RADIO_BUSY_PIN,
                               RADIO_SPI_BUS);
+
+
+//    SX1280 radio = new Module(RADIO_CHIP_SELECT_PIN,
+//                              RADIO_DIO1_PIN,
+//                              RADIO_RESET_PIN,
+//                              RADIO_BUSY_PIN,
+//                              RADIO_SPI_BUS);
 
     enum TelemetrySystemState {
         IDLE,

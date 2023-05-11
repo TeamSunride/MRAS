@@ -32,7 +32,7 @@ Sensor_LIS3MDL magnetometer = Sensor_LIS3MDL(3, MRAS_LIS3MDL_CHIP_SELECT, MRAS_L
 Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_I2C_BUS, MRAS_MS5607_I2C_FREQUENCY);
 Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_ADXL375_SPI_BUS,
                                               MRAS_ADXL375_SPI_FREQUENCY);
-Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_GNSS_I2C_BUS, MRAS_GNSS_I2C_FREQUENCY);
+Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_MAX_M10S_GNSS_I2C_BUS, MRAS_MAX_M10S_GNSS_I2C_FREQUENCY);
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 StateEstimator altitudeEstimator = StateEstimator(8, 0.05);

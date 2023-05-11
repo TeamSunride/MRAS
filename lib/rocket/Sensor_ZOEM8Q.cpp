@@ -19,12 +19,12 @@ int8_t Sensor_ZOEM8Q::setup() {
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
     // perform the online assist process - uses mgaonline.ubx file from SD card
-    int8_t onlineAssistStatus = performOnlineAssist();
-    if (onlineAssistStatus == 0) {
-        log("AssistNow loading successful");
-    } else {
-        log("AssistNow loading failed");
-    }
+    int8_t onlineAssistStatus = 0; //= performOnlineAssist();
+//    if (onlineAssistStatus == 0) {
+//        log("AssistNow loading successful");
+//    } else {
+//        log("AssistNow loading failed");
+//    }
 
     log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
 
@@ -32,7 +32,7 @@ int8_t Sensor_ZOEM8Q::setup() {
 }
 
 int8_t Sensor_ZOEM8Q::loop() {
-    if (gnss->getPVT() &&  !gnss->getInvalidLlh() ) {
+    if (gnss->getPVT()) {// &&  !gnss->getInvalidLlh() ) {
         auto *gnss_msg = new GNSSDataMsg(GNSSDataMsg_t);
         gnss_msg->latitude = (float) (gnss->getLatitude() * (10e-8)); // degrees
         gnss_msg->longitude = (float) (gnss->getLongitude() * (10e-8)); // degrees

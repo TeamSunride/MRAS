@@ -2,11 +2,11 @@
 // Created by robos on 12/04/2023.
 //
 
-#include "Sensor_UBLOX_M10S.h"
+#include "Sensor_MAX_M10S.h"
 #include "timestamp.h"
 #include "MRAS_Config.h"
 
-int8_t Sensor_UBLOX_M10S::setup() {
+int8_t Sensor_MAX_M10S::setup() {
     log("Startup...");
     _pipe->begin();
     _pipe->setClock(_freq);
@@ -37,9 +37,8 @@ int8_t Sensor_UBLOX_M10S::setup() {
 }
 
 
-int8_t Sensor_UBLOX_M10S::loop() {
-    log("UBLOX looping");
-    if (gnss->getPVT() &&  !gnss->getInvalidLlh() ) {
+int8_t Sensor_MAX_M10S::loop() {
+    if (gnss->getPVT()) { //&&  !gnss->getInvalidLlh() ) {
         auto *gnss_msg = new GNSSDataMsg(GNSSDataMsg_t);
         gnss_msg->latitude = (float) (gnss->getLatitude() * (10e-8)); // degrees
         gnss_msg->longitude = (float) (gnss->getLongitude() * (10e-8)); // degrees
@@ -60,7 +59,7 @@ int8_t Sensor_UBLOX_M10S::loop() {
 }
 
 
-uint16_t Sensor_UBLOX_M10S::GPSweek() {
+uint16_t Sensor_MAX_M10S::GPSweek() {
     // 315964800 is the unix timestamp (s) of midnight 6th Jan 1980 - the start of GPS time
     // There has been 18 leap seconds since this date (unix time does not account for leap seconds)
     // not sure when the next leap second is due
@@ -68,7 +67,7 @@ uint16_t Sensor_UBLOX_M10S::GPSweek() {
     return (uint16_t) (diff / SECS_PER_WEEK);
 }
 
-uint32_t Sensor_UBLOX_M10S::actualTimeOfWeekms() {
+uint32_t Sensor_MAX_M10S::actualTimeOfWeekms() {
     // The time of week is the number of seconds since Sunday midnight (00:00:00)
 
     // 315964800000 is the unix timestamp (ms) of 6th Jan 1980 - the start of GPS time |
@@ -78,7 +77,7 @@ uint32_t Sensor_UBLOX_M10S::actualTimeOfWeekms() {
     return (uint32_t) ((diff) % (SECS_PER_WEEK*1000));
 }
 
-int8_t Sensor_UBLOX_M10S::performOnlineAssist() {
+int8_t Sensor_MAX_M10S::performOnlineAssist() {
     /** --------- AIDING SEQUENCE--------- Datasheet section 13.5 (pg. 34)
      *   --- Note that we are altering the AID_INI part of the message and leaving the rest as is. ---
      • Power-up the GPS receiver

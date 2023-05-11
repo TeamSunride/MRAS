@@ -15,7 +15,7 @@
 
 #include "system_messages/GNSSDataMsg.h"
 
-class Sensor_UBLOX_M10S : public Subsystem {
+class Sensor_MAX_M10S : public Subsystem {
 private:
     SFE_UBLOX_GNSS *gnss{};
     TwoWire *_pipe;
@@ -30,7 +30,7 @@ public:
      * @param freq The frequency to use for the I2C bus
      * @param navigationRate The rate at which the module will output navigation data
      */
-    Sensor_UBLOX_M10S(uint8_t id, TwoWire& pipe, uint32_t freq, uint32_t navigationRate) : Subsystem(id) {
+    Sensor_MAX_M10S(uint8_t id, TwoWire& pipe, uint32_t freq, uint32_t navigationRate) : Subsystem(id) {
             gnss = new SFE_UBLOX_GNSS();
             _pipe = &pipe;
             _freq = freq;
@@ -40,7 +40,7 @@ public:
 
 
     // Destructor
-    ~Sensor_UBLOX_M10S() {
+    ~Sensor_MAX_M10S() {
         delete gnss;
     }
 
@@ -55,7 +55,7 @@ public:
     int8_t performOnlineAssist();
 
     SUBSYSTEM_NO_MESSAGE_HANDLER
-    SUBSYSTEM_NAME("Sensor_UBLOX_M10S");
+    SUBSYSTEM_NAME("MAXM10S");
 
 
 };

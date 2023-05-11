@@ -8,6 +8,8 @@
 #define ENABLE_BUZZER                       true
 #define ENABLE_BEEPING                      false
 
+#define USE_ASSISTNOW                       false
+
 /**
  * ================================
  * SENSORS

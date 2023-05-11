@@ -13,7 +13,7 @@
 #include "Sensor_LIS3MDL.h"
 #include "Sensor_MS5607.h"
 #include "Sensor_ADXL375.h"
-#include "Sensor_ZOEM8Q.h"
+#include "Sensor_MAX_M10S.h"
 #include "RocketTelemetrySystem.h"
 #include "RocketSDLogger.h"
 #include "ArduinoBuzzer.h"
@@ -32,7 +32,7 @@ Sensor_MS5607 barometer = Sensor_MS5607(4, MRAS_MS5607_I2C_ADDRESS, MRAS_MS5607_
                                         MRAS_MS5607_I2C_FREQUENCY);
 Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_ADXL375_SPI_BUS,
                                               MRAS_ADXL375_SPI_FREQUENCY);
-Sensor_ZOEM8Q gnss = Sensor_ZOEM8Q(6, MRAS_MAX_M10S_GNSS_I2C_BUS, MRAS_MAX_M10S_GNSS_I2C_FREQUENCY);
+Sensor_MAX_M10S MAXM10s = Sensor_MAX_M10S(6, MRAS_MAX_M10S_GNSS_I2C_BUS, MRAS_MAX_M10S_GNSS_I2C_FREQUENCY, 40);
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(7);
 
@@ -51,7 +51,7 @@ void setup() {
     mras->add_subsystem(&data_logger);
 //    mras->add_subsystem(&magnetometer);
 //    mras->add_subsystem(&imu);
-    mras->add_subsystem(&gnss);
+    mras->add_subsystem(&MAXM10s);
 //    mras->add_subsystem(&barometer);
 //    mras->add_subsystem(&accelerometer);
     mras->add_subsystem(&telemetry_system);
@@ -63,7 +63,7 @@ void setup() {
 //    barometer.add_subscriber(&data_logger);
     telemetry_system.add_subscriber(&data_logger);
 //    accelerometer.add_subscriber(&data_logger);
-    gnss.add_subscriber(&data_logger);
+    MAXM10s.add_subscriber(&data_logger);
 //    altitudeEstimator.add_subscriber(&data_logger);
 //    imu.add_subscriber(&altitudeEstimator);
 //    barometer.add_subscriber(&altitudeEstimator);
@@ -74,10 +74,10 @@ void setup() {
 //    magnetometer.add_subscriber(&sd_logger);
 //    barometer.add_subscriber(&sd_logger);
 //    accelerometer.add_subscriber(&sd_logger);
-    gnss.add_subscriber(&sd_logger);
+    MAXM10s.add_subscriber(&sd_logger);
 //    altitudeEstimator.add_subscriber(&sd_logger);
 
-    gnss.add_subscriber(&telemetry_system);
+    MAXM10s.add_subscriber(&telemetry_system);
 //    imu.add_subscriber(&telemetry_system);
 //    barometer.add_subscriber(&telemetry_system);
 //    altitudeEstimator.add_subscriber(&telemetry_system);

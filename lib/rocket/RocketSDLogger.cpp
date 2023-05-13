@@ -77,6 +77,8 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
             data.latitude = new_msg->latitude;
             data.longitude = new_msg->longitude;
             data.altitude = new_msg->altitude;
+            data.fix_type = new_msg->fix_type;
+            data.SIV = new_msg->SIV;
             break;
         }
         case StateEstimatorMsg_t: {

@@ -75,13 +75,13 @@
  */
 
 // carrier frequency in MHz
-#define RADIO_FREQUENCY                     868.0
+#define RADIO_FREQUENCY                     869.525 // centre of the 869.4-869.65MHz band with 250kHz bandwidth
 
 // bandwidth in kHz
-#define RADIO_BANDWIDTH                     7.8
+#define RADIO_BANDWIDTH                     250
 
 // LoRa spreading factor
-#define RADIO_SPREADING_FACTOR              12
+#define RADIO_SPREADING_FACTOR              8
 
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
 #define RADIO_CODING_RATE                   8
@@ -90,7 +90,7 @@
 #define RADIO_SYNC_WORD                     0x22
 
 // output power in dBm - up to 22dbm for 868/915,
-#define RADIO_POWER                         14
+#define RADIO_POWER                         22
 
 // LoRa preamble length in symbols. Allowed values range from 1 to 65535.
 #define RADIO_PREAMBLE_LENGTH               8

@@ -11,9 +11,12 @@ int8_t Sensor_MAX_M10S::setup() {
     _pipe->begin();
     _pipe->setClock(_freq);
 
-    if (!gnss->begin(*_pipe)) { // deviceAddress = 0x42, maxWait = defaultMaxWait, assumeSuccess = false
-        log("GNSS not detected at default I2C address. Please check wiring.");
-        return (int8_t) 1; // failure;
+
+    for (int i=0; i<5; i++) {
+        if (!gnss->begin(*_pipe)) { // deviceAddress = 0x42, maxWait = defaultMaxWait, assumeSuccess = false
+            log("GNSS not detected at default I2C address. Retrying ... ");
+            delay(100);
+        }
     }
 
     gnss->setI2COutput(COM_TYPE_UBX); // Set the I2C port to output UBX only (turn off NMEA noise)
@@ -49,7 +52,7 @@ int8_t Sensor_MAX_M10S::loop() {
         gnss_msg->fix_type = gnss->getFixType(); /// 1: no fix, 2: 2D fix, 3: 3D fix 4: GNSS + dead reckoning combined, 5: time only fix
         gnss_msg->SIV = gnss->getSIV();
 
-        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
+//        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
         // add in the timestamp at some point
 
         publish(gnss_msg);

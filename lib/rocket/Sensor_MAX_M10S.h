@@ -16,11 +16,12 @@
 #include "system_messages/GNSSDataMsg.h"
 
 class Sensor_MAX_M10S : public Subsystem {
-private:
+protected:
     SFE_UBLOX_GNSS *gnss{};
     TwoWire *_pipe;
     uint32_t _freq;
     uint8_t _navigationRate;
+    const char* _name;
 public:
     /**
      * @brief Construct a new Sensor_UBLOX_M10S object
@@ -30,12 +31,17 @@ public:
      * @param freq The frequency to use for the I2C bus
      * @param navigationRate The rate at which the module will output navigation data
      */
-    Sensor_MAX_M10S(uint8_t id, TwoWire& pipe, uint32_t freq, uint32_t navigationRate) : Subsystem(id) {
+    Sensor_MAX_M10S(uint8_t id, TwoWire& pipe, uint32_t freq, uint32_t navigationRate, const char* name) : Subsystem(id) {
             gnss = new SFE_UBLOX_GNSS();
             _pipe = &pipe;
             _freq = freq;
             (navigationRate < 1 ) ? _navigationRate = 1 : _navigationRate = navigationRate;
             (navigationRate > 18) ? _navigationRate = 18 : _navigationRate = navigationRate; // max navigation frequency is 18 for M8Q
+            _name = name;
+    }
+
+    const char* get_name() override {
+        return _name;
     }
 
 
@@ -55,7 +61,7 @@ public:
     int8_t performOnlineAssist();
 
     SUBSYSTEM_NO_MESSAGE_HANDLER
-    SUBSYSTEM_NAME("MAXM10S");
+//    SUBSYSTEM_NAME("MAXM10S");
 
 
 };

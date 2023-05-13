@@ -9,15 +9,20 @@ int8_t Sensor_MS5607::setup() {
     log("Starting I2C bus");
     i2c_bus->begin();
     i2c_bus->setClock(i2c_frequency);
-    log("Starting up MS5607 barometer");
-    bool result = read_PROM();
-    if (!result) {
-        log("Setup failure");
-        return 1;
-    } else {
-        log("Setup success");
-        return 0;
+
+    for (int i = 0; i < 5; i++) {
+        log("Starting up MS5607 barometer");
+        bool result = read_PROM();
+        if (result) {
+            log("Setup success");
+            return 0;
+        }
+        delay(500);
     }
+
+    log("Setup failure");
+
+    return 1;
 }
 
 int8_t Sensor_MS5607::loop() {

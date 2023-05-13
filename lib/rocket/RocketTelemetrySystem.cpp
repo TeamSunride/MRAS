@@ -95,7 +95,7 @@ void RocketTelemetrySystem::on_message(SystemMessage *msg) {
 
             break;
         case AccelerometerDataMsg_t:
-            y_acceleration = ((AccelerometerDataMsg *) msg)->acceleration[1];
+            x_acceleration = ((AccelerometerDataMsg *) msg)->acceleration[0];
             break;
         case BarometerDataMsg_t:
             pressure = ((BarometerDataMsg *) msg)->pressure;

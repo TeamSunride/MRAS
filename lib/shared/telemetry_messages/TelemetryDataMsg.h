@@ -26,7 +26,7 @@ struct TelemetryDataMsg : public TelemetryMessage {
     uint16_t altitude2 = 0;
     uint8_t fix_type2 = 0;
     uint8_t satellites2 = 0;
-    float y_acceleration = 0;
+    float x_acceleration = 0;
     float pressure = 0;
     float temperature = 0;
     float altitude_estimate = 0;
@@ -34,7 +34,7 @@ struct TelemetryDataMsg : public TelemetryMessage {
     void to_csv(char *buffer, size_t buffer_size) const {
         snprintf(buffer, buffer_size, "%f,%f,%d,%d,%d,%f,%f,%d,%d,%d,%f,%f,%f,%f", latitude1, longitude1, altitude1, fix_type1, satellites1,
                  latitude2, longitude2, altitude2, fix_type2, satellites2,
-                 y_acceleration, pressure, temperature, altitude_estimate);
+                 x_acceleration, pressure, temperature, altitude_estimate);
     }
 };
 

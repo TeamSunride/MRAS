@@ -5,10 +5,12 @@
 #include "Arduino.h"
 #include "ArduinoTextLogger.h"
 #include "MRAS_System.h"
+#include "MRAS_Config.h"
 #include "NativeDataLogger.h"
 #include "GroundTelemetrySystem.h"
 #include "GroundSDLogger.h"
 #include "ArduinoBuzzer.h"
+
 
 
 
@@ -23,15 +25,16 @@ ArduinoBuzzer buzzer = ArduinoBuzzer(10, A5);
 void setup() {
     while (!Serial) {}
 
-
+    pinMode(RADIO_CHIP_SELECT_PIN, OUTPUT); // pull radio CS pin high to ensure it is disabled
+    digitalWrite(RADIO_CHIP_SELECT_PIN, HIGH);
 
     mras->set_logger(&logger);
     mras->set_buzzer(&buzzer);
     mras->add_subsystem(&sd_logger);
     mras->add_subsystem(&telemetry_system);
-     mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&data_logger);
 
-     telemetry_system.add_subscriber(&data_logger);
+    telemetry_system.add_subscriber(&data_logger);
     telemetry_system.add_subscriber(&sd_logger);
 
     logger.add_subscriber(&sd_logger);

@@ -62,7 +62,7 @@ TelemetryMessageQueueMsg *RocketTelemetrySystem::get_default_message() {
     message->fix_type2 = fix_type2;
     message->satellites2 = satellites2;
 
-    message->y_acceleration = y_acceleration;
+    message->x_acceleration = x_acceleration;
     message->pressure = pressure;
     message->temperature = temperature;
     message->altitude_estimate = altitude_estimate;

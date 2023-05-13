@@ -10,6 +10,7 @@
 #include "system_messages/GNSSDataMsg.h"
 #include "system_messages/StateEstimatorMsg.h"
 #include "timestamp.h"
+#include "MRAS_Config.h"
 
 int8_t RocketSDLogger::loop() {
     if (!setup_complete) return -1;
@@ -22,13 +23,16 @@ int8_t RocketSDLogger::loop() {
                 ",%f,%f,%f"
                 ",%f,%f,%f"
                 ",%f,%f"
-                ",%f,%f,%f,%d,%d,%f,%f,%llu\n",
+                ",%f,%f,%f,%d,%d"
+                ",%f,%f,%f,%d,%d"
+                ",%f,%f,%llu\n",
                 data.accel[0], data.accel[1], data.accel[2],
                 data.accel_high_G[0], data.accel_high_G[1], data.accel_high_G[2],
                 data.gyro[0], data.gyro[1], data.gyro[2],
                 data.mag[0], data.mag[1], data.mag[2],
                 data.pressure, data.temperature,
-                data.latitude, data.longitude, data.altitude, data.fix_type, data.SIV,
+                data.latitude1, data.longitude1, data.altitude1, data.fix_type1, data.SIV1,
+                data.latitude2, data.longitude2, data.altitude2, data.fix_type2, data.SIV2,
                 data.altitude_estimate, data.velocity_estimate, getTimestampMillis());
         last_log_entry = millis();
     }
@@ -74,11 +78,21 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
 
         case GNSSDataMsg_t: {
             auto new_msg = (GNSSDataMsg*) msg;
-            data.latitude = new_msg->latitude;
-            data.longitude = new_msg->longitude;
-            data.altitude = new_msg->altitude;
-            data.fix_type = new_msg->fix_type;
-            data.SIV = new_msg->SIV;
+
+            if (new_msg->id == MAXM10s_ID) {
+                data.latitude1 = new_msg->latitude;
+                data.longitude1 = new_msg->longitude;
+                data.altitude1 = new_msg->altitude;
+                data.fix_type1 = new_msg->fix_type;
+                data.SIV1 = new_msg->SIV;
+            }
+            else if (new_msg->id == SAMM10Q_ID) {
+                data.latitude2 = new_msg->latitude;
+                data.longitude2 = new_msg->longitude;
+                data.altitude2 = new_msg->altitude;
+                data.fix_type2 = new_msg->fix_type;
+                data.SIV2 = new_msg->SIV;
+            }
             break;
         }
         case StateEstimatorMsg_t: {

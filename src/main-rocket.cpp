@@ -62,7 +62,7 @@ void setup() {
     mras->add_subsystem(&altitudeEstimator);
 
 
-    imu.add_subscriber(&data_logger);
+//    imu.add_subscriber(&data_logger);
 //    magnetometer.add_subscriber(&data_logger);
 //    barometer.add_subscriber(&data_logger);
 //    telemetry_system.add_subscriber(&data_logger);

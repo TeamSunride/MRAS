@@ -15,6 +15,8 @@
 struct GNSSDataMsg : public SystemMessage {
     explicit GNSSDataMsg(SystemMessageType gnss_msg_type) : SystemMessage(gnss_msg_type) {}
 
+    uint8_t id = 0;
+
     /**
      * @brief The latitude in decimal degrees
      */

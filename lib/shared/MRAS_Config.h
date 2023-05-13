@@ -10,6 +10,9 @@
 
 #define USE_ASSISTNOW                       false
 
+#define MAXM10s_ID                          6
+#define SAMM10Q_ID                          7
+
 /**
  * ================================
  * SENSORS

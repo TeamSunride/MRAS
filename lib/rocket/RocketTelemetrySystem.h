@@ -26,11 +26,16 @@ class RocketTelemetrySystem : public TelemetrySystem {
 
     void on_message(SystemMessage *msg) override;
 private:
-    float latitude = 0;
-    float longitude = 0;
-    uint16_t altitude = 0;
-    uint8_t fix_type = 0;
-    uint8_t satellites = 0;
+    float latitude1 = 0;
+    float longitude1 = 0;
+    uint16_t altitude1 = 0;
+    uint8_t fix_type1 = 0;
+    uint8_t satellites1 = 0;
+    float latitude2 = 0;
+    float longitude2 = 0;
+    uint16_t altitude2 = 0;
+    uint8_t fix_type2 = 0;
+    uint8_t satellites2 = 0;
     float y_acceleration = 0;
     float pressure = 0;
     float temperature = 0;

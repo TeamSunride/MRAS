@@ -43,6 +43,7 @@ int8_t Sensor_MAX_M10S::setup() {
 int8_t Sensor_MAX_M10S::loop() {
     if (gnss->getPVT()) { //&&  !gnss->getInvalidLlh() ) {
         auto *gnss_msg = new GNSSDataMsg(GNSSDataMsg_t);
+        gnss_msg->id = get_id();
         gnss_msg->latitude = (float) (gnss->getLatitude() * (10e-8)); // degrees
         gnss_msg->longitude = (float) (gnss->getLongitude() * (10e-8)); // degrees
 

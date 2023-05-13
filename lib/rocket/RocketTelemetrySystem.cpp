@@ -49,11 +49,19 @@ int8_t RocketTelemetrySystem::loop() {
  */
 TelemetryMessageQueueMsg *RocketTelemetrySystem::get_default_message() {
     auto *message = new TelemetryDataMsg();
-    message->altitude = altitude;
-    message->latitude = latitude;
-    message->longitude = longitude;
-    message->fix_type = fix_type;
-    message->satellites = satellites;
+
+    message->altitude1 = altitude1;
+    message->latitude1 = latitude1;
+    message->longitude1 = longitude1;
+    message->fix_type1 = fix_type1;
+    message->satellites1 = satellites1;
+
+    message->altitude2 = altitude2;
+    message->latitude2 = latitude2;
+    message->longitude2 = longitude2;
+    message->fix_type2 = fix_type2;
+    message->satellites2 = satellites2;
+
     message->y_acceleration = y_acceleration;
     message->pressure = pressure;
     message->temperature = temperature;
@@ -69,11 +77,22 @@ TelemetryMessageQueueMsg *RocketTelemetrySystem::get_default_message() {
 void RocketTelemetrySystem::on_message(SystemMessage *msg) {
     switch (msg->get_type()) {
         case GNSSDataMsg_t:
-            altitude = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
-            latitude = ((GNSSDataMsg *) msg)->latitude;
-            longitude = ((GNSSDataMsg *) msg)->longitude;
-            fix_type = ((GNSSDataMsg *) msg)->fix_type;
-            satellites = ((GNSSDataMsg *) msg)->SIV;
+            msg = (GNSSDataMsg *) msg;
+            if (((GNSSDataMsg *) msg)->id == MAXM10s_ID) {
+                altitude1 = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
+                latitude1 = ((GNSSDataMsg *) msg)->latitude;
+                longitude1 = ((GNSSDataMsg *) msg)->longitude;
+                fix_type1 = ((GNSSDataMsg *) msg)->fix_type;
+                satellites1 = ((GNSSDataMsg *) msg)->SIV;
+            }
+            else if (((GNSSDataMsg *) msg)->id == SAMM10Q_ID) {
+                altitude2 = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
+                latitude2 = ((GNSSDataMsg *) msg)->latitude;
+                longitude2 = ((GNSSDataMsg *) msg)->longitude;
+                fix_type2 = ((GNSSDataMsg *) msg)->fix_type;
+                satellites2 = ((GNSSDataMsg *) msg)->SIV;
+            }
+
             break;
         case AccelerometerDataMsg_t:
             y_acceleration = ((AccelerometerDataMsg *) msg)->acceleration[1];

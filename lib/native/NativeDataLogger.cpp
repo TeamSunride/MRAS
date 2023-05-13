@@ -10,6 +10,7 @@
 #include "system_messages/TelemetryMessageReceivedMsg.h"
 #include "system_messages/StateEstimatorMsg.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
+#include "MRAS_Config.h"
 
 int8_t NativeDataLogger::setup() {
     return 0;
@@ -52,7 +53,8 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
         }
         case GNSSDataMsg_t: {
             auto gnss_msg = (GNSSDataMsg *) msg;
-            log("GNSSDataMsg: Lat: %f  Lon: %f  Alt: %f  Fix: %d  SIV: %d",
+            log("GNSSDataMsg: %s Lat: %f  Lon: %f  Alt: %f  Fix: %d  SIV: %d",
+                (gnss_msg->id == MAXM10s_ID) ? "[MAXM10s]" : (gnss_msg->id == SAMM10Q_ID) ? "[SAMM10Q]" : "[Unknown]",
                 gnss_msg->latitude,
                 gnss_msg->longitude,
                 gnss_msg->altitude,

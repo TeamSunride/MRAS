@@ -59,7 +59,8 @@ void StateEstimator::on_message(SystemMessage *msg)
     } else if (msg->get_type() == AccelerometerDataMsg_t)
     {
         acceleration = (AccelerometerDataMsg *) msg;
-        yAcceleration = acceleration->acceleration[1];
+        // TODO: make this standard between MRAS boards
+        yAcceleration = acceleration->acceleration[0];
         receivedAcc = 1;
 
     }  

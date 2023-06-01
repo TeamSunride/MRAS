@@ -35,7 +35,9 @@ Sensor_ADXL375 accelerometer = Sensor_ADXL375(5, MRAS_ADXL375_CHIP_SELECT, MRAS_
                                               MRAS_ADXL375_SPI_FREQUENCY);
 Sensor_MAX_M10S MAXM10s = Sensor_MAX_M10S(MAXM10s_ID, MRAS_MAX_M10S_GNSS_I2C_BUS, MRAS_MAX_M10S_GNSS_I2C_FREQUENCY, 40, "MAX-M10S");
 
+#ifdef BUILD_ENV_kalpha
 Sensor_MAX_M10S SAMM10q = Sensor_MAX_M10S(SAMM10Q_ID, MRAS_SAM_M10Q_GNSS_I2C_BUS, MRAS_SAM_M10Q_GNSS_I2C_FREQUENCY, 40, "SAM-M10Q");
+#endif
 
 RocketTelemetrySystem telemetry_system = RocketTelemetrySystem(8);
 
@@ -55,12 +57,16 @@ void setup() {
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
     mras->add_subsystem(&MAXM10s);
-    mras->add_subsystem(&SAMM10q);
     mras->add_subsystem(&barometer);
     mras->add_subsystem(&accelerometer);
     mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
-
+#ifdef BUILD_ENV_kalpha
+    mras->add_subsystem(&SAMM10q);
+    SAMM10q.add_subscriber(&data_logger);
+    SAMM10q.add_subscriber(&sd_logger);
+    SAMM10q.add_subscriber(&telemetry_system);
+#endif
 
 //    imu.add_subscriber(&data_logger);
 //    magnetometer.add_subscriber(&data_logger);
@@ -68,7 +74,6 @@ void setup() {
 //    telemetry_system.add_subscriber(&data_logger);
 //    accelerometer.add_subscriber(&data_logger);
     MAXM10s.add_subscriber(&data_logger);
-    SAMM10q.add_subscriber(&data_logger);
 //    altitudeEstimator.add_subscriber(&data_logger);
     imu.add_subscriber(&altitudeEstimator);
     barometer.add_subscriber(&altitudeEstimator);
@@ -80,11 +85,8 @@ void setup() {
     barometer.add_subscriber(&sd_logger);
     accelerometer.add_subscriber(&sd_logger);
     MAXM10s.add_subscriber(&sd_logger);
-    SAMM10q.add_subscriber(&sd_logger);
     altitudeEstimator.add_subscriber(&sd_logger);
-
     MAXM10s.add_subscriber(&telemetry_system);
-    SAMM10q.add_subscriber(&telemetry_system);
     imu.add_subscriber(&telemetry_system);
     barometer.add_subscriber(&telemetry_system);
     altitudeEstimator.add_subscriber(&telemetry_system);

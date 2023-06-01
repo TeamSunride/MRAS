@@ -7,7 +7,6 @@
 #include "MRAS_System.h"
 #include "MRAS_Config.h"
 #include "ArduinoTextLogger.h"
-#include "NativeDataLogger.h"
 #include "Sensor_LSM6DSO32.h"
 #include "Arduino.h"
 #include "Sensor_LIS3MDL.h"
@@ -22,8 +21,6 @@
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
-
-NativeDataLogger data_logger = NativeDataLogger(1);
 
 Sensor_LSM6DSO32 imu = Sensor_LSM6DSO32(2, MRAS_LSM6DSO32_CHIP_SELECT, MRAS_LSM6DSO32_SPI_BUS,
                                         MRAS_LSM6DSO32_SPI_FREQUENCY);

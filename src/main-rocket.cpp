@@ -7,7 +7,6 @@
 #include "MRAS_System.h"
 #include "MRAS_Config.h"
 #include "ArduinoTextLogger.h"
-#include "NativeDataLogger.h"
 #include "Sensor_LSM6DSO32.h"
 #include "Arduino.h"
 #include "Sensor_LIS3MDL.h"
@@ -19,11 +18,10 @@
 #include "RocketSDLogger.h"
 #include "ArduinoBuzzer.h"
 #include "StateEstimator.h"
+#include "LEDSubsystem.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
-
-NativeDataLogger data_logger = NativeDataLogger(1);
 
 Sensor_LSM6DSO32 imu = Sensor_LSM6DSO32(2, MRAS_LSM6DSO32_CHIP_SELECT, MRAS_LSM6DSO32_SPI_BUS,
                                         MRAS_LSM6DSO32_SPI_FREQUENCY);
@@ -47,13 +45,17 @@ StateEstimator altitudeEstimator = StateEstimator(10, 0.001);
 
 ArduinoBuzzer buzzer = ArduinoBuzzer(11, BUZZER_PIN);
 
+LEDSubsystem leds = LEDSubsystem(12, 0, 2);
+
 void setup() {
     setSyncProvider(getTeensy3Time);
 
+    // these must be added first
     mras->set_logger(&logger);
     mras->set_buzzer(&buzzer);
+    mras->add_subsystem(&leds);
+
     mras->add_subsystem(&sd_logger);
-    mras->add_subsystem(&data_logger);
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
     mras->add_subsystem(&MAXM10s);
@@ -63,22 +65,15 @@ void setup() {
     mras->add_subsystem(&altitudeEstimator);
 #ifdef BUILD_ENV_kalpha
     mras->add_subsystem(&SAMM10q);
-    SAMM10q.add_subscriber(&data_logger);
     SAMM10q.add_subscriber(&sd_logger);
     SAMM10q.add_subscriber(&telemetry_system);
+    SAMM10q.add_subscriber(&leds);
 #endif
 
-//    imu.add_subscriber(&data_logger);
-//    magnetometer.add_subscriber(&data_logger);
-//    barometer.add_subscriber(&data_logger);
-//    telemetry_system.add_subscriber(&data_logger);
-//    accelerometer.add_subscriber(&data_logger);
-    MAXM10s.add_subscriber(&data_logger);
-//    altitudeEstimator.add_subscriber(&data_logger);
     imu.add_subscriber(&altitudeEstimator);
     barometer.add_subscriber(&altitudeEstimator);
 
-//     setup SD logger subscriptions
+
     logger.add_subscriber(&sd_logger);
     imu.add_subscriber(&sd_logger);
     magnetometer.add_subscriber(&sd_logger);
@@ -86,11 +81,12 @@ void setup() {
     accelerometer.add_subscriber(&sd_logger);
     MAXM10s.add_subscriber(&sd_logger);
     altitudeEstimator.add_subscriber(&sd_logger);
+
     MAXM10s.add_subscriber(&telemetry_system);
+    MAXM10s.add_subscriber(&leds);
     imu.add_subscriber(&telemetry_system);
     barometer.add_subscriber(&telemetry_system);
     altitudeEstimator.add_subscriber(&telemetry_system);
-
 
     mras->setup();
 }

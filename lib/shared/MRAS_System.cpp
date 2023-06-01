@@ -31,17 +31,17 @@ void MRAS_System::setup() {
         Subsystem* system = subsystems[i];
         if (system->setup() != 0) {
             overall_success = false;
-            buzzer->buzzer(NOTE_C6, 2000, true);
+            Subsystem::buzzer(NOTE_C6, 2000, true);
         }
     }
 
     if (overall_success) {
-        buzzer->buzzer(NOTE_E6, 125, true);
-        buzzer->buzzer(NOTE_G6, 125, true);
-        buzzer->buzzer(NOTE_E7, 125, true);
-        buzzer->buzzer(NOTE_C7, 125, true);
-        buzzer->buzzer(NOTE_D7, 125, true);
-        buzzer->buzzer(NOTE_G7, 125, true);
+        Subsystem::buzzer(NOTE_E6, 125, true);
+        Subsystem::buzzer(NOTE_G6, 125, true);
+        Subsystem::buzzer(NOTE_E7, 125, true);
+        Subsystem::buzzer(NOTE_C7, 125, true);
+        Subsystem::buzzer(NOTE_D7, 125, true);
+        Subsystem::buzzer(NOTE_G7, 125, true);
     }
 }
 

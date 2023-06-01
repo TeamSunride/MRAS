@@ -19,7 +19,7 @@
  * ================================
  */
 
-#ifdef BUILD_ENV_rocket
+#ifdef BUILD_ENV_kalpha
 
 #define MRAS_LSM6DSO32_CHIP_SELECT          4
 #define MRAS_LSM6DSO32_SPI_BUS              SPI1
@@ -47,7 +47,7 @@
 
 #endif
 
-#ifdef BUILD_ENV_rocketDart
+#ifdef BUILD_ENV_dart
 
 #define MRAS_LSM6DSO32_CHIP_SELECT          40
 #define MRAS_LSM6DSO32_SPI_BUS              SPI
@@ -106,7 +106,7 @@
 // We've had this set to true for all testing so far. (incl. April 2022 test in peaks)
 #define RADIO_USE_LDO                       true
 
-#ifdef BUILD_ENV_rocket
+#ifdef BUILD_ENV_kalpha
 
 #define RADIO_CHIP_SELECT_PIN               30
 #define RADIO_DIO1_PIN                      10
@@ -118,7 +118,7 @@
 
 #endif
 
-#ifdef BUILD_ENV_rocketDart
+#ifdef BUILD_ENV_dart
 
 #define RADIO_CHIP_SELECT_PIN               31
 #define RADIO_DIO1_PIN                      33

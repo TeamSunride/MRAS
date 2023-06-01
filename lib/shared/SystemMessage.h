@@ -20,6 +20,7 @@ enum SystemMessageType {
     StateEstimatorMsg_t,
     TextLogMsg_t,
     RadioStatusMsg_t,
+    BuzzerMsg_t
 };
 
 /**

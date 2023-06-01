@@ -2,21 +2,8 @@
 // Created by Tom Danvers on 11/03/2023.
 //
 
-#ifndef MRAS_BUZZERINTERFACE_H
-#define MRAS_BUZZERINTERFACE_H
-
-#include "Subsystem.h"
-
-class BuzzerInterface : public Subsystem {
-public:
-    using Subsystem::Subsystem;
-
-    SUBSYSTEM_NAME("BuzzerInterface")
-
-    SUBSYSTEM_NO_MESSAGE_HANDLER
-
-    virtual void _buzzer(uint16_t frequency, uint32_t duration, bool block) = 0;
-};
+#ifndef MRAS_BUZZER_NOTES_H
+#define MRAS_BUZZER_NOTES_H
 
 #define NOTE_B0  31
 #define NOTE_C1  33
@@ -108,4 +95,4 @@ public:
 #define NOTE_D8  4699
 #define NOTE_DS8 4978
 
-#endif //MRAS_BUZZERINTERFACE_H
+#endif //MRAS_BUZZER_NOTES_H

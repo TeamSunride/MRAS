@@ -3,6 +3,7 @@
 #include "ArduinoBuzzer.h"
 #include "MRAS_Config.h"
 #include "Arduino.h"
+#include "system_messages/BuzzerMsg.h"
 
 
 int8_t ArduinoBuzzer::setup() {
@@ -25,7 +26,6 @@ int8_t ArduinoBuzzer::loop() {
         }
     }
 
-
     return 0;
 }
 
@@ -35,5 +35,12 @@ void ArduinoBuzzer::_buzzer(uint16_t frequency, uint32_t duration, bool block) {
     }
     if (block) {
         delay(duration);
+    }
+}
+
+void ArduinoBuzzer::on_message(SystemMessage *msg) {
+    if (msg->get_type() == BuzzerMsg_t) {
+        BuzzerMsg *buzzerMsg = (BuzzerMsg *) msg;
+        _buzzer(buzzerMsg->frequency, buzzerMsg->duration, buzzerMsg->block);
     }
 }

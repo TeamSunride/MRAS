@@ -3,6 +3,8 @@
 //
 
 #include "MRAS_System.h"
+#include "SystemMessage.h"
+#include "system_messages/BuzzerMsg.h"
 
 MRAS_System* MRAS_System::instance = nullptr;
 
@@ -29,17 +31,17 @@ void MRAS_System::setup() {
         Subsystem* system = subsystems[i];
         if (system->setup() != 0) {
             overall_success = false;
-            buzzer->_buzzer(NOTE_C6, 2000, true);
+            buzzer->buzzer(NOTE_C6, 2000, true);
         }
     }
 
     if (overall_success) {
-        buzzer->_buzzer(NOTE_E6, 125, true);
-        buzzer->_buzzer(NOTE_G6, 125, true);
-        buzzer->_buzzer(NOTE_E7, 125, true);
-        buzzer->_buzzer(NOTE_C7, 125, true);
-        buzzer->_buzzer(NOTE_D7, 125, true);
-        buzzer->_buzzer(NOTE_G7, 125, true);
+        buzzer->buzzer(NOTE_E6, 125, true);
+        buzzer->buzzer(NOTE_G6, 125, true);
+        buzzer->buzzer(NOTE_E7, 125, true);
+        buzzer->buzzer(NOTE_C7, 125, true);
+        buzzer->buzzer(NOTE_D7, 125, true);
+        buzzer->buzzer(NOTE_G7, 125, true);
     }
 }
 
@@ -59,11 +61,11 @@ TextLogger *MRAS_System::get_logger() {
     return logger;
 }
 
-void MRAS_System::set_buzzer(BuzzerInterface *_buzzer) {
-    buzzer = _buzzer;
-    add_subsystem(buzzer);
+Subsystem *MRAS_System::get_buzzer() {
+    return buzzer;
 }
 
-BuzzerInterface *MRAS_System::get_buzzer() {
-    return buzzer;
+void MRAS_System::set_buzzer(Subsystem *_buzzer) {
+    this->buzzer = _buzzer;
+    add_subsystem(_buzzer);
 }

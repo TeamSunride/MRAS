@@ -7,7 +7,7 @@
 
 #include "Subsystem.h"
 #include "TextLogger.h"
-#include "BuzzerInterface.h"
+#include "buzzer_notes.h"
 
 /**
  * @brief The main class of the MRAS system
@@ -40,7 +40,7 @@ private:
      */
     TextLogger* logger = nullptr;
 
-    BuzzerInterface* buzzer = nullptr;
+    Subsystem* buzzer = nullptr;
 public:
 
     /**
@@ -88,14 +88,14 @@ public:
      */
     TextLogger* get_logger();
 
-    void set_buzzer(BuzzerInterface *buzzer);
+    void set_buzzer(Subsystem *_buzzer);
 
     /**
      * @brief Get the Buzzer that is used to buzz
      *
      * @return Buzzer* A pointer to the Buzz
      */
-    BuzzerInterface* get_buzzer();
+    Subsystem* get_buzzer();
 };
 
 

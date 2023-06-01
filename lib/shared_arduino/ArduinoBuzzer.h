@@ -4,15 +4,17 @@
 #define BUZZERINTERFACESYSTEM_H
 
 #include "Subsystem.h"
-#include "BuzzerInterface.h"
+#include "Subsystem.h"
+#include "buzzer_notes.h"
 
-class ArduinoBuzzer : public BuzzerInterface {
+class ArduinoBuzzer : public Subsystem {
 private:
     uint8_t buzzerPin = 0;
 
     uint32_t last_buzz = 0;
+    void _buzzer(uint16_t frequency, uint32_t duration, bool block);
 public:
-    ArduinoBuzzer(uint8_t id, uint8_t pin) : BuzzerInterface(id) {
+    ArduinoBuzzer(uint8_t id, uint8_t pin) : Subsystem(id) {
         buzzerPin = pin;
     };
 
@@ -20,9 +22,7 @@ public:
 
     int8_t loop() override;
 
-    void _buzzer(uint16_t frequency, uint32_t duration, bool block) override;
-
-    SUBSYSTEM_NO_MESSAGE_HANDLER;
+    void on_message(SystemMessage *msg) override;
 
     SUBSYSTEM_NAME("Buzzer");
 };

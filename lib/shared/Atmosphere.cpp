@@ -7,7 +7,7 @@ Atmosphere::Atmosphere(float pressure)
 {
     
     // initializing the layer constant matrix
-    layers << -5.00e3,    360.65,   -6.50e-3,   1.77687e5,
+    layers << -5.00e3,    320.65,   -6.50e-3,   1.77687e5,
             0.00e3,     288.15,     -6.50e-3,   1.01325e5,
             11.00e3,    216.65,     0.00e-3,    2.26320e4,
             20.00e3,    216.65,     1.00e-3,    5.47487e3,

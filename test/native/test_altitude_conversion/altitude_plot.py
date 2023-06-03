@@ -5,7 +5,7 @@ plt.rcParams["figure.figsize"] = [7.50, 3.50]
 plt.rcParams["figure.autolayout"] = True
 
 headers = ["pressure", "altitude"]
-df = pd.read_csv('altPressure.csv', names=headers)
+df = pd.read_csv('test/native/test_altitude_conversion/altPressure.csv', names=headers)
 
 df.set_index("pressure").plot()
 plt.grid()

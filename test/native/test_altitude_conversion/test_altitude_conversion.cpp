@@ -9,7 +9,19 @@ void tearDown() {}
 
 float error = 0.025; // 2.5%
 
-// layer 1 is attenuated
+void test_altitude_conversion_layer1(void) {
+
+    Atmosphere Rocket(1.77687e5);
+
+    float delta = (float) (Rocket.get_altitude() - -4996.07027357);
+
+
+    TEST_ASSERT_TRUE(abs(delta/-4996.07027357) < error); //not tested for error as div by zero
+
+
+
+    return;
+}
 void test_altitude_conversion_layer2(void) {
 
     Atmosphere Rocket(101325);
@@ -124,7 +136,7 @@ void CSVwrite(void) {
     std::ofstream altitudeFile;
     altitudeFile.open("test/native/test_altitude_conversion/altPressure.csv");
 
-    for (int i = 110000; i > 1; i = i - 1) {
+    for (int i = 170000; i > 1; i = i - 1) {
         Atmosphere Rocket(i);
         altitudeFile << i << "," << Rocket.get_altitude() << "\n";
     }
@@ -140,7 +152,7 @@ int main() {
     CSVwrite();
 #endif
     UNITY_BEGIN();
-
+    RUN_TEST(test_altitude_conversion_layer1);
     RUN_TEST(test_altitude_conversion_layer2);
     RUN_TEST(test_altitude_conversion_layer3);
     RUN_TEST(test_altitude_conversion_layer4);

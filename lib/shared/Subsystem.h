@@ -106,6 +106,13 @@ protected:
      * @param msg THe SystemMessage to publish.
      */
     void publish(SystemMessage *msg);
+
+    /**
+     * Turn the buzzer on
+     * @param duration time period for which the buzzer should buzz, in seconds.
+     */
+    static void buzzer(uint16_t frequency, uint32_t duration, bool block = false);
+
 };
 
 

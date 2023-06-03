@@ -63,16 +63,16 @@ void NativeDataLogger::on_message(SystemMessage *msg) {
         case StateEstimatorMsg_t: {
             auto state_msg = (StateEstimatorMsg *) msg;
             log("StateEstimator: Estimated Altitude: %f Estimated Velocity: %f",
-             state_msg->estimatedAltitude,
-              state_msg->estimatedVelocity);
-            break; 
+                state_msg->estimatedAltitude,
+                state_msg->estimatedVelocity);
+            break;
         }
         case ReceivedTelemetryMessageMsg_t: {
             auto system_message = (TelemetryMessageReceivedMsg *) msg;
             TelemetryMessage *telemetry_message = system_message->telemetry_message;
             switch (telemetry_message->get_type()) {
                 case TelemetryDataMsg_t: {
-                    auto data_msg = (TelemetryDataMsg*) telemetry_message;
+                    auto data_msg = (TelemetryDataMsg *) telemetry_message;
                     char buffer[255];
                     data_msg->to_csv(buffer, sizeof buffer);
                     log("TelemetryDataMsg: %s", buffer);

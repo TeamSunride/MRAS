@@ -24,9 +24,22 @@ bool MRAS_System::add_subsystem(Subsystem *subsystem) {
 }
 
 void MRAS_System::setup() {
+    bool overall_success = true;
     for (int i = 0; i < subsystem_count; i++) {
         Subsystem* system = subsystems[i];
-        system->setup();
+        if (system->setup() != 0) {
+            overall_success = false;
+            buzzer->_buzzer(NOTE_C6, 2000, true);
+        }
+    }
+
+    if (overall_success) {
+        buzzer->_buzzer(NOTE_E6, 125, true);
+        buzzer->_buzzer(NOTE_G6, 125, true);
+        buzzer->_buzzer(NOTE_E7, 125, true);
+        buzzer->_buzzer(NOTE_C7, 125, true);
+        buzzer->_buzzer(NOTE_D7, 125, true);
+        buzzer->_buzzer(NOTE_G7, 125, true);
     }
 }
 
@@ -44,4 +57,13 @@ void MRAS_System::set_logger(TextLogger *_logger) {
 
 TextLogger *MRAS_System::get_logger() {
     return logger;
+}
+
+void MRAS_System::set_buzzer(BuzzerInterface *_buzzer) {
+    buzzer = _buzzer;
+    add_subsystem(buzzer);
+}
+
+BuzzerInterface *MRAS_System::get_buzzer() {
+    return buzzer;
 }

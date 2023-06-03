@@ -3,6 +3,7 @@
 //
 
 #include "Sensor_ZOEM8Q.h"
+#include "timestamp.h"
 
 int8_t Sensor_ZOEM8Q::setup() {
     log("Startup...");
@@ -14,6 +15,7 @@ int8_t Sensor_ZOEM8Q::setup() {
         return (int8_t) 1; // failure;
     }
     gnss->setNavigationFrequency(5);
+    gnss->setDynamicModel(DYN_MODEL_AIRBORNE4g);
     gnss->setAutoPVT(true); // Tell the GNSS to "send" each solution
 
     // perform the online assist process - uses mgaonline.ubx file from SD card
@@ -41,7 +43,7 @@ int8_t Sensor_ZOEM8Q::loop() {
         gnss_msg->fix_type = gnss->getFixType(); /// 1: no fix, 2: 2D fix, 3: 3D fix 4: GNSS + dead reckoning combined, 5: time only fix
         gnss_msg->SIV = gnss->getSIV();
 
-        //log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
+        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
 
         publish(gnss_msg);
     }
@@ -49,40 +51,11 @@ int8_t Sensor_ZOEM8Q::loop() {
     return 0; // success
 }
 
-// From Daedalus code
-uint64_t Sensor_ZOEM8Q::getTimestampMillisGPS() {/// syncs the RTC on tje teensy 4.1 with the unix time at compile time
-    // Created by Ashley Shaw on 19/04/2022 using stuff from https://forum.pjrc.com/threads/68062-Teensy-4-1-RTC-get-milliseconds-correctly
-    // 2022 TeamSunride.
-    //
-    uint64_t periods;
-    uint32_t hi1 = SNVS_HPRTCMR, lo1 = SNVS_HPRTCLR;
-    while (true) {
-        uint32_t hi2 = SNVS_HPRTCMR, lo2 = SNVS_HPRTCLR;
-        if (lo1 == lo2 && hi1 == hi2)
-        {
-            periods = (uint64_t)hi2 << 32 | lo2;
-            break;
-        }
-        hi1 = hi2;
-        lo1 = lo2;
-    }
-    uint32_t ms = (1000 * (periods % 32768)) / 32768;
-    time_t sec = periods / 32768;
-    tm t = *gmtime(&sec);
-
-    // the first parameter needs decremented by one if Daylight saving is in effect (from last sunday in March to last sunday in October - https://www.gov.uk/when-do-the-clocks-change
-    setTime(t.tm_hour, t.tm_min, t.tm_sec, t.tm_mday, t.tm_mon + 1, t.tm_year + 1900);
-
-    uint64_t unixTime = (uint64_t(now()) * 1000) + ms;
-    return unixTime;
-}
-
-
 uint16_t Sensor_ZOEM8Q::GPSweek() {
     // 315964800 is the unix timestamp (s) of midnight 6th Jan 1980 - the start of GPS time
     // There has been 18 leap seconds since this date (unix time does not account for leap seconds)
     // not sure when the next leap second is due
-    u_int64_t diff = (getTimestampMillisGPS()/1000) - 315964800 + 18;
+    u_int64_t diff = (getTimestampMillis() / 1000) - 315964800 + 18;
     return (uint16_t) (diff / SECS_PER_WEEK);
 }
 
@@ -92,7 +65,7 @@ uint32_t Sensor_ZOEM8Q::actualTimeOfWeekms() {
     // 315964800000 is the unix timestamp (ms) of 6th Jan 1980 - the start of GPS time |
     // There has been 18 leap seconds since this date (unix time does not account for leap seconds)
     // not sure when the next leap second is due
-    u_int64_t diff = (getTimestampMillisGPS()) - 315964800000 + 18000;
+    u_int64_t diff = (getTimestampMillis()) - 315964800000 + 18000;
     return (uint32_t) ((diff) % (SECS_PER_WEEK*1000));
 }
 
@@ -150,7 +123,7 @@ int8_t Sensor_ZOEM8Q::performOnlineAssist() {
     dataFile.readBytes(reinterpret_cast<char *>(fileBuffer), numbytes);
 
     log("--------ENSURE THE TIME BELOW IS ACCURATE: --------");
-    log("Unix time: %llu", (long long unsigned int) getTimestampMillisGPS());
+    log("Unix time: %llu", (long long unsigned int) getTimestampMillis());
     log("Time: %d:%d:%d,  %d/%d/%d", hour(), minute(), second(), day(), month(), year());
     log("GPS WEEK: %d", GPSweek());
     log("GPS time of week: %d\n", actualTimeOfWeekms());

@@ -5,11 +5,13 @@
 #include "Arduino.h"
 
 int8_t SimulinkDataLogger::setup() {
+    Serial.begin(115200);
     return 0;
 }
 
 int8_t SimulinkDataLogger::loop() {
 
+    while (!Serial.available()){} // IMPORTANT: else it breaks the HIL
     pressure.number = getFloat();
     yAccel.number = getFloat();
     // delay(1);
@@ -24,45 +26,41 @@ int8_t SimulinkDataLogger::loop() {
     publish(Amsg);
 
     Serial.write('A');
-    for (int i = 0; i < 4; i++)
-    {
-        Serial.write(position.bytes[i]);
+    for (unsigned char byte : position.bytes) {
+        Serial.write(byte);
     }
-    for (int i = 0; i < 4; i++)
-    {
-        Serial.write(velocity.bytes[i]);
+    for (unsigned char byte : velocity.bytes) {
+        Serial.write(byte);
     }
     Serial.print("\n");
     delay(50);
     return 0;
 }
 
-void SimulinkDataLogger::on_message(SystemMessage   *msg) {
-    
-    switch (msg->get_type())
-    {
-    case StateEstimatorMsg_t: {
+void SimulinkDataLogger::on_message(SystemMessage *msg) {
 
-        auto state_msg = (StateEstimatorMsg *) msg;
+    switch (msg->get_type()) {
+        case StateEstimatorMsg_t: {
 
-        position.number = state_msg->estimatedAltitude;
-        velocity.number = state_msg->estimatedVelocity;
-        
-        break;
+            auto state_msg = (StateEstimatorMsg *) msg;
+
+            position.number = state_msg->estimatedAltitude;
+            velocity.number = state_msg->estimatedVelocity;
+
+            break;
+        }
+        default:
+            break;
     }
-    default:
-        break;
-    }
-    
-    return;
-}
 
-float SimulinkDataLogger::getFloat(){
-     int cont = 0;
+    }
+
+float SimulinkDataLogger::getFloat() {
+    int cont = 0;
     FLOATUNION_t f;
-    while (cont < 4 ){
-        f.bytes[cont] = Serial.read() ;
-        cont = cont +1;
+    while (cont < 4) {
+        f.bytes[cont] = Serial.read();
+        cont = cont + 1;
     }
     return f.number;
 }

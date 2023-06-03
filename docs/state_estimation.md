@@ -14,7 +14,7 @@ where \f$ s, v, a and t \f$ position, velocity, acceleration and time step respe
 But these are for continous funcitons, \f$ t \f$ would be replaced with \f$ \Delta t \f$ to discretize it. For ease of computation, these functions need to be in matrix form. But the the function must be decoupled from the measurement so we could update the `state`. 
 
 $$
-    state = \begin{bmatrix} position \\\ velocity \end{bmatrix} + \begin{bmatrix} \frac{1}{2} {\Delta t}^2 \\\ \Delta t \end{bmatrix}  (acceleration + g)
+    state = \begin{bmatrix} 1 & dt \\\ 0 & 1 \end{bmatrix} \begin{bmatrix} position \\\ velocity \end{bmatrix} + \begin{bmatrix} \frac{1}{2} {\Delta t}^2 \\\ \Delta t \end{bmatrix}  (acceleration + g)
 $$
 
 where \f$ g = -9.81 \f$ which accounts for gravity, as accelerometers don't account for it.

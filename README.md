@@ -2,6 +2,8 @@
 
 ![](docs/images/sunride_mras.png)
 
+![](docs/images/sponsors.png)
+
 MRAS (Multi Rocket Avionics System) is a flight computer that contains a high-performance microcontroller, high-G
 accelerometer, Inertial Measurement Unit (IMU), Magnetometer, GNSS receiver,
 Barometer, and a Telemetry system. It has been designed to provide a robust and reliable avionics package that can be
@@ -52,7 +54,7 @@ Rear side
 - RF Solutions LAMBDA62 Module for telemetry
 - Adafruit adalogger Feather M0 for data logging
 - 2x WS2812B "NeoPixels" for displaying status information
-- Buzzer
+- ArduinoBuzzer
 - XT30 connector for 2s-4s LiPo battery
 - I2C QWIIC / STEMMA QT connectors for expansion
 - Expansion port for upper "display board" (yet to be developed)

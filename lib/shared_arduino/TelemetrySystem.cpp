@@ -71,7 +71,7 @@ void TelemetrySystem::transmit_next_message() {
 }
 
 void TelemetrySystem::start_receiving_next_message(uint32_t timeout) {
-    log("Receiving new telemetry message");
+    // log("Receiving new telemetry message");
     radio.startReceive(timeout);
     telemetry_system_state = RX;
 }

@@ -17,7 +17,7 @@ int8_t SDLogger::setup() {
     char log_filename[8] = "";
     // pick an appropriate file name
     for (int i = 0; i < 9999; i++) {
-        sprintf(log_filename, "%d.csv", i);
+        snprintf(log_filename, 8, "%d.csv", i);
         if (!SD.exists(log_filename)) {
             break;
         }

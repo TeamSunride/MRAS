@@ -8,6 +8,7 @@
 int8_t Sensor_MS5607::setup() {
     log("Starting I2C bus");
     i2c_bus->begin();
+    i2c_bus->setClock(i2c_frequency);
     log("Starting up MS5607 barometer");
     bool result = read_PROM();
     if (!result) {

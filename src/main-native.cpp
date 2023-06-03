@@ -8,8 +8,6 @@
 #include "NativeTextLogger.h"
 #include "FakeAccelerometer.h"
 #include "NativeDataLogger.h"
-#include "FakeBarometer.h"
-#include "StateEstimator.h"
 
 
 int main() {
@@ -18,20 +16,11 @@ int main() {
 
     auto *accelerometer = new FakeAccelerometer(1);
     auto *data_logger = new NativeDataLogger(2);
-    auto *barometer = new FakeBarometer(3);
-    auto *altitudeEstimator = new StateEstimator(4, 0.1);
 
     mras->set_logger(logger);
 
     mras->add_subsystem(accelerometer);
-    mras->add_subsystem(barometer);
-    mras->add_subsystem(altitudeEstimator);
     accelerometer->add_subscriber(data_logger);
-    accelerometer->add_subscriber(altitudeEstimator);
-    barometer->add_subscriber(data_logger);
-    barometer->add_subscriber(altitudeEstimator);
-    altitudeEstimator->add_subscriber(data_logger);
-
 
     mras->setup();
 

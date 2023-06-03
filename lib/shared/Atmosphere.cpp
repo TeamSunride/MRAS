@@ -23,10 +23,10 @@ Atmosphere::Atmosphere(float pressure)
         layer_const << 80.00e3,    196.65,     -2.00e-3,   8.86272e-1;
         return;
     }
-    if (pressure > 1.01325e5)
+    if (pressure > 1.77687e5)
     {
-        geometric_alt = 0.00;
-        layer_const << 0.00e3,     288.15,     -6.50e-3,   1.01325e5;
+        geometric_alt = -5.00e3;
+        layer_const << -5.00e3,    360.65,   -6.50e-3,   1.77687e5;
         return;
     }
     

@@ -95,7 +95,7 @@ bool TelemetrySystem::read_new_message_from_buffer(TelemetryMessageReceivedMsg* 
 
     if (radio_state == RADIOLIB_ERR_CRC_MISMATCH) {
         // The calculated and expected CRCs of received packet do not match.
-        log("CRC error");
+        // log("CRC error");
         return false;
     }
 

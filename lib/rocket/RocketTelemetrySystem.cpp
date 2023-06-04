@@ -49,22 +49,7 @@ int8_t RocketTelemetrySystem::loop() {
 TelemetryMessageQueueMsg *RocketTelemetrySystem::get_default_message() {
     auto *message = new TelemetryDataMsg();
 
-    message->altitude1 = altitude1;
-    message->latitude1 = latitude1;
-    message->longitude1 = longitude1;
-    message->fix_type1 = fix_type1;
-    message->satellites1 = satellites1;
-
-    message->altitude2 = altitude2;
-    message->latitude2 = latitude2;
-    message->longitude2 = longitude2;
-    message->fix_type2 = fix_type2;
-    message->satellites2 = satellites2;
-
-    message->x_acceleration = x_acceleration;
-    message->pressure = pressure;
-    message->temperature = temperature;
-    message->altitude_estimate = altitude_estimate;
+    memcpy(message, &telemetry_msg, sizeof(TelemetryDataMsg));
 
     auto *queue_message = new TelemetryMessageQueueMsg();
     queue_message->telemetry_message = message;
@@ -78,30 +63,30 @@ void RocketTelemetrySystem::on_message(SystemMessage *msg) {
         case GNSSDataMsg_t:
             msg = (GNSSDataMsg *) msg;
             if (((GNSSDataMsg *) msg)->id == MAXM10s_ID) {
-                altitude1 = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
-                latitude1 = ((GNSSDataMsg *) msg)->latitude;
-                longitude1 = ((GNSSDataMsg *) msg)->longitude;
-                fix_type1 = ((GNSSDataMsg *) msg)->fix_type;
-                satellites1 = ((GNSSDataMsg *) msg)->SIV;
+                telemetry_msg.altitude1 = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
+                telemetry_msg.latitude1 = ((GNSSDataMsg *) msg)->latitude;
+                telemetry_msg.longitude1 = ((GNSSDataMsg *) msg)->longitude;
+                telemetry_msg.fix_type1 = ((GNSSDataMsg *) msg)->fix_type;
+                telemetry_msg.satellites1 = ((GNSSDataMsg *) msg)->SIV;
             }
             else if (((GNSSDataMsg *) msg)->id == SAMM10Q_ID) {
-                altitude2 = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
-                latitude2 = ((GNSSDataMsg *) msg)->latitude;
-                longitude2 = ((GNSSDataMsg *) msg)->longitude;
-                fix_type2 = ((GNSSDataMsg *) msg)->fix_type;
-                satellites2 = ((GNSSDataMsg *) msg)->SIV;
+                telemetry_msg.altitude2 = (uint16_t) ((GNSSDataMsg *) msg)->altitude;
+                telemetry_msg.latitude2 = ((GNSSDataMsg *) msg)->latitude;
+                telemetry_msg.longitude2 = ((GNSSDataMsg *) msg)->longitude;
+                telemetry_msg.fix_type2 = ((GNSSDataMsg *) msg)->fix_type;
+                telemetry_msg.satellites2 = ((GNSSDataMsg *) msg)->SIV;
             }
 
             break;
         case AccelerometerDataMsg_t:
-            x_acceleration = ((AccelerometerDataMsg *) msg)->acceleration[0];
+            telemetry_msg.x_acceleration = ((AccelerometerDataMsg *) msg)->acceleration[0];
             break;
         case BarometerDataMsg_t:
-            pressure = ((BarometerDataMsg *) msg)->pressure;
-            temperature = ((BarometerDataMsg *) msg)->temperature;
+            telemetry_msg.pressure = ((BarometerDataMsg *) msg)->pressure;
+            telemetry_msg.temperature = ((BarometerDataMsg *) msg)->temperature;
             break;
         case StateEstimatorMsg_t:
-            altitude_estimate = ((StateEstimatorMsg *) msg)->estimatedAltitude;
+            telemetry_msg.altitude_estimate = ((StateEstimatorMsg *) msg)->estimatedAltitude;
             break;
     }
 }

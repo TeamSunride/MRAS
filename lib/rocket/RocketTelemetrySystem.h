@@ -40,6 +40,8 @@ private:
     float pressure = 0;
     float temperature = 0;
     float altitude_estimate = 0;
+
+    TelemetryDataMsg telemetry_msg;
 };
 
 

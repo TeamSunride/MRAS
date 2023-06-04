@@ -56,6 +56,8 @@ int8_t Sensor_MAX_M10S::loop() {
 //        log("Time From GPS: %d:%d:%d,  %d/%d/%d", gnss->getHour(), gnss->getMinute(), gnss->getSecond(), gnss->getDay(), gnss->getMonth(), gnss->getYear());
         // add in the timestamp at some point
 
+        log("Lat %f, Long %f, Alt %f, Fix %d, SIV %d", gnss_msg->latitude, gnss_msg->longitude, gnss_msg->altitude, gnss_msg->fix_type, gnss_msg->SIV);
+
         publish(gnss_msg);
     }
 

@@ -13,8 +13,6 @@ int8_t GroundTelemetrySystem::loop() {
         if (!mod->digitalRead(mod->getIrq())) {
             return 0;
         }
-
-        radio.finishTransmit();
     }
 
     switch (telemetry_system_state) {
@@ -24,6 +22,7 @@ int8_t GroundTelemetrySystem::loop() {
             break;
         }
         case TX: {
+            radio.finishTransmit();
             transmit_next_message();
             break;
         }
@@ -33,7 +32,6 @@ int8_t GroundTelemetrySystem::loop() {
                 publish(msg);
                 packets_received++;
             } else {
-                log("CRC or radio error");
                 delete msg;
             }
         }

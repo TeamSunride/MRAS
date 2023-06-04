@@ -30,9 +30,21 @@ int8_t TelemetrySystem::setup() {
         log("Radio begin() successful");
     }
 
+    log("Setting RF switch pins");
     radio.setRfSwitchPins(RADIO_RX_ENABLE_PIN, RADIO_TX_ENABLE_PIN);
 
+    log("Setting explicit header mode");
     radio_state = radio.explicitHeader();
+    if (radio_state == RADIOLIB_ERR_NONE) {
+        log("Successfully set explicit header mode");
+    }
+
+    log("Setting CRC configuration");
+    radio_state = radio.setCRC(1);
+    if (radio_state == RADIOLIB_ERR_NONE) {
+        log("Successfully enabled CRC checking");
+    }
+
 
     if (radio_state != RADIOLIB_ERR_NONE) {
         log("Failed to enter explicit header mode. RadioLib error code: %d", radio_state);
@@ -83,12 +95,14 @@ bool TelemetrySystem::read_new_message_from_buffer(TelemetryMessageReceivedMsg* 
 
     if (radio_state == RADIOLIB_ERR_CRC_MISMATCH) {
         // The calculated and expected CRCs of received packet do not match.
+        log("CRC error");
         return false;
     }
 
     if (radio_state == RADIOLIB_ERR_NONE) {
         return true;
     } else {
+        log("RadioLib error code: %d", radio_state);
         return false;
     }
 }

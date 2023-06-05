@@ -25,14 +25,16 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
                 case TelemetryDataMsg_t: {
                     char telemetry_string[255];
                     char log_string[255];
+                    char line_protocol_string[500];
                     auto data_msg = (TelemetryDataMsg *) telemetry_message;
                     data_msg->to_csv(telemetry_string, sizeof telemetry_string);
+                    data_msg->to_line_protocol(line_protocol_string, sizeof line_protocol_string);
 
                     // combine telemetry string with extra values on ground end
                     snprintf(log_string, 255, "%s,%f,%f,%d", telemetry_string, radio_status.RSSI, radio_status.SNR,
                              radio_status.PPS);
                     log_file.println(log_string);
-                    Serial.println(log_string);
+                    Serial.println(line_protocol_string);
                     log_file.flush();
                     break;
                 }

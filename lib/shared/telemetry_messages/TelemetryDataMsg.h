@@ -36,6 +36,13 @@ struct TelemetryDataMsg : public TelemetryMessage {
                  latitude2, longitude2, altitude2, fix_type2, satellites2,
                  x_acceleration, pressure, temperature, altitude_estimate);
     }
+
+    void to_line_protocol(char *buffer, size_t buffer_size) const {
+        snprintf(buffer, buffer_size, "TelemetryDataMsg latitude1=%f,longitude1=%f,altitude1=%d,fix_type1=%d,satellites1=%d,latitude2=%f,longitude2=%f,altitude2=%d,fix_type2=%d,satellites2=%d,x_acceleration=%f,pressure=%f,temperature=%f,altitude_estimate=%f",
+                 latitude1, longitude1, altitude1, fix_type1, satellites1,
+                 latitude2, longitude2, altitude2, fix_type2, satellites2,
+                 x_acceleration, pressure, temperature, altitude_estimate);
+    }
 };
 
 #endif //MRAS_TELEMETRYDATAMSG_H

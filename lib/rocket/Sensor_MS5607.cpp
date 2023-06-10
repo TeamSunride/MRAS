@@ -75,15 +75,15 @@ int8_t Sensor_MS5607::loop() {
             state = IDLE;
 
             // This code is taken from the UravuLabs/MS5607 library
-            dT = (float) D2_temperature - ((float) C5) * ((int) 1 << 8);
-            OFF = (((int64_t) C2) * ((long) 1 << 17)) + dT * ((float) C4) / ((int) 1 << 6);
-            SENS = ((float) C1) * ((long) 1 << 16) + dT * ((float) C3) / ((int) 1 << 7);
+            dT = (uint32_t) D2_temperature - ((int32_t) C5) * (256); // 2^8 == 256
+            OFF = ((long) C2) * (131072) + (int32_t)dT * ((long) C4) / (64); // 2^6 == 64 && 2^17 == 131072
+            SENS = ((long) C1) * (65536) + (int32_t)dT * ((long) C3) / (128); // 2^7 == 128 && 2^16 == 65536
            // Calculate temperature and pressure
-            TEMP = 2000.0f + dT * ((float) C6) / (float) ((long) 1 << 23);
+            TEMP = 2000.0f + dT * ((float) C6) / (8388608.0f); // 2^23 == 8388608
 
             // calculate second order temperature compensation
             if (TEMP < 2000.0f){
-                float T2 = (float)((dT * dT) / ((long) 1 << 31));
+                float T2 = (float)((dT * dT) / (float) ((long) 1 << 31));
                 float OFF2 = 61.0f * (TEMP - 2000.0f) * (TEMP - 2000.0f) / 16.0f; // 2^4 == 16
                 float SENS2 = 2.0f * (TEMP - 2000.0f) * (TEMP - 2000.0f);
 

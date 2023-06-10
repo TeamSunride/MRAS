@@ -8,6 +8,7 @@
 
 #include <Wire.h>
 #include "Subsystem.h"
+#include "cstdint"
 
 #define MS5607_RESET 0x1E
 #define MS5607_PROM_READ 0xA0
@@ -56,7 +57,7 @@ private:
     uint32_t D1_pressure{};
     uint32_t D2_temperature{};
 
-    float dT{}, TEMP{}, P{};
+    int32_t dT{}, TEMP{}, P{};
     int64_t OFF{}, SENS{};
 
     uint32_t lastStateChange = 0;

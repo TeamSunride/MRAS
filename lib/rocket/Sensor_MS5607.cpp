@@ -78,13 +78,25 @@ int8_t Sensor_MS5607::loop() {
             dT = (float) D2_temperature - ((float) C5) * ((int) 1 << 8);
             OFF = (((int64_t) C2) * ((long) 1 << 17)) + dT * ((float) C4) / ((int) 1 << 6);
             SENS = ((float) C1) * ((long) 1 << 16) + dT * ((float) C3) / ((int) 1 << 7);
+           // Calculate temperature and pressure
+            TEMP = 2000.0f + dT * ((float) C6) / (float) ((long) 1 << 23);
+
+            // calculate second order temperature compensation
+            if (TEMP < 2000.0f){
+                float T2 = (float)((dT * dT) / ((long) 1 << 31));
+                float OFF2 = 61.0f * (TEMP - 2000.0f) * (TEMP - 2000.0f) / 16.0f; // 2^4 == 16
+                float SENS2 = 2.0f * (TEMP - 2000.0f) * (TEMP - 2000.0f);
+
+                TEMP = TEMP - T2;
+                OFF = OFF - OFF2;
+                SENS = SENS - SENS2;
+            }
+
             float pa = (float) ((float) D1_pressure / ((long) 1 << 15));
             float pb = (float) (SENS / ((float) ((long) 1 << 21)));
             float pc = pa * pb;
             float pd = (float) (OFF / ((float) ((long) 1 << 15)));
             P = pc - pd;
-
-            TEMP = 2000.0 + dT * ((float) C6) / (float) ((long) 1 << 23);
 
             // convert to correct units and shove into readable stores
             auto pressure = P;

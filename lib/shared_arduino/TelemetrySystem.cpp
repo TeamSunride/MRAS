@@ -13,12 +13,17 @@ int8_t TelemetrySystem::setup() {
 
     log("Radio startup");
 
+    int8_t radio_power = RADIO_POWER;
+    if (USING_AMPLIFIER) {
+        radio_power = min((int8_t) 15, radio_power);
+    }
+
     radio_state = radio.begin(RADIO_FREQUENCY,
                               RADIO_BANDWIDTH,
                               RADIO_SPREADING_FACTOR,
                               RADIO_CODING_RATE,
                               RADIO_SYNC_WORD,
-                              RADIO_POWER,
+                              radio_power,
                               RADIO_PREAMBLE_LENGTH,
                               RADIO_TCXO_VOLTAGE,
                               RADIO_USE_LDO);
@@ -33,11 +38,12 @@ int8_t TelemetrySystem::setup() {
     log("Setting RF switch pins");
     radio.setRfSwitchPins(RADIO_RX_ENABLE_PIN, RADIO_TX_ENABLE_PIN);
 
-    log("Setting explicit header mode");
-    radio_state = radio.explicitHeader();
-    if (radio_state == RADIOLIB_ERR_NONE) {
-        log("Successfully set explicit header mode");
-    }
+    // Not using explicit header mode on KAlpha to optimise packet size
+//    log("Setting explicit header mode");
+//    radio_state = radio.explicitHeader();
+//    if (radio_state == RADIOLIB_ERR_NONE) {
+//        log("Successfully set explicit header mode");
+//    }
 
     log("Setting CRC configuration");
     radio_state = radio.setCRC(1);

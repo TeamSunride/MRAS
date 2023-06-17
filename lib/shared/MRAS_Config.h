@@ -9,6 +9,7 @@
 #define ENABLE_BEEPING                      false
 
 #define USE_ASSISTNOW                       false
+#define USING_AMPLIFIER                     true
 
 #define MAXM10s_ID                          6
 #define SAMM10Q_ID                          7
@@ -93,7 +94,7 @@
 #define RADIO_SYNC_WORD                     0x22
 
 // output power in dBm - up to 22dbm for 868/915,
-#define RADIO_POWER                         22
+#define RADIO_POWER                         15
 
 // LoRa preamble length in symbols. Allowed values range from 1 to 65535.
 #define RADIO_PREAMBLE_LENGTH               8

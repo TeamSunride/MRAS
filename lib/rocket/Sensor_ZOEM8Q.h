@@ -60,8 +60,6 @@ public:
 
     SUBSYSTEM_NO_MESSAGE_HANDLER
     SUBSYSTEM_NAME("ZOEM8Q");
-
-
 };
 
 uint64_t getTimestampMillisGPS();

@@ -21,7 +21,8 @@ enum TelemetryMessageType {
     TransferWindowAckMsg_t,
     CommandMsg_t, // unused for now
     CommandResponseMsg_t, // unused for now
-    TelemetryDataMsg_t
+    TelemetryDataMsg_t,
+    KAlphaTelemetryMsg_Packed_t
 };
 
 /**

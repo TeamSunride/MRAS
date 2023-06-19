@@ -5,14 +5,12 @@
 #ifndef MRAS_MRAS_CONFIG_H
 #define MRAS_MRAS_CONFIG_H
 
-#define ENABLE_BUZZER                       true
+#define ENABLE_BUZZER                       false
 #define ENABLE_BEEPING                      false
 
 #define USE_ASSISTNOW                       false
 #define USING_AMPLIFIER                     true
 
-#define MAXM10s_ID                          6
-#define SAMM10Q_ID                          7
 
 /**
  * ================================
@@ -72,26 +70,30 @@
 #define BUZZER_PIN                          10
 
 #endif
+
+#ifndef STAGE_NAME
+#define STAGE_NAME "unknown"
+#endif
 /**
  * ================================
  * TELEMETRY RADIO
  * ================================
  */
 
+#ifndef STAGE_CONFIG
+
 // carrier frequency in MHz
 #define RADIO_FREQUENCY                     869.525 // centre of the 869.4-869.65MHz band with 250kHz bandwidth
-
 // bandwidth in kHz
 #define RADIO_BANDWIDTH                     250
-
 // LoRa spreading factor
 #define RADIO_SPREADING_FACTOR              5
-
 // LoRa coding rate denominator. Allowed values range from 5 to 8.
 #define RADIO_CODING_RATE                   8
-
 // LoRa sync word
 #define RADIO_SYNC_WORD                     0x22
+
+#endif
 
 // output power in dBm - up to 22dbm for 868/915,
 #define RADIO_POWER                         15
@@ -156,7 +158,7 @@
 " | |  | | | | \\ \\   / ____ \\   ____) |\n"\
 " |_|  |_| |_|  \\_\\ /_/    \\_\\ |_____/ \n"\
 "                                      \n\n"\
-"   ❤ 2022 TeamSunride ❤\n\n"\
+"   ❤ 2023 TeamSunride ❤\n\n"\
 "=================================================\n\n"
 
 #endif //MRAS_MRAS_CONFIG_H

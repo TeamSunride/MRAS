@@ -13,7 +13,7 @@
  * The units of the latitude and longitude are decimal degrees and the altitude is in meters above mean sea level
  */
 struct GNSSDataMsg : public SystemMessage {
-    explicit GNSSDataMsg(SystemMessageType gnss_msg_type) : SystemMessage(gnss_msg_type) {}
+    explicit GNSSDataMsg() : SystemMessage(GNSSDataMsg_t) {}
 
     uint8_t id = 0;
 

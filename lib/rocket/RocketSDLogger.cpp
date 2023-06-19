@@ -79,14 +79,14 @@ void RocketSDLogger::on_message(SystemMessage *msg) {
         case GNSSDataMsg_t: {
             auto new_msg = (GNSSDataMsg*) msg;
 
-            if (new_msg->id == MAXM10s_ID) {
+            if (new_msg->id == 0) {
                 data.latitude1 = new_msg->latitude;
                 data.longitude1 = new_msg->longitude;
                 data.altitude1 = new_msg->altitude;
                 data.fix_type1 = new_msg->fix_type;
                 data.SIV1 = new_msg->SIV;
             }
-            else if (new_msg->id == SAMM10Q_ID) {
+            else if (new_msg->id == 1) {
                 data.latitude2 = new_msg->latitude;
                 data.longitude2 = new_msg->longitude;
                 data.altitude2 = new_msg->altitude;

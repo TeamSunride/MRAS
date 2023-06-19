@@ -33,7 +33,7 @@ int8_t Sensor_ZOEM8Q::setup() {
 
 int8_t Sensor_ZOEM8Q::loop() {
     if (gnss->getPVT()) {// &&  !gnss->getInvalidLlh() ) {
-        auto *gnss_msg = new GNSSDataMsg(GNSSDataMsg_t);
+        auto *gnss_msg = new GNSSDataMsg();
         gnss_msg->latitude = (float) (gnss->getLatitude() * (10e-8)); // degrees
         gnss_msg->longitude = (float) (gnss->getLongitude() * (10e-8)); // degrees
 

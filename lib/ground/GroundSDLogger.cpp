@@ -7,6 +7,7 @@
 #include "telemetry_messages/TelemetryDataMsg.h"
 #include "system_messages/TextLogMsg.h"
 #include "system_messages/RadioStatusMsg.h"
+#include "telemetry_messages/KAlphaTelemetryMsg.h"
 
 int8_t GroundSDLogger::loop() {
     if (!setup_complete) return -1;
@@ -15,7 +16,6 @@ int8_t GroundSDLogger::loop() {
 }
 
 void GroundSDLogger::on_message(SystemMessage *msg) {
-    if (!setup_complete) return;
 
     switch (msg->get_type()) {
         case ReceivedTelemetryMessageMsg_t: {
@@ -33,9 +33,30 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
                     // combine telemetry string with extra values on ground end
                     snprintf(log_string, 255, "%s,%f,%f,%d", telemetry_string, radio_status.RSSI, radio_status.SNR,
                              radio_status.PPS);
-                    log_file.println(log_string);
                     Serial.println(line_protocol_string);
-                    log_file.flush();
+
+                    if (setup_complete) {
+                        log_file.println(log_string);
+                    }
+                    break;
+                }
+                case KAlphaTelemetryMsg_Packed_t : {
+                    char telemetry_string[255];
+                    char log_string[255];
+                    char line_protocol_string[500];
+                    KAlphaTelemetryMsg data_msg;
+                    unpack_kalpha_telemetry_msg((KAlphaTelemetryMsg_Packed *) telemetry_message, &data_msg);
+                    data_msg.to_csv(telemetry_string, sizeof telemetry_string);
+                    data_msg.to_line_protocol(line_protocol_string, sizeof line_protocol_string);
+
+                    // combine telemetry string with extra values on ground end
+                    snprintf(log_string, 255, "%s,%f,%f,%d", telemetry_string, radio_status.RSSI, radio_status.SNR,
+                             radio_status.PPS);
+                    Serial.println(line_protocol_string);
+
+                    if (setup_complete) {
+                        log_file.println(log_string);
+                    }
                     break;
                 }
                 default:
@@ -46,6 +67,9 @@ void GroundSDLogger::on_message(SystemMessage *msg) {
         case RadioStatusMsg_t: {
             auto radio_status_msg = (RadioStatusMsg *) msg;
             memcpy(&radio_status, radio_status_msg, sizeof(RadioStatusMsg));
+            char line_protocol_string[500];
+            radio_status_msg->to_line_protocol(line_protocol_string, sizeof line_protocol_string);
+            Serial.println(line_protocol_string);
             break;
         }
         case TextLogMsg_t: {

@@ -8,6 +8,8 @@
 
 #include "TelemetrySystem.h"
 #include "telemetry_messages/TelemetryDataMsg.h"
+#include "telemetry_messages/KAlphaTelemetryMsg.h"
+#include "system_messages/GNSSDataMsg.h"
 
 /**
  * @brief The telemetry system for the rocket
@@ -26,22 +28,14 @@ class RocketTelemetrySystem : public TelemetrySystem {
 
     void on_message(SystemMessage *msg) override;
 private:
-    float latitude1 = 0;
-    float longitude1 = 0;
-    uint16_t altitude1 = 0;
-    uint8_t fix_type1 = 0;
-    uint8_t satellites1 = 0;
-    float latitude2 = 0;
-    float longitude2 = 0;
-    uint16_t altitude2 = 0;
-    uint8_t fix_type2 = 0;
-    uint8_t satellites2 = 0;
-    float x_acceleration = 0;
-    float pressure = 0;
-    float temperature = 0;
-    float altitude_estimate = 0;
+    KAlphaTelemetryMsg kalpha_msg;
 
     TelemetryDataMsg telemetry_msg;
+
+    // array of received GNSS messages
+    GNSSDataMsg gnss_data[2] = {GNSSDataMsg(), GNSSDataMsg()};
+    void handle_gnss_data_msg(GNSSDataMsg *msg);
+    static void copy_gnss_data(GNSSDataMsg *msg, KAlphaTelemetryMsg *dest);
 };
 
 

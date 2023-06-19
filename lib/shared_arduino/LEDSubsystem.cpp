@@ -34,15 +34,7 @@ void LEDSubsystem::on_message(SystemMessage *msg) {
 
     if (msg->get_type() == GNSSDataMsg_t) {
         auto *gnssMsg = (GNSSDataMsg *) msg;
-        int pin = 0;
-        switch (gnssMsg->id) {
-            case MAXM10s_ID:
-                pin = 0;
-                break;
-            case SAMM10Q_ID:
-                pin = 1;
-                break;
-        }
+        int pin = gnssMsg->id;
 
         // calculate rgb colour for each fix type case
         uint8_t r = 0;

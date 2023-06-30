@@ -16,21 +16,21 @@ Import("env")
 
 settings = {
     "SG1": {
-        "RADIO_FREQUENCY": 869.525,
+        "RADIO_FREQUENCY": 915 - 0.5 * 2,
         "RADIO_BANDWIDTH": 250,
         "RADIO_SPREADING_FACTOR": 5,
         "RADIO_CODING_RATE": 8,
         "RADIO_SYNC_WORD": 0x22,
     },
     "SG2": {
-        "RADIO_FREQUENCY": 869.525 + 0.300,
+        "RADIO_FREQUENCY": 915 - 0.5,
         "RADIO_BANDWIDTH": 250,
         "RADIO_SPREADING_FACTOR": 5,
         "RADIO_CODING_RATE": 8,
         "RADIO_SYNC_WORD": 0x32,
     },
     "SG3": {
-        "RADIO_FREQUENCY": 869.525 - 0.300,
+        "RADIO_FREQUENCY": 915.00,
         "RADIO_BANDWIDTH": 250,
         "RADIO_SPREADING_FACTOR": 5,
         "RADIO_CODING_RATE": 8,
@@ -55,20 +55,16 @@ env.Append(CPPDEFINES=[
     ("STAGE_NAME", env.StringifyMacro(stage))
 ])
 
-# ground_stations = ["GS1", "GS2", "GS3", "GS4"]
-#
-# # if we are the ground station then we set the ground station identifier
-# if env.get('PIOENV') == 'ground':
-#     print(f"Which ground station is this? ({', '.join(ground_stations)}):")
-#     ground_station = input().upper().strip()
-#     if ground_station not in ground_stations:
-#         raise ValueError("Invalid GS name")
-#         exit(1)
-#
-#     env.Append(CPPDEFINES=[
-#         ("GS_NAME", env.StringifyMacro(ground_station))
-#     ])
+ground_stations = ["GS1", "GS2", "GS3"]
 
-# env.Append(CPPDEFINES=[
-#     ("MRAS_STARTUP_STRING", env.StringifyMacro('Hellothere'))
-# ])
+# if we are the ground station then we set the ground station identifier
+if env.get('PIOENV') == 'ground':
+    print(f"Which ground station is this? ({', '.join(ground_stations)}):")
+    ground_station = input().upper().strip()
+    if ground_station not in ground_stations:
+        raise ValueError("Invalid GS name")
+        exit(1)
+
+    env.Append(CPPDEFINES=[
+        ("GS_NAME", env.StringifyMacro(ground_station))
+    ])

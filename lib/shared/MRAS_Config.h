@@ -5,7 +5,7 @@
 #ifndef MRAS_MRAS_CONFIG_H
 #define MRAS_MRAS_CONFIG_H
 
-#define ENABLE_BUZZER                       false
+#define ENABLE_BUZZER                       true
 #define ENABLE_BEEPING                      false
 
 #define USE_ASSISTNOW                       false
@@ -74,6 +74,12 @@
 #ifndef STAGE_NAME
 #define STAGE_NAME "unknown"
 #endif
+
+#ifndef GS_NAME
+#define GS_NAME "unknown"
+#endif
+
+
 /**
  * ================================
  * TELEMETRY RADIO

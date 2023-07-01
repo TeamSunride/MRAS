@@ -50,6 +50,8 @@ class RocketSDLogger : public SDLogger {
         float altitude_estimate = 0;
         float velocity_estimate = 0;
     } data;
+
+    bool headers_added = false;
 };
 
 

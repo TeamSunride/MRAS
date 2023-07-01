@@ -58,11 +58,11 @@ struct KAlphaTelemetryMsg {
         snprintf(buffer, buffer_size,
                  "ka_sensors,stage=%s x_acceleration=%f,temperature=%f,batt_voltage=%d,"
                  "pressure_altitude=%f,max_pressure_altitude=%f\n"
-                 "ka_position,stage=%s,fix=%d lat=%f,lon=%f,alt=%f,fix=%d,SIV=%d\n",
+                 "ka_position,stage=%s lat=%f,lon=%f,alt=%f,fix=%d,SIV=%d\n",
                  STAGE_NAME,
                  x_acceleration, temperature, batt_voltage, pressure_altitude, max_pressure_altitude,
                  STAGE_NAME,
-                 fix_type, latitude, longitude, gnss_altitude, fix_type, satellites
+                 latitude, longitude, gnss_altitude, fix_type, satellites
                  );
     }
 };

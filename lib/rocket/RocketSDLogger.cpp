@@ -15,6 +15,11 @@
 int8_t RocketSDLogger::loop() {
     if (!setup_complete) return -1;
 
+    if (!headers_added) {
+        log_file.println("imuAX,imuAY,imuAZ,accelX,accelY,accelZ,imuGX,imuGY,imuGZ,magX,magY,magZ,pressure,temperature,latitude1,longitude1,gps_altitude1,fix_type1,SIV1,latitude2,longitude2,gps_altitude2,fix_type2,SIV2,altitude_estimate,velocity_estimate,timestamp");
+        headers_added = true;
+    }
+
     if (millis() - last_log_entry >= 1) {
         // I ADORE you GitHub Copilot
         log_file.printf(

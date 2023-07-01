@@ -17,7 +17,7 @@ struct RadioStatusMsg : SystemMessage {
     uint16_t PPS = 0;
 
     void to_line_protocol(char *buffer, size_t size) {
-        snprintf(buffer, size, "radio_status,stage=%s RSSI=%f,SNR=%f,PPS=%d", STAGE_NAME, RSSI, SNR,
+        snprintf(buffer, size, "radio_status,stage=%s,gs=%s RSSI=%f,SNR=%f,PPS=%d", STAGE_NAME, GS_NAME, RSSI, SNR,
                  PPS);
     }
 };

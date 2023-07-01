@@ -20,7 +20,7 @@ int8_t RocketSDLogger::loop() {
         headers_added = true;
     }
 
-    if (millis() - last_log_entry >= 1) {
+    if (millis() - last_log_entry >= 5) {
         // I ADORE you GitHub Copilot
         log_file.printf(
                 "%f,%f,%f"

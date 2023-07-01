@@ -78,6 +78,9 @@ int8_t TelemetrySystem::setup() {
 //}
 
 void TelemetrySystem::transmit_next_message() {
+    if (!TRANSMIT_TELEMETRY) {
+        return;
+    }
 
     TelemetryMessageQueueMsg *next_message = get_default_message();
     // log("Transmitting new telemetry message size %d", next_message->size);

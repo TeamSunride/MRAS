@@ -11,6 +11,8 @@
 #define USE_ASSISTNOW                       false
 #define USING_AMPLIFIER                     true
 
+#define TRANSMIT_TELEMETRY                  false
+
 
 /**
  * ================================

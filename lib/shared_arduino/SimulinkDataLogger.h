@@ -7,6 +7,7 @@
 
 
 #include "Subsystem.h"
+#include "Arduino.h"
 
 
 typedef union{
@@ -19,6 +20,13 @@ typedef union{
  */
 class SimulinkDataLogger: public Subsystem {
 public:
+    SimulinkDataLogger(uint8_t id, uint8_t mode, long baud) : Subsystem(id) {
+        Serial.begin(baud);
+        while (!Serial) {
+            delay(1);
+        }
+        _mode = mode;
+    };
     using Subsystem::Subsystem;
     int8_t setup() override;
     int8_t loop() override;
@@ -32,6 +40,11 @@ private:
     FLOATUNION_t velocity;
     FLOATUNION_t pressure;
     FLOATUNION_t yAccel;
+    FLOATUNION_t gyroX;
+    FLOATUNION_t gyroY;
+    FLOATUNION_t gyroZ;
+
+    uint8_t _mode;
 };
 
 

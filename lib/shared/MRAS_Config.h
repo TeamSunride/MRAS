@@ -5,7 +5,7 @@
 #ifndef MRAS_MRAS_CONFIG_H
 #define MRAS_MRAS_CONFIG_H
 
-#define ENABLE_BUZZER                       true
+#define ENABLE_BUZZER                       false
 #define ENABLE_BEEPING                      false
 
 /**

@@ -26,3 +26,22 @@ end
 
 % GOES UNSTABLE : DONT KNOW WHY --- looks fixed after normalizing on line
 % 24 and 25
+
+%% Animation
+
+for i = 1:Nrows-2
+
+qs = quaternion(q_mat(i+1,:));
+qf = quaternion(q_mat(i+2,:));
+position = [0,0,0];
+patch = poseplot(qs,position);
+xlabel("North-x (m)")
+ylabel("East-y (m)")
+zlabel("Down-z (m)");
+
+for coeff = 0:0.5:1
+    q = slerp(qs,qf,coeff);
+    set(patch, Orientation=q, Position=position)
+    drawnow
+end
+end

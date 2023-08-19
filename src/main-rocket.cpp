@@ -18,7 +18,7 @@
 #include "RocketSDLogger.h"
 #include "ArduinoBuzzer.h"
 #include "StateEstimator.h"
-#include "QuaternionIntegrator.h"
+#include "../lib/shared_arduino/QuaternionIntegrator.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();

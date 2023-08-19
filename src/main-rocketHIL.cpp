@@ -18,7 +18,7 @@
 #include "RocketSDLogger.h"
 #include "ArduinoBuzzer.h"
 #include "StateEstimator.h"
-#include "QuaternionIntegrator.h"
+#include "../lib/shared_arduino/QuaternionIntegrator.h"
 #include "SimulinkDataLogger.h"
 
 auto logger = ArduinoTextLogger(0, 0);

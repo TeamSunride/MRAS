@@ -50,6 +50,7 @@ int8_t SimulinkDataLogger::loop() {
                 Serial.write(byte);
             }
             Serial.print("\n");
+            //Serial.printf("%f,%f,%f\n", gyroX.number, gyroY.number, gyroZ.number);
             delay(50);
         }
     }
@@ -74,7 +75,7 @@ void SimulinkDataLogger::on_message(SystemMessage *msg) {
 
             gyroX.number = gyro_msg->gyro[0];
             gyroY.number = gyro_msg->gyro[1];
-            gyroZ.number = gyro_msg->gyro[3];
+            gyroZ.number = gyro_msg->gyro[2];
             //log("%f,%f,%f", gyroX.number, gyroY.number, gyroZ.number);
             break;
         }

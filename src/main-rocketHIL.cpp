@@ -3,7 +3,7 @@
 //
 
 #include <cstdio>
-
+#include "timestamp.h"
 #include "MRAS_System.h"
 #include "MRAS_Config.h"
 #include "ArduinoTextLogger.h"
@@ -15,10 +15,11 @@
 #include "Sensor_ADXL375.h"
 #include "Sensor_ZOEM8Q.h"
 #include "RocketTelemetrySystem.h"
-#include "StateEstimator.h"
 #include "RocketSDLogger.h"
-#include "SimulinkDataLogger.h"
 #include "ArduinoBuzzer.h"
+#include "StateEstimator.h"
+#include "QuaternionIntegrator.h"
+#include "SimulinkDataLogger.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -47,9 +48,12 @@ void setup() {
     mras->set_logger(&logger);
     mras->set_buzzer(&buzzer);
 
-    mras->add_subsystem(&altitudeEstimator);
-    mras->add_subsystem(&sim_logger);
+    //mras->add_subsystem(&altitudeEstimator);
+    mras->add_subsystem(&sd_logger);
+    mras->add_subsystem(&data_logger);
+    mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
+    mras->add_subsystem(&sim_logger);
     //altitudeEstimator.add_subscriber(&sim_logger);
     //sim_logger.add_subscriber(&altitudeEstimator);
     imu.add_subscriber(&sim_logger);

@@ -1,6 +1,6 @@
 %% Load data
 
-mat = load("orientation_test_data/data1.mat");
+mat = load("orientation_test_data/data2.mat");
 data = mat.p;
 [Nrows,Ncols] = size(data);
 q_mat = zeros(Nrows,4);
@@ -8,14 +8,14 @@ q_mat = zeros(Nrows,4);
 delta_t = 0.05;
 q_n = [1, 0, 0, 0]; 
 q_mat(1,:) = q_n;
-for i = 1:(Nrows-1)
+for i = 3:(Nrows-1)
     
     w_n = data(i,:) .* (pi/180);
     w_np1 = data(i+1,:) .* (pi/180);
     w_bar = (w_np1 + w_n) / 2;
 
     ang = norm(w_bar)*delta_t / 2;
-    q_wdt = [cos(ang), w_bar.*(sin(ang)/norm(ang))]; 
+    q_wdt = [cos(ang), w_bar.*(sin(ang)/norm(w_bar))]; 
 
     w_cross = cross(w_n , w_np1);
     sum_eq227 = q_wdt + (delta_t^2 / 24).* [0, w_cross];
@@ -27,7 +27,7 @@ end
 
 %% Animation
 
-for i = 1:Nrows-1
+for i = 3:Nrows-1
 
 qs = quaternion(q_mat(i,:));
 qf = quaternion(q_mat(i+1,:));

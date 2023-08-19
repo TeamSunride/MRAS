@@ -5,9 +5,10 @@ data = mat.p;
 [Nrows,Ncols] = size(data);
 q_mat = zeros(Nrows,4);
 %% Quaternion integration
-delta_t = 0.001;
+delta_t = 0.005;
 w_0 = data(1,:);    %assuming first quaternion is the normalized body rates
-q_n = [0, w_0] ./ norm(w_0)   %make sure all quaternions are column vectors
+q_n = [1, 0, 0, 0]  ; %make sure all quaternions are column vectors
+q_mat(1,:) = q_n;
 for i = 1:(Nrows-1)
     
     w_n = data(i,:);
@@ -29,10 +30,10 @@ end
 
 %% Animation
 
-for i = 1:Nrows-2
+for i = 1:Nrows-1
 
-qs = quaternion(q_mat(i+1,:));
-qf = quaternion(q_mat(i+2,:));
+qs = quaternion(q_mat(i,:));
+qf = quaternion(q_mat(i+1,:));
 position = [0,0,0];
 patch = poseplot(qs,position);
 xlabel("North-x (m)")
@@ -45,3 +46,18 @@ for coeff = 0:0.5:1
     drawnow
 end
 end
+%% Doest work
+% position = [0,0,0];
+% qs = quaternion(q_mat(1,:));
+% patch = poseplot(qs,position);
+% xlabel("North-x (m)")
+% ylabel("East-y (m)")
+% zlabel("Down-z (m)");
+% for i = 1:Nrows-1
+% 
+%  qf = quaternion(q_mat(i+1,:));
+% 
+%  set(patch, Orientation=q, Position=position)
+%  drawnow
+%  pause(0.01)
+% end

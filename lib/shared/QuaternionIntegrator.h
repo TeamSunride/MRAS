@@ -34,6 +34,7 @@ private:
     float q_n[4];
     float q_np1[4];
     float dt;
+    float norm_w_n;
 
     bool first;
     bool recieved;

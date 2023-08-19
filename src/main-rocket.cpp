@@ -18,6 +18,7 @@
 #include "RocketSDLogger.h"
 #include "ArduinoBuzzer.h"
 #include "StateEstimator.h"
+#include "QuaternionIntegrator.h"
 
 auto logger = ArduinoTextLogger(0, 0);
 MRAS_System *mras = MRAS_System::get_instance();
@@ -42,6 +43,8 @@ StateEstimator altitudeEstimator = StateEstimator(9, 0.001);
 
 ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
 
+QuaternionIntegrator quaternionIntegrator = QuaternionIntegrator(11, 0.01);
+
 void setup() {
     setSyncProvider(getTeensy3Time);
 
@@ -56,6 +59,7 @@ void setup() {
     mras->add_subsystem(&accelerometer);
     mras->add_subsystem(&telemetry_system);
     mras->add_subsystem(&altitudeEstimator);
+    mras->add_subsystem(&quaternionIntegrator);
 
 
      //imu.add_subscriber(&data_logger);
@@ -65,6 +69,7 @@ void setup() {
     //gnss.add_subscriber(&data_logger);
     // altitudeEstimator.add_subscriber(&data_logger);
     imu.add_subscriber(&altitudeEstimator);
+    imu.add_subscriber(&quaternionIntegrator);
     barometer.add_subscriber(&altitudeEstimator);
 
 //     setup SD logger subscriptions

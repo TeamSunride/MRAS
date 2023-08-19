@@ -32,6 +32,7 @@ int8_t Sensor_LSM6DSO32::loop() {
     accel_msg->acceleration = (Vector<float, 3>) lsm->get_accel();
     gyro_msg->gyro = (Vector<float, 3>) lsm->get_gyro();
 
+    //log("%f,%f,%f", gyro_msg->gyro[0], gyro_msg->gyro[1], gyro_msg->gyro[2]);
     publish(accel_msg);
     publish(gyro_msg);
 

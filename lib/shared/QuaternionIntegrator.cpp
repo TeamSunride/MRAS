@@ -4,7 +4,7 @@
 
 #include "QuaternionIntegrator.h"
 #include "system_messages/GyroDataMsg.h"
-
+#define abs(x) ((x)>0?(x):-(x))
 int8_t QuaternionIntegrator::setup() {
     first = true;
     recieved = false;
@@ -24,11 +24,11 @@ int8_t QuaternionIntegrator::loop() {
         recieved = false;
         last_time = millis();
     }
-    else if (!first && recieved && (float)(current_time - last_time) > dt*1000){
-
+    else if (!first && recieved && (float)(current_time - last_time) > dt*1000 && abs(norm_w_n) > 0.0001){
         integrate();
-        last_time = current_time;
+
         log("%f,%f,%f,%f",q_np1[0], q_np1[1], q_np1[2], q_np1[3]);
+        log("%f,%f,%f",w_n[0], w_n[1], w_n[2]);
     }
 
     return 0;
@@ -37,9 +37,10 @@ void QuaternionIntegrator::on_message(SystemMessage *msg) {
     switch (msg->get_type()) {
         case GyroDataMsg_t: {
             auto *gmsg = (GyroDataMsg *) msg;
-            w_n[0] = gmsg->gyro[0];
-            w_n[1] = gmsg->gyro[1];
-            w_n[2] = gmsg->gyro[2];
+            w_n[0] = gmsg->gyro[0] * (float) M_PI / 180.0f;
+            w_n[1] = gmsg->gyro[1] * (float) M_PI / 180.0f;
+            w_n[2] = gmsg->gyro[2] * (float) M_PI / 180.0f;
+            norm_w_n = (float) sqrt( (double) (w_n[0]*w_n[0] + w_n[1]*w_n[1] + w_n[2]*w_n[2]));
             recieved = true;
             break;
         }
@@ -53,6 +54,9 @@ void QuaternionIntegrator::integrate() {
     w_bar[2] = (w_n[2] + w_nm1[2])/2;
 
     auto norm_w_bar = (float) sqrt( (double) (w_bar[0]*w_bar[0] + w_bar[1]*w_bar[1] + w_bar[2]*w_bar[2]));
+    if(abs(norm_w_bar) < 0.00001){
+        return;
+    }
     float angle = norm_w_bar*dt/2;
     auto sin_angle = (float) sin((double) angle);
     auto cos_angle = (float) cos((double) angle);
@@ -70,6 +74,7 @@ void QuaternionIntegrator::integrate() {
     w_nm1[0] = w_n[0];
     w_nm1[1] = w_n[1];
     w_nm1[2] = w_n[2];
+    last_time = current_time;
 }
 void QuaternionIntegrator::normalize(float * q) {
     auto norm = (float) sqrt( (double) (q[0]*q[0] + q[1]*q[1] + q[2]*q[2] + q[3]*q[3]));

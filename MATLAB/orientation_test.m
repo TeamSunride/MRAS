@@ -1,22 +1,21 @@
 %% Load data
 
-mat = load("orientation_test_data/data.mat");
+mat = load("orientation_test_data/data1.mat");
 data = mat.p;
 [Nrows,Ncols] = size(data);
 q_mat = zeros(Nrows,4);
 %% Quaternion integration
-delta_t = 0.005;
-w_0 = data(1,:);    %assuming first quaternion is the normalized body rates
-q_n = [1, 0, 0, 0]  ; %make sure all quaternions are column vectors
+delta_t = 0.05;
+q_n = [1, 0, 0, 0]; 
 q_mat(1,:) = q_n;
 for i = 1:(Nrows-1)
     
-    w_n = data(i,:);
-    w_np1 = data(i+1,:);
+    w_n = data(i,:) .* (pi/180);
+    w_np1 = data(i+1,:) .* (pi/180);
     w_bar = (w_np1 + w_n) / 2;
 
     ang = norm(w_bar)*delta_t / 2;
-    q_wdt = [cos(ang), w_bar.*(sin(ang)/norm(ang))]; %might be a problem, may be not
+    q_wdt = [cos(ang), w_bar.*(sin(ang)/norm(ang))]; 
 
     w_cross = cross(w_n , w_np1);
     sum_eq227 = q_wdt + (delta_t^2 / 24).* [0, w_cross];
@@ -25,8 +24,6 @@ for i = 1:(Nrows-1)
     q_n = q_np1/norm(q_np1);
 end 
 
-% GOES UNSTABLE : DONT KNOW WHY --- looks fixed after normalizing on line
-% 24 and 25
 
 %% Animation
 
@@ -40,11 +37,11 @@ xlabel("North-x (m)")
 ylabel("East-y (m)")
 zlabel("Down-z (m)");
 
-for coeff = 0:0.5:1
-    q = slerp(qs,qf,coeff);
+
+    q = slerp(qs,qf,1);
     set(patch, Orientation=q, Position=position)
     drawnow
-end
+
 end
 %% Doest work
 % position = [0,0,0];

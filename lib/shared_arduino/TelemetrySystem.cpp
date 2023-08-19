@@ -62,7 +62,7 @@ int8_t TelemetrySystem::setup() {
 void TelemetrySystem::transmit_next_message() {
 
     TelemetryMessageQueueMsg *next_message = get_default_message();
-    log("Transmitting new telemetry message size %d", next_message->size);
+    //log("Transmitting new telemetry message size %d", next_message->size);
     auto* bytes_to_transmit = (uint8_t *) next_message->telemetry_message;
     radio.startTransmit(bytes_to_transmit, next_message->size);
     telemetry_system_state = TX;

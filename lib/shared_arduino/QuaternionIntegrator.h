@@ -9,6 +9,8 @@
 #include "SystemMessage.h"
 #include "Arduino.h"
 #include "math.h"
+#include "system_messages/OrientationDataMsg.h"
+
 /* Hamilton convention (scalar first) */
 class QuaternionIntegrator : public Subsystem {
 public:

@@ -8,9 +8,9 @@
 int8_t QuaternionIntegrator::setup() {
     first = true;
     recieved = false;
-    q_n[0] = 1;
+    q_n[0] = 0.7071f;
     q_n[1] = 0;
-    q_n[2] = 0;
+    q_n[2] = 0.7071f;
     q_n[3] = 0;
     return 0;
 }
@@ -27,8 +27,15 @@ int8_t QuaternionIntegrator::loop() {
     else if (!first && recieved && (float)(current_time - last_time) > dt*1000 && abs(norm_w_n) > 0.0001){
         integrate();
 
-        log("%f,%f,%f,%f",q_np1[0], q_np1[1], q_np1[2], q_np1[3]);
-        log("%f,%f,%f",w_n[0], w_n[1], w_n[2]);
+        //log("%f,%f,%f,%f",q_np1[0], q_np1[1], q_np1[2], q_np1[3]);
+        //log("%f,%f,%f",w_n[0], w_n[1], w_n[2]);
+        auto orientation_msg = new OrientationDataMsg();
+        orientation_msg->quaternion[0] = q_np1[0];
+        orientation_msg->quaternion[1] = q_np1[1];
+        orientation_msg->quaternion[2] = q_np1[2];
+        orientation_msg->quaternion[3] = q_np1[3];
+        publish(orientation_msg);
+
     }
 
     return 0;

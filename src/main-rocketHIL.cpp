@@ -40,9 +40,11 @@ StateEstimator altitudeEstimator = StateEstimator(8, 0.05);
 
 RocketSDLogger sd_logger = RocketSDLogger(9, BUILTIN_SDCARD);
 
-SimulinkDataLogger sim_logger = SimulinkDataLogger(10,2,9600);
+SimulinkDataLogger sim_logger = SimulinkDataLogger(10,3,9600);
 
-ArduinoBuzzer buzzer = ArduinoBuzzer(10, 10);
+ArduinoBuzzer buzzer = ArduinoBuzzer(11, 10);
+
+QuaternionIntegrator orientation = QuaternionIntegrator(12,0.05);
 
 void setup() {
     mras->set_logger(&logger);
@@ -54,9 +56,12 @@ void setup() {
     mras->add_subsystem(&magnetometer);
     mras->add_subsystem(&imu);
     mras->add_subsystem(&sim_logger);
+    mras->add_subsystem(&orientation);
     //altitudeEstimator.add_subscriber(&sim_logger);
     //sim_logger.add_subscriber(&altitudeEstimator);
-    imu.add_subscriber(&sim_logger);
+    //imu.add_subscriber(&sim_logger);
+    imu.add_subscriber(&orientation);
+    orientation.add_subscriber(&sim_logger);
 
 
     mras->setup();

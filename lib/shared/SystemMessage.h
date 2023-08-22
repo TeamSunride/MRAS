@@ -20,12 +20,13 @@ enum SystemMessageType {
     StateEstimatorMsg_t,
     TextLogMsg_t,
     RadioStatusMsg_t,
+    OrientationDataMsg_t
 };
 
 /**
  * @brief A base class for all system messages
  *
- * This class is used to provide a common interface for all system messages.
+ * * This class is used to provide a common interface for all system messages.
  *
  * System messages are used to communicate between subsystems. See `Software Architecture Overview` for more information.
  */

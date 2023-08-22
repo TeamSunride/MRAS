@@ -8,7 +8,7 @@
 
 #include "Subsystem.h"
 #include "Arduino.h"
-
+#include "system_messages/OrientationDataMsg.h"
 
 typedef union{
     float number;
@@ -31,6 +31,7 @@ public:
     int8_t setup() override;
     int8_t loop() override;
 
+
     void on_message(SystemMessage *msg) override;
     static float getFloat();
 
@@ -43,9 +44,12 @@ private:
     FLOATUNION_t gyroX;
     FLOATUNION_t gyroY;
     FLOATUNION_t gyroZ;
+    FLOATUNION_t q1;
+    FLOATUNION_t q2;
+    FLOATUNION_t q3;
+    FLOATUNION_t q4;
 
     uint8_t _mode;
 };
 
-
-#endif //MRAS_NATIVEDATALOGGER_H
+#endif //MRAS_SIMULINKDATALOGGER_H

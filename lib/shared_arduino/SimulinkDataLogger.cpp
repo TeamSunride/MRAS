@@ -11,9 +11,9 @@ int8_t SimulinkDataLogger::setup() {
 
 int8_t SimulinkDataLogger::loop() {
 
-    switch(_mode) {
+    switch (_mode) {
         case 1: {
-            while (!Serial.available()){} // IMPORTANT: else it breaks the HIL
+            while (!Serial.available()) {} // IMPORTANT: else it breaks the HIL
             pressure.number = getFloat();
             yAccel.number = getFloat();
             // delay(1);
@@ -28,10 +28,10 @@ int8_t SimulinkDataLogger::loop() {
             publish(Amsg);
 
             Serial.write('A');
-            for (unsigned char byte : position.bytes) {
+            for (unsigned char byte: position.bytes) {
                 Serial.write(byte);
             }
-            for (unsigned char byte : velocity.bytes) {
+            for (unsigned char byte: velocity.bytes) {
                 Serial.write(byte);
             }
             Serial.print("\n");
@@ -40,17 +40,35 @@ int8_t SimulinkDataLogger::loop() {
         case 2: {
             //while (!Serial.available()){} // IMPORTANT: else it breaks the HIL
             Serial.write('A');
-            for(unsigned char byte : gyroX.bytes) {
+            for (unsigned char byte: gyroX.bytes) {
                 Serial.write(byte);
             }
-            for(unsigned char byte : gyroY.bytes) {
+            for (unsigned char byte: gyroY.bytes) {
                 Serial.write(byte);
             }
-            for(unsigned char byte : gyroZ.bytes) {
+            for (unsigned char byte: gyroZ.bytes) {
                 Serial.write(byte);
             }
             Serial.print("\n");
             //Serial.printf("%f,%f,%f\n", gyroX.number, gyroY.number, gyroZ.number);
+            delay(50);
+        }
+        case 3: {
+            Serial.write('A');
+            for (unsigned char byte: q1.bytes) {
+                Serial.write(byte);
+            }
+            for (unsigned char byte: q2.bytes) {
+                Serial.write(byte);
+            }
+            for (unsigned char byte: q3.bytes) {
+                Serial.write(byte);
+            }
+            for (unsigned char byte: q4.bytes) {
+                Serial.write(byte);
+            }
+            Serial.print("\n");
+            //Serial.printf("%f,%f,%f,%f\n", q1.number, q2.number, q3.number, q4.number);
             delay(50);
         }
     }
@@ -79,11 +97,22 @@ void SimulinkDataLogger::on_message(SystemMessage *msg) {
             //log("%f,%f,%f", gyroX.number, gyroY.number, gyroZ.number);
             break;
         }
+        case OrientationDataMsg_t: {
+
+            auto orientation_msg = (OrientationDataMsg *) msg;
+
+            q1.number = orientation_msg->quaternion[0];
+            q2.number = orientation_msg->quaternion[1];
+            q3.number = orientation_msg->quaternion[2];
+            q4.number = orientation_msg->quaternion[3];
+
+            break;
+        }
         default:
             break;
     }
 
-    }
+}
 
 float SimulinkDataLogger::getFloat() {
     int cont = 0;

@@ -2,6 +2,7 @@
 
 mat = load("orientation_test_data/data2.mat");
 data = mat.p;
+data(:,1) = -data(:,1); % flip x or change fram to ENU 
 [Nrows,Ncols] = size(data);
 q_mat = zeros(Nrows,4);
 %% Quaternion integration

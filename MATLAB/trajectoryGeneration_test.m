@@ -60,7 +60,7 @@ for i = 1:Nrows-1
 end
 
 %% Data Visualization 
-[p, q, r] = quat2angle(orientation_quaternion, "YXZ");
+[r, p, y] = quat2angle(orientation_quaternion, "YXZ");
 figure(1)
 plot(time, [r,p,y])
 legend("r","p","y")

@@ -1,3 +1,11 @@
+% Created by Nikilesh Ramesh 
+
+% Used Section 4.6. Arxiv Link: https://arxiv.org/pdf/1711.02508.pdf, to
+% test orientation estimates
+
+% future work: Integrate Magnetometer, fix initial state, figure out the
+% order of axes
+
 %% Load data
 
 mat = load("orientation_test_data/data2.mat");

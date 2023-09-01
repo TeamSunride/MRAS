@@ -66,6 +66,10 @@ for i = 2:Nrows
     accel(i,:) = accel(i-1,:)*(1-w) + accel(i,:)*w;
 end
 
+% Truncation
+start_ind = 18000; %start at 18000
+end_ind = a_i; %end at apogee
+
 %% Quaternion integration for orientation
 
 
@@ -99,18 +103,19 @@ end
 
 % METHOD #2
 % using forward euler integration for now
-pos = zeros(size(aligned_accel)); 
+pos = zeros(end_ind-start_ind,3); 
 pos(1,1) = 0; % x axis translation
 pos(1,2) = 0; % y axis 
 pos(1,3) = 0; % z axis 
 
-vel = zeros(size(aligned_accel));
+vel = zeros(end_ind-start_ind,3);
 vel(1,:) = [0,0,0];
-
-for i = 2:Nrows
-    vel(i,:) = vel(i-1,:) + aligned_accel(i,:).*(time(i)-time(i-1));
-    vel(i,3) = velEst(i);
-    pos(i,:) = pos(i-1,:) + vel(i,:).*(time(i)-time(i-1));
+j = 1;
+for i = start_ind:end_ind
+    j = j + 1;
+    vel(j,:) = vel(j-1,:) + aligned_accel(i,:).*(time(i)-time(i-1));
+    vel(j,3) = velEst(i);
+    pos(j,:) = pos(j-1,:) + vel(j,:).*(time(i)-time(i-1));
 end 
 
 % METHOD #1
@@ -148,7 +153,7 @@ end
 
 figure(5)
 %plot(time,gyro)
-for i = 18000:20:Nrows-1 %% looping faster as it was slow
+for i = start_ind:20:end_ind-1 %% looping faster as it was slow
 
 qs = quaternion(orientation_quaternion(i,:));
 qf = quaternion(orientation_quaternion(i+1,:));
@@ -165,7 +170,7 @@ set(patch, Orientation=q, Position=position)
 drawnow
 
 subplot(1,2,2);
-plot(time(18000:i),altEst(18000:i));
+plot(time(start_ind:i),altEst(start_ind:i));
 drawnow
 
 end

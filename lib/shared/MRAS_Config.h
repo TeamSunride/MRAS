@@ -90,6 +90,15 @@
 #define RADIO_TX_ENABLE_PIN                 5
 #define RADIO_SPI_BUS                       SPI
 
+#elif BUILD_ENV_rocketHIL
+
+#define RADIO_CHIP_SELECT_PIN               31
+#define RADIO_DIO1_PIN                      33
+#define RADIO_RESET_PIN                     32
+#define RADIO_BUSY_PIN                      34
+#define RADIO_RX_ENABLE_PIN                 36
+#define RADIO_TX_ENABLE_PIN                 35
+#define RADIO_SPI_BUS                       SPI1
 #endif
 
 /**

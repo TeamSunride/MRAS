@@ -1,0 +1,22 @@
+{
+  "name": "shared_arduino",
+  "version": "1.0.0",
+  "description": "library for arduino specific functions ",
+  "keywords": [
+    "arduino"
+  ],
+  "author": {
+    "name": "Team Sunride"
+  },
+  "exports": {
+    "exclude": [
+      "TelemetrySystem.h",
+        "TelemetrySystem.cpp"
+    ]
+  },
+  "build": {
+    "srcFilter": [
+      "+<*> -<TelemetrySystem.h> -<TelemetrySystem.cpp>"
+    ]
+  }
+}
